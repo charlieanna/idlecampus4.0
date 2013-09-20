@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- IdleCampus | NAme of the current user -->
+    <title>IdleCampus | Ankur Kothari</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- CSS files-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/alveolae.css" rel="stylesheet">
+    <link href="css/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Google font -->
+    <link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<!-- Navbar -->
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="index.html">IdleCampus</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="divider-vertical"></li>
+                    <li><a href="messages.html"><i class="icon-comments-alt"></i>&nbsp;&nbsp;Latest Posts&nbsp;&nbsp;<span
+                            class="label label-important">4 new</span></a></li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-bullhorn"></i>&nbsp;&nbsp;Latest
+                            activity&nbsp;&nbsp;<span class="label label-important">6</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="icon-comment"></i>New comment<span class="time">24 mins ago</span></a>
+                            </li>
+                            <li><a href="#"><i class="icon-envelope-alt"></i>New message<span
+                                    class="time">50 mins ago</span></a></li>
+                            <li><a href="#"><i class="icon-user"></i>User registration<span
+                                    class="time">17 hours ago</span></a></li>
+                            <li><a href="#"><i class="icon-lock"></i>User logged in<span
+                                    class="time">1 day ago</span></a></li>
+                            <li><a href="#"><i class="icon-lock"></i>User signed in<span class="time">2 days ago</span></a>
+                            </li>
+                            <li><a href="#"><i class="icon-trash"></i>User deleted account<span
+                                    class="time">5 days ago</span></a></li>
+                            <li>
+                                <hr>
+                                <a class="dropdown-menu-footer">
+                                    <span class="footer"><i
+                                            class="icon-eye-open"></i>&nbsp;&nbsp;View all activity</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-cloud"></i>&nbsp;&nbsp;Admin<b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="user-account.html"><i class="icon-file"></i>&nbsp;&nbsp;User information</a>
+                            </li>
+                            <li><a href="password.html"><i class="icon-key"></i>&nbsp;&nbsp;Change Password</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="login.html"><i class="icon-lock"></i>&nbsp;&nbsp;Logout</a></li>
+                    <li class="divider-vertical"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Navbar -->
+
+<!-- Main content -->
+<div id="main-content">
+<!-- Container -->
+<div class="container">
+<!-- Header boxes -->
+<div class="box-container">
+    <div class="box-holder">
+        <a href="index.html">
+            <div class="box"><span><i class="icon-dashboard"></i></span>Home</div>
+        </a>
+    </div>
+    <div class="box-holder">
+        <a href="messages.html">
+            <div class="box"><span><i class="icon-inbox"></i></span>Profile</div>
+        </a>
+    </div>
+    <div class="box-holder">
+        <a href="gallery.html">
+            <div class="box"><span><i class="icon-camera-retro"></i></span>Timetable</div>
+        </a>
+    </div>
+    <div class="box-holder">
+        <a href="user-account.html">
+            <div class="box"><span><i class="icon-globe"></i></span>Developer</div>
+        </a>
+    </div>
+</div>
+<!-- /Header boxes -->
+
+<div class="row">
+<!-- Sidebar -->
+<div class="span3">
+    <ul id="sidebar" class="nav nav-tabs nav-stacked">
+        <li class="active"><a href="index.html"><i class="icon-dashboard"></i>&nbsp;&nbsp;Latest Posts</a></li>
+
+        <li class="accordion">
+            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
+               data-parent="navigation-components">
+                <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
+
+            </a>
+
+            <div id="collapse-additional-info" class="accordion-body collapse in">
+                <div class="sidebar-extra well">
+
+                    <div class="btn-group">
+                        <!-- Button to create group -->
+                        <a href="#creategroup" role="button" class="btn btn-mini" data-toggle="modal">Create Group</a>
+
+                        <!-- Modal -->
+                        <div id="creategroup" class="modal hide fade" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Create Group</h3>
+                            </div>
+                            <div class="modal-body">
+                                <input class="create-group-input" placeholder="Group Name" type="text"
+                                       id="creategroupinput" ng-model="creategroup"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
+                                        ng-click="createGroup()">Create
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Button to join group -->
+                        <a href="#joingroup" role="button" class="btn btn-mini" data-toggle="modal">Join Group</a>
+
+                        <!-- Modal -->
+                        <div id="joingroup" class="modal hide fade" tabindex="-1" role="dialog"
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Join Group</h3>
+                            </div>
+                            <div class="modal-body">
+                                <input class="create-group-input" placeholder="Group Name" type="text"
+                                       id="creategroupinput" ng-model="joingroup"/>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                <button data-dismiss="modal" class="btn btn-primary" id="joingroupbutton"
+                                        ng-click="joinGroup()">Join
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-stacked nav-pills" id="groupscreated">
+                        <i class="icon-spinner icon-spin"></i> Spinner icon when loading content...
+                        <li class="nav-header">My Groups</li>
+
+                        <li ng-repeat="group in groupscreated" id="{{group}}">
+                            <a href="" ng-click="groupclick(group)">{{group}}</a>
+                        </li>
+
+                    </ul>
+                    <ul class="nav nav-stacked nav-pills" id="groupsfollowing">
+                        <li class="nav-header">Groups Following</li>
+                        <li ng-repeat="group in groupsfollowing" id="{{group}}" style='font-size:12px;'>
+                            <a href="" ng-click="groupclick(group)">{{group}}</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<!-- /Sidebar -->
+
+<!-- Content -->
+<div class="span9">
+
+<h1 class="page-title">Latest Posts</h1>
+
+<div class="widget">
+<div class="widget-content">
+<div class="row">
+    <div class="span6">
+        <h4 ng-model="currentGroup">{{currentGroup}}</h4></div>
+    <div class="span2">
+        <a href="#createfolder" role="button" class="btn" data-toggle="modal" id="createfolderbutton"><i class="icon-plus-sign"></i>Create
+            Folder</a></div>
+</div>
+<div class="tabbable" id="mygroupposts"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs" style="background-color:#f5f5f5">
+        <li class="active" style="margin:0 5px;text-align:center;width:150px;"><a href="#tab1"
+                                                                                  data-toggle="tab">Posts</a></li>
+        <li style="text-align:center;width:150px;"><a href="#tab2" data-toggle="tab">Folders</a></li>
+        <li style="text-align:center;width:150px;"><a href="#tab3" data-toggle="tab">Members</a></li>
+        <li style="text-align:center;width:150px;"><a href="#tab4" data-toggle="tab">Small Groups</a></li>
+
+    </ul>
+
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span9">
+
+                    <div class="tabbable" style="margin:0 auto">
+                        <ul class="nav nav-tabs">
+                            <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
+                                                                                                      href="#tabs-1">Notes</a>
+                            </li>
+                            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs-2">Alert</a>
+                            </li>
+                            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs-3">Assignment</a>
+                            </li>
+                            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs-4">Quiz</a>
+                            </li>
+                            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs-5">Poll</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1">
+
+                                <textarea class="row-fluid" id="groupnoteform" rows="3"
+                                          placeholder="Enter your note here:"></textarea>
+
+                                <!--  <textarea class="input-block-level" placeholder="type the name of the group here..." id="nodemessage"></textarea> -->
+                                <%= form_for Note.new, :html => { :id => "groupnoteupload" } do |f| %>
+                                <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                <div class="fileupload-buttonbar">
+
+
+                                    <%= f.file_field :file %>
+
+
+                                </div>
+                                <!-- The loading indicator is shown during image processing -->
+
+                                <br>
+                                <!-- The table listing the files available for upload/download -->
+                                <table class="table table-striped">
+                                    <tbody class="files" data-toggle="modal-gallery"
+                                           data-target="#modal-gallery"></tbody>
+                                </table>
+                                <% end %>
+
+                                <a class="btn" id="publishgroupnote">Send</a> <!-- , student or teacher -->
+
+                            </div>
+                            <div class="tab-pane" id="tabs-2">
+                                <textarea class="row-fluid" id="groupalertform" rows="3"
+                                          placeholder="Enter your alert here:"></textarea>
+                                <!--   <textarea class="input-block-level" placeholder="type the name of the group here..." id="nodemessage"></textarea> -->
+                                <a class="btn" id="publishgroupalert">Send</a>
+                            </div>
+                            <div class="tab-pane" id="tabs-3">
+                                <textarea class="row-fluid" id="groupassignmenttitleform" rows="4"
+                                          placeholder="assignment title:"></textarea>
+
+
+                                <textarea class="row-fluid" id="groupassignmentdescriptionform" rows="4"
+                                          placeholder="assignment description"></textarea>
+                                <%= form_for Note.new, :html => { :id => "groupassignmentupload" } do |f| %>
+                                <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                <div class="fileupload-buttonbar">
+
+
+                                    <%= f.file_field :file %>
+
+
+                                </div>
+                                <!-- The loading indicator is shown during image processing -->
+
+                                <br>
+                                <!-- The table listing the files available for upload/download -->
+                                <table class="table table-striped">
+                                    <tbody class="files" data-toggle="modal-gallery"
+                                           data-target="#modal-gallery"></tbody>
+                                </table>
+                                <% end %>
+
+                                <!--  <textarea class="input-block-level" placeholder="type the name of the group here..." id="nodemessage"></textarea> -->
+                                <a class="btn" id="publishgroupassignent">Send</a> <!-- , student or teacher -->
+                            </div>
+
+                            <div class="tab-pane" id="tabs-4">
+                                <textarea class="row-fluid" id="groupquestionform" rows="4"
+                                          placeholder="question"></textarea>
+                                <a class="btn" id="publishalert">Send</a>
+                            </div>
+                            <div class="tab-pane" id="tabs-5">
+                                <button class="createquiz">Create Quiz</button>
+                                <a class="btn" id="publishalert">Send</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <br>
+
+
+                    <div>
+
+                        <ul id="groupposts">
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-pane" id="tab2">
+            <ul class="span6 nav nav-pills nav-stacked" id="folders">
+                <li ng-repeat="folder in folders" id="{{folder.id}}"><a
+                        href="files_for_folders/?folder_id={{folder.id}}" data-remote="true">{{folder.name}}</a>
+                </li>
+            </ul>
+
+
+
+
+
+
+            <!-- Modal -->
+            <div id="createfolder" class="modal hide fade" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel"> <a href="#createfolder" role="button" class="btn" data-toggle="modal" id="createfolderbutton"><i class="icon-plus-sign"></i>Create
+                        Folder</a></h3>
+                </div>
+                <div class="modal-body">
+                    <input class="create-folder-input" placeholder="Folder Name" type="text"
+                           id="createfolderinput" ng-model="createfolder"/>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button data-dismiss="modal" class="btn btn-primary" id="createfolderbutton"
+                            ng-click="createFolder()">Create
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="tab-pane" id="tab3">
+            <ul id="memberslist">
+            </ul>
+        </div>
+        <div class="tab-pane" id="tab4">
+            <p>Small Groups.</p>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div id="myposts">
+    <div class="tabbable offset1">
+        <ul class="nav nav-tabs">
+            <li style="margin:0 5px;text-align:center;width:100px;" class="active"><a data-toggle="tab" href="#tabs1-1">Notes</a>
+            </li>
+            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs1-2">Alert</a></li>
+            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs1-3">Assignment</a>
+            </li>
+            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs1-4">Quiz</a></li>
+            <li style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab" href="#tabs1-5">Poll</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tabs1-1">
+
+                <textarea class="row-fluid noteform" rows="3" placeholder="Enter your note here:"></textarea>
+
+
+                <%= form_for Note.new, :html => { :id => "noteupload" } do |f| %>
+                <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                <div class="fileupload-buttonbar">
+
+
+                    <%= f.file_field :file %>
+
+
+                </div>
+                <!-- The loading indicator is shown during image processing -->
+
+                <br>
+                <!-- The table listing the files available for upload/download -->
+                <table class="table table-striped">
+                    <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+                </table>
+                <% end %>
+
+
+                <textarea class="input-block-level" placeholder="type the name of the group here..."
+                          id="nodemessage"></textarea>
+                <a class="btn" id="publishnote">Send</a> <!-- , student or teacher -->
+
+            </div>
+            <div class="tab-pane" id="tabs1-2">
+                <textarea class="row-fluid alertform" rows="4"
+                          placeholder="Enter your alert message here(140 characters max)..."></textarea>
+                <a class="btn" id="publishalert">Send</a>
+            </div>
+            <div class="tab-pane" id="tabs1-3">
+                <textarea class="row-fluid assignmenttitleform" rows="4" placeholder="assignment title:"></textarea>
+
+
+                <textarea class="row-fluid assignmentdescriptionform" rows="4"
+                          placeholder="assignment description"></textarea>
+                <%= form_for Assignment.new, :html => { :id => "assignmentupload" } do |f| %>
+                <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                <div class="fileupload-buttonbar">
+
+
+                    <%= f.file_field :file %>
+
+
+                </div>
+                <!-- The loading indicator is shown during image processing -->
+
+                <br>
+                <!-- The table listing the files available for upload/download -->
+                <table class="table table-striped">
+                    <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+                </table>
+                <% end %>
+                <textarea class="input-block-level" placeholder="type the name of the group here..."
+                          id="nodemessage"></textarea>
+                <a class="btn" id="publishassignent">Send</a> <!-- , student or teacher -->
+            </div>
+
+            <div class="tab-pane" id="tabs1-4">
+                <textarea class="row-fluid questionform" rows="4" placeholder="question"></textarea>
+                <a class="btn" id="publishalert">Send</a>
+            </div>
+            <div class="tab-pane" id="tabs1-5">
+                <button class="createquiz">Create Quiz</button>
+                <a class="btn" id="publishalert">Send</a>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <br>
+
+    <div>
+
+        <ul id="posts">
+            <!--  <div id="line" style="margin-left:-25px;width:650px;height:1px;background-color:black;float:left;"></div>
+             <div id="line" style="width:2px;height:50px;background-color:black;float:left;"></div>
+             <li style="background-color:#ECEFF5;list-style:none;border:1px solid black;margin:5px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sem dui, convallis a condimentum et, facilisis at nibh. In eu dolor eget dolor volutpat posuere quis sit amet diam. </li>
+       <div id="line" style="margin-left:-25px;width:650px;height:1px;background-color:black;float:left;"></div>
+             <div id="line" style="width:2px;height:50px;background-color:black;float:left;"></div>
+             <li style="background-color:#ECEFF5; list-style:none;border:1px solid black;margin:5px">Mauris pharetra dictum tellus, sit amet faucibus nisi laoreet ut. Aliquam magna turpis, vulputate vitae molestie euismod, facilisis quis libero. Morbi dui mi, varius et interdum </li>
+             <div id="line" style="margin-left:-25px;width:650px;height:1px;background-color:black;float:left;"></div>
+             <div id="line" style="width:2px;height:50px;background-color:black;float:left;"></div>
+             <li style="background-color:#ECEFF5;list-style:none;border:1px solid black;margin:5px">tempus, fringilla eu leo. Phasellus ut odio vitae tortor vulputate scelerisque. Curabitur mauris est, suscipit nec facilisis eget, rutrum vel massa. Vivamus leo dui, blandit non</li>
+           <div id="line" style="margin-left:-25px;width:650px;height:1px;background-color:black;float:left;"></div>
+             <div id="line" style="width:2px;height:50px;background-color:black;float:left;"></div>
+             <li style="background-color:#ECEFF5;list-style:none;border:1px solid black;margin:5px">porttitor eu, mattis vel odio. Nunc malesuada tortor non enim suscipit a tempus urna mattis. Proin porttitor risus id ligula tincidunt convallis hendrerit libero dapibus. Cras </li>
+             <div id="line" style="margin-left:-25px;width:650px;height:1px;background-color:black;float:left;"></div>
+             <div id="line" style="width:2px;height:50px;background-color:#ECEFF5;float:left;"></div>
+             <li style="background-color:#ECEFF5;list-style:none;border:1px solid black;margin:5px">ullamcorper velit varius massa ultrices luctus. Proin vestibulum, nibh ut commodo tempor, massa ligula auctor augue, lobortis porttitor lacus lectus quis nisi.</p></li> -->
+        </ul>
+
+
+    </div>
+
+</div>
+
+
+</div>
+</div>
+
+<h1 class="page-title">Messages overview</h1>
+
+
+
+<div class="widget">
+    <div class="widget-header">
+        <h3><i class="icon-comments"></i>&nbsp;&nbsp;Message threads</h3>
+    </div>
+    <div class="widget-content">
+        <ul class="messages-activity">
+            <li>
+                <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar" alt="avatar1"></a>
+								<span>
+									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username
+                                    1</strong></a> commented on 24/12/2012
+								</span>
+
+                <p class="well well-message">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit
+                    convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
+                </p>
+
+                <div class="message-buttons">
+                    <a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
+                    <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
+                    <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar" alt="avatar2"></a>
+								<span>
+									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username
+                                    2</strong></a> commented on 24/12/2012
+								</span>
+
+                <p class="well well-message">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit
+                    convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
+                </p>
+
+                <div class="message-buttons">
+                    <a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
+                    <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
+                    <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar-alt" alt="avatar3"></a>
+								<span>
+									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username
+                                    3</strong></a> commented on 24/12/2012
+								</span>
+
+                <p class="well well-message">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit
+                    convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
+                </p>
+
+                <div class="message-buttons-alt">
+                    <a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
+                    <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
+                    <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar-alt" alt="avatar4"></a>
+								<span>
+									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username
+                                    4</strong></a> commented on 24/12/2012
+								</span>
+
+                <p class="well well-message">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit
+                    convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
+                </p>
+
+                <div class="message-buttons-alt">
+                    <a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
+                    <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
+                    <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
+                    <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /Content -->
+</div>
+
+
+<!-- Footer -->
+<div id="footer">
+    <hr>
+    <p class="pull-right">IdleCampus &copy; 2012</p>
+</div>
+<!-- /Footer -->
+
+</div>
+<!-- /Container -->
+</div>
+</div>
+<!-- /Main content -->
+
+<!-- Javascript files -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+</body>
+</html>

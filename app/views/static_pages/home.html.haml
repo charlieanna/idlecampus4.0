@@ -1,0 +1,83 @@
+
+
+%link{href: "css/strip.css", rel: "stylesheet", type: "text/css"}/
+%link{href: "css/styles.css", rel: "stylesheet", type: "text/css"}/
+%link{href: "css/strip-responsive.css", rel: "stylesheet", type: "text/css"}/
+%link{href: "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600", rel: "stylesheet"}/
+%link{href: "http://fonts.googleapis.com/css?family=Merriweather:400,700", rel: "stylesheet", type: "text/css"}/
+%link{href: "css/css/font-awesome.css", rel: "stylesheet"}/
+
+#background
+  #dialog-form1{title: "Sign In"}
+    %form.css-form.form-vertical{"accept-charset" => "UTF-8", action: "/sessions", method: "post", name: "signinform"}
+      %input{name: "utf8", type: "hidden", value: "✓"}/
+      %input{name: "authenticity_token", type: "hidden", value: "iv7giY5xWb0pes4x7zaDIQIpzfHqeIpVF686QB5bAdo="}/
+      Email:
+      %input#bosh_email.input-medium{name: "session[email]", "ng-model" => "email", placeholder: "Email:", required: "", type: "email"}/
+      Password:
+      %input#bosh_password.input-medium{name: "session[password]", placeholder: "Password:", required: "", type: "password"}/
+      / <input class="btn btn-success btn-large offset1" name="commit" type="submit" value="Login">
+      %button.btn.btn-success.btn-large{type: "submit"}
+        %i{"ng-class" => "spin"}
+        Login
+  #signup-form{title: "Sign Up"}
+    %form.css-form.form-vertical{name: "signupform", "ng-submit" => "register()"}
+      Email:
+      %input.input-medium{integer1: "", name: "uEmail", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email"}/
+      %i#emailicon
+      / <span ng-show="signupform.uEmail.$error.emailavailable">Email not available</span>
+      / <span ng-show="signupform.uEmail.$error.required">Email required  </span>
+      Username:
+      %input.input-medium{integer: "", name: "size", "ng-model" => "user", placeholder: "Username:", required: "", type: "text"}/
+      %i#nameicon
+      Password:
+      %input#registerpassword.input-medium{name: "uPassword", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password"}/
+      %i#passwordicon
+      .clearfix
+      %button.btn.btn-success.btn-large{"ng-disabled" => "!signupform.$valid", type: "submit"}
+        %i{"ng-class" => "spin"}
+        Sign Up
+  - flash.each do |key, value|
+    %div{class: "alert alert-#{key}"}= value
+  %section.container
+    %nav.navbar
+      .navbar-inner
+        .container
+          %ul#Layer8.nav
+            %a.create-user.btn.btn-success Sign in
+            %a.create-user1.btn.btn-primary Sign up
+  / <script src="./js/jquery-1.8.0.min.js"></script>
+  %script{src: "./js/bootstrap.js"}
+  %img.bg{src: "./img/VectorSmartObject.png"}/
+  =  image_tag "img/Layer9.png",id:"Layer9"
+
+  =  image_tag "img/VectorSmartObject_0.png",id:"VectorSmartObject_0"
+
+  =  image_tag "img/Manageandkeepyourstu.png",id:"Manageandkeepyourstu"
+  %a#Layer6{href: "https://itunes.apple.com/us/app/idlecampus/id589694599?ls=1&mt=8"}
+    =  image_tag "img/Layer6.png",alt: "appstore"
+
+  %a#Layer7{href: "https://play.google.com/store/apps/details?id=com.idlecampus"}
+    =  image_tag "img/Layer7.png",alt: "googleplay"
+  %div
+    %a{href: "forgotpassword"} Forgot Password
+  =  image_tag "img/Getallthedatathatisy.png",id:"Getallthedatathatisy"
+  =  image_tag "img/34Builtwiththeneedof.png", :id => "34Builtwiththeneedof"
+  =  image_tag "img/Youdon39thavetogoany.png", :id => "Youdon39thavetogoany"
+  =  image_tag "img/VectorSmartObject_1.png", :id => "VectorSmartObject_1"
+  =  image_tag "img/Idle.png", :id => "Idle"
+  =  image_tag "img/ampus.png", :id => "ampus"
+  =  image_tag "img/Reflection.png", :id => "Reflection"
+  =  image_tag "img/shadow.png", :id => "shadow"
+  =  image_tag "img/basephone.png" , :id => "basephone"
+  =  image_tag "img/Layer2.png" , :id => "Layer2"
+  =  image_tag "img/Layer3.png" , :id => "Layer3"
+  =  image_tag "img/Layer4.png", :id => "Layer4"
+  =  image_tag "img/shadow_0.png" , :id => "shadow_0"
+  =  image_tag "img/Layer4copy.png", :id => "Layer4copy"
+  =  image_tag "img/Layer2copy.png", :id => "Layer2copy"
+  =  image_tag "img/Layer5.png", :id => "Layer5"
+  =  image_tag "img/TimetableGetyoursche.png", :id => "TimetableGetyoursche"
+  #ForgotPassword
+    %a.btn.btn-link Forgot Password
+  =  image_tag "img/Whyyouwilllovethis.png", :id => "Whyyouwilllovethis"
