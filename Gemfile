@@ -22,6 +22,9 @@ group :test do
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
+group :development do
+  gem 'capistrano'
+end
 gem "haml"
 gem 'gon'
 gem 'sass-rails', '4.0.0'
