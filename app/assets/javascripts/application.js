@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require angular
 //= require angular-resource
+//= require angular-strap
 //= require scripts/strophe.js
 //= require scripts/flXHR.js
 //= require scripts/strophe.flxhr.js

@@ -1,14 +1,12 @@
 IdleCampus::Application.routes.draw do
   
  
-  
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/tour"
-  get "static_pages/contact"
-  
-  root to: "users#new"
-
+  match "users/checkEmail" => "users#checkEmail",via: 'get'
+  get "users/checkName"
+  resources :users
+  root  'static_pages#home'
+  match '/signup',  to: 'users#new',            via: 'get'
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
  
   # The priority is based upon order of creation: first created -> highest priority.
