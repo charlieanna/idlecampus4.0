@@ -4,18 +4,18 @@
   .span2.offset3
     %form.css-form.form-vertical{name: "signupform", "ng-submit" => "register()"}
       Email:
-      %input.input-medium{integer1: "", name: "uEmail", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email"}/
+      %input.input-medium{integer1: "",id:"Email", name: "uEmail", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email"}/
       %i#emailicon
       / <span ng-show="signupform.uEmail.$error.emailavailable">Email not available</span>
       / <span ng-show="signupform.uEmail.$error.required">Email required  </span>
       Username:
-      %input.input-medium{integer: "", name: "size", "ng-model" => "user", placeholder: "Username:", required: "", type: "text"}/
+      %input.input-medium{integer: "", id:"Name",name: "size", "ng-model" => "user", placeholder: "Username:", required: "", type: "text"}/
       %i#nameicon
       Password:
       %input#registerpassword.input-medium{name: "uPassword", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password"}/
       %i#passwordicon
       .clearfix
-      %button.btn.btn-success.btn-large{"ng-disabled" => "!signupform.$valid"}
+      %button.btn.btn-success.btn-large#submit{"ng-disabled" => "!signupform.$valid"}
         %i{"ng-class" => "spin"}
         Create my account
 

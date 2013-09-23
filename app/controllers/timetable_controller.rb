@@ -395,7 +395,9 @@ class TimetableController < ApplicationController
 
 
 
-
+  def new
+    
+  end
 
   def create
 

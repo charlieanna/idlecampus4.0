@@ -1,9 +1,13 @@
 IdleCampus::Application.routes.draw do
   
  
+  
   match "users/checkEmail" => "users#checkEmail",via: 'get'
   get "users/checkName"
   resources :users
+  resources :groups do
+    resource :timetable
+  end
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   resources :users

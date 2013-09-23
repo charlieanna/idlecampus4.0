@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.ui.all
 //= require bootstrap
 //= require angular
@@ -24,4 +23,5 @@
 //= require strophejs-plugins/register/strophe.register.js
 //= require strophejs-plugins/pubsub/strophe.pubsub.js
 //= require scripts/xmpp.js.coffee
+//= require_tree .
 

@@ -140,11 +140,11 @@ app.directive "passworddir", ->
 
 
 $ ->
-  $("#signup-form").dialog
-    autoOpen: false
-    modal: true
-    show: "fade"
-    hide: "fade"
+#  $("#signup-form").dialog
+#    autoOpen: false
+#    modal: true
+#    show: "fade"
+#    hide: "fade"
 
   $("#dialog-form1").dialog
     autoOpen: false

@@ -11,7 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130920234712) do
+ActiveRecord::Schema.define(version: 20130923000532) do
+
+  create_table "add_weekday_id_to_timetable_entries", force: true do |t|
+    t.integer  "weekday_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "batches", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "class_timings", force: true do |t|
+    t.integer  "to_minutes"
+    t.integer  "to_hours"
+    t.integer  "from_hours"
+    t.integer  "from_minutes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "group_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rooms", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subjects", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teachers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timetable_entries", force: true do |t|
+    t.integer  "timetable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "weekday_id"
+  end
+
+  create_table "timetables", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -24,5 +83,11 @@ ActiveRecord::Schema.define(version: 20130920234712) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "weekdays", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

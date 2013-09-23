@@ -1,5 +1,10 @@
+
+
 <% provide(:title, @user.name) %>
-<h1><%= @user.name %></h1>
+<h1>
+
+  <%= @user.name %>
+</h1>
 <div ng-controller="GroupsCtrl" ng-init="attach();getGroupsCreated();getGroupsFollowing()">
     <div id="creategroup" class="modal hide fade" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel" aria-hidden="true">
