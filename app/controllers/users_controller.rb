@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
   def create
 
-      user = User.new
-      user.email = params[:email]
-      user.jabber_id = params[:jabber_id]
-      user.device_identifier = params[:device_identifier]
+      @user = User.new
+      @user.email = params[:email]
+      @user.jabber_id = params[:jabber_id]
+      @user.device_identifier = params[:device_identifier]
+      @user.password = params[:password]
+      @user.password_confirmation = params[:password]
+      puts @user.valid?
+      puts @user.errors.full_messages
       if @user.save
-        begin
+
           @session_jid, @session_id, @session_random_id =
               RubyBOSH.initialize_session(params[:email], params[:password], "http://idlecampus.com/http-bind")
 
@@ -19,34 +23,15 @@ class UsersController < ApplicationController
           p cookies
 
           @cookies = cookies
-          # redirect_to user
-          # else
-          #    flash[:error] = 'Invalid email/password combination' # Not quite right!
-          #     render 'new'
-          # end
-
-          #@assignment = Assignment.new
-          # @assignment.save
-
-          #@note = Note.new
-
-          # @note.save
-          # user.notes << @note
-          # user.assignments << @assignment
-          # user.save
-          #   <li><%= link_to "<div class='box'><span><i class='icon-briefcase icon-white'></i></span>Developer</div>".html_safe, :controller => :developers, :action => :show %></li>
           attacher = {}
           attacher[:JID] = @session_jid
           attacher[:SID] = @session_id
           attacher[:RID] = @session_random_id
           gon.attacher = attacher
-          render 'initbosh'
-        rescue
 
-          redirect_to :back,:flash => { :error =>  'Invalid email/password combination' }
-        end
-        flash[:success] = "Welcome to IdleCampus!"
-        redirect_to @user
+
+          flash[:success] = "Welcome to IdleCampus!"
+          redirect_to @user
 
     else
       render 'new'

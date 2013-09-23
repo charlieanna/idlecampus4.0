@@ -464,7 +464,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
             email:email
             jabber_id: user + "@idlecampus.com"
             device_identifier: "web"
-
+            password:password
           connection.authenticate()
 #          $scope.signupform.$setPristine()
           $scope.$digest();
