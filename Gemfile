@@ -5,7 +5,8 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
-
+gem 'sidekiq'
+gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
@@ -13,6 +14,7 @@ group :development, :test do
    gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+
 end
 
 group :test do

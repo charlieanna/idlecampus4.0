@@ -487,14 +487,23 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       console.log body
 
     conn.xmlOutput = (body) ->
+      console.log "XMPP OUTPUT"
       console.log body
       localStorage.setItem "rid", $(body).attr("rid")
+      localStorage.setItem "sid", $(body).attr("sid")
 
-    window.localStorage.setItem "name", $("#loginname").val()
-    window.localStorage.setItem "password", $("#loginpassword").val()
-    name = localStorage.getItem("name")
-    password = localStorage.getItem("password")
+    sid = localStorage.getItem("sid")
+    rid = localStorage.getItem("rid")
+    jid = localStorage.getItem("jid")
+    console.log "CREDENTIALS"
+    console.log(sid);
+    console.log(rid);
+    console.log(jid)
     console.log gon.attacher
+    if sid? and rid?
+      gon.attacher.SID = sid
+      gon.attacher.RID = rid
+
     conn.attach gon.attacher.JID, gon.attacher.SID, gon.attacher.RID, (status) ->
       console.log status
       if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
@@ -503,3 +512,8 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
         $scope.connected()
       else
         $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
+
+
+$ ->
+  $("#signout").click (event) ->
+    localStorage.clear();

@@ -1,6 +1,6 @@
 IdleCampus::Application.routes.draw do
   
- 
+  get "sessions/index"
   
   match "users/checkEmail" => "users#checkEmail",via: 'get'
   get "users/checkName"
@@ -10,6 +10,7 @@ IdleCampus::Application.routes.draw do
   end
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signout',  to: 'sessions#destroy',            via: 'delete'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
  

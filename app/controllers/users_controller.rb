@@ -1,68 +1,67 @@
 class UsersController < ApplicationController
   def create
 
-      @user = User.new
-      @user.email = params[:email]
-      @user.jabber_id = params[:jabber_id]
-      @user.device_identifier = params[:device_identifier]
-      @user.password = params[:password]
-      @user.password_confirmation = params[:password]
-      puts @user.valid?
-      puts @user.errors.full_messages
-      if @user.save
+    @user = User.new
+    @user.email = params[:email]
+    @user.jabber_id = params[:jabber_id]
+    @user.device_identifier = params[:device_identifier]
+    @user.password = params[:password]
+    @user.password_confirmation = params[:password]
+    puts @user.valid?
+    puts @user.errors.full_messages
+    if @user.save
 
-          @session_jid, @session_id, @session_random_id =
-              RubyBOSH.initialize_session(params[:email], params[:password], "http://idlecampus.com/http-bind")
+      @session_jid, @session_id, @session_random_id =
+          RubyBOSH.initialize_session(params[:jabber_id], params[:password], "http://idlecampus.com/http-bind")
 
-          p "UUUUUUUUUU"
-          p @session_id
-          p @session_jid
-          p @session_random_id
-          sign_in user,@session_jid, @session_id, @session_random_id
+      p "UUUUUUUUUU"
+      p @session_id
+      p @session_jid
+      p @session_random_id
+      sign_in @user, @session_jid, @session_id, @session_random_id
 
-          p cookies
+      p cookies
 
-          @cookies = cookies
-          attacher = {}
-          attacher[:JID] = @session_jid
-          attacher[:SID] = @session_id
-          attacher[:RID] = @session_random_id
-          gon.attacher = attacher
+      @cookies = cookies
+      attacher = {}
+      attacher[:JID] = @session_jid
+      attacher[:SID] = @session_id
+      attacher[:RID] = @session_random_id
+      gon.attacher = attacher
 
 
-          flash[:success] = "Welcome to IdleCampus!"
-          redirect_to @user
+      flash[:success] = "Welcome to IdleCampus!"
+      redirect_to @user
 
     else
       render 'new'
     end
 
-    
+
+  end
 
 
+  def show
+    @user = User.find(params[:id])
 
-      end
-
- def show 
-
- end
+  end
 
 
   def login
     p params
-    if(!params[:device_identifier].eql?"web")
+    if (!params[:device_identifier].eql? "web")
       users_with_device = User.find_all_by_device_identifier(params[:device_identifier])
-      users_with_device.each do|user|
+      users_with_device.each do |user|
         user.device_identifier = ""
         user.save
-    end
+      end
 
 
     end
     user = User.find_by_jabber_id(params[:jabber_id])
-    if(user)
-    user.device_identifier = params[:device_identifier]
-    user.save
+    if (user)
+      user.device_identifier = params[:device_identifier]
+      user.save
     end
     render :nothing => true
   end
@@ -90,20 +89,20 @@ class UsersController < ApplicationController
   end
 
   def checkEmail
-      emails = User.where(:email=>params["email"])
-      render :text => emails.size
+    emails = User.where(:email => params["email"])
+    render :text => emails.size
   end
 
   def checkName
-    jabber_id =  params["name"] + "@idlecampus.com"
+    jabber_id = params["name"] + "@idlecampus.com"
     p jabber_id
-    names = User.where(:jabber_id=>jabber_id)
+    names = User.where(:jabber_id => jabber_id)
     render :text => names.size
   end
 
 
-
   def new
+    gon.names = "ankita kothari"
     @user = User.new
   end
 
@@ -111,7 +110,7 @@ class UsersController < ApplicationController
     p params
     puser = params["users"]
 
-    puser.slice!(puser.index('/'),puser.size)
+    puser.slice!(puser.index('/'), puser.size)
     message = params["message"]
     devices = []
     user = User.find_by_jabber_id(puser)
@@ -138,7 +137,7 @@ class UsersController < ApplicationController
     uri = URI('http://developer.idlecampus.com/push/push1')
     p "UUUUUUUUUUURRRRRRRRRR"
 
-    headers = { "Content-Type" => "application/json"}
+    headers = {"Content-Type" => "application/json"}
     http = Net::HTTP.new(uri.host, uri.port)
 
 
@@ -147,9 +146,7 @@ class UsersController < ApplicationController
 
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
+
 
 
 end
