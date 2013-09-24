@@ -7,12 +7,12 @@ module SessionsHelper
 
     user.update_attribute(:remember_token, User.encrypt(remember_token))
     self.current_user = user
-    sign_in_to_xmpp(user,password)
+    sign_in_to_xmpp_with_password(user,password)
     cookies.permanent[:remember_token] = remember_token
   end
 
   def current_user=(user)
-   @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+    @current_user = user
   end
 
   def signed_in?
@@ -22,7 +22,7 @@ module SessionsHelper
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
-
+    sign_in_to_xmpp_as_user(@current_user)
   end
 
   def sign_out
@@ -33,21 +33,38 @@ module SessionsHelper
     cookies.delete(:session_random_id)
   end
 
- def sign_in_to_xmpp(user,password)
+def sign_in_to_xmpp_with_password(user,password)
 
+     @session_jid, @session_id, @session_random_id =
+         RubyBOSH.initialize_session(user.jabber_id, password, "http://idlecampus.com/http-bind")
 
-
-   if cookies[:remember_token].present?
-
-   else
-   @session_jid, @session_id, @session_random_id =
-       RubyBOSH.initialize_session(user.jabber_id, password, "http://idlecampus.com/http-bind")
-
-   p "UUUUUUUUUU"
-   p @session_id
-   p @session_jid
-   p @session_random_id
-     debugger
-   end
- end
+     attacher = {}
+     attacher[:JID] = @session_jid
+     attacher[:SID] = @session_id
+     attacher[:RID] = @session_random_id
+     gon.attacher = attacher
 end
+
+
+ end
+
+
+
+  def sign_in_to_xmpp_as_user(user)
+
+
+
+
+      @session_jid = cookies[:session_jid]
+      @session_id = cookies[:session_id]
+      @session_random_id = cookies[:session_random_id]
+
+      attacher = {}
+      attacher[:JID] = @session_jid
+      attacher[:SID] = @session_id
+      attacher[:RID] = @session_random_id
+      gon.attacher = attacher
+
+
+
+  end

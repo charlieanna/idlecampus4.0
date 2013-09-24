@@ -12,62 +12,19 @@ class SessionsController < ApplicationController
   def create
 
     @user = User.find_by_email(params[:session][:email].downcase)
-    if @user
+   if  @user && @user.authenticate(params[:session][:password])
       @jabber_id = @user.jabber_id
       @password = params[:session][:password]
-      p "QWEQWEWQEWQEQW"
-      p cookies
 
-        #@session_jid, @session_id, @session_random_id =
-        #    RubyBOSH.initialize_session(@jabber_id, @password, "http://idlecampus.com/http-bind")
-        sign_in @user,@password
-        #debugger
-        p "UUUUUUUUUU"
-        p @session_id
-        p @session_jid
-        p @session_random_id
+      sign_in_to_xmpp_with_password @user,@password
 
-        cookies[:session_jid] = @session_jid  if @session_jid.present?
-        cookies[:session_id] = @session_id if @session_id.present?
-        cookies[:session_random_id] = @session_random_id    if @session_random_id.present?
-        p cookies
-
-        @cookies = cookies
-        # redirect_to user
-        # else
-        #    flash[:error] = 'Invalid email/password combination' # Not quite right!
-        #     render 'new'
-        # end
-
-        #@assignment = Assignment.new
-        # @assignment.save
-
-        #@note = Note.new
-
-        # @note.save
-        # user.notes << @note
-        # user.assignments << @assignment
-        # user.save
-        #   <li><%= link_to "<div class='box'><span><i class='icon-briefcase icon-white'></i></span>Developer</div>".html_safe, :controller => :developers, :action => :show %></li>
-        attacher = {}
-        attacher[:JID] = cookies[:session_jid]
-        attacher[:SID] = cookies[:session_id]
-        attacher[:RID] = cookies[:session_random_id]
-
-        gon.attacher = attacher
-
-        puts gon
-        render :initbosh
-
-      #  redirect_to :back, :flash => {:error => 'Invalid email/password combination'}
-      #end
-
-      #if user && user.authenticate(params[:session][:password])
+      flash[:attacher] = attacher
+      redirect_to @user,:notice => "Welcome to IdleCampus"
 
     else
 
 
-      redirect_to :back, :flash => {:error => 'Invalid email/password combination'}
+      redirect_to root_path, :flash => {:error => 'Invalid email/password combination'}
     end
 
 
@@ -79,4 +36,50 @@ class SessionsController < ApplicationController
     redirect_to root_url
 
   end
+
+
 end
+
+
+
+#p "QWEQWEWQEWQEQW"
+#p cookies
+
+#@session_jid, @session_id, @session_random_id =
+#    RubyBOSH.initialize_session(@jabber_id, @password, "http://idlecampus.com/http-bind")
+
+#debugger
+#p "UUUUUUUUUU"
+#p @session_id
+#p @session_jid
+#p @session_random_id
+#
+#cookies[:session_jid] = @session_jid  if @session_jid.present?
+#cookies[:session_id] = @session_id if @session_id.present?
+#cookies[:session_random_id] = @session_random_id    if @session_random_id.present?
+#p cookies
+#
+#@cookies = cookies
+## redirect_to user
+# else
+#    flash[:error] = 'Invalid email/password combination' # Not quite right!
+#     render 'new'
+# end
+
+#@assignment = Assignment.new
+# @assignment.save
+
+#@note = Note.new
+
+# @note.save
+# user.notes << @note
+# user.assignments << @assignment
+# user.save
+#   <li><%= link_to "<div class='box'><span><i class='icon-briefcase icon-white'></i></span>Developer</div>".html_safe, :controller => :developers, :action => :show %></li>
+
+#render :initbosh
+
+#  redirect_to :back, :flash => {:error => 'Invalid email/password combination'}
+#end
+
+#if user && user.authenticate(params[:session][:password])

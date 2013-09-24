@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def create
 
     @user = User.new
@@ -11,23 +12,12 @@ class UsersController < ApplicationController
     puts @user.errors.full_messages
     if @user.save
 
-      @session_jid, @session_id, @session_random_id =
-          RubyBOSH.initialize_session(params[:jabber_id], params[:password], "http://idlecampus.com/http-bind")
 
-      p "UUUUUUUUUU"
-      p @session_id
-      p @session_jid
-      p @session_random_id
-      sign_in @user, @session_jid, @session_id, @session_random_id
+      sign_in @user,@password
 
       p cookies
 
       @cookies = cookies
-      attacher = {}
-      attacher[:JID] = @session_jid
-      attacher[:SID] = @session_id
-      attacher[:RID] = @session_random_id
-      gon.attacher = attacher
 
 
       flash[:success] = "Welcome to IdleCampus!"
@@ -43,7 +33,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    gon.attacher = flash[:attacher]
 
+    debugger
   end
 
 
