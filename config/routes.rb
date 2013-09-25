@@ -9,6 +9,7 @@ IdleCampus::Application.routes.draw do
     resource :timetable
   end
   root  'static_pages#home'
+
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signout',  to: 'sessions#destroy',            via: 'delete'
   resources :users

@@ -1,104 +1,28 @@
+<div class="row">
+<aside class="span3">
+    <section>
 
-<div ng-controller="GroupsCtrl" ng-init="attach();getGroupsCreated();getGroupsFollowing()">
-    <div id="creategroup" class="modal hide fade" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Create Group</h3>
+        <div ng-controller="GroupsCtrl" ng-init="attach();getGroupsCreated();getGroupsFollowing()">
+
+            <form class="form-inline">
+                <input class="create-group-input span2" placeholder="Group Name" type="text"
+                       id="creategroupinput" ng-model="data.creategroup"/>
+
+                <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
+                        ng-click="createGroup()">Create
+                </button>
+            </form>
+            <ul class="nav nav-pills nav-stacked">
+                <li ng-repeat="group in groupscreated" id="{{group}}">
+                    <a data-toggle="tab" href="" ng-click="groupclick(group);"><i class="icon-asterisk"></i>{{group}}</a>
+                </li>
+            </ul>
+
         </div>
-        <div class="modal-body">
-            <input class="create-group-input" placeholder="Group Name" type="text"
-                   id="creategroupinput" ng-model="data.creategroup"/>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
-                    ng-click="createGroup()">Create
-            </button>
-        </div>
-    </div>
+    </section>
 
-
-    <div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Create Alert</h3>
-        </div>
-        <div class="modal-body">
-            <input placeholder="Alert" type="text"
-                   id="creategroupinput" ng-model="data.message"/>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <button data-dismiss="modal" class="btn btn-primary"
-                    ng-click="publishgroupalert()">Send
-            </button>
-        </div>
-    </div>
-
-
-    <div id='create_folder'>
-
-
-    </div>
-    <!-- Navbar -->
-    <div class="navbar navbar-fixed-top">
-
-        <div class="navbar-inner">
-            <div class="container">
-                <span id="VectorSmartObject_1"><img src="../img/VectorSmartObject_1.png"></span>
-                <span id="Idle"><img src="../img/Idle.png"></span>
-                <span id="ampus"><img src="../img/ampus.png"></span>
-                <span id="VectorSmartObject_2"><img src="../img/VectorSmartObject_2.png">  </span>
-                <span id="VectorSmartObject_3"><img src="../img/VectorSmartObject_3.png">  </span>
-
-                <div class="nav-collapse">
-                    <ul class="nav pull-right">
-                        <li class="divider-vertical"></li>
-
-                        <li class="dropdown">
-
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">&nbsp;&nbsp;Groups<b
-                            class="caret"></b></a>
-                            <ul class="dropdown-menu">
-
-                                <li ng-repeat="group in data.groupscreated" id="{{group}}">
-                                    <a data-toggle="tab" href="" ng-click="groupclick(group);"><i class="icon-asterisk"></i>{{group.group_name}}
-                                        {{group.group_code}}</a>
-                                </li>
-                                <li><a href="#creategroup" data-toggle="modal">Create Group</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"></i>&nbsp;&nbsp;Admin<b
-                            class="caret"></b></a>
-                            <ul class="dropdown-menu">
-
-                                <li><a href="password.html"><i class="icon-key"></i>&nbsp;&nbsp;Change Password</a></li>
-                            </ul>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li>
-                            <% if signed_in? %>
-                            <%= link_to "Sign out", signout_path, method: "delete",id:"signout" %>
-                            <% else %>
-                                <% link_to "Sign up",new_user_path,class: "btn btn-primary"  %>
-                            <% end %>
-                        </li>
-                        <li class="divider-vertical"></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- /Navbar -->
-
+</aside>
+<div class="span9">
 <!-- Main content   sabse pehle create yourtimetable format. fir uske baad harrcell ke anadar create the cell.         -->
 <div id="main-content">
 <!-- Container -->
@@ -110,20 +34,12 @@
 <!-- /Sidebar -->
 <!-- Content -->
 
-<div class="row" style="
-border-left-width: 1px;
-        border-left-width: 1px;
-        margin-top: -30px;
-        margin-bottom: 30px;
-        border: 2px solid #8DA5B6;
-        border-left-width: 1;
-        margin-left: 30px;
-        margin-right: 30px;line-height: 3em;">
+<div class="row">
     <div class="offset1 span5">
-        <img src="../img/GroupName.png">:<span id="groupname"> {{data.currentGroup.group_name}}</span>
+        <img src="../img/GroupName.png">:<span id="groupname"> {{currentGroup.group_name}}</span>
     </div>
     <div class="span5">
-        <img src="../img/GroupID.png">:<span id="groupcode"> {{data.currentGroupCode}}</span>
+        <img src="../img/GroupID.png">:<span id="groupcode"> {{currentGroupCode}}</span>
     </div>
 
 </div>
@@ -173,15 +89,16 @@ border-left-width: 1px;
                     <div class="span1"></div>
                     <div class="span2" style="width: 100px;">
 
-                        <button id="AddRow" class="btn" ng-click="addrow()"></button>
+                        <button id="AddRow" class="btn" ng-click="addrow()">Add Row</button>
                     </div>
                     <div class="span2" style="width: 151px;">
-                        <button id="SendTimetable" class="btn" ng-click="send()"></button>
+                        <button id="SendTimetable" class="btn" ng-click="send()">Send Timetable</button>
                     </div>
-                    <div class="span2"  style="width: 100px;">
+                    <div class="span2" style="width: 100px;">
                         <button id="CreateTimetable" type="button" class="btn ng-scope"
                                 bs-modal="'/partials/wizard.html'"
-                                data-toggle="modal"></button>
+                                data-toggle="modal">Create Timetable
+                        </button>
                     </div>
                     <div class="span1"></div>
                     <div class="span1"></div>
@@ -198,7 +115,6 @@ border-left-width: 1px;
                 <!--<button id="CreateTimetable" type="button" class="btn ng-scope"-->
                 <!--bs-modal="'/partials/wizard.html'"-->
                 <!--data-toggle="modal"></button>-->
-
 
 
                 <div class="widget widget-table" style="
@@ -344,3 +260,6 @@ border-left-width: 1px;
 
 <!-- /Main content -->
 
+
+</div>
+</div>

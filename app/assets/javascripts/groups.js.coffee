@@ -24,12 +24,12 @@
     $scope.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
-    console.log $scope.folders
-    $scope.folders = Group.query(
-      name: group
-      verb: "find_by_name"
-    )
-    console.log $scope.folders
+#    console.log $scope.folders
+#    $scope.folders = Group.query(
+#      name: group
+#      verb: "find_by_name"
+#    )
+#    console.log $scope.folders
     $scope.pagetitle = "Groups"
 
   $scope.backtofolders = ->
@@ -62,14 +62,16 @@
     ), 0
 
   $scope.getGroupsCreated = ->
-    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
+    j = $scope.XMPP.connection.jid
+    $scope.XMPP.connection.pubsub.items j.split("/")[0] + "/groups", (iq) ->
+      console.log iq
       $(iq).find("item").each ->
         node = undefined
         node = $(this).children("value").text()
         $("#groupfollowers").trigger "click", [node]
         $scope.groupscreated.push node
         console.log $scope.groupscreated
-
+        $scope.$digest()
 
 
   $scope.joinGroup = ->
@@ -84,8 +86,8 @@
     ), true
 
   $scope.createGroup = (group) ->
-    g = undefined
-    group = $scope.creategroup
+
+    group = $scope.data.creategroup
     console.log group
     $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group, (data) ->
       console.log data
@@ -94,11 +96,12 @@
 
     console.log "node created"
     $scope.groupscreated.push group
-    g = new Group()
-    g.$createGroup name: group
+#    $scope.$digest()
+    $.post "/groups",
+      name: group
 
   $scope.createFolder = (group) ->
-    group = $scope.creategroup
+    group = $scope.data.creategroup
     console.log group
     $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group, (data) ->
       console.log data

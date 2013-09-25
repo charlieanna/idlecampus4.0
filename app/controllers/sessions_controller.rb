@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def index
-    gon.names = "ankurkothari"
+
+    sign_in_to_xmpp_with_password(User.new,"")
   end
 
   def create
@@ -15,12 +16,25 @@ class SessionsController < ApplicationController
    if  @user && @user.authenticate(params[:session][:password])
       @jabber_id = @user.jabber_id
       @password = params[:session][:password]
+      #@session_jid, @session_id, @session_random_id =
+      #    RubyBOSH.initialize_session(@jabber_id, @password, "http://idlecampus.com/http-bind")
+      sign_in @user,@password
 
-      sign_in_to_xmpp_with_password @user,@password
 
+
+      attacher = {}
+      attacher[:JID] = @session_jid
+      attacher[:SID] = @session_id
+      attacher[:RID] = @session_random_id
       flash[:attacher] = attacher
       redirect_to @user,:notice => "Welcome to IdleCampus"
 
+      #attacher = {}
+      #attacher[:JID] = @session_jid
+      #attacher[:SID] = @session_id
+      #attacher[:RID] = @session_random_id
+      #gon.attacher = attacher
+      #render :initbosh
     else
 
 

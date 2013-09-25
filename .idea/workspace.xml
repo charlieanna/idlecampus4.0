@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f640af7e-d31b-4d83-baa8-47da1f4be24a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/layouts/_header.html.haml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/strophejs-plugins/LICENSE.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/strophejs-plugins/Makefile" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/strophejs-plugins/README.markdown" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/strophejs-plugins/epic/spec/support/jasmine.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/features/creating_users.feature" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/static_pages/home.html.haml" afterPath="$PROJECT_DIR$/app/views/static_pages/home.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/static_pages.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/static_pages.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/static_pages.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/static_pages.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
     </list>
     <ignored path="IdleCampus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,27 +33,33 @@
     <file path="/authentication_steps.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923172607" ignored="false" />
     <file path="/signing_up.feature" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923688649" ignored="false" />
     <file path="/authentication_pages_spec.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379924385648" ignored="false" />
-    <file path="/users_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380014203342" ignored="false" />
+    <file path="/users_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380050000505" ignored="false" />
     <file path="/new.html.haml" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379994179591" ignored="false" />
     <file path="/a.dummy" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379925499931" ignored="false" />
-    <file path="/application.js" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379927631009" ignored="false" />
-    <file path="/application.css" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379930831031" ignored="false" />
-    <file path="/xmpp.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380011547570" ignored="false" />
+    <file path="/application.js" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380110429766" ignored="false" />
+    <file path="/application.css" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380084781640" ignored="false" />
+    <file path="/xmpp.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380101505762" ignored="false" />
     <file path="/user.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379932103572" ignored="false" />
     <file path="/20130923114020_change_type_of_jabber_id_to_string.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379936473076" ignored="false" />
-    <file path="/sessions_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380020243073" ignored="false" />
-    <file path="/application.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380021866098" ignored="false" />
+    <file path="/sessions_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380039581144" ignored="false" />
+    <file path="/application.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380093182539" ignored="false" />
     <file path="/timetable.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379994677292" ignored="false" />
     <file path="/Applications/MAMP/htdocs/idlecampus/app/assets/javascripts/timetable.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379994677293" ignored="false" />
-    <file path="/routes.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379997305999" ignored="false" />
+    <file path="/routes.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380045044526" ignored="false" />
     <file path="/index.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379995663314" ignored="false" />
     <file path="/static_pages_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379996585958" ignored="false" />
-    <file path="/static_pages.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379996597761" ignored="false" />
-    <file path="/sessions_helper.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380020946703" ignored="false" />
+    <file path="/static_pages.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380045659437" ignored="false" />
+    <file path="/sessions_helper.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380051908281" ignored="false" />
     <file path="/Gemfile" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380005277792" ignored="false" />
     <file path="/initbosh.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380011710236" ignored="false" />
     <file path="/home.html.haml" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380020432715" ignored="false" />
-    <file path="/show.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380022133262" ignored="false" />
+    <file path="/show.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380109816384" ignored="false" />
+    <file path="/_header.html.erb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380043604989" ignored="false" />
+    <file path="/_header.html.haml" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380103938960" ignored="false" />
+    <file path="/static_pages.css.scss" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380084726398" ignored="false" />
+    <file path="/groups.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380102390611" ignored="false" />
+    <file path="/Applications/MAMP/htdocs/idlecampus/app/assets/javascripts/groups.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380087918286" ignored="false" />
+    <file path="/timetables.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380109879347" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,28 +120,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <file leaf-file-name="groups.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="34" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
+            <state line="28" column="18" selection-start="813" selection-end="813" vertical-scroll-proportion="-5.3461537">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="28" column="6" selection-start="727" selection-end="727" vertical-scroll-proportion="-8.653846">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/static_pages/home.html.haml">
+      <file leaf-file-name="sessions_helper.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="191" selection-end="251" vertical-scroll-proportion="-5.0">
+            <state line="21" column="6" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_header.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="128" selection-start="289" selection-end="289" vertical-scroll-proportion="-3.125">
               <folding />
             </state>
           </provider>
@@ -132,69 +159,63 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="95" selection-start="4180" selection-end="4180" vertical-scroll-proportion="-9.375">
+            <state line="31" column="45" selection-start="1170" selection-end="1183" vertical-scroll-proportion="-0.9">
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+      <file leaf-file-name="sessions.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/sessions.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="3" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_helper.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
+      <file leaf-file-name="application.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="2" selection-start="391" selection-end="391" vertical-scroll-proportion="0.38961038">
+            <state line="26" column="20" selection-start="1030" selection-end="1030" vertical-scroll-proportion="0.6103896">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wizard.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/partials/wizard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_header.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
+      <file leaf-file-name="timetables.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="9" selection-start="1418" selection-end="1418" vertical-scroll-proportion="-11.125">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <file leaf-file-name="xmpp.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="22" selection-start="637" selection-end="637" vertical-scroll-proportion="-4.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ruby_bosh.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/ruby_bosh.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="12" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="initbosh.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/sessions/initbosh.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="34" selection-start="0" selection-end="13589" vertical-scroll-proportion="-0.22">
-              <folding />
+            <state line="505" column="33" selection-start="14716" selection-end="14716" vertical-scroll-proportion="-156.34616">
+              <folding>
+                <marker date="1380101505000" expanded="false" signature="10056:10131" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -217,28 +238,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/sessions/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/sessions.js.coffee" />
-        <option value="$PROJECT_DIR$/app/controllers/static_pages_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/static_pages.js.coffee" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/sessions/initbosh.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/static_pages/home.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/helpers/sessions_helper.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/static_pages.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/static_pages.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_header.html.haml" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="y" value="24" />
+    <option name="x" value="5" />
+    <option name="y" value="22" />
     <option name="width" value="1245" />
     <option name="height" value="709" />
   </component>
@@ -318,6 +339,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="requests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -590,26 +643,8 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="IdleCampus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IdleCampus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,8 +669,22 @@
               <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IdleCampus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -658,6 +707,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/views/sessions" />
     </key>
   </component>
@@ -916,18 +966,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="24" width="1245" height="709" extended-state="0" />
+    <frame x="5" y="22" width="1245" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293718" sideWeight="0.49958298" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293718" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3293718" sideWeight="0.500417" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3853211" sideWeight="0.1188455" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1009,124 +1059,125 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="567" selection-end="567" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/static_pages/home.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/strophejs-plugins/pubsub/strophe.pubsub.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="518" column="25" selection-start="15174" selection-end="15174" vertical-scroll-proportion="-8.269231">
-          <folding>
-            <marker date="1380012219000" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ruby_bosh.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="12" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.0">
+        <state line="192" column="35" selection-start="6317" selection-end="6328" vertical-scroll-proportion="0.46827793">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sessions/initbosh.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/static_pages.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="34" selection-start="0" selection-end="13589" vertical-scroll-proportion="-0.22">
+        <state line="142" column="2" selection-start="4052" selection-end="4052" vertical-scroll-proportion="6.1918607">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="429" selection-end="429" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="3" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="9" selection-start="1418" selection-end="1418" vertical-scroll-proportion="-11.125">
+        <state line="41" column="2" selection-start="701" selection-end="701" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="22" selection-start="637" selection-end="637" vertical-scroll-proportion="-4.375">
+        <state line="23" column="17" selection-start="725" selection-end="725" vertical-scroll-proportion="-6.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/static_pages/home.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="191" selection-end="251" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="95" selection-start="4180" selection-end="4180" vertical-scroll-proportion="-9.375">
+        <state line="505" column="33" selection-start="14716" selection-end="14716" vertical-scroll-proportion="-156.34616">
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <marker date="1380101505000" expanded="false" signature="10056:10131" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="391" selection-end="391" vertical-scroll-proportion="0.38961038">
+        <state line="21" column="6" selection-start="442" selection-end="442" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="102" selection-start="107" selection-end="107" vertical-scroll-proportion="0.097402595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="128" selection-start="289" selection-end="289" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="18" selection-start="813" selection-end="813" vertical-scroll-proportion="-5.3461537">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/partials/wizard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="6" selection-start="727" selection-end="727" vertical-scroll-proportion="-8.653846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="45" selection-start="1170" selection-end="1183" vertical-scroll-proportion="-0.9">
+          <folding>
+            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/sessions.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="20" selection-start="1030" selection-end="1030" vertical-scroll-proportion="0.6103896">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

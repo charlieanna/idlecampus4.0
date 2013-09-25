@@ -33,16 +33,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    gon.attacher = flash[:attacher]
 
-    debugger
+    gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
+
   end
 
 
   def login
     p params
     if (!params[:device_identifier].eql? "web")
-      users_with_device = User.find_all_by_device_identifier(params[:device_identifier])
+      users_with_device = User.where(device_identifier: params[:device_identifier])
       users_with_device.each do |user|
         user.device_identifier = ""
         user.save

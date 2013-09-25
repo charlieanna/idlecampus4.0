@@ -478,9 +478,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 #
 #
   $scope.attach = ->
-    conn = undefined
-    name = undefined
-    password = undefined
+
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     console.log conn
     conn.xmlInput = (body) ->
@@ -494,20 +492,21 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
-    jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log(sid);
-    console.log(rid);
-    console.log(jid)
-    console.log gon.attacher
-    if sid? and rid?
-      gon.attacher.SID = sid
-      gon.attacher.RID = rid
+    jid = $("#currentuser").text()
 
-    conn.attach gon.attacher.JID, gon.attacher.SID, gon.attacher.RID, (status) ->
+    console.log "CREDENTIALS"
+    console.log(sid)
+    console.log(rid)
+    console.log(jid)
+    if gon?
+      sid = gon.attacher.SID
+      rid = gon.attacher.RID
+      jid = gon.attacher.JID
+    conn.attach jid, sid, rid, (status) ->
       console.log status
       if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
         $scope.XMPP.connection = conn
+        $scope.XMPP.connection.jid = jid
         console.log "attached"
         $scope.connected()
       else
