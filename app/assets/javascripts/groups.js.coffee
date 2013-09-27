@@ -45,8 +45,7 @@
     $scope.XMPP.connection.pubsub.getSubscriptions ((iq) ->
       console.log iq
       $(iq).find("subscription").each ->
-        group = undefined
-        node = undefined
+      
         node = $(this).attr("node")
         console.log "getgroupsfollwoing"
         $scope.groupsfollowing.push node
@@ -66,7 +65,7 @@
     $scope.XMPP.connection.pubsub.items j.split("/")[0] + "/groups", (iq) ->
       console.log iq
       $(iq).find("item").each ->
-        node = undefined
+        
         node = $(this).children("value").text()
         $("#groupfollowers").trigger "click", [node]
         $scope.groupscreated.push node
@@ -75,7 +74,7 @@
 
 
   $scope.joinGroup = ->
-    group = undefined
+    
     group = $scope.joingroup
     console.log group
     $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
@@ -115,9 +114,7 @@
 
 
   $scope.publishgroupnote = ->
-    currentgroup = undefined
-    message = undefined
-    note = undefined
+    
     note = $scope.groupnoteform
     message = $build("html",
       xmlns: "http://jabber.org/protocol/xhtml-im"
@@ -131,8 +128,7 @@
 
 
   $scope.publishgroupalert = ->
-    currentgroup = undefined
-    message = undefined
+   
     message = $scope.groupalertform
     currentgroup = $scope.currentGroup
     console.log currentgroup
@@ -141,7 +137,7 @@
 
 
   $scope.publishgroupassignment = ->
-    message = undefined
+   
     message = $scope.assignment
     console.log group
     XMPP.connection.pubsub.publish currentgroup, message, (data) ->
@@ -149,7 +145,7 @@
 
 
   $scope.publishgroupalert = ->
-    message = undefined
+   
     message = $scope.message
     console.log group
     XMPP.connection.pubsub.publish currentgroup, message, (data) ->

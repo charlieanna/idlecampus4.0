@@ -16,7 +16,7 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
 
 end
-
+gem 'jasmine', :group => [:development, :test]
 group :test do
 	gem 'factory_girl_rails', '4.2.1'
   gem 'selenium-webdriver', '2.35.1'
@@ -28,6 +28,7 @@ group :development do
   gem 'capistrano'
 end
 gem "haml"
+gem 'newrelic_rpm'
 gem 'gon'
 gem 'sass-rails', '4.0.0'
 gem 'uglifier', '2.1.1'

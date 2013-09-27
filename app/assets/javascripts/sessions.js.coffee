@@ -257,8 +257,7 @@ app.factory "Data", ->
     $scope.XMPP.connection.pubsub.getSubscriptions ((iq) ->
       console.log iq
       $(iq).find("subscription").each ->
-        group = undefined
-        node = undefined
+      
         node = $(this).attr("node")
         console.log "getgroupsfollwoing"
         $scope.data.groupsfollowing.push node
@@ -275,7 +274,7 @@ app.factory "Data", ->
   $scope.getGroupsCreated = ->
     $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
       $(iq).find("item").each ->
-        node = undefined
+      
         node = $(this).children("value").text()
         #        $("#groupfollowers").trigger "click", [node]
         console.log node
@@ -292,7 +291,7 @@ app.factory "Data", ->
 
 
   $scope.joinGroup = ->
-    group = undefined
+   
     group = $scope.data.joingroup
     console.log group
     $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
@@ -303,7 +302,7 @@ app.factory "Data", ->
     ), true
 
   $scope.createGroup = (group) ->
-    g = undefined
+  
     group = $scope.data.creategroup
     console.log group
     group_code = ""
@@ -341,9 +340,7 @@ app.factory "Data", ->
 
 
   $scope.publishgroupnote = ->
-    currentgroup = undefined
-    message = undefined
-    note = undefined
+   
     note = $scope.data.groupnoteform
     message = $build("html",
       xmlns: "http://jabber.org/protocol/xhtml-im"
@@ -369,14 +366,14 @@ app.factory "Data", ->
       console.log iq
       members = []
       $(iq).find("subscription").each ->
-        jid = undefined
+    
         jid = $(this).attr("jid")
         jid = jid.substring(0, jid.indexOf("/"))
         members.push jid
         console.log jid
 
   $scope.publishgroupassignment = ->
-    message = undefined
+   
     message = $scope.data.assignment
     console.log group
     XMPP.connection.pubsub.publish currentgroup, message, (data) ->
@@ -870,7 +867,7 @@ app.directive 'folder', ->
       to_date_minute = time1[0][0].to_minutes
       to_date_hour = time1[0][0].to_hours
 
-      display_from = undefined
+      
       if from_date_hour >= 12
         display_from = from_date_hour - 12 + ":"
         display_from = display_from + from_date_minute
@@ -879,7 +876,7 @@ app.directive 'folder', ->
         display_from = from_date_hour + ":"
         display_from = display_from + from_date_minute
         display_from = display_from + "AM"
-      display_to = undefined
+      
       if to_date_hour > 12
         display_to = to_date_hour - 12 + ":"
         display_to = display_to + to_date_minute
@@ -1001,7 +998,7 @@ app.directive 'folder', ->
         console.log "Subscribers"
         console.log iq
         $(iq).find("subscription").each ->
-          jid = undefined
+         
           jid = $(this).attr("jid")
           jid = jid.substring(0, jid.indexOf("/"))
           members.push jid
