@@ -5,4 +5,5 @@
  *= require_self
  *= require jquery.ui.all
  *= require static_pages
+ *= require css/styles.css
 */

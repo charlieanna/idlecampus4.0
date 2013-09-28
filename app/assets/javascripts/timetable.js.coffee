@@ -1,5 +1,5 @@
-app = app || angular.module("idlecampus", ["ngResource"])
-@TimetableCtrl = ($scope, $resource) ->
+# app = app || angular.module("idlecampus", ["ngResource"])
+# @TimetableCtrl = ($scope, $resource) ->
   $scope.timeArray = new Array()
   $scope.college = gon.college
   $scope.batch = gon.batch

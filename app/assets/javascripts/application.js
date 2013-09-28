@@ -25,4 +25,4 @@
 //= require scripts/xmpp.js.coffee
 //= require groups
 //= require sessions
-
+//= require static_pages
