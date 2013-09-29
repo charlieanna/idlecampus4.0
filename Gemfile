@@ -8,7 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'sidekiq'
 gem 'debugger', group: [:development, :test]
 group :development, :test do
-  gem 'sqlite3'
+  
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
    gem 'spork-rails', '4.0.0'
@@ -16,6 +16,7 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
 
 end
+gem 'rb-readline'
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 group :test do
@@ -47,6 +48,7 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
+  
   gem 'rails_12factor', '0.0.2'
 end
+gem 'pg'
