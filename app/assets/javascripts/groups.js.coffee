@@ -1,4 +1,5 @@
-@GroupsCtrl = ($scope) ->
+@GroupsCtrl = ($scope,Data) ->
+  $scope.data = Data
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
   $scope.groupsfollowing = []
@@ -21,7 +22,7 @@
     console.log newValue
 
   $scope.groupclick = (group) ->
-    $scope.currentGroup = group
+    $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
 #    console.log $scope.folders
@@ -123,7 +124,7 @@
     ).c("a",
       href: note.toString()
     ).t(note)
-    currentgroup = $scope.currentGroup
+    currentgroup = $scope.data.currentGroup
     console.log note + " " + currentgroup
     $scope.XMPP.connection.pubsub.publish currentgroup, note, (data) ->
       console.log data
@@ -132,7 +133,7 @@
   $scope.publishgroupalert = ->
    
     message = $scope.groupalertform
-    currentgroup = $scope.currentGroup
+    currentgroup = $scope.data.currentGroup
     console.log currentgroup
     XMPP.connection.pubsub.publish currentgroup, message, (data) ->
       console.log data
