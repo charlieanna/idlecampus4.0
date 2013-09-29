@@ -16,6 +16,7 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
 
 end
+gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 group :test do
 	gem 'factory_girl_rails', '4.2.1'

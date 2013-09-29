@@ -61,7 +61,9 @@
     ), 0
 
   $scope.getGroupsCreated = ->
+	
     j = $scope.XMPP.connection.jid
+	
     $scope.XMPP.connection.pubsub.items j.split("/")[0] + "/groups", (iq) ->
       console.log iq
       $(iq).find("item").each ->
@@ -85,7 +87,7 @@
     ), true
 
   $scope.createGroup = (group) ->
-
+    $("#creategroupinput").val("")
     group = $scope.data.creategroup
     console.log group
     $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group, (data) ->
