@@ -24,5 +24,7 @@
 //= require strophejs-plugins/pubsub/strophe.pubsub.js
 //= require scripts/xmpp.js.coffee
 //= require groups
-//= require sessions
-//= require static_pages
+
+//= require app
+//= require timetable
+//= require entryCtrl

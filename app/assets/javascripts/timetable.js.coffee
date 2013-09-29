@@ -1,8 +1,435 @@
-# app = app || angular.module("idlecampus", ["ngResource"])
-# @TimetableCtrl = ($scope, $resource) ->
+@TimetableCtrl = ($scope, $resource,Data) ->
+
+  $scope.data = Data
+
+
+  $scope.from_date_hour = [
+    display: "00 AM"
+    value: "00"
+  ,
+    display: "01 AM"
+    value: "01"
+  ,
+    display: "02 AM"
+    value: "02"
+  ,
+    display: "03 AM"
+    value: "03"
+  ,
+    display: "04 AM"
+    value: "04"
+  ,
+    display: "05 AM"
+    value: "05"
+  ,
+    display: "06 AM"
+    value: "06"
+  ,
+    display: "07 AM"
+    value: "07"
+  ,
+    display: "08 AM"
+    value: "08"
+  ,
+    display: "09 AM"
+    value: "09"
+  ,
+    display: "10 AM"
+    value: "10"
+  ,
+    display: "11 AM"
+    value: "11"
+  ,
+    display: "12 AM"
+    value: "12"
+  ,
+    display: "01 PM"
+    value: "13"
+  ,
+    display: "02 PM"
+    value: "14"
+  ,
+    display: "03 PM"
+    value: "15"
+  ,
+    display: "04 PM"
+    value: "16"
+  ,
+    display: "05 PM"
+    value: "17"
+  ,
+    display: "06 PM"
+    value: "18"
+  ,
+    display: "07 PM"
+    value: "19"
+  ,
+    display: "08 PM"
+    value: "20"
+  ,
+    display: "09 PM"
+    value: "21"
+  ,
+    display: "10 PM"
+    value: "22"
+  ,
+    display: "11 PM"
+    value: "23"
+  ]
+
+
+  $scope.from_date_minute = [
+    display: "00"
+    value: "00"
+  ,
+    display: "05"
+    value: "05"
+  ,
+    display: "10"
+    value: "10"
+  ,
+    display: "15"
+    value: "15"
+  ,
+    display: "20"
+    value: "20"
+  ,
+    display: "25"
+    value: "25"
+  ,
+    display: "30"
+    value: "30"
+  ,
+    display: "35"
+    value: "35"
+  ,
+    display: "40"
+    value: "40"
+  ,
+    display: "45"
+    value: "45"
+  ,
+    display: "50"
+    value: "50"
+  ,
+    display: "55"
+    value: "55"
+  ]
+  $scope.to_date_hour = [
+    display: "00 AM"
+    value: "00"
+  ,
+    display: "01 AM"
+    value: "01"
+  ,
+    display: "02 AM"
+    value: "02"
+  ,
+    display: "03 AM"
+    value: "03"
+  ,
+    display: "04 AM"
+    value: "04"
+  ,
+    display: "05 AM"
+    value: "05"
+  ,
+    display: "06 AM"
+    value: "06"
+  ,
+    display: "07 AM"
+    value: "07"
+  ,
+    display: "08 AM"
+    value: "08"
+  ,
+    display: "09 AM"
+    value: "09"
+  ,
+    display: "10 AM"
+    value: "10"
+  ,
+    display: "11 AM"
+    value: "11"
+  ,
+    display: "12 AM"
+    value: "12"
+  ,
+    display: "01 PM"
+    value: "13"
+  ,
+    display: "02 PM"
+    value: "14"
+  ,
+    display: "03 PM"
+    value: "15"
+  ,
+    display: "04 PM"
+    value: "16"
+  ,
+    display: "05 PM"
+    value: "17"
+  ,
+    display: "06 PM"
+    value: "18"
+  ,
+    display: "07 PM"
+    value: "19"
+  ,
+    display: "08 PM"
+    value: "20"
+  ,
+    display: "09 PM"
+    value: "21"
+  ,
+    display: "10 PM"
+    value: "22"
+  ,
+    display: "11 PM"
+    value: "23"
+  ]
+  $scope.to_date_minute = [
+    display: "00"
+    value: "00"
+  ,
+    display: "05"
+    value: "05"
+  ,
+    display: "10"
+    value: "10"
+  ,
+    display: "15"
+    value: "15"
+  ,
+    display: "20"
+    value: "20"
+  ,
+    display: "25"
+    value: "25"
+  ,
+    display: "30"
+    value: "30"
+  ,
+    display: "35"
+    value: "35"
+  ,
+    display: "40"
+    value: "40"
+  ,
+    display: "45"
+    value: "45"
+  ,
+    display: "50"
+    value: "50"
+  ,
+    display: "55"
+    value: "55"
+  ]
+  $scope.from_date_hour_value = $scope.from_date_hour[9]
+  $scope.from_date_minute_value = $scope.from_date_minute[0]
+  $scope.to_date_hour_value = $scope.to_date_hour[10]
+  $scope.to_date_minute_value = $scope.to_date_minute[0]
+
+  
+# 
+  $scope.$watch "data.timeArray", (newValue, oldValue) ->
+    console.log "timearray"
+    console.log newValue
+
+
+  $scope.$watch "data.timetable", (newValue, oldValue) ->
+    console.log "timetable"
+    console.log newValue
+
+
+  $scope.$watch "data", (newValue, oldValue) ->
+    console.log "data"
+
+    console.log newValue
+
+
+  $scope.weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+
+  $scope.addsmallgroup = (i) ->
+    $scope.smallGroups.push i
+
+
+ 
+
+
+  $scope.getDisplayTime = (time1) ->
+    console.log "TTTTTTTTT"
+    console.log time1
+    console.log time1[0]
+    console.log time1[0][0]
+    if time1.length > 0
+
+      from_date_hour = time1[0][0].from_hours
+      from_date_minute = time1[0][0].from_minutes
+      to_date_minute = time1[0][0].to_minutes
+      to_date_hour = time1[0][0].to_hours
+
+      
+      if from_date_hour >= 12
+        display_from = from_date_hour - 12 + ":"
+        display_from = display_from + from_date_minute
+        display_from = display_from + "PM"
+      else
+        display_from = from_date_hour + ":"
+        display_from = display_from + from_date_minute
+        display_from = display_from + "AM"
+      
+      if to_date_hour > 12
+        display_to = to_date_hour - 12 + ":"
+        display_to = display_to + to_date_minute
+        display_to = display_to + "PM"
+      else if to_date_hour == 12
+        display_to = to_date_hour + ":"
+        display_to = display_to + to_date_minute
+        display_to = display_to + "PM"
+
+      else
+        display_to = to_date_hour + ":"
+        display_to = display_to + to_date_minute
+        display_to = display_to + "AM"
+
+      console.log display_from + "-" + display_to
+      display_from + "-" + display_to
+
+  Timetable = $resource("/timetable/gettcb", {},
+    update:
+      method: "PUT"
+  )
+  $scope.addrow = ->
+    
+
+    #this should equal the number of weekdays present and not necessarily 7 or 6.
+    m = 0
+    r = $scope.data.timeArray.length
+
+    $scope.data.timeArray[r] = new Array();
+
+    while m < $scope.data.timetable.weekdays.length
+
+
+
+
+      timetableEntry =
+        from_hours: $scope.from_date_hour_value.value
+        from_minutes: $scope.from_date_minute_value.value
+        to_minutes: $scope.to_date_minute_value.value
+        to_hours: $scope.to_date_hour_value.value
+      console.log "AAAAAAAAAAAA"
+      console.log $scope.data.timetable.weekdays[m]
+      timetableEntry.weekday = $scope.data.timetable.weekdays[m]
+      console.log timetableEntry
+      a = []
+      a.push timetableEntry
+      console.log $scope.data.timeArray[m]
+      $scope.data.timeArray[r].push a
+      console.log $scope.data.timeArray
+
+      m++
+    console.log $scope.data.timeArray
+
+
+  $scope.new = ->
+
+    $("#timetable").show()
+
+
+  $scope.addBatchToEntry = (entry) ->
+
+    console.log "PPPPPPPPP"
+    console.log entry
+    weekday = entry.weekday
+
+
+    r = 0
+    e = new Array()
+    i = 0
+    console.log  $scope.data.timetable.batches.length
+    while i < $scope.data.timetable.batches.length
+      timetableEntry =
+        from_hours: $scope.from_date_hour_value.value
+        from_minutes: $scope.from_date_minute_value.value
+        to_minutes: $scope.to_date_minute_value.value
+        to_hours: $scope.to_date_hour_value.value
+        batch :  $scope.data.timetable.batches[i]
+        weekday : weekday
+
+      e.push timetableEntry
+
+      i++
+
+    console.log e
+    while r < $scope.data.timeArray.length
+      console.log "OOOOOOOOOOO"
+      console.log $scope.data.timeArray[r]
+      v = 0
+      while v < $scope.data.timeArray[r].length
+        console.log  $scope.data.timeArray[r][v]
+        w = 0
+        while w < $scope.data.timeArray[r][v].length
+          console.log "SSSSSDDDDDDDD"
+          console.log r+" "+v
+          $scope.data.timeArray[r][v] = e if $scope.data.timeArray[r][v][w] == entry
+          w++
+        v++
+      r++
+  #
+
+
+
+
+
+
+
+
+
+  $scope.send = ->
+
+    members = []
+    values = []
+    values = JSON.stringify($scope.data.timeArray)
+#    alert $scope.data.currentGroup.group_code
+    console.log JSON.stringify(values)
+    if $scope.data.currentGroup
+      members = []
+      $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
+        console.log "Subscribers"
+        console.log iq
+        $(iq).find("subscription").each ->
+         
+          jid = $(this).attr("jid")
+          jid = jid.substring(0, jid.indexOf("/"))
+          members.push jid
+          console.log jid
+        $.ajax
+          type: "POST"
+          url: "/timetable/create"
+          data:
+            timetable:
+              members: members
+              entries: values
+              group: $scope.data.currentGroup
+
+          success: ->
+            alert "timetable saved"
+
+          dataType: ""
+
+
+
+
+    else
+      alert "Please select a group"
+
+
+	  
   $scope.timeArray = new Array()
-  $scope.college = gon.college
-  $scope.batch = gon.batch
+
   $scope.timetableArray = new Array()
   $scope.mondaytimetableArray = new Array()
   $scope.tuesdaytimetableArray = new Array()
@@ -78,269 +505,40 @@
       $("<option>").val(val).text(val).appendTo $select3
       ii++
     $("#l" + i).val room
-  $scope.getDisplayTime = (time1) ->
-    console.log time1
-    from_date_hour = time1[0].from_hours
-    from_date_minute = time1[0].from_minutes
-    to_date_minute = time1[0].to_minutes
-    to_date_hour = time1[0].to_hours
-    display_from = undefined
-    if from_date_hour >= 12
-      display_from = from_date_hour - 12 + ":"
-      display_from = display_from + from_date_minute
-      display_from = display_from + "PM"
-    else
-      display_from = from_date_hour + ":"
-      display_from = display_from + from_date_minute
-      display_from = display_from + "AM"
-    display_to = undefined
-    if to_date_hour >= 12
-      display_to = to_date_hour - 12 + ":"
-      display_to = display_to + to_date_minute
-      display_to = display_to + "PM"
-    else
-      display_to = to_date_hour + ":"
-      display_to = display_to + to_date_minute
-      display_to = display_to + "AM"
-    display_from + "-" + display_to
+  # $scope.getDisplayTime = (time1) ->
+#     console.log time1
+#     from_date_hour = time1[0].from_hours
+#     from_date_minute = time1[0].from_minutes
+#     to_date_minute = time1[0].to_minutes
+#     to_date_hour = time1[0].to_hours
+#     display_from = undefined
+#     if from_date_hour >= 12
+#       display_from = from_date_hour - 12 + ":"
+#       display_from = display_from + from_date_minute
+#       display_from = display_from + "PM"
+#     else
+#       display_from = from_date_hour + ":"
+#       display_from = display_from + from_date_minute
+#       display_from = display_from + "AM"
+#     display_to = undefined
+#     if to_date_hour >= 12
+#       display_to = to_date_hour - 12 + ":"
+#       display_to = display_to + to_date_minute
+#       display_to = display_to + "PM"
+#     else
+#       display_to = to_date_hour + ":"
+#       display_to = display_to + to_date_minute
+#       display_to = display_to + "AM"
+#     display_from + "-" + display_to
 
   Timetable = $resource("/timetable/gettcb", {},
     update:
       method: "PUT"
   )
-  $scope.data = Timetable.query(
-    college: "mpstme"
-    batch: "electronics"
-  , (rdata) ->
-    data = rdata[0]
-    a = undefined
-    display_from = undefined
-    display_to = undefined
-    entries = undefined
-    from_date_hour = undefined
-    from_date_minute = undefined
-    from_hours = undefined
-    from_minutes = undefined
-    i = undefined
-    r = undefined
-    ro = undefined
-    room = undefined
-    row = undefined
-    rowCount = undefined
-    sub = undefined
-    subject = undefined
-    tea = undefined
-    teacher = undefined
-    timetableEntry = undefined
-    to_date_hour = undefined
-    to_date_minute = undefined
-    weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    to_hours = undefined
-    to_minutes = undefined
-    x = undefined
-    _results = undefined
-    console.log data
-    $("#timetable").show()
-    entries = data.entries
-    a = 0
-    while a < entries.length
-      subject = entries[a].subject.name
-      room = entries[a].room.name
-      teacher = entries[a].teacher.name
-      from_hours = entries[a].from_hours
-      from_minutes = entries[a].from_minutes
-      to_minutes = entries[a].to_minutes
-      to_hours = entries[a].to_hours
-      if jQuery.inArray(teacher, window.teachers) is -1
-        window.teachers.push teacher
-        $("#teachers ul").append "<li>" + teacher + "</li>"
-      if jQuery.inArray(subject, window.subjects) is -1
-        window.subjects.push subject
-        $("#subjects ul").append "<li>" + subject + "</li>"
-      if jQuery.inArray(room, window.rooms) is -1
-        window.rooms.push room
-        $("#rooms ul").append "<li>" + room + "</li>"
-      if entries[a].weekday.name is "Monday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: entries[a].weekday.name
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        mondaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      if entries[a].weekday.name is "Tuesday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: weedayArray[Math.floor((a + 1) / 6)]
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        tuesdaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      if entries[a].weekday.name is "Wednesday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: weedayArray[Math.floor((a + 1) / 6)]
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        wednesdaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      if entries[a].weekday.name is "Thursday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: weedayArray[Math.floor((a + 1) / 6)]
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        thursdaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      if entries[a].weekday.name is "Friday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: weedayArray[Math.floor((a + 1) / 6)]
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        fridaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      if entries[a].weekday.name is "Saturday"
-        timetableEntry =
-          subject: subject
-          teacher: teacher
-          room: room
-          weekday: weedayArray[Math.floor((a + 1) / 6)]
-          from_hours: entries[a].from_hours
-          from_minutes: entries[a].from_minutes
-          to_minutes: entries[a].to_minutes
-          to_hours: entries[a].to_hours
-
-        saturdaytimetableArray.push timetableEntry
-        timetableArray.push timetableEntry
-      a++
-    console.log mondaytimetableArray
-    console.log tuesdaytimetableArray
-    console.log wednesdaytimetableArray
-    console.log thursdaytimetableArray
-    console.log fridaytimetableArray
-    console.log saturdaytimetableArray
-
-    r = 0
-    while r < mondaytimetableArray.length
-      $scope.timeArray[r] = new Array()
-      $scope.timeArray[r].push mondaytimetableArray[r]
-      $scope.timeArray[r].push tuesdaytimetableArray[r]
-      $scope.timeArray[r].push wednesdaytimetableArray[r]
-      $scope.timeArray[r].push thursdaytimetableArray[r]
-      $scope.timeArray[r].push fridaytimetableArray[r]
-      $scope.timeArray[r].push saturdaytimetableArray[r]
-      r++
 
 
-    i = 1
-    while i <= 30
-      ((i) ->
-        $("#edit" + i).click ->
-          $select1 = undefined
-          $select2 = undefined
-          $select3 = undefined
-          arr1 = undefined
-          arr2 = undefined
-          arr3 = undefined
-          ii = undefined
-          val = undefined
-          $("#sub" + i).show()
-          $("#edit" + i).hide()
-          subject = $("#s" + i).html()
-          room = $("#l" + i).html()
-          teacher = $("#t" + i).html()
-          $("#s" + i).replaceWith "<select class=\"span5\"id = s" + i + "></select"
-          $("#l" + i).replaceWith "<select  class=\"span5\"id = l" + i + "></select"
-          $("#t" + i).replaceWith "<select class=\"span5\" id = t" + i + "></select"
-          arr1 = teachers
-          $select1 = $("#t" + i)
-          ii = 0
-          while ii < arr1.length
-            val = arr1[ii]
-            $("<option>").val(val).text(val).appendTo $select1
-            ii++
-          $("#t" + i).val teacher
-          arr2 = subjects
-          $select2 = $("#s" + i)
-          ii = 0
-          while ii < arr2.length
-            val = arr2[ii]
-            $("<option>").val(val).text(val).appendTo $select2
-            ii++
-          $("#s" + i).val subject
-          arr3 = rooms
-          $select3 = $("#l" + i)
-          ii = 0
-          while ii < arr3.length
-            val = arr3[ii]
-            $("<option>").val(val).text(val).appendTo $select3
-            ii++
-          $("#l" + i).val room
-
-      ) i
-      i++
-    i = 1
-    _results = []
-    while i <= 30
-      ((i) ->
-        $("#sub" + i).click ->
-          $("#sub" + i).hide()
-          $("#edit" + i).show()
-          subject = $("#s" + i).val()
-          room = $("#l" + i).val()
-          teacher = $("#t" + i).val()
-          $("#s" + i).replaceWith "<span id=s" + i + " >" + subject + "</span>"
-          $("#l" + i).replaceWith "<span id=l" + i + " >" + room + "</span>"
-          $("#t" + i).replaceWith "<span id=t" + i + " >" + teacher + "</span>"
-          timetableEntry =
-            subject: subject
-            teacher: teacher
-            room: room
-            weekday: weedayArray[Math.floor((i - 1) / 6)]
-            from_hours: timetableArray[i - 1].from_hours
-            from_minutes: timetableArray[i - 1].from_minutes
-            to_minutes: timetableArray[i - 1].to_minutes
-            to_hours: timetableArray[i - 1].to_hours
-
-          timetableArray[i - 1] = timetableEntry
-          console.log "BBBBB"
-          console.log i + " " + Math.floor((i - 1) / 6)
-          console.log timetableEntry
-
-      ) i
-      _results.push i++
-    _results
-  )
 
 
-window.college = gon.college
-window.batch = gon.batch
 $(document).ready ->
   i = undefined
   url = undefined
@@ -720,4 +918,3 @@ $(document).ready ->
         ii++
       i++
     timetableArray.length = 0
-
