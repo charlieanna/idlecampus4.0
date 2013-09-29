@@ -23,6 +23,7 @@
 //= require strophejs-plugins/register/strophe.register.js
 //= require strophejs-plugins/pubsub/strophe.pubsub.js
 //= require scripts/xmpp.js.coffee
+//= require static_pages
 //= require groups
 //= require static_pages
 //= require app

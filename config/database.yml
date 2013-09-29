@@ -1,36 +1,29 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
 development:
   adapter: postgresql
+  encoding: unicode
   database: saasbook
   pool: 5
+
+  username: saasbook
+  password:
+test:
+
   timeout: 5000
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-<<<<<<< HEAD
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-=======
-test: &test
   adapter: postgresql
-  database: saasbook
->>>>>>> cd5575eceaacdd0afb9c7cf15b7171fb6d79c593
-  pool: 5
-  timeout: 5000
-production:
-  adapter: postgresql
-<<<<<<< HEAD
+
   encoding: unicode
   database: idlecampus
-=======
-  database: saasbook
->>>>>>> cd5575eceaacdd0afb9c7cf15b7171fb6d79c593
-  pool: 5
-  username: postgres
+
+  username: saasbook
   password:
+production:
+  adapter: postgresql
+  encoding: unicode
+
+  database: saasbook
+
+
+  username: saasbook
+  password:
+
