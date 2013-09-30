@@ -501,14 +501,8 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
     console.log "CREDENTIALS"
-    if gon? and gon.register?
-      user = gon.register.name
-      email = gon.register.email
-      password = gon.register.password
-    if gon? and gon.attacher?
-      sid = gon.attacher.SID
-      rid = gon.attacher.RID
-      jid = gon.regiattacherster.JID
+   
+   
     console.log(sid)
     console.log(rid)
     console.log(jid)
@@ -528,6 +522,17 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       else if status is Strophe.Status.CONNECTED
         console.log "logged in!"
       else
+
+    if gon? and gon.register?
+      user = gon.register.name
+      email = gon.register.email
+      password = gon.register.password
+      connection.register.connect "idlecampus.com", callback, 60, 1
+    if gon? and gon.attacher?
+      user = gon.attacher.user
+      password = gon.attacher.password
+      localStorage.setItem("jid",user+"@idlecampus.com")
+      $scope.connect(user+"@idlecampus.com",password)
 
     if jid? and sid? and rid? and jid isnt "" and sid isnt "" and rid isnt ""
       console.log connection
@@ -552,8 +557,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
      
     
     
-    console.log connection.register
-    connection.register.connect "idlecampus.com", callback, 60, 1
+    
     $scope.XMPP.connection = connection
 	  
 	  
