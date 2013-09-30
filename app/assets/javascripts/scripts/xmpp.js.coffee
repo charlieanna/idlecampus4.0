@@ -499,7 +499,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
     connection = new Strophe.Connection("http://idlecampus.com/http-bind")
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
-    jid = $("#currentuser").text()
+    jid = localStorage.getItem("jid")
     console.log "CREDENTIALS"
     if gon? and gon.register?
       user = gon.register.name
@@ -522,19 +522,27 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       else if status is Strophe.Status.REGISTERED
         
 #        connection.authenticate()
-        localStorage.set("JID",user+"@idlecampus.com")
+        localStorage.setItem("jid",user+"@idlecampus.com")
         $scope.connect(user+"@idlecampus.com",password)
         $scope.$digest()
       else if status is Strophe.Status.CONNECTED
         console.log "logged in!"
       else
 
-    if jid is not "" and sid is not "" and rid is not ""
+    if jid? and sid? and rid? and jid isnt "" and sid isnt "" and rid isnt ""
+      console.log connection
+      connection.xmlInput = (body) ->
+        console.log body
 
-      conn.attach jid, sid, rid, (status) ->
+      connection.xmlOutput = (body) ->
+        console.log "XMPP OUTPUT"
+        console.log body
+        localStorage.setItem "rid", $(body).attr("rid")
+        localStorage.setItem "sid", $(body).attr("sid")
+      connection.attach jid, sid, rid, (status) ->
         console.log status
         if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
-          $scope.XMPP.connection = conn
+          $scope.XMPP.connection = connection
           $scope.XMPP.connection.jid = jid
           console.log "attached"
           $scope.connected()
