@@ -1,5 +1,5 @@
-@GroupsCtrl = ($scope) ->
- 
+@GroupsCtrl = ($scope,Group,Data) ->
+  $scope.data = Data
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
   $scope.groupsfollowing = []
@@ -107,7 +107,7 @@
      grouptoadd = {"group_name":group,"group_code":group_code}
      console.log grouptoadd
      console.log "node created"
-     $scope.data.groupscreated.push grouptoadd
+     $scope.groupscreated.push grouptoadd
      g = new Group()
      g.$createGroup name: group,code:group_code
 

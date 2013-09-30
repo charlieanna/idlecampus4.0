@@ -7,6 +7,9 @@ IdleCampus::Application.routes.draw do
   resources :users
   resources :groups do
     resource :timetable
+    collection do
+      get 'get_group_code'
+    end
   end
   root  'static_pages#home'
 
@@ -14,7 +17,7 @@ IdleCampus::Application.routes.draw do
   match '/signout',  to: 'sessions#destroy',            via: 'delete'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
- 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
