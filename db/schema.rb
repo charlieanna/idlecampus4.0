@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930073519) do
+ActiveRecord::Schema.define(version: 20130930230323) do
 
   create_table "batches", force: true do |t|
     t.string   "name"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20130930073519) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "fields_timetables", force: true do |t|
+    t.integer  "field_id"
+    t.integer  "timetable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fsfdsf", force: true do |t|
+    t.text    "name", limit: 20
+    t.integer "P_Id"
   end
 
   create_table "groups", force: true do |t|

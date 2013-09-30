@@ -444,7 +444,7 @@ class TimetableController < ApplicationController
               if not timetableentry
                 timetableentry = TimetableEntry.create
               end
-
+              
               if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
                 f = Field.find_by_name(key)
                 if not f

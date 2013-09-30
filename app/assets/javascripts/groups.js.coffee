@@ -1,4 +1,4 @@
-@GroupsCtrl = ($scope,Group,Data) ->
+@GroupsCtrl = ($scope,Group,Data,$http) ->
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
@@ -20,18 +20,50 @@
   $scope.$watch "groupMessages", (newValue, oldValue) ->
     console.log "groupMessages"
     console.log newValue
+	
+	
+  $scope.get = ->
+    $http(
+      method: "GET"
+      url: "/timetable/get_timetable_for_group"
+      params:
+        group: $scope.data.currentGroup.group_code
+    ).success((rdata, status, headers, config) ->
+
+
+      console.log "DDDDDDAAAAAATTTTTTTTAAAAAAA"
+      console.log rdata
+      $("#timetable").show()
+      $scope.data.currentGroupCode = rdata.timetable.group_code
+      entries = rdata.timetable.entries
+
+      $scope.data.timetable.weekdays = rdata.timetable.weekdays
+      $scope.data.timetable.batches = rdata.timetable.batches
+      $scope.data.timetable.entries = rdata.timetable.field_entries
+      $scope.data.timeArray = entries
+
+      console.log "HHHHHHHHHHHHH"
+      console.log $scope.data
+
+
+    ).error (data, status, headers, config) ->
+
 
   $scope.groupclick = (group) ->
+
+    $scope.data.isVisible = true
     $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
-#    console.log $scope.folders
-#    $scope.folders = Group.query(
-#      name: group
-#      verb: "find_by_name"
-#    )
-#    console.log $scope.folders
-    $scope.pagetitle = "Groups"
+    console.log $scope.folders
+    # $scope.data.folders = Group.query(
+#       name: group
+#       verb: "find_by_name"
+#     )
+    console.log $scope.data.folders
+    $scope.data.pagetitle = "Groups"
+    $scope.get()
+
 
   $scope.backtofolders = ->
     console.log "backtofolders"
