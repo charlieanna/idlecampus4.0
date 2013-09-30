@@ -478,7 +478,21 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       connection.register.connect "idlecampus.com", callback, 60, 1
       $scope.XMPP.connection = connection
 #
-#
+# 
+  $scope.connect = (user,password) ->
+    connection = new Strophe.Connection("http://idlecampus.com/http-bind")
+    connection.connect user, password, (status) ->
+     
+
+    connection.xmlInput = (body) ->
+      console.log body
+
+    connection.xmlOutput = (body) ->
+      console.log "XMPP OUTPUT"
+      console.log body
+      localStorage.setItem "rid", $(body).attr("rid")
+      localStorage.setItem "sid", $(body).attr("sid") 
+    $scope.XMPP.connection = connection
 
   $scope.register1 = ->
     form = undefined
@@ -499,7 +513,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       else if status is Strophe.Status.REGISTERED
         
 #        connection.authenticate()
-        $scope.XMPP.connection.connect user+"@idlecampus.com",password,callback
+        $scope.connect(user+"@idlecampus.com",password)
         $scope.$digest()
       else if status is Strophe.Status.CONNECTED
         console.log "logged in!"
