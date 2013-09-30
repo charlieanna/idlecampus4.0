@@ -497,8 +497,9 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
         connection.register.fields.password = password
         connection.register.submit()
       else if status is Strophe.Status.REGISTERED
-        alert "registered!"
-        connection.authenticate()
+        
+#        connection.authenticate()
+        $scope.XMPP.connection.connect user+"@idlecampus.com",password,callback
         $scope.$digest()
       else if status is Strophe.Status.CONNECTED
         console.log "logged in!"
