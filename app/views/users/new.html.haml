@@ -30,8 +30,11 @@
       = f.text_field :name
       = f.label :email
       = f.text_field :email
-      = password_field_tag 'password'
+      = f.label :password
+     
+      = f.password_field :password
    
+      #br
       = f.submit "Create my account", class: "btn btn-large btn-primary"
 	  
 	  

@@ -2,11 +2,12 @@ class UsersController < ApplicationController
 
   def create
 
-    @user = User.new
-    @user.email = params[:email]
+    @user = User.new(user_params)
+    @user.password_confirmation = @user.password
+    @user.email = params[:user][:email]
     @user.jabber_id = params[:jabber_id]
-    @user.device_identifier = params[:device_identifier]
-    password = params[:password]
+    @user.device_identifier = "#{params[:user][:name]}@idlecampus.com"
+    password = params[:user][:password]
     name = params[:user][:name]
     email = params[:user][:email]
  #    @user.password_confirmation = params[:password]
@@ -146,6 +147,11 @@ class UsersController < ApplicationController
 
   end
 
+  private 
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 
 
 

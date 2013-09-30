@@ -2,22 +2,18 @@ require 'spec_helper'
 
 describe "AuthenticationPages" do
 
-  describe "Signup" do
-    before do
-      visit '/'
-      user = [*('A'..'Z')].sample(8).join
-      click_link "Sign up"
-      fill_in "Name",with: user
-      fill_in "Email",with: user+"@gmail.com"
-      fill_in "registerpassword",with:"akk322"
-
-    end
-    let(:submit) { "Create my account" }
-    describe "with valid information" do
-      it "should create a user" do
-       puts response
-      end
-    end
+  describe "Signup", type: :feature do
+    it "signs me up" do
+    
+   visit '/'
+   click_link "Sign up"
+   fill_in "Name",with:"t"
+   fill_in "Email",with:"t@t.com"
+   fill_in "password",with:"t"
+   click_button "Create my account"
+  
+   expect(page).to have_content("Welcome")
   end
+end
  
 end

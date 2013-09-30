@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
   def create
 
     @user = User.find_by_email(params[:session][:email].downcase)
+    debugger
    if  @user && @user.authenticate(params[:session][:password])
       @jabber_id = @user.jabber_id
       @password = params[:session][:password]
