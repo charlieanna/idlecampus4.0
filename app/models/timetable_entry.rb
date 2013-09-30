@@ -6,4 +6,5 @@ class TimetableEntry < ActiveRecord::Base
 	belongs_to :teacher
 	belongs_to :room
 	belongs_to :class_timing
+  belongs_to :small_group
 end

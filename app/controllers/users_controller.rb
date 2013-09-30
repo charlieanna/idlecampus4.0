@@ -6,14 +6,16 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     @user.jabber_id = params[:jabber_id]
     @user.device_identifier = params[:device_identifier]
-    @user.password = params[:password]
-    @user.password_confirmation = params[:password]
+    password = params[:password]
+    name = params[:user][:name]
+    email = params[:user][:email]
+ #    @user.password_confirmation = params[:password]
     puts @user.valid?
     puts @user.errors.full_messages
     if @user.save
 
 
-      sign_in @user,@password
+      # sign_in @user,password
 
       p cookies
 
@@ -21,6 +23,11 @@ class UsersController < ApplicationController
 
 
       flash[:success] = "Welcome to IdleCampus!"
+      attacher = {}
+      attacher[:name] = name
+      
+      attacher[:password] = password
+      flash[:register] = attacher
       redirect_to @user
 
     else
@@ -35,6 +42,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
+    gon.register = flash[:register]  unless flash[:register].nil?
 
   end
 
@@ -94,7 +102,7 @@ class UsersController < ApplicationController
 
 
   def new
-    gon.names = "ankita kothari"
+   
     @user = User.new
   end
 

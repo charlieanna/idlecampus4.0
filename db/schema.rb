@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924013132) do
-
-  create_table "add_weekday_id_to_timetable_entries", force: true do |t|
-    t.integer  "weekday_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130930073519) do
 
   create_table "batches", force: true do |t|
     t.string   "name"
@@ -34,6 +28,12 @@ ActiveRecord::Schema.define(version: 20130924013132) do
     t.datetime "updated_at"
   end
 
+  create_table "fields", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "group_code"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20130924013132) do
 
   create_table "rooms", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "small_groups", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +71,8 @@ ActiveRecord::Schema.define(version: 20130924013132) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "weekday_id"
+    t.integer  "class_timing_id"
+    t.integer  "small_group_id"
   end
 
   create_table "timetables", force: true do |t|

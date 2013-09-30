@@ -460,12 +460,14 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
 
           $('#signup-form').dialog('close')
-          $.post "/users",
+          $.post("/users",
             email:email
             jabber_id: user + "@idlecampus.com"
             device_identifier: "web"
-            password:password
+            password:password).done ->
+		  
           connection.authenticate()
+		  
 #          $scope.signupform.$setPristine()
           $scope.$digest();
         else if status is Strophe.Status.CONNECTED
@@ -477,6 +479,36 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       $scope.XMPP.connection = connection
 #
 #
+
+  $scope.register1 = ->
+    form = undefined
+    name = undefined
+    form = $scope.signupform
+    user = gon.register.name
+    email = gon.register.email
+    password = gon.register.password
+    console.log "" + user + " " + password + " " + email
+    connection = new Strophe.Connection("http://idlecampus.com/http-bind")
+    console.log connection
+    callback = (status) ->
+      console.log status
+      if status is Strophe.Status.REGISTER
+        connection.register.fields.username = user
+        connection.register.fields.password = password
+        connection.register.submit()
+      else if status is Strophe.Status.REGISTERED
+        alert "registered!"
+        connection.authenticate()
+        $scope.$digest()
+      else if status is Strophe.Status.CONNECTED
+        console.log "logged in!"
+      else
+
+    console.log connection.register
+    connection.register.connect "idlecampus.com", callback, 60, 1
+    $scope.XMPP.connection = connection
+	  
+	  
   $scope.attach = ->
 
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")

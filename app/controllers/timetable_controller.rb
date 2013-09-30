@@ -407,6 +407,7 @@ class TimetableController < ApplicationController
     members = params['timetable']["members"]
 
     group = Group.find_by_group_code(params['timetable']["group"]["group_code"])
+    debugger
     timetable = group.timetable
     if not timetable
       timetable = Timetable.create
