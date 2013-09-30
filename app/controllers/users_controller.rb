@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
 
 
-      # sign_in @user,password
+       sign_in @user
 
       p cookies
 

@@ -562,4 +562,5 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
 $ ->
   $("#signout").click (event) ->
+    $scope.XMPP.connection.disconnect();
     localStorage.clear();

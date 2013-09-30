@@ -10,6 +10,17 @@ module SessionsHelper
     sign_in_to_xmpp_with_password(user,password)
     cookies.permanent[:remember_token] = remember_token
   end
+  
+  def sign_in(user)
+  	p "signing in"
+
+    remember_token = User.new_remember_token
+
+    user.update_attribute(:remember_token, User.encrypt(remember_token))
+    self.current_user = user
+   
+    cookies.permanent[:remember_token] = remember_token
+  end
 
   def current_user=(user)
     @current_user = user
