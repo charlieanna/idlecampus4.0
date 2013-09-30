@@ -495,14 +495,23 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
     $scope.XMPP.connection = connection
 
   $scope.register1 = ->
-    form = undefined
-    name = undefined
     form = $scope.signupform
-    user = gon.register.name
-    email = gon.register.email
-    password = gon.register.password
-    console.log "" + user + " " + password + " " + email
     connection = new Strophe.Connection("http://idlecampus.com/http-bind")
+    sid = localStorage.getItem("sid")
+    rid = localStorage.getItem("rid")
+    jid = $("#currentuser").text()
+    console.log "CREDENTIALS"
+    if gon? and gon.register?
+      user = gon.register.name
+      email = gon.register.email
+      password = gon.register.password
+    if gon? and gon.attacher?
+      sid = gon.attacher.SID
+      rid = gon.attacher.RID
+      jid = gon.regiattacherster.JID
+    console.log(sid)
+    console.log(rid)
+    console.log(jid)
     console.log connection
     callback = (status) ->
       console.log status
@@ -513,12 +522,28 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       else if status is Strophe.Status.REGISTERED
         
 #        connection.authenticate()
+        localStorage.set("JID",user+"@idlecampus.com")
         $scope.connect(user+"@idlecampus.com",password)
         $scope.$digest()
       else if status is Strophe.Status.CONNECTED
         console.log "logged in!"
       else
 
+    if jid is not "" and sid is not "" and rid is not ""
+
+      conn.attach jid, sid, rid, (status) ->
+        console.log status
+        if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
+          $scope.XMPP.connection = conn
+          $scope.XMPP.connection.jid = jid
+          console.log "attached"
+          $scope.connected()
+        else
+          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
+      
+     
+    
+    
     console.log connection.register
     connection.register.connect "idlecampus.com", callback, 60, 1
     $scope.XMPP.connection = connection
