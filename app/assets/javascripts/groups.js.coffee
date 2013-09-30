@@ -1,4 +1,5 @@
 @GroupsCtrl = ($scope) ->
+ 
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
   $scope.groupsfollowing = []
@@ -21,7 +22,7 @@
     console.log newValue
 
   $scope.groupclick = (group) ->
-    $scope.currentGroup = group
+    $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
 #    console.log $scope.folders
@@ -87,19 +88,28 @@
     ), true
 
   $scope.createGroup = (group) ->
-    $("#creategroupinput").val("")
+    g = undefined
     group = $scope.data.creategroup
     console.log group
-    $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group, (data) ->
+    group_code = ""
+    $.get("/groups/get_group_code",
+      group: group
+
+    ).done (data) ->
+     group_code = data
+     console.log data
+
+
+     $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
       console.log data
 
-    $scope.XMPP.connection.pubsub.createNode group, "", ->
-
-    console.log "node created"
-    $scope.groupscreated.push group
-#    $scope.$digest()
-    $.post "/groups",
-      name: group
+     $scope.XMPP.connection.pubsub.createNode group_code, {'pubsub#notification_type': 'normal'}, ->
+     grouptoadd = {"group_name":group,"group_code":group_code}
+     console.log grouptoadd
+     console.log "node created"
+     $scope.data.groupscreated.push grouptoadd
+     g = new Group()
+     g.$createGroup name: group,code:group_code
 
   $scope.createFolder = (group) ->
     group = $scope.data.creategroup
@@ -123,7 +133,7 @@
     ).c("a",
       href: note.toString()
     ).t(note)
-    currentgroup = $scope.currentGroup
+    currentgroup = $scope.data.currentGroup
     console.log note + " " + currentgroup
     $scope.XMPP.connection.pubsub.publish currentgroup, note, (data) ->
       console.log data
@@ -132,7 +142,7 @@
   $scope.publishgroupalert = ->
    
     message = $scope.groupalertform
-    currentgroup = $scope.currentGroup
+    currentgroup = $scope.data.currentGroup
     console.log currentgroup
     XMPP.connection.pubsub.publish currentgroup, message, (data) ->
       console.log data

@@ -5,6 +5,7 @@ re = /\S+@\S+\.\S+/
 # available
 
 app.factory "Data", ->
+  currentGroup : ""
   pagetitle: "Latest Posts"
   groupscreated: []
   groupsfollowing: []
