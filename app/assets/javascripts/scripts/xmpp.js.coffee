@@ -479,14 +479,14 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       $scope.XMPP.connection = connection
 #
 # 
-  $scope.connect = (user,password) ->
+  $scope.connect = (user, password) ->
+   
     connection = new Strophe.Connection("http://idlecampus.com/http-bind")
     connection.connect user, password, (status) ->
-		  $scope.getGroupsCreated()
-
-
      
+       
 
+ 
     connection.xmlInput = (body) ->
       console.log body
 
@@ -494,9 +494,9 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       console.log "XMPP OUTPUT"
       console.log body
       localStorage.setItem "rid", $(body).attr("rid")
-      localStorage.setItem "sid", $(body).attr("sid") 
+      localStorage.setItem "sid", $(body).attr("sid")
+
     $scope.XMPP.connection = connection
-	
 	
   $scope.getGroupsCreated = ->
     $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
@@ -573,7 +573,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
           $scope.XMPP.connection = connection
           $scope.XMPP.connection.jid = jid
           console.log "attached"
-          $scope.getGroupsCreated()
+          # $scope.getGroupsCreated()
           $scope.connected()
 
         else
