@@ -482,6 +482,9 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
   $scope.connect = (user,password) ->
     connection = new Strophe.Connection("http://idlecampus.com/http-bind")
     connection.connect user, password, (status) ->
+		  $scope.getGroupsCreated()
+
+
      
 
     connection.xmlInput = (body) ->
@@ -493,6 +496,26 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       localStorage.setItem "rid", $(body).attr("rid")
       localStorage.setItem "sid", $(body).attr("sid") 
     $scope.XMPP.connection = connection
+	
+	
+  $scope.getGroupsCreated = ->
+    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
+      $(iq).find("item").each ->
+        node = undefined
+        node = $(this).children("value").text()
+        #        $("#groupfollowers").trigger "click", [node]
+        console.log node
+        $.get("/groups/get_group_name",
+          group_code: node
+
+        ).done (data) ->
+
+          console.log data
+
+          $scope.data.groupscreated.push data
+          console.log $scope.data.groupscreated
+          $scope.$digest()
+
 
   $scope.register1 = ->
     form = $scope.signupform
@@ -550,7 +573,9 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
           $scope.XMPP.connection = connection
           $scope.XMPP.connection.jid = jid
           console.log "attached"
+          $scope.getGroupsCreated()
           $scope.connected()
+
         else
           $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
       

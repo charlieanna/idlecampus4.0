@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f640af7e-d31b-4d83-baa8-47da1f4be24a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/groups/_group.html" afterPath="$PROJECT_DIR$/app/views/groups/_group.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories.rb" afterPath="$PROJECT_DIR$/spec/factories.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/signing_up.feature" afterPath="$PROJECT_DIR$/features/signing_up.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
     </list>
     <ignored path="IdleCampus.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380560819787" ignored="false" />
+    <file path="/Dummy.txt" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380585102986" ignored="false" />
     <file path="/authentication_steps.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923172607" ignored="false" />
     <file path="/signing_up.feature" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923688649" ignored="false" />
     <file path="/authentication_pages_spec.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379924385648" ignored="false" />
@@ -16,7 +18,7 @@
     <file path="/a.dummy" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379925499931" ignored="false" />
     <file path="/application.js" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380110429766" ignored="false" />
     <file path="/application.css" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380084781640" ignored="false" />
-    <file path="/xmpp.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380542332613" ignored="false" />
+    <file path="/xmpp.js.coffee" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380585143483" ignored="false" />
     <file path="/user.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379932103572" ignored="false" />
     <file path="/20130923114020_change_type_of_jabber_id_to_string.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379936473076" ignored="false" />
     <file path="/sessions_controller.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1380039581144" ignored="false" />
@@ -98,10 +100,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="groups.js.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="groups.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="18" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
+            <state line="95" column="9" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.33116883">
               <folding />
             </state>
           </provider>
@@ -110,16 +112,16 @@
       <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="10" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+            <state line="21" column="10" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_helper.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sessions_helper.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="6" selection-start="339" selection-end="339" vertical-scroll-proportion="0.23376623">
+            <state line="13" column="6" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,18 +175,9 @@
       <file leaf-file-name="xmpp.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="556" column="14" selection-start="16595" selection-end="16595" vertical-scroll-proportion="0.0">
+            <state line="555" column="22" selection-start="16542" selection-end="16542" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1380571634000" expanded="true" signature="4142:17675" placeholder="..." />
-                <marker date="1380571634000" expanded="false" signature="10056:10131" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="14505:16620" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="16478:16483" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="16655:17675" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="16832:16988" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="17213:17293" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="17343:17675" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="17451:17579" placeholder="..." />
-                <marker date="1380571634000" expanded="true" signature="17685:17782" placeholder="..." />
+                <marker date="1380585434000" expanded="false" signature="10056:10131" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -231,8 +224,8 @@
         <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/timetables.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee" />
       </list>
     </option>
   </component>
@@ -692,23 +685,23 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="RailsProjectView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
+    <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RecentsManager">
@@ -830,6 +823,19 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -858,19 +864,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -884,13 +877,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
@@ -926,6 +912,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1097,13 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="18" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/wizard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1146,34 +1132,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="556" column="14" selection-start="16595" selection-end="16595" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1380571634000" expanded="true" signature="4142:17675" placeholder="..." />
-            <marker date="1380571634000" expanded="false" signature="10056:10131" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="14505:16620" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="16478:16483" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="16655:17675" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="16832:16988" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="17213:17293" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="17343:17675" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="17451:17579" placeholder="..." />
-            <marker date="1380571634000" expanded="true" signature="17685:17782" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="10" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+        <state line="21" column="10" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/sessions_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="6" selection-start="339" selection-end="339" vertical-scroll-proportion="0.23376623">
+        <state line="13" column="6" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/xmpp.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="555" column="22" selection-start="16542" selection-end="16542" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1380585434000" expanded="false" signature="10056:10131" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="9" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.33116883">
           <folding />
         </state>
       </provider>

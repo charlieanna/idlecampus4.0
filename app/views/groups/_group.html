@@ -1,4 +1,4 @@
-        <div ng-controller="GroupsCtrl" ng-init="register1();">
+        <div ng-controller="GroupsCtrl">
 
             <form class="form-inline">
                 <input class="create-group-input span2" placeholder="Group Name" type="text"
@@ -8,7 +8,7 @@
                         ng-click="createGroup()">Create
                 </button>
 				<button ng-click="getGroupsCreated()">Get Created Groups</button>
-				<button ng-click="connect()">Login</button>
+				
             </form>
             <ul class="nav nav-pills nav-stacked">
                 <li ng-repeat="group in data.groupscreated" id="{{group}}">

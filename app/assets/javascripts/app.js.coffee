@@ -41,6 +41,7 @@ app.factory "Group", ($resource) ->
       params:
         name: ""
         code:""
+    
 
 
 app.factory "Folder", ($resource) ->
