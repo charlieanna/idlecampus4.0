@@ -3,8 +3,8 @@ require "spec_helper"
 describe "Creating a timetable with many entries" do
   describe "Creating a timetable entry using a factory" do
     before do
-      # user = FactoryGirl.create(:user)
-      group = FactoryGirl.create(:group)
+       @user = FactoryGirl.create(:user)
+     
       timetable = FactoryGirl.create(:timetable)
       timetable_entry = FactoryGirl.create(:timetable_entry)
       weekday1 = FactoryGirl.create(:weekday)
@@ -31,10 +31,11 @@ describe "Creating a timetable with many entries" do
       end
      
       
-      # entry = FactoryGirl.create(:timetable_entry)
+      
     end
+     let(:group) {FactoryGirl.create(:group)}
     it "user should respond to group" do
-      expect(group.user).to be user 
+       # puts timetable
     end
   end
    
