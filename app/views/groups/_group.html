@@ -1,4 +1,4 @@
-        <div ng-controller="GroupsCtrl" ng-init="attach();getGroupsCreated();getGroupsFollowing()">
+        <div ng-controller="GroupsCtrl">
 
             <form class="form-inline">
                 <input class="create-group-input span2" placeholder="Group Name" type="text"
@@ -8,11 +8,17 @@
                         ng-click="createGroup()">Create
                 </button>
 				<button ng-click="getGroupsCreated()">Get Created Groups</button>
+				
             </form>
             <ul class="nav nav-pills nav-stacked">
-                <li ng-repeat="group in groupscreated" id="{{group}}">
-                    <a data-toggle="tab" href="" ng-click="groupclick(group);"><i class="icon-asterisk"></i>{{group}}</a>
+                <li ng-repeat="group in data.groupscreated" id="{{group}}">
+                    <a data-toggle="tab" href="" ng-click="groupclick(group);"><i class="icon-asterisk"></i>{{group.group_name}}</a>
                 </li>
             </ul>
 
         </div>
+		
+		
+		
+		
+		<!-- attach();getGroupsCreated();getGroupsFollowing() -->

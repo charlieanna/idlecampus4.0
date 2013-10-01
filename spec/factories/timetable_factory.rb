@@ -1,5 +1,5 @@
-FactoryGirl.define do
-	factory :timetable do
-		group
-	end
-end
+# FactoryGirl.define do
+#   factory :timetable do
+#     group
+#   end
+# end

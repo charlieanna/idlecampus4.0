@@ -13,19 +13,20 @@ class SessionsController < ApplicationController
   def create
 
     @user = User.find_by_email(params[:session][:email].downcase)
+    
    if  @user && @user.authenticate(params[:session][:password])
       @jabber_id = @user.jabber_id
       @password = params[:session][:password]
       #@session_jid, @session_id, @session_random_id =
       #    RubyBOSH.initialize_session(@jabber_id, @password, "http://idlecampus.com/http-bind")
-      sign_in @user,@password
+      sign_in @user
 
 
 
       attacher = {}
-      attacher[:JID] = @session_jid
-      attacher[:SID] = @session_id
-      attacher[:RID] = @session_random_id
+      attacher[:user] = @user.name
+      attacher[:password] = params[:session][:password]
+      
       flash[:attacher] = attacher
       redirect_to @user,:notice => "Welcome to IdleCampus"
 

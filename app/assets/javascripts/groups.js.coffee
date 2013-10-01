@@ -1,4 +1,6 @@
-@GroupsCtrl = ($scope, Group, Folder, FilesForFolder, Timetable, Data,$http) ->
+
+@GroupsCtrl = ($scope,Group,Data,$http) ->
+
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
@@ -20,18 +22,53 @@
   $scope.$watch "groupMessages", (newValue, oldValue) ->
     console.log "groupMessages"
     console.log newValue
+	
+	
+  $scope.get = ->
+    $http(
+      method: "GET"
+      url: "/timetable/get_timetable_for_group"
+      params:
+        group: $scope.data.currentGroup.group_code
+    ).success((rdata, status, headers, config) ->
+
+
+      console.log "DDDDDDAAAAAATTTTTTTTAAAAAAA"
+      console.log rdata
+      $("#timetable").show()
+      $scope.data.currentGroupCode = rdata.timetable.group_code
+      entries = rdata.timetable.entries
+
+      $scope.data.timetable.weekdays = rdata.timetable.weekdays
+      $scope.data.timetable.batches = rdata.timetable.batches
+      $scope.data.timetable.entries = rdata.timetable.field_entries
+      $scope.data.timeArray = entries
+
+      console.log "HHHHHHHHHHHHH"
+      console.log $scope.data
+
+
+    ).error (data, status, headers, config) ->
+
 
   $scope.groupclick = (group) ->
+<<<<<<< HEAD
+=======
+
+    $scope.data.isVisible = true
+>>>>>>> working
     $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
-#    console.log $scope.folders
-#    $scope.folders = Group.query(
-#      name: group
-#      verb: "find_by_name"
-#    )
-#    console.log $scope.folders
-    $scope.pagetitle = "Groups"
+    console.log $scope.folders
+    # $scope.data.folders = Group.query(
+#       name: group
+#       verb: "find_by_name"
+#     )
+    console.log $scope.data.folders
+    $scope.data.pagetitle = "Groups"
+    $scope.get()
+
 
   $scope.backtofolders = ->
     console.log "backtofolders"
@@ -62,18 +99,22 @@
     ), 0
 
   $scope.getGroupsCreated = ->
-	
-    j = $scope.XMPP.connection.jid
-	
-    $scope.XMPP.connection.pubsub.items j.split("/")[0] + "/groups", (iq) ->
-      console.log iq
+    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
       $(iq).find("item").each ->
-        
+        node = undefined
         node = $(this).children("value").text()
-        $("#groupfollowers").trigger "click", [node]
-        $scope.groupscreated.push node
-        console.log $scope.groupscreated
-        $scope.$digest()
+        #        $("#groupfollowers").trigger "click", [node]
+        console.log node
+        $.get("/groups/get_group_name",
+          group_code: node
+
+        ).done (data) ->
+
+          console.log data
+
+          $scope.data.groupscreated.push data
+          console.log $scope.data.groupscreated
+          $scope.$digest()
 
 
   $scope.joinGroup = ->
@@ -107,7 +148,11 @@
      grouptoadd = {"group_name":group,"group_code":group_code}
      console.log grouptoadd
      console.log "node created"
+<<<<<<< HEAD
      $scope.data.groupscreated.push grouptoadd
+=======
+     $scope.groupscreated.push grouptoadd
+>>>>>>> working
      g = new Group()
      g.$createGroup name: group,code:group_code
 

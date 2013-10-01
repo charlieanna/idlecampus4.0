@@ -52,6 +52,9 @@ Feature: Signing up
     Then I click on "Create my Account"
     Then I should be on the users page
     And I should see "Welcome to IdleCampus"
+	
+	
+Scenario: 
 
 
 

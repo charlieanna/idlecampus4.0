@@ -2,18 +2,21 @@ class UsersController < ApplicationController
 
   def create
 
-    @user = User.new
-    @user.email = params[:email]
+    @user = User.new(user_params)
+    @user.password_confirmation = @user.password
+    @user.email = params[:user][:email]
     @user.jabber_id = params[:jabber_id]
-    @user.device_identifier = params[:device_identifier]
-    @user.password = params[:password]
-    @user.password_confirmation = params[:password]
+    @user.device_identifier = "#{params[:user][:name]}@idlecampus.com"
+    password = params[:user][:password]
+    name = params[:user][:name]
+    email = params[:user][:email]
+ #    @user.password_confirmation = params[:password]
     puts @user.valid?
     puts @user.errors.full_messages
     if @user.save
 
 
-      sign_in @user,@password
+       sign_in @user
 
       p cookies
 
@@ -21,6 +24,11 @@ class UsersController < ApplicationController
 
 
       flash[:success] = "Welcome to IdleCampus!"
+      attacher = {}
+      attacher[:name] = name
+      
+      attacher[:password] = password
+      flash[:register] = attacher
       redirect_to @user
 
     else
@@ -35,6 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
+    gon.register = flash[:register]  unless flash[:register].nil?
 
   end
 
@@ -94,7 +103,7 @@ class UsersController < ApplicationController
 
 
   def new
-    gon.names = "ankita kothari"
+   
     @user = User.new
   end
 
@@ -138,6 +147,11 @@ class UsersController < ApplicationController
 
   end
 
+  private 
+  
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 
 
 

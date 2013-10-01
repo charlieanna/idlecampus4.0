@@ -460,12 +460,14 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
 
           $('#signup-form').dialog('close')
-          $.post "/users",
+          $.post("/users",
             email:email
             jabber_id: user + "@idlecampus.com"
             device_identifier: "web"
-            password:password
+            password:password).done ->
+		  
           connection.authenticate()
+		  
 #          $scope.signupform.$setPristine()
           $scope.$digest();
         else if status is Strophe.Status.CONNECTED
@@ -476,7 +478,114 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
       connection.register.connect "idlecampus.com", callback, 60, 1
       $scope.XMPP.connection = connection
 #
-#
+# 
+  $scope.connect = (user,password) ->
+    connection = new Strophe.Connection("http://idlecampus.com/http-bind")
+    connection.connect user, password, (status) ->
+		  $scope.getGroupsCreated()
+
+
+     
+
+    connection.xmlInput = (body) ->
+      console.log body
+
+    connection.xmlOutput = (body) ->
+      console.log "XMPP OUTPUT"
+      console.log body
+      localStorage.setItem "rid", $(body).attr("rid")
+      localStorage.setItem "sid", $(body).attr("sid") 
+    $scope.XMPP.connection = connection
+	
+	
+  $scope.getGroupsCreated = ->
+    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
+      $(iq).find("item").each ->
+        node = undefined
+        node = $(this).children("value").text()
+        #        $("#groupfollowers").trigger "click", [node]
+        console.log node
+        $.get("/groups/get_group_name",
+          group_code: node
+
+        ).done (data) ->
+
+          console.log data
+
+          $scope.data.groupscreated.push data
+          console.log $scope.data.groupscreated
+          $scope.$digest()
+
+
+  $scope.register1 = ->
+    form = $scope.signupform
+    connection = new Strophe.Connection("http://idlecampus.com/http-bind")
+    sid = localStorage.getItem("sid")
+    rid = localStorage.getItem("rid")
+    jid = localStorage.getItem("jid")
+    console.log "CREDENTIALS"
+   
+   
+    console.log(sid)
+    console.log(rid)
+    console.log(jid)
+    console.log connection
+    callback = (status) ->
+      console.log status
+      if status is Strophe.Status.REGISTER
+        connection.register.fields.username = user
+        connection.register.fields.password = password
+        connection.register.submit()
+      else if status is Strophe.Status.REGISTERED
+        
+#        connection.authenticate()
+        localStorage.setItem("jid",user+"@idlecampus.com")
+        $scope.connect(user+"@idlecampus.com",password)
+        $scope.$digest()
+      else if status is Strophe.Status.CONNECTED
+        console.log "logged in!"
+      else
+
+    if gon? and gon.register?
+      user = gon.register.name
+      email = gon.register.email
+      password = gon.register.password
+      connection.register.connect "idlecampus.com", callback, 60, 1
+    if gon? and gon.attacher?
+      user = gon.attacher.user
+      password = gon.attacher.password
+      localStorage.setItem("jid",user+"@idlecampus.com")
+      $scope.connect(user+"@idlecampus.com",password)
+
+    if jid? and sid? and rid? and jid isnt "" and sid isnt "" and rid isnt ""
+      console.log connection
+      connection.xmlInput = (body) ->
+        console.log body
+
+      connection.xmlOutput = (body) ->
+        console.log "XMPP OUTPUT"
+        console.log body
+        localStorage.setItem "rid", $(body).attr("rid")
+        localStorage.setItem "sid", $(body).attr("sid")
+      connection.attach jid, sid, rid, (status) ->
+        console.log status
+        if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
+          $scope.XMPP.connection = connection
+          $scope.XMPP.connection.jid = jid
+          console.log "attached"
+          $scope.getGroupsCreated()
+          $scope.connected()
+
+        else
+          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
+      
+     
+    
+    
+    
+    $scope.XMPP.connection = connection
+	  
+	  
   $scope.attach = ->
 
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
@@ -515,4 +624,5 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
 $ ->
   $("#signout").click (event) ->
+    $scope.XMPP.connection.disconnect();
     localStorage.clear();

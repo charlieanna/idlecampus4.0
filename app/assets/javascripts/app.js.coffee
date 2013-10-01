@@ -5,7 +5,9 @@ re = /\S+@\S+\.\S+/
 # available
 
 app.factory "Data", ->
-  currentGroup: ""
+
+  currentGroup : ""
+
   pagetitle: "Latest Posts"
   groupscreated: []
   groupsfollowing: []
@@ -41,6 +43,7 @@ app.factory "Group", ($resource) ->
       params:
         name: ""
         code:""
+    
 
 
 app.factory "Folder", ($resource) ->

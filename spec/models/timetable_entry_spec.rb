@@ -12,6 +12,8 @@ describe TimetableEntry do
   it {should respond_to(:timetable_id)}
   it { should respond_to(:timetable) }
   it {should respond_to(:weekday)}
+  it { should respond_to(:subject)}
+  it {should respond_to(:teacher)}
   its(:timetable) { should eq timetable }
 
   describe "when timetable_id is not present" do

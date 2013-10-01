@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20130924013132) do
+=======
+ActiveRecord::Schema.define(version: 20131001075424) do
+>>>>>>> working
 
   create_table "batches", force: true do |t|
     t.string   "name"
@@ -28,15 +32,46 @@ ActiveRecord::Schema.define(version: 20130924013132) do
     t.datetime "updated_at"
   end
 
+  create_table "cvzxc", force: true do |t|
+    t.text    "name", limit: 20
+    t.integer "P_Id"
+  end
+
+  create_table "fields", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fields_timetables", force: true do |t|
+    t.integer  "field_id"
+    t.integer  "timetable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fsfdsf", force: true do |t|
+    t.text    "name", limit: 20
+    t.integer "P_Id"
+  end
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "group_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "rooms", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "small_groups", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +93,10 @@ ActiveRecord::Schema.define(version: 20130924013132) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "weekday_id"
+    t.integer  "class_timing_id"
+    t.integer  "small_group_id"
+    t.integer  "subject_id"
+    t.integer  "teacher_id"
   end
 
   create_table "timetables", force: true do |t|
