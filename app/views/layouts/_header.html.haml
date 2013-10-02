@@ -1,8 +1,8 @@
-.navbar.navbar-fixed-top
+.navbar
   .navbar-inner
     
     %a.brand{href: "#"} 
-      %img.nav-logo{src: "/assets/img/idlecampus2.png"}
+      %img.nav-logo{src: "/assets/img/idlecampus.png"}
 
     - if signed_in?
       %ul.dropdown-menu
@@ -14,7 +14,7 @@
       =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"margin-top: -15px;"
 
     - else
-      = button_tag "Log In",class: "btn btn-success pull-right",type: "button",id:"signinbutton"
+      = link_to "Log In",signin_path,class: "btn btn-success pull-right",id:"signinbutton"
       = link_to "Sign Up!",signup_path,class: "btn btn-primary pull-right",id:"signupbutton"
 
 
