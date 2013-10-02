@@ -38,6 +38,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
 # gem 'turbolinks', '1.1.1'
+gem "rb-readline", "~> 0.5.0"
 gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
