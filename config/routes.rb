@@ -4,6 +4,7 @@ IdleCampus::Application.routes.draw do
   
   match "users/checkEmail" => "users#checkEmail",via: 'get'
   get "users/checkName"
+  get "users/new1"
   resources :users
   resources :groups do
     resource :timetable
@@ -17,6 +18,7 @@ IdleCampus::Application.routes.draw do
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signout',  to: 'sessions#destroy',            via: 'delete'
+  match '/signin',  to: 'sessions#new',            via: 'get'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

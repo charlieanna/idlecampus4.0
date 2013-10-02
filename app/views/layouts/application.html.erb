@@ -2,7 +2,115 @@
 <html ng-app="idlecampus">
 <head>
     <%= include_gon %>
+	<style type="text/css">
+	 .navbar-inner{
+	 	height: 50px;
+		background-color: #4F5155 !important;
+		background-image: none !important;
+	 }
+  
+    #signinbutton {
+        
+        -moz-box-shadow:inset 0px 1px 0px 0px #276873;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #276873;
+        box-shadow:inset 0px 1px 0px 0px #276873;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+        background:-moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:-webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:-o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:-ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+        background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99',GradientType=0);
+        
+        background-color:#599bb3;
+        
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:Trebuchet MS;
+        font-size:14px;
+        font-weight:200;
+        padding:9px 11px;
+        text-decoration:none;
+        width:80px;
+        text-shadow:0px 1px 0px #3d768a;
+        
+    }
+    #signinbutton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
+        background:-moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:-webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:-o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:-ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+        background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3',GradientType=0);
+        
+        background-color:#408c99;
+    }
+    #signinbutton:active {
+        position:relative;
+        top:1px;
+    }
+	
+	#signinbutton {
+		margin-left: 10px;
+		margin-right: 200px;
+	}
+	
 
+    #signupbutton {
+        
+        -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+        box-shadow:inset 0px 1px 0px 0px #ffffff;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+        background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+        background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+        
+        background:#d7dadc;
+        width:56px;
+/*        border:1px solid #dcdcdc;*/
+        
+        display:inline-block;
+        color:#599bb3;;
+        font-family:arial;
+        font-size:14px;
+        font-weight:200;
+        padding:9px 11px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #ffffff;
+        
+    }
+    #signupbutton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+        background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+        background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+        
+        background-color:#f6f6f6;
+    }
+    #signupbutton:active {
+        position:relative;
+        top:1px;
+    }
+	
+	
+	</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
