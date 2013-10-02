@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#ruby-gemset=railstutorial_rails_4_0
+
 gem 'rake', '10.0.4'
 gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
