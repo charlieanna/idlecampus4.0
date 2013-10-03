@@ -1,4 +1,23 @@
-
+<!-- - provide(:title, 'Sign up')
+%h1 Sign up
+.row
+  .span2.offset3
+    %form.css-form.form-vertical{name: "signupform", "ng-submit" => "register()"}
+      Email:
+      %input.input-medium{integer1: "",id:"Email", name: "uEmail", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email"}/
+      %i#emailicon
+      / <span ng-show="signupform.uEmail.$error.emailavailable">Email not available</span>
+      / <span ng-show="signupform.uEmail.$error.required">Email required  </span>
+      Username:
+      %input.input-medium{integer: "", id:"Name",name: "size", "ng-model" => "user", placeholder: "Username:", required: "", type: "text"}/
+      %i#nameicon
+      Password:
+      %input#registerpassword.input-medium{name: "uPassword", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password"}/
+      %i#passwordicon
+      .clearfix
+      %button.btn.btn-success.btn-large#submit
+        %i{"ng-class" => "spin"}
+        Create my account -->
 <!-- /Navbar -->
 
 <div class="row">
@@ -12,39 +31,33 @@
 	
 		<div id="login-content" class="clearfix">
 			
-            <%= form_for @user do |f|%>
-                <div style="margin:0;padding:0;display:inline">
-                    <input name="utf8" type="hidden" value="✓">
-                    <input name="authenticity_token" type="hidden" value="iv7giY5xWb0pes4x7zaDIQIpzfHqeIpVF686QB5bAdo=">
-                </div>
+            <%= form_for @user,html: {name: "signupform",  "ng-submit" => "register()" } do |f|%>
+               
 				<fieldset>
 					<div class="control-group">
 		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Username</label>
-		  		      <%= f.text_field :name %>
-						
+		  		      <%= f.text_field :name,integer: "", id:"Name",name: "user[name]", "ng-model" => "user", placeholder: "Username:", required: "", type: "text" %>
+					 <i id="nameicon"></i>
 					</div>
 					<div class="control-group">
 		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Email</label>
-		  		      <%= f.text_field :email %>
-		  		     
+		  		      <%= f.text_field :email,integer1: "",id:"Email", name: "user[email]", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email" %>
+		  		      <i id="emailicon"></i>
 						
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
 
 		  		     
-		  		      <%= f.password_field :password %>
+		  		      <%= f.password_field :password,name: "user[password]", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password" %>
                       
-						
+						<i id="passwordicon"></i>
 					</div>
 				</fieldset>
 				<hr>
-				<div class="pull-left">
-					<a href="/" class="btn btn-info btn-large"><i class="icon-arrow-left"></i>&nbsp;&nbsp;Back</a>
-				</div>
-				<div class="pull-right">
-					<%= f.submit 'Sign Up', :class => "btn btn-success btn-large" %>
-				</div>
+			
+					<%= f.submit 'Sign Up', :class => "btn btn-success btn-large signupbutton" %>
+				
 				<% end %>
 		</div>
 	</div>

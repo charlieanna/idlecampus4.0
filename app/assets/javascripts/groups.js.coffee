@@ -1,3 +1,4 @@
+
 @GroupsCtrl = ($scope,Group,Data,$http) ->
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
