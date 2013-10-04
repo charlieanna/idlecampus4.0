@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:show]
-  before_action :correct_user,   only: [:show]
+  # before_action :signed_in_user, only: [:show]
+  # before_action :correct_user,   only: [:show]
   def new1
     @user = User.new
   end

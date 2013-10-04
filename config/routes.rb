@@ -22,9 +22,11 @@ IdleCampus::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  get "timetable/create"
-   post "timetable/create"
+  # get "timetable/create"
+  #  post "timetable/create"
    get "timetable/get_timetable_for_group"
+   
+   resource :timetable, only: [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
