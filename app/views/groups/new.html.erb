@@ -3,3 +3,22 @@
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>
+
+
+<div ng-controller="GroupsCtrl">
+	<div class="row">
+	  <div class="span6 offset3">
+    <form class="form-inline">
+        <input class="create-group-input span2" placeholder="Group Name" type="text"
+               id="creategroupinput" ng-model="data.creategroup"/>
+
+        <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
+                ng-click="createGroup()">Create
+        </button>
+		<!-- <button ng-click="getGroupsCreated()">Get Created Groups</button> -->
+		
+    </form>
+ 
+</div>
+</div>
+</div>

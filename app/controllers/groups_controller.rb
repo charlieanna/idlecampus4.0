@@ -16,14 +16,22 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(name:params[:name],group_code:params[:code])
-
-
+    @group = Group.new
+    @group.name = params[:name]
+   
+    @group.group_code = params[:code]
+    
+    group = {}
+    group[:name] = @group.name
+    group[:code] = @group.group_code
+    
+    flash[:group] = group
+    
     if @group.save
      
-   render :nothing => true, :status => 200, :content_type => 'text/html'
+      redirect_to new_group_timetable_path
     else
-     render :nothing => true, :status => 200, :content_type => 'text/html'
+       render :nothing => true, :status => 200, :content_type => 'text/html'
     end
   end
 
