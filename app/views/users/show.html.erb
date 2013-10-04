@@ -16,7 +16,7 @@ Welcome <%= @user.name%>
 <!-- /Header boxes -->
  <div ng-controller="GroupsCtrl">
  	<div class="row">
- 	  <div class="span6 offset3">
+ 	  <div class="">
      <form class="form-inline">
          <input class="create-group-input span2" placeholder="Group Name" type="text"
                 id="creategroupinput" ng-model="data.creategroup"/>
@@ -25,7 +25,7 @@ Welcome <%= @user.name%>
                  ng-click="createGroup()">Create
          </button>
  		
-		<div ng-controller="EntryCtrl">
+		<!-- <div ng-controller="EntryCtrl">
 		    <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		        <h3>Timetable</h3>
@@ -181,7 +181,159 @@ Welcome <%= @user.name%>
 		        <a class="btn" ng-click="handlePrevious()" ng-show="!isFirstStep()">Back</a>
 		        <a class="btn btn-primary" ng-click="handleNext(dismiss)">{{getNextLabel()}}</a>
 		    </div>
-		</div>
+		</div> -->
+			<div ng-controller="EntryCtrl">
+			      <ul id="myTab" class="nav nav-pills">
+			        <li class="active"><a href="#teacher" data-toggle="tab">Teachers</a></li>
+			        <li><a href="#subject" data-toggle="tab">Subjects</a></li>
+					<li><a href="#weekday" data-toggle="tab">Weekdays</a></li>
+				    <li><a href="#room" data-toggle="tab">Rooms</a></li>
+					  <li><a href="#batch" data-toggle="tab">Batches</a></li>
+					<li><a href="#room1" data-toggle="tab">Timetable</a></li>
+				    <!-- <li><a href="#timetable" data-toggle="tab">Timetable</a></li> -->
+       
+			      </ul>
+			      <div id="myTabContent" class="tab-content">
+			        <div class="tab-pane fade in active" id="teacher">
+			            <fieldset>
+			                <div class="control-group">
+
+			                    <input name="field" type="text" ng-model="teacher" placeholder="add new teacher here">
+			                    <button class="addbtn btn btn-small" ng-click="addTeacher(teacher);teacher=''" style="
+			                                    width: 53px;
+			                                            height: 30px;
+			                                            padding-top: 0px;
+			                                            padding-left: 0px;
+			                                            padding-right: 0px;
+			                                            padding-bottom: 0px;
+			                                    ">Add</button>
+
+			                    <ul>
+			                        <li ng-repeat="teacher in data.timetable.teachers">
+			                            <span>{{teacher.name}}</span>
+			                        </li>
+			                    </ul>
+
+			                </div>
+
+			            </fieldset>
+        
+			        </div>
+			        <div class="tab-pane fade" id="subject">
+			            <fieldset>
+			                <div class="control-group">
+
+			                    <input name="field" type="text" ng-model="teacher" placeholder="add new subject here">
+			                    <button class="addbtn btn btn-small" ng-click="addSubject(subject);subject=''" style="
+			                                    width: 53px;
+			                                            height: 30px;
+			                                            padding-top: 0px;
+			                                            padding-left: 0px;
+			                                            padding-right: 0px;
+			                                            padding-bottom: 0px;
+			                                    ">Add</button>
+
+			                    <ul>
+			                        <li ng-repeat="subject in data.timetable.subjects">
+			                            <span>{{subject.name}}</span>
+			                        </li>
+			                    </ul>
+
+			                </div>
+
+			            </fieldset>
+         
+			        </div>
+			        <div class="tab-pane fade" id="weekday">
+			            <fieldset>
+			                <div class="control-group">
+			                    <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday"> Monday
+			                    <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday"> Tuesday
+			                    <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday"> Wednesday
+			                    <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday"> Thursday
+			                    <input type="checkbox" ng-click="checkWeekday('Friday')" ng-model="Friday"> Friday
+			                    <input type="checkbox" ng-click="checkWeekday('Saturday')" ng-model="Saturday"> Saturday
+			                    <input type="checkbox" ng-click="checkWeekday('Sunday')" ng-model="Sunday"> Sunday
+			                </div>
+
+			            </fieldset>
+         
+			        </div>
+					 <div class="tab-pane fade" id="batch">
+			            <fieldset>
+			                <div class="control-group">
+			                    <div class="controls">
+			                        <label class="checkbox">
+			                            Add Batches?<input ng-model="checked" ng-click="changechecked()" type="checkbox" value=""/>
+
+
+			                        </label>
+			                        <form ng-show="checked">
+			                            <input name="Add Batches" type="text" ng-model="batch">
+
+			                            <button class="addbtn btn" ng-click="addBatch(batch);batch=''" style="
+			                                    width: 53px;
+			                                            height: 30px;
+			                                            padding-top: 0px;
+			                                            padding-left: 0px;
+			                                            padding-right: 0px;
+			                                            padding-bottom: 0px;
+			                                    ">Add</button>
+			                            <ul>
+			                                <li ng-repeat="batch in data.timetable.batches">
+			                                    {{batch}}
+
+
+			                                </li>
+			                            </ul>
+			                        </form>
+			                    </div>
+			                </div>
+			            </fieldset>
+					</div>
+			        <div class="tab-pane fade" id="room">
+			            <fieldset>
+			                <div class="control-group">
+
+			                    <input name="field" type="text" ng-model="room" placeholder="add new room here">
+			                    <button class="addbtn btn btn-small" ng-click="addRoom(room);room=''" style="
+			                                    width: 53px;
+			                                            height: 30px;
+			                                            padding-top: 0px;
+			                                            padding-left: 0px;
+			                                            padding-right: 0px;
+			                                            padding-bottom: 0px;
+			                                    ">Add</button>
+
+			                    <ul>
+			                        <li ng-repeat="room in data.timetable.rooms">
+			                            <span>{{room.name}}</span>
+			                        </li>
+			                    </ul>
+
+			                </div>
+
+			            </fieldset>
+        
+			        </div>
+			        <div class="tab-pane fade" id="room1">
+			            <fieldset>
+			                <div class="control-group">
+			                    Weekdays:{{data.timetable.weekdays}}
+			                    Batches:{{data.timetable.batches}}
+			                    {{data.timetable.entries}}
+			                    <span ng-repeat="entry in data.timetable.entries">
+			                         Entry : {{entry.name}}
+			                         Values : {{entry.values}}
+			                    </span>
+
+			                </div>
+			            </fieldset>
+        
+			        </div>
+			      </div>
+
+			  </div>
      </form>
 
  </div>
@@ -206,34 +358,6 @@ Welcome <%= @user.name%>
 
 
 </div>
-
-
-      <ul id="myTab" class="nav nav-pills">
-        <li class="active"><a href="#teacher" data-toggle="tab">Teachers</a></li>
-        <li><a href="#subject" data-toggle="tab">Subjects</a></li>
-		<li><a href="#weekday" data-toggle="tab">Weekdays</a></li>
-	    <li><a href="#room" data-toggle="tab">Rooms</a></li>
-		<li><a href="#room1" data-toggle="tab">Timetable</a></li>
-	    <!-- <li><a href="#timetable" data-toggle="tab">Timetable</a></li> -->
-       
-      </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="teacher">
-          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-        </div>
-        <div class="tab-pane fade" id="subject">
-          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-        </div>
-        <div class="tab-pane fade" id="weekday">
-          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-        </div>
-        <div class="tab-pane fade" id="room">
-          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-        </div>
-        <div class="tab-pane fade" id="room1">
-          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-        </div>
-      </div>
 
 
 
