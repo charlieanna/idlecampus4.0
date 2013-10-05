@@ -14,6 +14,8 @@ app.factory "Data", ->
   user: ""
   isVisible: false
   entries: []
+  teacher: []
+  subjects:[]
   smallGroups: []
   weekdays: [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
