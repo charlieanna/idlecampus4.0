@@ -585,7 +585,12 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
     
     
     $scope.XMPP.connection = connection
+	
+  $scope.signout = ->
+      $scope.XMPP.connection.disconnect();
+      localStorage.clear();
 	  
+	    
 	  
   $scope.attach = ->
 
@@ -623,7 +628,3 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
         $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
 
 
-$ ->
-  $("#signout").click (event) ->
-    $scope.XMPP.connection.disconnect();
-    localStorage.clear();

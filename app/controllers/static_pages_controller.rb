@@ -1,17 +1,17 @@
 class StaticPagesController < ApplicationController
+  before_filter :check_logged_in_user
+  
   def home
     gon.names = "ankur kothari"
   end
 
-  def help
-  end
 
-  def tour
-  end
+  private 
+	
+  	def check_logged_in_user
 
-  def contact
-  end
-
-  def about
-  end
+  		if signed_in?
+  			redirect_to current_user
+  		end
+  	end
 end
