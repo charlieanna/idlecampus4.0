@@ -146,7 +146,7 @@
      console.log "node created"
      $scope.groupscreated.push grouptoadd
      g = new Group()
-     g.$createGroup name: group,code:group_code
+     g.$createGroup jid:$scope.XMPP.connection.jid.split("/"),name: group,code:group_code
 
   $scope.createFolder = (group) ->
     group = $scope.data.creategroup

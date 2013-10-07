@@ -16,7 +16,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new
+    @user = User.find_by_jabber_id(params[:jid])
+
+    @group = @user.groups.build
     @group.name = params[:name]
    
     @group.group_code = params[:code]
@@ -28,8 +30,8 @@ class GroupsController < ApplicationController
     flash[:group] = group
     
     if @group.save
-     
-      redirect_to new_group_timetable_path
+     render :nothing => true, :status => 200, :content_type => 'text/html'
+      # redirect_to new_group_timetable_path
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
     end

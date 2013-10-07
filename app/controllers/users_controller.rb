@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.password_confirmation = @user.password
     @user.email = params[:user][:email]
-    @user.jabber_id = params[:jabber_id]
-    @user.device_identifier = "#{params[:user][:name]}@idlecampus.com"
+    @user.jabber_id = "#{params[:user][:name]}@idlecampus.com"
     password = params[:user][:password]
+    @user.device_identifier = "web"
     name = params[:user][:name]
     email = params[:user][:email]
  #    @user.password_confirmation = params[:password]

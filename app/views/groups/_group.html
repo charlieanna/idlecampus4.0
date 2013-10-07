@@ -14,17 +14,17 @@
 
         </div> -->
 		 <div ng-controller="GroupsCtrl">
-             <!-- <form class="form-inline">
+             <form class="form-inline">
                  <input class="create-group-input span2" placeholder="Group Name" type="text"
                         id="creategroupinput" ng-model="data.creategroup"/>
 
                  <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
                          ng-click="createGroup()">Create
                  </button>
- 				<button ng-click="getGroupsCreated()">Get Created Groups</button>
+ 				<button id="getgroups" ng-click="getGroupsCreated()">Get Created Groups</button>
 				
-             </form> -->
-	    <button ng-click="getGroupsCreated()">Get Created Groups</button>
+             </form>
+	   
         <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
 	        <li class="active">
 	            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
@@ -35,11 +35,14 @@
 
 	        </li>
             <!-- <i class="icon-spinner icon-spin"></i> Spinner icon when loading content... -->
-      
-
-            <li ng-repeat="group in data.groupscreated" id="{{group}}">
-                <a href="" ng-click="groupclick(group)"><i class="icon-table"></i>&nbsp;&nbsp;{{group.group_name}}</a>
+            <% @user.groups.each do |group|%>
+               
+               <li>
+                <a href="" ng-click="groupclick(group)"><i class="icon-table"></i>&nbsp;&nbsp;<%= group.name %></a>
             </li>
+            <% end %>
+
+            
 
         </ul>
 	</div>

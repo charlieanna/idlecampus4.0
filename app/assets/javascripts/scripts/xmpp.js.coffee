@@ -164,7 +164,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
 
 
 
-@xmpp = ($scope) ->
+@xmpp = ($scope,Data) ->
 
   $scope.$watch "spin", (newValue, oldValue) ->
    console.log "spin"
@@ -574,6 +574,7 @@ app = angular.module("idlecampus", ['ngResource','$strap.directives'])
           $scope.XMPP.connection = connection
           $scope.XMPP.connection.jid = jid
           console.log "attached"
+		 
           # $scope.getGroupsCreated()
           $scope.connected()
 
