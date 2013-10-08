@@ -44,11 +44,15 @@ class UsersController < ApplicationController
 
 
   def show
-    @user = User.find(params[:id])
-
+    @user = current_user
+    print @user
+   
+    @groups = @user.groups
+    
+    @group = @user.groups.build
     gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
     gon.register = flash[:register]  unless flash[:register].nil?
-
+    gon.group = flash[:group] unless flash[:group].nil?
   end
 
 

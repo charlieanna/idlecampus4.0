@@ -2,7 +2,7 @@
 class GroupsController < ApplicationController
   respond_to :json,:html
   def index
-    @groups = Group.all
+    @groups = current_user.groups
     respond_with @groups
   end
 
@@ -16,12 +16,15 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_jabber_id(params[:jid])
-
-    @group = @user.groups.build
-    @group.name = params[:name]
-   
-    @group.group_code = params[:code]
+    # shout = current_user.shouts
+    # @user = User.find(params[:user_id])
+    # @user = User.find_by_jabber_id(params[:jid])
+    
+    @group = current_user.groups.build
+    
+    @group.name = params[:group][:name]
+    @groups = current_user.groups
+    # @group.group_code = get_group_code
     
     group = {}
     group[:name] = @group.name
@@ -30,7 +33,11 @@ class GroupsController < ApplicationController
     flash[:group] = group
     
     if @group.save
-     render :nothing => true, :status => 200, :content_type => 'text/html'
+        # render :nothing => true, :status => 200, :content_type => 'text/html'
+      respond_to do |format|
+         
+           format.js
+         end
       # redirect_to new_group_timetable_path
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
@@ -121,7 +128,7 @@ class GroupsController < ApplicationController
     while group_codes.include? new_group_code
       new_group_code = generate_group_code
     end
-
+    # return new_group_code
     render :text => new_group_code
 
   end
