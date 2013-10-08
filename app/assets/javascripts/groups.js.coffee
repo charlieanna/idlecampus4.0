@@ -1,5 +1,6 @@
 
 @GroupsCtrl = ($scope,Group,Data,$http) ->
+
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
   $scope.groupscreated = []
@@ -51,10 +52,10 @@
 
 
   $scope.groupclick = (group) ->
-    group = 
-		  group_name :group.name
-		  group_code : group.group_code
+
+
     $scope.data.isVisible = true
+
     $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()
@@ -97,12 +98,14 @@
     ), 0
 
   $scope.getGroupsCreated = ->
-	  $.get "/groups", (data) ->
-      console.log data
-      for d of data
-        console.log d
+    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
+      $(iq).find("item").each ->
+        node = undefined
+        node = $(this).children("value").text()
+        #        $("#groupfollowers").trigger "click", [node]
+        console.log node
         $.get("/groups/get_group_name",
-          group_code: d.group_code
+          group_code: node
 
         ).done (data) ->
 
@@ -111,8 +114,6 @@
           $scope.data.groupscreated.push data
           console.log $scope.data.groupscreated
           $scope.$digest()
-
-   
 
 
   $scope.joinGroup = ->
@@ -141,18 +142,16 @@
 
      $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
       console.log data
-      console.log "node created"
 
      $scope.XMPP.connection.pubsub.createNode group_code, {'pubsub#notification_type': 'normal'}, ->
-     grouptoadd = {"name":group,"group_code":group_code}
+     grouptoadd = {"group_name":group,"group_code":group_code}
      console.log grouptoadd
+     console.log "node created"
 
-    
-	 
-     
-     Data.groupscreated.push grouptoadd
+     $scope.data.groupscreated.push grouptoadd
+
      g = new Group()
-     g.$createGroup jid:$scope.XMPP.connection.jid.split("/")[0],name: group,code:group_code
+     g.$createGroup name: group,code:group_code
 
   $scope.createFolder = (group) ->
     group = $scope.data.creategroup
