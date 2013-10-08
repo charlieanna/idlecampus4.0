@@ -52,11 +52,10 @@
 
 
   $scope.groupclick = (group) ->
-<<<<<<< HEAD
-=======
+
 
     $scope.data.isVisible = true
->>>>>>> working
+
     $scope.data.currentGroup = group
     $("#mygroupposts").show()
     $("#myposts").hide()

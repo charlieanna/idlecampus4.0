@@ -6,6 +6,27 @@ re = /\S+@\S+\.\S+/
 
 app.factory "Data", ->
 
+ 
+  getgroups : (connection)->
+    jid = connection.jid.split("/")[0]
+    connection.pubsub.items jid + "/groups", (iq) ->
+      $(iq).find("item").each ->
+        node = undefined
+        node = $(this).children("value").text()
+        #        $("#groupfollowers").trigger "click", [node]
+        console.log node
+        $.get("/groups/get_group_name",
+          group_code: node
+
+        ).done (data) ->
+
+          console.log data
+
+          $scope.data.groupscreated.push data
+          console.log $scope.data.groupscreated
+          $scope.$digest()
+   
+
   currentGroup : ""
 
   pagetitle: "Latest Posts"
@@ -16,6 +37,8 @@ app.factory "Data", ->
   user: ""
   isVisible: false
   entries: []
+  teacher: []
+  subjects:[]
   smallGroups: []
   weekdays: [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"

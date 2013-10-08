@@ -1,5 +1,7 @@
 
 @EntryCtrl = ($scope, $http,Data) ->
+    
+ 
   $scope.data = Data
   $scope.Monday = false
   $scope.Tuesday = false
@@ -20,10 +22,11 @@
 		
 
 
-    $scope.currentEntry = (entry) ->
-      $scope.data.entry = entry
-
-    $scope.addValueToEntry = (value, entry) ->
+  $scope.currentEntry = (entry) ->
+    $scope.data.entry = entry
+	  
+	
+  $scope.addValueToEntry = (value, entry) ->
 	  # $("#entryvalue").val("")
       console.log "entry"
       $scope.value = ""
@@ -37,9 +40,9 @@
         i++
         console.log $scope.data.timetable
 
-    $scope.data.timetable.entries.push entry
+      $scope.data.timetable.entries.push entry
 
-    console.log $scope.data.timetable
+      console.log $scope.data.timetable
 
   $scope.checked = false
 

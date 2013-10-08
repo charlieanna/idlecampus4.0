@@ -2,8 +2,39 @@ Welcome <%= @user.name%>
 <div class="row">
 <aside class="span3">
     <section>
+        <div ng-controller="GroupsCtrl">
+        	 <form class="form-inline"> 
+                  <input class="create-group-input span2" placeholder="Group Name" type="text"
+                        id="creategroupinput" ng-model="data.creategroup"/>
 
-        <%= render "groups/group"%>
+                 <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
+                         ng-click="createGroup()">Create
+                 </button> 
+				 
+				
+ 				
+				
+              </form>
+        <!-- <%= render "groups/form"%> -->
+        <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
+	        <li class="active">
+	            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
+	               data-parent="navigation-components">
+	                <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
+
+	            </a>
+
+	        </li>
+
+	        <li ng-repeat="group in data.groupscreated" id="{{group}}">
+                              <a href="" ng-click="groupclick(group)">{{group.name}}</a>
+                            </li>
+			
+			
+            <!-- <i class="icon-spinner icon-spin"></i> Spinner icon when loading content... -->
+        <!-- <%= render partial: "groups/group", collection: @groups %> -->
+    </ul>
+	</div>
     </section>
 
 </aside>
@@ -14,7 +45,12 @@ Welcome <%= @user.name%>
 <div class="container">
 <!-- Header boxes -->
 <!-- /Header boxes -->
-	<%= render "timetable/timetable" %>
+	
+	<%= render "timetable/timetable"%>
+
+ </div>
+ </div>
+	
 
 
 <!-- /Content -->
@@ -33,4 +69,6 @@ Welcome <%= @user.name%>
 
 
 </div>
+
+
 

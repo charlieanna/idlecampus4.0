@@ -1,0 +1,72 @@
+
+<!-- /Navbar -->
+
+<div class="row">
+	<!-- Login content -->
+	<div id="login">
+		<div id="main-header">
+			<h3>Login to your user account</h3>
+		</div>
+	
+		<div id="login-content" class="clearfix">
+			
+		
+			  
+	            <%= form_for(:session, url: sessions_path) do |f| %>
+	              
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Email address</label>
+	                       <%= f.text_field :email %>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
+	                        <%= f.text_field :password %>
+							<p class="pull-left"><a href="forgotpassword"><i class="icon-key"></i>&nbsp;Password forgotten?</a></p>
+							<p class="pull-right">Don't have an account yet?&nbsp;&nbsp;<%= link_to "Sign Up!",signup_path %>
+						</div>
+					</fieldset>
+					<hr>
+					
+					
+	                    <input class="btn btn-success btn-large signinbutton" name="commit" type="submit"
+	                           value="Login">
+					
+				  <% end %>
+			  
+            <!-- <form accept-charset="UTF-8" action="/sessions"
+                  method="post" novalidate="novalidate">
+                <div style="margin:0;padding:0;display:inline">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input name="authenticity_token" type="hidden" value="iv7giY5xWb0pes4x7zaDIQIpzfHqeIpVF686QB5bAdo=">
+                </div>
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Username (or email address)</label>
+                        <input type="text" class="input-medium" name="session[email]"
+                               id="bosh_email">
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
+                        <input type="password" class="input-medium" name="session[password]"
+                               id="bosh_password">
+						<p class="pull-left"><a href="forgotpassword"><i class="icon-key"></i>&nbsp;Password forgotten?</a></p>
+						<p class="pull-right">Don't have an account yet?&nbsp;&nbsp;<%= link_to "Sign Up!",signup_path %>
+					</div>
+				</fieldset>
+				<hr>
+				<div class="pull-left">
+					<a href="/" class="btn btn-info btn-large"><i class="icon-arrow-left"></i>&nbsp;&nbsp;Back</a>
+				</div>
+				<div class="pull-right">
+                    <input class="btn btn-success btn-large" name="commit" type="submit"
+                           value="Login">
+				</div>
+			</form> -->
+		</div>
+	</div>
+	<!-- /Login content -->
+</div>
+
+<!-- Javascript files -->
+

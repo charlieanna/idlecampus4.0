@@ -142,8 +142,8 @@ app.directive "passworddir", ->
 $ ->
 
 
-  $("#signinbutton").click ->
-    $("#signin_form").slideToggle()
+  # $("#signinbutton").click ->
+  #   $("#signin_form").slideToggle()
 
   $("#dialog-form1").dialog
     autoOpen: false

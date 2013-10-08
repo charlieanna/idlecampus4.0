@@ -1,17 +1,21 @@
-.navbar.navbar-fixed-top
+.navbar
   .navbar-inner
-
-    %a.brand{href: "#"} IdleCampus
+    
+    %a.brand{href: "/"} 
+      %img.nav-logo{src: "/assets/img/idlecampus.png"}
 
     - if signed_in?
+      %ul.dropdown-menu
+    
+
       Logged in as
       #currentuser= current_user.jabber_id
-
-      =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"margin-top: -15px;"
+      = link_to "New Group",new_group_path,class: "pull-right bluebutton"
+      =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"margin-top: -33px;padding: 9px 11px;", "ng-click" => "signout()"
 
     - else
-      = button_tag "Sign in",class: "btn btn-success pull-right",type: "button",id:"signinbutton"
-      = link_to "Sign up",signup_path,class: "btn btn-primary pull-right"
+      = link_to "Log In",signin_path,class: "btn btn-success pull-right",id:"signinbutton"
+      = link_to "Sign Up!",signup_path,class: "btn btn-primary pull-right",id:"signupbutton"
 
 
   #signin_form.pull-right

@@ -8,7 +8,7 @@
 /*************************/
 /*-	General settings	-*/
 /*************************/
-body {   qweq
+body {   
 	/*background-color: #D0E0EB;*/
 	font-family: 'Asap', sans-serif;
 }
@@ -548,13 +548,13 @@ li.news-item {
 /*-	Login page	-*/
 /*****************/
 #login {
-	margin: 150px auto 0;
+	margin: 50px auto 0;
 	width: 450px;
 	color: #555;
 }
 
 #login-content {
-	background: #F5F5F5;
+	background: #E0DEDE;
 	padding: 20px;
 	border: 1px solid #EDEDED;
 	border-radius: 5px;
