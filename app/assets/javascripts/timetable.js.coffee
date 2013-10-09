@@ -1,4 +1,4 @@
-@TimetableCtrl = ($scope, $resource,Data) ->
+@TimetableCtrl = ["$scope", "$resource","Data",($scope, $resource,Data) ->
 
   $scope.data = Data
 
@@ -427,7 +427,7 @@
       alert "Please select a group"
 
 
-	  
+    
   $scope.timeArray = new Array()
 
   $scope.timetableArray = new Array()
@@ -535,7 +535,7 @@
     update:
       method: "PUT"
   )
-
+]
 
 
 

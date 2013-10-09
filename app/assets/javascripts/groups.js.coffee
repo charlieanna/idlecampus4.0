@@ -1,5 +1,5 @@
 
-@GroupsCtrl = ($scope,Group,Data,$http) ->
+@GroupsCtrl = ["$scope","Group","Data","$http",($scope,Group,Data,$http) ->
 
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
@@ -207,3 +207,5 @@
 
 
   $scope.user = ""
+  
+  ]
