@@ -144,7 +144,7 @@
       console.log data
 
      $scope.XMPP.connection.pubsub.createNode group_code, {'pubsub#notification_type': 'normal'}, ->
-     grouptoadd = {"group_name":group,"group_code":group_code}
+     grouptoadd = {"name":group,"group_code":group_code}
      console.log grouptoadd
      console.log "node created"
 
