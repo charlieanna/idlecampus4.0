@@ -149,17 +149,11 @@
      grouptoadd = {"group_name":group,"group_code":group_code}
      console.log grouptoadd
      console.log "node created"
-<<<<<<< HEAD
-<<<<<<< HEAD
-     $scope.data.groupscreated.push grouptoadd
-=======
-     $scope.groupscreated.push grouptoadd
->>>>>>> working
-=======
+
 
      $scope.data.groupscreated.push grouptoadd
 
->>>>>>> working
+
      g = new Group()
      g.$createGroup name: group,code:group_code
 
