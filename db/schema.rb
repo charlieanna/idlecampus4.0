@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001075424) do
+ActiveRecord::Schema.define(version: 20131009081211) do
 
   create_table "batches", force: true do |t|
     t.string   "name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20131001075424) do
     t.datetime "updated_at"
   end
 
+  create_table "cvzxc", force: true do |t|
+    t.text    "name", limit: 20
+    t.integer "P_Id"
+  end
+
   create_table "fields", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -41,6 +46,11 @@ ActiveRecord::Schema.define(version: 20131001075424) do
     t.datetime "updated_at"
   end
 
+  create_table "fsfdsf", force: true do |t|
+    t.text    "name", limit: 20
+    t.integer "P_Id"
+  end
+
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "group_code"
@@ -48,6 +58,8 @@ ActiveRecord::Schema.define(version: 20131001075424) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
   create_table "rooms", force: true do |t|
     t.string   "name"
