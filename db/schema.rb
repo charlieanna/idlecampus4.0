@@ -12,9 +12,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20130924013132) do
 =======
 ActiveRecord::Schema.define(version: 20131001075424) do
+>>>>>>> working
+=======
+ActiveRecord::Schema.define(version: 20131009081211) do
 >>>>>>> working
 
   create_table "batches", force: true do |t|
@@ -62,6 +66,8 @@ ActiveRecord::Schema.define(version: 20131001075424) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
   create_table "rooms", force: true do |t|
     t.string   "name"

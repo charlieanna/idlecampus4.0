@@ -1,5 +1,7 @@
 
-@GroupsCtrl = ($scope,Group,Data,$http) ->
+
+@GroupsCtrl = ["$scope","Group","Data","$http",($scope,Group,Data,$http) ->
+
 
   $scope.data = Data
   $scope.pagetitle = "Latest Posts"
@@ -148,9 +150,15 @@
      console.log grouptoadd
      console.log "node created"
 <<<<<<< HEAD
+<<<<<<< HEAD
      $scope.data.groupscreated.push grouptoadd
 =======
      $scope.groupscreated.push grouptoadd
+>>>>>>> working
+=======
+
+     $scope.data.groupscreated.push grouptoadd
+
 >>>>>>> working
      g = new Group()
      g.$createGroup name: group,code:group_code
@@ -209,3 +217,5 @@
 
 
   $scope.user = ""
+  
+  ]

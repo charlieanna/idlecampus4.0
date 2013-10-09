@@ -1,6 +1,6 @@
-app = undefined
+
 app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
-@xmpp = ($scope, Data) ->
+@xmpp = ["$scope","Data",($scope, Data) ->
   group_name = undefined
   group_code = undefined
   $scope.$watch "spin", (newValue, oldValue) ->
@@ -434,4 +434,4 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
         console.log "attached"
         $scope.connected()
       else
-        $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED
+        $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]

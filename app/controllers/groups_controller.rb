@@ -22,7 +22,8 @@ class GroupsController < ApplicationController
     
     @group = current_user.groups.build
     
-    @group.name = params[:group][:name]
+    @group.name = params[:name]
+     @group.group_code = params[:code]
     @groups = current_user.groups
     # @group.group_code = get_group_code
     

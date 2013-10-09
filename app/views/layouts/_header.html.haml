@@ -2,8 +2,7 @@
   .navbar-inner
     
     %a.brand{href: "/"} 
-      %img.nav-logo{src: "/assets/img/idlecampus.png"}
-
+      =  image_tag "img/idlecampus.png", :class => "nav-logo",:size => "180x45"
     - if signed_in?
       %ul.dropdown-menu
     

@@ -1,5 +1,5 @@
 
-@EntryCtrl = ($scope, $http,Data) ->
+@EntryCtrl = ["$scope", "$http","Data",($scope, $http,Data) ->
     
  
   $scope.data = Data
@@ -148,3 +148,4 @@
 
     console.log $scope.data.timetable.weekdays
 
+]

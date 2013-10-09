@@ -225,11 +225,10 @@
 	    <meta name="apple-mobile-web-app-capable" content="yes">
 	    <title>IdleCampus</title>
 
-	    <link href="/css/bootstrap.css" rel="stylesheet">
-	    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+	   
 
 	    <%= stylesheet_link_tag    "application", :media => "all" %>
-	    <%= javascript_include_tag "application" %>
+	    <%= javascript_include_tag "application", :defer => "defer" %>
     
 	    <%= csrf_meta_tags %>
     </head>
