@@ -3,6 +3,23 @@ Welcome <%= @user.name%>
 <aside class="span3">
     <section>
         <div ng-controller="GroupsCtrl">
+			<div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
+			         aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-header">
+			            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			            <h3 id="myModalLabel">Create Alert</h3>
+			        </div>
+			        <div class="modal-body">
+			            <input placeholder="Alert" type="text"
+			                   id="creategroupinput" ng-model="data.message"/>
+			        </div>
+			        <div class="modal-footer">
+			            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			            <button data-dismiss="modal" class="btn btn-primary"
+			                    ng-click="publishgroupalert()">Send
+			            </button>
+			        </div>
+			    </div>
         	 <form class="form-inline"> 
                   <input class="create-group-input span2" placeholder="Group Name" type="text"
                         id="creategroupinput" ng-model="data.creategroup"/>

@@ -186,7 +186,7 @@
     message = $scope.groupalertform
     currentgroup = $scope.data.currentGroup
     console.log currentgroup
-    XMPP.connection.pubsub.publish currentgroup, message, (data) ->
+    $scope.XMPP.connection.pubsub.publish currentgroup, message, (data) ->
       console.log data
 
 
@@ -194,18 +194,18 @@
    
     message = $scope.assignment
     console.log group
-    XMPP.connection.pubsub.publish currentgroup, message, (data) ->
+    $scope.XMPP.connection.pubsub.publish currentgroup, message, (data) ->
       console.log data
 
-
-  $scope.publishgroupalert = ->
-   
-    message = $scope.message
-    console.log group
-    XMPP.connection.pubsub.publish currentgroup, message, (data) ->
-      console.log data
-
-
-  $scope.user = ""
+  # 
+  # $scope.publishgroupalert = ->
+  #  
+  #   message = $scope.message
+  #   console.log group
+  #   XMPP.connection.pubsub.publish currentgroup, message, (data) ->
+  #     console.log data
+  # 
+  # 
+  # $scope.user = ""
   
   ]
