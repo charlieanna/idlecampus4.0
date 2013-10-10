@@ -19,7 +19,7 @@ class TimetablesController < ApplicationController
     
     def create
 
-      db = SQLite3::Database.new('db/development.sqlite3')
+      # db = SQLite3::Database.new('db/development.sqlite3')
       entries = ActiveSupport::JSON.decode(params['timetable']["entries"])
       p entries
       members = params['timetable']["members"]
@@ -69,10 +69,12 @@ class TimetablesController < ApplicationController
                     f = Field.create(:name => key)
                     timetable.fields << f
                   end
-
-                  results = db.execute("CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))")
-
-                  results = db.execute("INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})")
+                  sql = "CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))"
+                  ActiveRecord::Base.connection.execute(sql)
+                  # results = db.execute("CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))")
+                  sql = "INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})"
+                  ActiveRecord::Base.connection.execute(sql)
+                  # results = db.execute("INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})")
                   k = Class.new(ActiveRecord::Base) do
                     self.table_name = key
                     belongs_to :timetable_entry
