@@ -12,12 +12,15 @@
   $scope.Sunday = false
  
 
-  $scope.addEntry = (entry) ->
+  $scope.addEntry = (entry_name) ->
 
     $scope.entry = ""
     entry =
-        name: entry
+        name: entry_name
         values: []
+    $scope.data.timetable.entries.push entry
+
+    
 		
 		
 
@@ -40,7 +43,7 @@
         i++
         console.log $scope.data.timetable
 
-      $scope.data.timetable.entries.push entry
+     
 
       console.log $scope.data.timetable
 
