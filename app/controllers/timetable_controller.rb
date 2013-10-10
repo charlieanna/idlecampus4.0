@@ -167,7 +167,7 @@ class TimetableController < ApplicationController
 
     end
 
-      entries = time.timetable_entries
+      entries = time.timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
       entries.sort{ |a, b|
 
         a.class_timing <=> b.class_timing

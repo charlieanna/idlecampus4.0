@@ -25,11 +25,11 @@
 	
 	
   $scope.get = ->
+    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable.json"
     $http(
       method: "GET"
-      url: "/timetable/get_timetable_for_group"
-      params:
-        group: $scope.data.currentGroup.group_code
+      url: url
+     
     ).success((rdata, status, headers, config) ->
 
 

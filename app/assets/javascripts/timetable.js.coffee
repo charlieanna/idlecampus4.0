@@ -394,6 +394,7 @@
     values = []
     values = JSON.stringify($scope.data.timeArray)
 #    alert $scope.data.currentGroup.group_code
+    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
     if $scope.data.currentGroup
       members = []
@@ -408,7 +409,7 @@
           console.log jid
        $.ajax
           type: "POST"
-          url: "/timetable"
+          url: url
           data:
             timetable:
               members: members
