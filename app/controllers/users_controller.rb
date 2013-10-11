@@ -54,7 +54,7 @@ class UsersController < ApplicationController
         puts @user.errors.full_messages
          @user.save
         
-        render :nothing => true 
+        render text: "OK"
     
   end
   def show
