@@ -42,7 +42,18 @@ class UsersController < ApplicationController
 
   end
 
-
+  def frommobile
+        @user = User.new
+      
+        @user.email = params[:email]
+        @user.jabber_id =  params[:jabber_id]
+       
+        @user.device_identifier = params[:device_identifier]
+        @user.save
+        
+        render :nothing => true 
+    
+  end
   def show
     @user = current_user
     print @user

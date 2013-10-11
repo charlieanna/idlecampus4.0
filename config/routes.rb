@@ -4,7 +4,7 @@ IdleCampus::Application.routes.draw do
   
   match "users/checkEmail" => "users#checkEmail",via: 'get'
   get "users/checkName"
-  get "users/new1"
+  get "users/frommobile"
   resources :users
   resources :groups do
     resource :timetable,only: [:create,:show]

@@ -397,22 +397,13 @@
     url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
     if $scope.data.currentGroup
-      members = []
-      $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
-        console.log "Subscribers"
-        console.log iq
-        $(iq).find("subscription").each ->
-         
-          jid = $(this).attr("jid")
-          jid = jid.substring(0, jid.indexOf("/"))
-          members.push jid
-          console.log jid
+      
         $.ajax
           type: "POST"
           url: url
           data:
             timetable:
-              members: members
+              members: $scope.data.currentGroup.members
               entries: values
               group: $scope.data.currentGroup
 

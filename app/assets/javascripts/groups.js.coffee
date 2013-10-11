@@ -43,6 +43,16 @@
       $scope.data.timetable.batches = rdata.timetable.batches
       $scope.data.timetable.entries = rdata.timetable.field_entries
       $scope.data.timeArray = entries
+      $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
+        console.log "Subscribers"
+        console.log iq
+        $(iq).find("subscription").each ->
+         
+          jid = $(this).attr("jid")
+          #jid = jid.substring(0, jid.indexOf("/"))
+          console.log jid
+          $scope.data.currentGroup.members.push jid
+          
 
       console.log "HHHHHHHHHHHHH"
       console.log $scope.data
@@ -57,6 +67,7 @@
     $scope.data.isVisible = true
 
     $scope.data.currentGroup = group
+    $scope.data.currentGroup.members = []
     $("#mygroupposts").show()
     $("#myposts").hide()
     console.log $scope.folders
