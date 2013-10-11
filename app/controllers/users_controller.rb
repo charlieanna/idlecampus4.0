@@ -44,12 +44,15 @@ class UsersController < ApplicationController
 
   def frommobile
         @user = User.new
-      
+        @user.password = params[:password]
+        @user.password_confirmation = @user.password
         @user.email = params[:email]
         @user.jabber_id =  params[:jabber_id]
        
         @user.device_identifier = params[:device_identifier]
-        @user.save
+        puts @user.valid?
+        puts @user.errors.full_messages
+         @user.save
         
         render :nothing => true 
     
