@@ -407,7 +407,7 @@
           jid = jid.substring(0, jid.indexOf("/"))
           members.push jid
           console.log jid
-       $.ajax
+        $.ajax
           type: "POST"
           url: url
           data:
