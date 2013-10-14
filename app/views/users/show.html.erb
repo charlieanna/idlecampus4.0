@@ -11,7 +11,7 @@ Welcome <%= @user.name%>
 			        </div>
 			        <div class="modal-body">
 			            <input placeholder="Alert" type="text"
-			                   id="creategroupinput" ng-model="data.message"/>
+			                   id="createalertinput" ng-model="data.message"/>
 			        </div>
 			        <div class="modal-footer">
 			            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -22,8 +22,8 @@ Welcome <%= @user.name%>
 			    </div>
         	 <form class="form-inline"> 
                   <input class="create-group-input span2" placeholder="Group Name" type="text"
-                        id="creategroupinput" ng-model="data.creategroup"/>
-
+                        id="creategroupinput" name="group" ng-model="data.creategroup"/>
+                 
                  <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
                          ng-click="createGroup()">Create
                  </button> 

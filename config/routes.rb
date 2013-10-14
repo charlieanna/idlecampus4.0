@@ -6,15 +6,17 @@ IdleCampus::Application.routes.draw do
   get "users/checkName"
   post "users/frommobile"
   post "users/login"
-  resources :users
-  resources :groups do
-    resource :timetable,only: [:create,:show]
-    collection do
-      get 'get_group_code'
-      get 'get_group_name'
-      get 'find_by_name'
-    end
+  resources :users do 
+    resources :groups
   end
+  # resources :groups do
+  #   resource :timetable,only: [:create,:show]
+  #   collection do
+  #     get 'get_group_code'
+  #     get 'get_group_name'
+  #     get 'find_by_name'
+  #   end
+  # end
   root  'static_pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
@@ -22,7 +24,12 @@ IdleCampus::Application.routes.draw do
   match '/signin',  to: 'sessions#new',            via: 'get'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-
+  namespace :api do
+    resources :users, only: [:create]
+  end
+  
+  resources :check_emails,only: :show
+  resources :check_names,only: :show
   # get "timetable/create"
   #  post "timetable/create"
    # get "timetable/get_timetable_for_group"

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
  #                    uniqueness: { case_sensitive: false }
  has_many :groups
    has_secure_password
+   # has_many :groups,through: :group_membership
   # validates :password, length: { minimum: 6 }
 
 

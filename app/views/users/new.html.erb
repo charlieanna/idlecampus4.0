@@ -49,14 +49,14 @@
 						<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
 
 		  		     
-		  		      <%= f.password_field :password,name: "user[password]", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password" %>
+		  		      <%= f.password_field :password,name: "user[password]",id:"Password", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password" %>
                       
 						<i id="passwordicon"></i>
 					</div>
 				</fieldset>
 				<hr>
 			
-					<%= f.submit 'Sign Up', :class => "btn btn-success btn-large signupbutton" %>
+					<%= f.submit 'Create Account', :class => "btn btn-success btn-large signupbutton" %>
 				
 				<% end %>
 		</div>

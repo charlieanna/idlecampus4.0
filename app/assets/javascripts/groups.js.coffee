@@ -49,7 +49,7 @@
         $(iq).find("subscription").each ->
          
           jid = $(this).attr("jid")
-          #jid = jid.substring(0, jid.indexOf("/"))
+          jid = jid.substring(0, jid.indexOf("/"))
           console.log jid
           $scope.data.currentGroup.members.push jid
           
@@ -139,6 +139,7 @@
     ), true
 
   $scope.createGroup = (group) ->
+    alert "create"
     g = undefined
     group = $scope.data.creategroup
     console.log group

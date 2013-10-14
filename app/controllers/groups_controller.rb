@@ -19,27 +19,30 @@ class GroupsController < ApplicationController
     # shout = current_user.shouts
     # @user = User.find(params[:user_id])
     # @user = User.find_by_jabber_id(params[:jid])
-    
-    @group = current_user.groups.build
-    
-    @group.name = params[:name]
-     @group.group_code = params[:code]
+    puts params
+     @group = current_user.groups.build
+     
+    @group.name = params[:group][:name]
+     @group.group_code = params[:group][:code]
     @groups = current_user.groups
     # @group.group_code = get_group_code
-    
+    # put get_group_code inside models 
+    #limit controller length 100. refactor the code into models and other objects. 
     group = {}
     group[:name] = @group.name
     group[:code] = @group.group_code
     
     flash[:group] = group
-    
+    # puts @group
+    # @group.name
+    # puts Group.count
     if @group.save
         # render :nothing => true, :status => 200, :content_type => 'text/html'
-      respond_to do |format|
-         
-           format.js
-         end
-      # redirect_to new_group_timetable_path
+      # respond_to do |format|
+      #      format.html
+      #      format.js
+      #    end
+       redirect_to  current_user
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
     end
@@ -117,7 +120,7 @@ class GroupsController < ApplicationController
 
 
   end
-
+  #remove this. Instead send the whole object as a json and then create the group on the xmpp server.
   def  get_group_code
     groups = Group.all
     group_codes = []

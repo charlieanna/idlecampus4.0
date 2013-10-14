@@ -1,0 +1,2 @@
+class EmailValidationsController < ApplicationController
+end
