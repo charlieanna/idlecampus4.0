@@ -9,7 +9,7 @@
 
       Logged in as
       #currentuser= current_user.jabber_id
-      = link_to "New Group",new_group_path,class: "pull-right bluebutton"
+      / = link_to "New Group",new_group_path,class: "pull-right bluebutton"
       =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"margin-top: -33px;padding: 9px 11px;", "ng-click" => "signout()"
 
     - else
@@ -17,17 +17,4 @@
       = link_to "Sign Up!",signup_path,class: "btn btn-primary pull-right",id:"signupbutton"
 
 
-  #signin_form.pull-right
-    %form.form-inline{"accept-charset" => "UTF-8", action: "/sessions", method: "post", name: "signinform"}
-
-      %input{name: "utf8", type: "hidden", value: "✓"}/
-      %input{name: "authenticity_token", type: "hidden", value: "iv7giY5xWb0pes4x7zaDIQIpzfHqeIpVF686QB5bAdo="}/
-
-      %input#bosh_email.input-medium{name: "session[email]", "ng-model" => "email", placeholder: "Email:", required: "", type: "email"}/
-
-      %input#bosh_password.input-medium{name: "session[password]", placeholder: "Password:", required: "", type: "password"}/
-      / <input class="btn btn-success btn-large offset1" name="commit" type="submit" value="Login">
-      %button.btn.btn-success.btn-medium{type: "submit"}
-        %i{"ng-class" => "spin"}
-        Login
 
