@@ -139,31 +139,33 @@
     ), true
 
   $scope.createGroup = (group) ->
-    alert "create"
-    g = undefined
+    
+  
     group = $scope.data.creategroup
     console.log group
     group_code = ""
-    $.get("/groups/get_group_code",
-      group: group
 
+    $.post("/groups",
+      group: 
+		      name:group
+	  
+ 
     ).done (data) ->
-     group_code = data
+     group_code = data.group_code
      console.log data
-
-
+ 
+ 
      $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
       console.log data
-
+ 
      $scope.XMPP.connection.pubsub.createNode group_code, {'pubsub#notification_type': 'normal'}, ->
      grouptoadd = {"name":group,"group_code":group_code}
      console.log grouptoadd
      console.log "node created"
-
+ 
      $scope.data.groupscreated.push grouptoadd
 
-     g = new Group()
-     g.$createGroup name: group,code:group_code
+
 
   $scope.createFolder = (group) ->
     group = $scope.data.creategroup

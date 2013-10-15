@@ -19,13 +19,15 @@ class GroupsController < ApplicationController
     # shout = current_user.shouts
     # @user = User.find(params[:user_id])
     # @user = User.find_by_jabber_id(params[:jid])
+    # puts "DSDDSDSDSDS"
+    # puts current_user.name
     puts params
      @group = current_user.groups.build
      
     @group.name = params[:group][:name]
-     @group.group_code = params[:group][:code]
+ 
     @groups = current_user.groups
-    # @group.group_code = get_group_code
+    @group.group_code = get_group_code
     # put get_group_code inside models 
     #limit controller length 100. refactor the code into models and other objects. 
     group = {}
@@ -42,7 +44,7 @@ class GroupsController < ApplicationController
       #      format.html
       #      format.js
       #    end
-       redirect_to  current_user
+      respond_with @group
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
     end
@@ -132,8 +134,8 @@ class GroupsController < ApplicationController
     while group_codes.include? new_group_code
       new_group_code = generate_group_code
     end
-    # return new_group_code
-    render :text => new_group_code
+    return new_group_code
+    # render :text => new_group_code
 
   end
 

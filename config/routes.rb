@@ -9,14 +9,14 @@ IdleCampus::Application.routes.draw do
   resources :users do 
     resources :groups
   end
-  # resources :groups do
-  #   resource :timetable,only: [:create,:show]
-  #   collection do
-  #     get 'get_group_code'
-  #     get 'get_group_name'
-  #     get 'find_by_name'
-  #   end
-  # end
+  resources :groups do
+    resource :timetable,only: [:create,:show]
+    collection do
+      get 'get_group_code'
+      get 'get_group_name'
+      get 'find_by_name'
+    end
+  end
   root  'static_pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'

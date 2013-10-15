@@ -16,12 +16,18 @@ describe "Groups" do
      
 	   
     end
-     fill_in "group_name", with: "Electronics"
-     
-
-     # expect{click_button "Create"}.to change{user.groups.count}.by(1)
-     expect{click_button "Create Group"}.to change{user.groups.count}.by(1)
-  end	
+    
+    expect do
+            xhr :post, user_groups_path(@user), groups: { name:"Electronics" }
+          end.to change(@user.groups, :count).by(1)
+         # # expect{click_button "Create"}.to change{user.groups.count}.by(1)
+         # expect{click_button "Create Group"}.to change{user.groups.count}.by(1
+     # fill_in "group_name", with: "Electronics"
+#      
+# 
+#      # expect{click_button "Create"}.to change{user.groups.count}.by(1)
+#      expect{click_button "Create Group"}.to change{user.groups.count}.by(1)
+   end  
 
   it "signed in user should be able see the groups he has created" do
     user = FactoryGirl.create(:user)
