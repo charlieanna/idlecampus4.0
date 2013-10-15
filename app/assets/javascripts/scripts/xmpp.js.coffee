@@ -400,10 +400,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     localStorage.clear()
 
   $scope.attach = ->
-    conn = undefined
-    jid = undefined
-    rid = undefined
-    sid = undefined
+   
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     console.log conn
     conn.xmlInput = (body) ->

@@ -109,22 +109,34 @@
     ), 0
 
   $scope.getGroupsCreated = ->
-    $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
-      $(iq).find("item").each ->
-        node = undefined
-        node = $(this).children("value").text()
-        #        $("#groupfollowers").trigger "click", [node]
-        console.log node
-        $.get("/groups/get_group_name",
-          group_code: node
-
-        ).done (data) ->
-
-          console.log data
-
-          $scope.data.groupscreated.push data
-          console.log $scope.data.groupscreated
-          $scope.$digest()
+    $.get("/groups",
+      
+ 
+    ).done (data) ->
+     group_code = data.group_code
+     console.log data
+	 $scope.data.groupscreated = data
+	 console.log $scope.data.groupscreated
+	 $scope.$digest()
+     
+ 
+     
+    # $scope.XMPP.connection.pubsub.items $scope.XMPP.connection.jid.split("/")[0] + "/groups", (iq) ->
+ #      $(iq).find("item").each ->
+ #        node = undefined
+ #        node = $(this).children("value").text()
+ #        #        $("#groupfollowers").trigger "click", [node]
+ #        console.log node
+ #        $.get("/groups/get_group_name",
+ #          group_code: node
+ # 
+ #        ).done (data) ->
+ # 
+ #          console.log data
+ # 
+ #          $scope.data.groupscreated.push data
+ #          console.log $scope.data.groupscreated
+ #          $scope.$digest()
 
 
   $scope.joinGroup = ->

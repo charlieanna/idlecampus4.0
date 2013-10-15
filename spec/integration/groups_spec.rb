@@ -17,24 +17,20 @@ describe "Groups" do
 
   it "signed in user should be able see the groups he has created" do
     user = FactoryGirl.create(:user)
-    pending
-	  visit '/'
-	  click_link "Log In"
-
-	  fill_in "session_email",with: user.email
-	  fill_in "session_password",with:user.password
-	  
-	  within("#login-content") do
-	  
-     click_button "Login"
-     
-	   
-    end
-
+   
+    
+    sign_in user, no_capybara: true
+     puts user.name
     group1 = FactoryGirl.create(:group,user: user)
     group2 = FactoryGirl.create(:group,user: user)
-    puts user.groups.first.name   
-    expect(page).to have_css "ul#sidebar li"
+    
+    puts user.groups
+    xhr :get, user_groups_path(user),format: :json
+
+    print response.body
+   response.should be_success
+   # response.should render_template('email')
+    # expect(page).to have_css "ul#sidebar li"
     # expect(page).to have_css "ul#groupscreated li",text:group2.name
 
   end

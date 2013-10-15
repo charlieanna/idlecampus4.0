@@ -16,34 +16,22 @@ class GroupsController < ApplicationController
   end
 
   def create
-    # shout = current_user.shouts
-    # @user = User.find(params[:user_id])
-    # @user = User.find_by_jabber_id(params[:jid])
-    # puts "DSDDSDSDSDS"
-    # puts current_user.name
-    puts params
-     @group = current_user.groups.build
+  
+    @group = current_user.groups.build
      
     @group.name = params[:group][:name]
  
     @groups = current_user.groups
     @group.group_code = get_group_code
-    # put get_group_code inside models 
-    #limit controller length 100. refactor the code into models and other objects. 
+    
     group = {}
     group[:name] = @group.name
     group[:code] = @group.group_code
     
     flash[:group] = group
-    # puts @group
-    # @group.name
-    # puts Group.count
+   
     if @group.save
-        # render :nothing => true, :status => 200, :content_type => 'text/html'
-      # respond_to do |format|
-      #      format.html
-      #      format.js
-      #    end
+     
       respond_with @group
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
