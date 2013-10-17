@@ -52,4 +52,23 @@ describe "Timetable Page" do
      end
     end
   end
+
+  describe "getting the timetable" do
+
+    it "shoud get me the timetable for the group" do
+     group = Group.create(name:"Electronics",group_code:"9A2KVG")
+
+     # puts group.id
+        
+     params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"asdasdas\":\"asdasda\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
+
+     xhr :post, group_timetables_path(group),params
+
+     xhr :get,group_timetables_path(group),group_code: "9A2KVG"
+     
+     expect(response.code).to eq("200")
+
+   end
+
+  end
 end
