@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
 	validates :name,presence: true
     has_one :timetable
+    has_many :timetable_fields
     belongs_to :user
     # has_many :user,through: :group_membership
     

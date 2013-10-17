@@ -1,23 +1,16 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe TimetableEntry do
-  let(:timetable) {FactoryGirl.create(:timetable)}
+	before{ @timetable = TimetableEntry.new}
+	subject{@timetable}
+	it{should respond_to(:timetable_entries)}
+	it{should respond_to(:weekdays)}
+	it{should respond_to(:group)}
+	it {should respond_to(:create_timetable)}
+	it {should respond_to(:create_field)}
+	it {should respond_to(:create_record_for)}
+	it {should respond_to(:get_entries)}
+	it {should respond_to(:build_f)}
 
-  before do
-  	@timetable_entry = timetable.timetable_entries.build
-  end
-
-  subject{ @timetable_entry}
-
-  it {should respond_to(:timetable_id)}
-  it { should respond_to(:timetable) }
-  it {should respond_to(:weekday)}
-  it { should respond_to(:subject)}
-  it {should respond_to(:teacher)}
-  its(:timetable) { should eq timetable }
-
-  describe "when timetable_id is not present" do
-    before { @timetable_entry.timetable_id = nil }
-    it { should_not be_valid }
-  end
+	
 end

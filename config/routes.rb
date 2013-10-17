@@ -10,7 +10,7 @@ IdleCampus::Application.routes.draw do
     resources :groups
   end
   resources :groups do
-    resource :timetable,only: [:create,:show]
+    resource :timetables,only: [:create,:show]
     collection do
       
       get 'get_group_name'
@@ -30,6 +30,8 @@ IdleCampus::Application.routes.draw do
   
   resources :check_emails,only: :show
   resources :check_names,only: :show
+  
+  resources :email_validations,only: :show
   # get "timetable/create"
   #  post "timetable/create"
    # get "timetable/get_timetable_for_group"

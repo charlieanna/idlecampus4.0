@@ -7,156 +7,67 @@ respond_to :json
   
   
  
-
-
+  
     
     def create
-
+      p params
       entries = ActiveSupport::JSON.decode(params['timetable']["entries"])
-      p entries
-      members = params['timetable']["members"]
       
-      devices = get_devices(members)
 
+      
+      members = params['timetable']["members"]
+       
+      p members
+      
       group = Group.find_by_group_code(params['timetable']["group"]["group_code"])
       
-      timetable = group.timetable
-      if not timetable
-        timetable = Timetable.create
-      end
-
-      p group
-      if group
-        entries.each do |ent|
-
-          ent.each do |en|
-
-            en.each do |entry|
-              p entry
-              entry.each {
-
-                  |key, value|
-                p key
-                p value
-                
-                
-              
-               create_timetable_entry(entry)
-               
-              
-                  
-                
-              
-               
-              }
-
-
-            end
-          end
-        end
-        group.timetable = timetable
-        timetable.save
-        group.save
-        
-        
-       
-        message = 'http://idlecampus.com/groups/'+params['timetable']["group"]["group_code"]+'/timetable.json'
-        
-        Push.new(devices,message).push
-           
-          end
-        end
-
-      render :text => "saved"
-    end
-    
-    def create_timetable_entry(entry)
       
-      class_timing = Class_Timing.find_or_create_by(:to_hours => entry['to_hours'], :to_minutes => entry['to_minutes'], :from_hours => entry['from_hours'], :from_minutes => entry['from_minutes'])
+      timetable = Timetable.find_or_create_by(group_id:group.id)
+
+
+
      
-      small_group = SmallGroup.find_or_create_by(name:entry['batch'])
-      
-      weekday = Weekday.find_or_create_by(name: entry['weekday'])
+      if group
 
-      timetableentry = TimetableEntry.find_or_create_by(:timetable_id => timetable.id, :weekday_id => weekday.id, :class_timing_id => c.id, :small_group_id => small_group.id)
- 
-      create_field(timetableentry)
-      
-      timetableentry.save
-       
-      return timetableentry
-      
-    end
-    
-    def create_field(timetableentry)
-      if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
-        f = Field.find_by_name(key)
-        if not f
-          f = Field.create(:name => key)
-          timetable.fields << f
-        end
-        sql = "CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))"
-        ActiveRecord::Base.connection.execute(sql)
-        # results = db.execute("CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))")
-        sql = "INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})"
-        ActiveRecord::Base.connection.execute(sql)
-        # results = db.execute("INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})")
-        k = Class.new(ActiveRecord::Base) do
-          self.table_name = key
-          belongs_to :timetable_entry
-        end
+         timetable.create_timetable(entries)
 
-      end
+         
+      
+        
+         timetable.save
+     
+         message = 'http://idlecampus.com/groups/'+params['timetable']["group"]["group_code"]+'/timetable.json'
+        
+         Push.new(members,message).send_push
+           
+         
+       end
+
+      render status: 200,nothing: true
     end
     
-    def get_devices(members)
-    
-      devices = []
-      if members
-      members.each do |member|
-        user = User.find_by_jabber_id(member)
-        device = user.device_identifier
-        devices << device
-      end
-    
-      return devices
-    end
+   
 
     def show
-    p params
-    group =  params["group_id"]
-    p group
-    group = Group.find_by_group_code(group)
-    time = group.timetable
-    weekdays = []
-    batches = []
-    field_entries = []
-    field_entry = {}
-    field_entry["name"] = ""
-    field_entry["values"] = []
-    if time
-    fields = time.fields
-    f = []
-    entries_array = []
+      p params
+      group =  params["group_id"]
+      p group
+      group = Group.find_by_group_code(group)
+      time = group.timetable
+      weekdays = []
+      batches = []
+      field_entries = []
+      field_entry = {}
+      field_entry["name"] = ""
+      field_entry["values"] = []
+      if time
+      fields = time.fields
+      f = []
+      entries_array = []
 
-    fields.each do |field|
-
-      f.push(Class.new(ActiveRecord::Base) do
-        self.table_name = field.name
-        #belongs_to :timetable_entry
-      end)
-
-    end
-
-      entries = time.timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
-      entries.sort{ |a, b|
-
-        a.class_timing <=> b.class_timing
-
-
-
-      }
-
+      build_f(fields)
+      entries = get_entries(time)
+     
 
 
 

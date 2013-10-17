@@ -2,6 +2,8 @@ FactoryGirl.define do
   factory :user do
     sequence(:name) { |n| "ankur#{n}" }
     sequence(:email){ |n| "ankothari#{n}@gmail.com"}
+    sequence(:jabber_id) { |n| "name#{n}@idlecampus.com"}
+    device_identifier "dskjfnskjfnsjkdn"
     password "akk322" 
     password_confirmation "akk322"	
     end

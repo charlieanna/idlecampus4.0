@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011200009) do
+ActiveRecord::Schema.define(version: 20131016185530) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -165,6 +165,20 @@ ActiveRecord::Schema.define(version: 20131011200009) do
     t.integer  "teacher_id"
   end
 
+  create_table "timetable_field_values", force: true do |t|
+    t.string   "name"
+    t.integer  "timetable_field_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timetable_fields", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "timetables", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -183,6 +197,7 @@ ActiveRecord::Schema.define(version: 20131011200009) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["jabber_id"], name: "index_users_on_jabber_id"
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "weekdays", force: true do |t|

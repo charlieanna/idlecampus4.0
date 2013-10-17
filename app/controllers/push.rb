@@ -1,25 +1,33 @@
 class Push
-  
-  def initialize(devices,message)
+    attr_reader :members,:message
+  def initialize(members,message)
     @message = message
-    @devices = devices
+    @members = members
+    
   end
-    def push
-      create_push
-     
-    end
+  
+  def devices
+    User.get_devices(@members)
+  end
+  
+
+    
   
   
     def create_push
+      
       timetable_hash = {}
       entries_hash = {}
-      entries_hash["devices"] = @devices
-      entries_hash["message"] = @message
+      entries_hash["devices"] = devices
+      entries_hash["message"] = message
       timetable_hash["push"] = entries_hash
-      send_push timetable_push
+      return timetable_hash
     end
     
-    def send_push(hash)
+    def send_push
+
+      hash = create_push
+
       uri = URI('http://developer.idlecampus.com/push/push1')
     
 
@@ -28,6 +36,8 @@ class Push
 
 
                                resp, dat = http.post(uri.path, hash.to_json, headers)
+
+    return resp.code
       
     end
 end

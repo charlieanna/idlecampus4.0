@@ -19,6 +19,16 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+   def self.get_devices(jabber_ids)
+    if jabber_ids
+      users = User.where(jabber_id:jabber_ids)
+      users.map do |user|
+        
+        user.device_identifier
+      end
+    end
+  end
+
   private
 
     def create_remember_token

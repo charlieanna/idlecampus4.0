@@ -9,7 +9,7 @@ class TimetableController < ApplicationController
   def send_message
   end
 
-  def get_timetable_for_teacher
+  # def get_timetable_for_teacher
     teacher = Teacher.find_by_name(params[:teacher])
 
     college = College.find_by_name(params[:college])
@@ -44,7 +44,7 @@ class TimetableController < ApplicationController
   # when the user logins the user credentials are created on the idlecampus server. and when the device is registered with the apple when it recieves the deviceToken a new device is created on the server with idlecampus. 
   #  user = User.new(:name,:password)
   #   device = Device.new(:type,:deviceToken,:udid)
-  def create_college_and_batch
+  # def create_college_and_batch
     # user = User.find_by_jabber_id(params[:jabber_id])
 
     college = College.find_by_name(params[:college])
@@ -56,7 +56,7 @@ class TimetableController < ApplicationController
     render :nothing => true
   end
 
-  def register_college_and_batch_for_user
+  # def register_college_and_batch_for_user
     user = User.find_by_jabber_id(params[:jabber_id])
     college = College.find_by_name(params[:college])
     batch = Batch.find_by_name(params[:batch])
@@ -66,7 +66,7 @@ class TimetableController < ApplicationController
     render :nothing => true
   end
 
-  def register_group_to_user
+  # def register_group_to_user
     user = User.find_by_jabber_id(params[:jabber_id])
     group = Group.find_by_name(params[:group])
     user.group = group
@@ -74,14 +74,14 @@ class TimetableController < ApplicationController
     render :nothing => true
   end
 
-  def find_college_and_batch
+  # def find_college_and_batch
     college = College.find_by_name(params[:college])
     batch = Batch.find_by_name(params[:batch])
 
     render :nothing => true
   end
 
-  def find_college_and_batch_for_jabber_id
+  # def find_college_and_batch_for_jabber_id
     user = User.find_by_jabber_id(params[:jabber_id])
 
 
@@ -98,7 +98,7 @@ class TimetableController < ApplicationController
 
   end
 
-  def timetable
+  # def timetable
     puts "AAAAAAAAAAAAAAA"
     p params
     @college = params[:college]

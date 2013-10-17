@@ -24,6 +24,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v4.0.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord-deprecated_finders (v1.0.3, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.0.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.3.5, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="angularjs-rails (v1.0.8, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v4.0.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.14, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
@@ -72,6 +73,7 @@
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.0.4, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-ui-rails (v4.0.4, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="launchy (v2.3.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v1.3.1, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lumberjack (v1.0.4, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.5.4, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
@@ -100,7 +102,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.9.3, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.9.2, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-kqueue (v0.2.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-readline (v0.5.0, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis (v3.0.4, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redis-namespace (v1.3.1, RVM: ruby-2.0.0-p247 [railstutorial_rails_4_0]) [gem]" level="application" />
