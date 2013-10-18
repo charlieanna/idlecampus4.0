@@ -8,13 +8,11 @@ class TimetablesController < ApplicationController
 
 
   def create
-    group = Group.find_by_group_code(params['timetable']["group"]["group_code"])
     
-    timetable = Timetable.find_or_create_by(group_id: group.id)
 
-    if group
-
-      timetable.create_timetable(params)
+   
+        timetable = Timetable.create_timetable(params)
+     
 
 
       if timetable.save
@@ -23,23 +21,8 @@ class TimetablesController < ApplicationController
 
       end
 
-    end
-
+ 
    
-  end
-
-  def build_f(fields)
-    f = []
-    fields.each do |field|
-
-      f.push(Class.new(ActiveRecord::Base) do
-        self.table_name = field.name
-        #belongs_to :timetable_entry
-      end)
-
-
-    end
-    return f
   end
 
   
@@ -51,8 +34,12 @@ class TimetablesController < ApplicationController
     group = params["group_id"]
     
     group = Group.find_by_group_code(group)
+    
+    timetable = group.timetable
 
-    timetable_in_hash = group.build_timetable_hash
+
+    timetable_in_hash = timetable.timetable_in_hash
+    
     
    
     
@@ -60,6 +47,8 @@ class TimetablesController < ApplicationController
   end
 
   private
+
+
   def timetable_params
     params.require(:timetable)
   end
