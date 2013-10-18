@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative '../spec_helper'
 
 describe ClassTiming do
 	before { @class_timing = ClassTiming.new(:to_hours => "1", :to_minutes => "30", :from_hours => "2", :from_minutes => 59)}

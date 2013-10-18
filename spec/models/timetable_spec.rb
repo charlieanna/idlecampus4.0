@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative '../spec_helper'
 require 'multi_json'
 describe Timetable do
 	before{ @timetable = Timetable.new}

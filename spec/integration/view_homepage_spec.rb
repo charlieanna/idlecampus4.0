@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative '../spec_helper'
 
 describe "HomePage" do
   it "user show should see the homepage" do

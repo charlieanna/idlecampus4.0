@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative '../spec_helper'
 
 describe "View Group" do
 	it "When the user clicks on the group he should see the group code and the timetable" do
