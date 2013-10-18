@@ -47,13 +47,13 @@ app.factory("Data", [
     batches: [],
     entries: [
       {
-        name: "teachers",
+        name: "teacher",
         values: []
       }, {
-        name: "subjects",
+        name: "subject",
         values: []
       }, {
-        name: "rooms",
+        name: "room",
         values: []
       }
     ]

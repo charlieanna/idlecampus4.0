@@ -42,16 +42,7 @@ class TimetablesController < ApplicationController
     return f
   end
 
-  def get_entries(timetable)
-    entries = timetable.timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
-    entries.sort { |a, b|
-
-      a.class_timing <=> b.class_timing
-
-
-    }
-    return entries
-  end
+  
 
 
 
@@ -61,10 +52,10 @@ class TimetablesController < ApplicationController
     
     group = Group.find_by_group_code(group)
 
-    timetable = group.timetable
+    timetable_in_hash = group.build_timetable_hash
     
-    timetable_in_hash = timetable.build_timetable_hash
-
+   
+    
     render :json => timetable_in_hash
   end
 

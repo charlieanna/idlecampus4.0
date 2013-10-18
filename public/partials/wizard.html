@@ -44,7 +44,7 @@
 
                         
                      <input type="text" ng-model="value" placeholder="Teachers">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'teachers')" style="
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'teacher')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -52,7 +52,7 @@
                                                     padding-right: 0px;
                                                     padding-bottom: 0px;
                                             ">Add</button>
-                <span ng-repeat="entry in data.timetable.entries| filter:{name:'teachers'}">
+                <span ng-repeat="entry in data.timetable.entries| filter:{name:'teacher'}">
                      <ul>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
@@ -113,7 +113,7 @@
 						
 
                      <input type="text" ng-model="value" placeholder="Rooms">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'rooms')" style="
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'room')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -121,7 +121,7 @@
                                                     padding-right: 0px;
                                                     padding-bottom: 0px;
                                             ">Add</button>
-               <span ng-repeat="entry in data.timetable.entries| filter:{name:'rooms'}">
+               <span ng-repeat="entry in data.timetable.entries| filter:{name:'room'}">
                      <ul>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
@@ -137,7 +137,7 @@
                         
 
                      <input type="text" ng-model="value" placeholder="Subjects">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'subjects')" style="
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'subject')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -146,7 +146,7 @@
                                                     padding-bottom: 0px;
                                             ">Add</button>
                
-                 <span ng-repeat="entry in data.timetable.entries| filter:{name:'subjects'}">
+                 <span ng-repeat="entry in data.timetable.entries| filter:{name:'subject'}">
                      <ul>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>

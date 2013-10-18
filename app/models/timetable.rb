@@ -69,7 +69,7 @@ class Timetable < ActiveRecord::Base
   def create_field(timetableentry, key, value)
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
-      teacher = Teacher.find_or_create_by(name: value) if key == "teachers"
+      teacher = Teacher.find_or_create_by(name: value) if key == "teacher"
 
       subject = Subject.find_or_create_by(name: value) if key == "subject" 
 
@@ -77,7 +77,7 @@ class Timetable < ActiveRecord::Base
 
       timetableentry.subject = subject if key == "subject"
 
-      timetableentry.teacher = teacher if key == "teachers"
+      timetableentry.teacher = teacher if key == "teacher"
 
       timetableentry.room = room if key == "room"
 
@@ -172,6 +172,17 @@ class Timetable < ActiveRecord::Base
 
 
         j = i
+        rooms= []
+        teachers = []
+        subjects = []
+        entries.each do |entry|
+          teacher = entry.teacher
+          subject = entry.subject
+          room = entry.room
+          rooms << room.name
+          subjects << subject.name
+          teachers << teacher.name
+        end
 
         while j < entries.length
 
@@ -188,31 +199,31 @@ class Timetable < ActiveRecord::Base
             room = b.room
             
               #  entry_hash["rooms"] = "rooms"
-              # field_entry = {}
-              # field_entry["name"] = "room"
-              # field_entry["values"] = rooms.pluck(:name).uniq
-              # field_entries << field_entry
+               field_entry = {}
+               field_entry["name"] = "room"
+               field_entry["values"] = rooms.uniq
+               field_entries << field_entry
             
            
               #  entry_hash["teachers"] = "teachers"
-              # field_entry = {}
-              # field_entry["name"] = "teachers"
-              # field_entry["values"] = teacher.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+              field_entry["name"] = "teacher"
+              field_entry["values"] = teachers.uniq
+              field_entries << field_entry
             
 
             
               #  entry_hash["subjects"] = "subjects" 
-              # field_entry = {}
-              # field_entry["name"] = "subject"
-              # field_entry["values"] = subjects.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+              field_entry["name"] = "subject"
+              field_entry["values"] = subjects.uniq
+              field_entries << field_entry
             
             # f.each do |field|
             #   d = field.where("P_Id" => b.id)
             #   p "DDDDDDDD"
               
-              entry_hash["teachers"] = teacher.name
+              entry_hash["teacher"] = teacher.name
               entry_hash["subject"] = subject.name
               entry_hash["room"] = room.name
 
@@ -241,29 +252,32 @@ class Timetable < ActiveRecord::Base
            teacher = b.teacher
             subject = b.subject
             room = b.room
-            entry_hash["teachers"] = teacher.name
+            entry_hash["teacher"] = teacher.name
             entry_hash["subject"] = subject.name
             entry_hash["rooms"] = room.name
-              #  entry_hash["rooms"] = "rooms"
-              # field_entry = {}
-              # field_entry["name"] = "room"
-              # field_entry["values"] = rooms.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+               field_entry["name"] = "room"
+               field_entry["values"] = rooms.uniq
+               field_entries << field_entry
             
            
               #  entry_hash["teachers"] = "teachers"
-              # field_entry = {}
-              # field_entry["name"] = "teachers"
-              # field_entry["values"] = teacher.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+              field_entry["name"] = "teacher"
+              field_entry["values"] = teachers.uniq
+              field_entries << field_entry
             
 
             
               #  entry_hash["subjects"] = "subjects" 
-              # field_entry = {}
-              # field_entry["name"] = "subject"
-              # field_entry["values"] = subjects.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+              field_entry["name"] = "subject"
+              field_entry["values"] = subjects.uniq
+              field_entries << field_entry
+            
+            # f.each do |field|
+            #   d = field.where("P_Id" => b.id)
+            #   p "DDDDDDDD"
           # f.each do |field|
           #   d = field.where("P_Id" => a.id)
 
@@ -295,29 +309,32 @@ class Timetable < ActiveRecord::Base
           teacher = a.teacher
           subject = a.subject
           room = a.room
-          entry_hash["teachers"] = teacher.name
+          entry_hash["teacher"] = teacher.name
           entry_hash["subject"] = subject.name
           entry_hash["room"] = room.name
-              #  entry_hash["rooms"] = "rooms"
-              # field_entry = {}
-              # field_entry["name"] = "room"
-              # field_entry["values"] = rooms.pluck(:name).uniq
-              # field_entries << field_entry
+               field_entry = {}
+               field_entry["name"] = "room"
+               field_entry["values"] = rooms.uniq
+               field_entries << field_entry
             
            
               #  entry_hash["teachers"] = "teachers"
-              # field_entry = {}
-              # field_entry["name"] = "teachers"
-              # field_entry["values"] = teacher.pluck(:name).uniq
-              # field_entries << field_entry
+              field_entry = {}
+              field_entry["name"] = "teacher"
+              field_entry["values"] = teachers.uniq
+              field_entries << field_entry
             
 
             
-              # entry_hash["subjects"] = "subjects" 
-              # field_entry = {}
-              # field_entry["name"] = "subject"
-              # field_entry["values"] = subjects.pluck(:name).uniq
-              # field_entries << field_entry
+              #  entry_hash["subjects"] = "subjects" 
+              field_entry = {}
+              field_entry["name"] = "subject"
+              field_entry["values"] = subjects.uniq
+              field_entries << field_entry
+            
+            # f.each do |field|
+            #   d = field.where("P_Id" => b.id)
+            #   p "DDDDDDDD"
           # f.each do |field|
           #   d = field.where("P_Id" => a.id)
 
@@ -326,7 +343,7 @@ class Timetable < ActiveRecord::Base
           #   field_entry = {}
           #   field_entry["name"] = field.table_name
           #   field_entry["values"] = field.uniq.pluck(:name)
-          #   field_entries << field_entry
+             # field_entries << field_entry
 
           # end
           entry_hash["batch"] = a.small_group.name
