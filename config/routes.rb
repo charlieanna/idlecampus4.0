@@ -10,7 +10,7 @@ IdleCampus::Application.routes.draw do
     resources :groups
   end
   resources :groups do
-    resource :timetables,only: [:create,:show]
+    resource :timetable,only: [:create,:show]
     collection do
       
       get 'get_group_name'

@@ -6,14 +6,14 @@
     <div class="modal-body">
         <div>
             <div class="btn-group">
-                <button class="btn" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Fields</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Teachers</button>
                 <button class="btn" ng-class="{'btn-primary':isCurrentStep(1)}" ng-click="setCurrentStep(1)">Weekdays</button>
                 <button class="btn" ng-class="{'btn-primary':isCurrentStep(2)}" ng-click="setCurrentStep(2)">Groups</button>
-                <button class="btn" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Values</button>
-                <button class="btn" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Timetable</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Rooms</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Subjects</button>
             </div>
             <div ng-switch="getCurrentStep()" ng-animate="'wave'" class="slide-frame">
-                <div ng-switch-when="one">
+                <!-- <div ng-switch-when="one">
                     <fieldset>
                         <div class="control-group">
 
@@ -35,6 +35,29 @@
 
                         </div>
 
+                    </fieldset>
+                </div> -->
+
+                 <div ng-switch-when="one">
+                    <fieldset>
+                        <div class="control-group">
+
+                        
+                     <input type="text" ng-model="value" placeholder="Teachers">
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'teachers')" style="
+                                            width: 53px;
+                                                    height: 30px;
+                                                    padding-top: 0px;
+                                                    padding-left: 0px;
+                                                    padding-right: 0px;
+                                                    padding-bottom: 0px;
+                                            ">Add</button>
+                <span ng-repeat="entry in data.timetable.entries| filter:{name:'teachers'}">
+                     <ul>
+                    <li ng-repeat="value in entry.values">{{value}}</li>
+                </ul>
+                </span>
+                        </div>
                     </fieldset>
                 </div>
                 <div ng-switch-when="two">
@@ -87,10 +110,10 @@
                     <fieldset>
                         <div class="control-group">
 
-						 <span ng-repeat="entry in data.timetable.entries">
+						
 
-                     <input type="text" ng-model="value" placeholder="{{entry.name}}">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,entry.name)" style="
+                     <input type="text" ng-model="value" placeholder="Rooms">
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'rooms')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -98,16 +121,41 @@
                                                     padding-right: 0px;
                                                     padding-bottom: 0px;
                                             ">Add</button>
-                <ul>
+               <span ng-repeat="entry in data.timetable.entries| filter:{name:'rooms'}">
+                     <ul>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
-
                 </span>
                         </div>
                     </fieldset>
                 </div>
 
-                <div ng-switch-when="five">
+                 <div ng-switch-when="five">
+                    <fieldset>
+                        <div class="control-group">
+
+                        
+
+                     <input type="text" ng-model="value" placeholder="Subjects">
+                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'subjects')" style="
+                                            width: 53px;
+                                                    height: 30px;
+                                                    padding-top: 0px;
+                                                    padding-left: 0px;
+                                                    padding-right: 0px;
+                                                    padding-bottom: 0px;
+                                            ">Add</button>
+               
+                 <span ng-repeat="entry in data.timetable.entries| filter:{name:'subjects'}">
+                     <ul>
+                    <li ng-repeat="value in entry.values">{{value}}</li>
+                </ul>
+                </span>
+                        </div>
+                    </fieldset>
+                </div>
+
+               <!--  <div ng-switch-when="five">
                     <fieldset>
                         <div class="control-group">
                             Weekdays:{{data.timetable.weekdays}}
@@ -120,7 +168,7 @@
 
                         </div>
                     </fieldset>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

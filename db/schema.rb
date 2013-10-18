@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016185530) do
+ActiveRecord::Schema.define(version: 20131018082624) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 20131016185530) do
     t.text    "name", limit: 20
     t.integer "P_Id"
   end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "eqwe", force: true do |t|
     t.text    "name", limit: 20
@@ -109,6 +125,12 @@ ActiveRecord::Schema.define(version: 20131016185530) do
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "readc", force: true do |t|
     t.text    "name", limit: 20
     t.integer "P_Id"
@@ -149,11 +171,6 @@ ActiveRecord::Schema.define(version: 20131016185530) do
     t.datetime "updated_at"
   end
 
-  create_table "teacherss", force: true do |t|
-    t.text    "name", limit: 20
-    t.integer "P_Id"
-  end
-
   create_table "timetable_entries", force: true do |t|
     t.integer  "timetable_id"
     t.datetime "created_at"
@@ -163,6 +180,7 @@ ActiveRecord::Schema.define(version: 20131016185530) do
     t.integer  "small_group_id"
     t.integer  "subject_id"
     t.integer  "teacher_id"
+    t.integer  "location_id"
   end
 
   create_table "timetable_field_values", force: true do |t|
@@ -177,6 +195,7 @@ ActiveRecord::Schema.define(version: 20131016185530) do
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timetable_id"
   end
 
   create_table "timetables", force: true do |t|
@@ -184,6 +203,8 @@ ActiveRecord::Schema.define(version: 20131016185530) do
     t.datetime "updated_at"
     t.integer  "group_id"
   end
+
+  add_index "timetables", ["group_id"], name: "index_timetables_on_group_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

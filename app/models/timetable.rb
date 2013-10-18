@@ -1,6 +1,7 @@
 class Timetable < ActiveRecord::Base
   attr_accessor :message, :members
   belongs_to :group
+  has_many :timetable_fields
   has_many :timetable_entries, dependent: :destroy
   has_and_belongs_to_many :fields
   has_many :weekdays, through: :timetable_entries
@@ -13,7 +14,7 @@ class Timetable < ActiveRecord::Base
 
   def send_push
 
-    Push.new(@members, @message).send_push
+    Push.new(@members, @message).delay.send_push
   end
 
   def build_timetable_entries(entries)
@@ -28,6 +29,8 @@ class Timetable < ActiveRecord::Base
           small_group = SmallGroup.find_or_create_by(name: entry['batch'])
 
           weekday = Weekday.find_or_create_by(name: entry['weekday'])
+
+
 
           timetableentry = TimetableEntry.find_or_create_by(:timetable_id => self.id, :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
 
@@ -64,18 +67,35 @@ class Timetable < ActiveRecord::Base
 
   def create_field(timetableentry, key, value)
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
-      f = Field.find_by_name(key)
-      if not f
-        f = Field.create(:name => key)
-        self.fields << f
-      end
-      sql = "CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))"
-      ActiveRecord::Base.connection.execute(sql)
+     
+      teacher = Teacher.find_or_create_by(name: value) if key == "teacher"
 
-      sql = "INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})"
-      ActiveRecord::Base.connection.execute(sql)
+      subject = Subject.find_or_create_by(name: value) if key == "subject" 
 
-      create_record_for(key)
+      locatiroomon = Room.find_or_create_by(name: value) if key == "location" 
+
+      timetableentry.subject = subject if key == "subject"
+
+      timetableentry.teacher = teacher if key == "teacher"
+
+      timetableentry.room = location if key == "room"
+
+      timetableentry.save
+      # f = Field.find_by_name(key)
+      # if not f
+      #   f = Field.create(:name => key)
+      #   self.fields << f
+      # end
+     
+     
+
+      # sql = "CREATE TABLE IF NOT EXISTS #{key}(id INTEGER PRIMARY KEY AUTOINCREMENT,name text(20),P_Id int,FOREIGN KEY (P_Id) REFERENCES TimetableEntry(id))"
+      # ActiveRecord::Base.connection.execute(sql)
+
+      # sql = "INSERT INTO #{key} (name,P_id) VALUES ('#{value}',#{timetableentry.id})"
+      # ActiveRecord::Base.connection.execute(sql)
+
+      # create_record_for(key)
 
 
     end

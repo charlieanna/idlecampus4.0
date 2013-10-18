@@ -29,6 +29,7 @@ end
 group :development do
   gem 'capistrano'
 end
+gem 'delayed_job_active_record'
 gem "haml"
 gem 'newrelic_rpm'
 gem 'gon'

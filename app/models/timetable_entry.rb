@@ -5,9 +5,10 @@ class TimetableEntry < ActiveRecord::Base
 	belongs_to :subject
 	belongs_to :teacher
 	belongs_to :room
+  belongs_to :location
 	belongs_to :class_timing
   belongs_to :small_group
-
+  has_many :timetable_field_values
 
    def self.create_timetable_entries_with(timetable,entry)
         

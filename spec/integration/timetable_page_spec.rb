@@ -45,7 +45,7 @@ describe "Timetable Page" do
       it " should create the timetable" do
         group = Group.create(name:"Electronics",group_code:"9A2KVG")
         
-        params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"asdasdas\":\"asdasda\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
+        params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"teacher\":\"Ankur\",\"subject\":\"Maths\",\"location\":\"room1\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
 
       	xhr :post, group_timetables_path(group),params
         expect(response.code).to eq("200")
@@ -60,7 +60,7 @@ describe "Timetable Page" do
 
      # puts group.id
         
-     params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"asdasdas\":\"asdasda\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
+     params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"teacher\":\"Ankur\",\"subject\":\"Maths\",\"location\":\"room1\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
 
      xhr :post, group_timetables_path(group),params
 
