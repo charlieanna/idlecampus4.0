@@ -57,7 +57,7 @@ class TimetablesController < ApplicationController
 
   def show
     
-    group = params["group_code"]
+    group = params["group_id"]
     
     group = Group.find_by_group_code(group)
 

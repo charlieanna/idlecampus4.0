@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018082624) do
+ActiveRecord::Schema.define(version: 20131018110104) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -120,9 +120,11 @@ ActiveRecord::Schema.define(version: 20131018082624) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "owner_id"
+    t.string   "slug"
   end
 
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
+  add_index "groups", ["slug"], name: "index_groups_on_slug"
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
   create_table "locations", force: true do |t|
@@ -181,6 +183,7 @@ ActiveRecord::Schema.define(version: 20131018082624) do
     t.integer  "subject_id"
     t.integer  "teacher_id"
     t.integer  "location_id"
+    t.integer  "room_id"
   end
 
   create_table "timetable_field_values", force: true do |t|

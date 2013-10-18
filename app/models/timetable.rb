@@ -1,6 +1,7 @@
 class Timetable < ActiveRecord::Base
   attr_accessor :message, :members
   belongs_to :group
+
   has_many :timetable_fields
   has_many :timetable_entries, dependent: :destroy
   has_and_belongs_to_many :fields
@@ -68,17 +69,17 @@ class Timetable < ActiveRecord::Base
   def create_field(timetableentry, key, value)
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
-      teacher = Teacher.find_or_create_by(name: value) if key == "teacher"
+      teacher = Teacher.find_or_create_by(name: value) if key == "teachers"
 
-      subject = Subject.find_or_create_by(name: value) if key == "subject" 
+      subject = Subject.find_or_create_by(name: value) if key == "subjects" 
 
-      locatiroomon = Room.find_or_create_by(name: value) if key == "location" 
+      room = Room.find_or_create_by(name: value) if key == "rooms" 
 
-      timetableentry.subject = subject if key == "subject"
+      timetableentry.subject = subject if key == "subjects"
 
-      timetableentry.teacher = teacher if key == "teacher"
+      timetableentry.teacher = teacher if key == "teachers"
 
-      timetableentry.room = location if key == "room"
+      timetableentry.room = room if key == "rooms"
 
       timetableentry.save
       # f = Field.find_by_name(key)
@@ -111,12 +112,12 @@ class Timetable < ActiveRecord::Base
 
   def get_entries
     entries = self.timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
-    entries.sort { |a, b|
+    entries.sort do |a, b|
 
       a.class_timing <=> b.class_timing
 
 
-    }
+    end
     return entries
   end
 
@@ -182,16 +183,41 @@ class Timetable < ActiveRecord::Base
             entry_hash = {}
             entry_hash["weekday"] = b.weekday.name
             weekdays << b.weekday.name
-            f.each do |field|
-              d = field.where("P_Id" => b.id)
-              p "DDDDDDDD"
+            teacher = b.teacher
+            subject = b.subject
+            room = b.room
+            
+              #  entry_hash["rooms"] = "rooms"
+              # field_entry = {}
+              # field_entry["name"] = "room"
+              # field_entry["values"] = rooms.pluck(:name).uniq
+              # field_entries << field_entry
+            
+           
+              #  entry_hash["teachers"] = "teachers"
+              # field_entry = {}
+              # field_entry["name"] = "teacher"
+              # field_entry["values"] = teacher.pluck(:name).uniq
+              # field_entries << field_entry
+            
 
-              entry_hash[field.table_name] = d.first.name if d.length > 0
-              field_entry = {}
-              field_entry["name"] = field.table_name
-              field_entry["values"] = field.uniq.pluck(:name)
-              field_entries << field_entry
-            end
+            
+              #  entry_hash["subjects"] = "subjects" 
+              # field_entry = {}
+              # field_entry["name"] = "subject"
+              # field_entry["values"] = subjects.pluck(:name).uniq
+              # field_entries << field_entry
+            
+            # f.each do |field|
+            #   d = field.where("P_Id" => b.id)
+            #   p "DDDDDDDD"
+              
+            #   entry_hash[field.table_name] = d.first.name if d.length > 0
+            #   field_entry = {}
+            #   field_entry["name"] = field.table_name
+            #   field_entry["values"] = field.uniq.pluck(:name)
+            #   field_entries << field_entry
+            # end
             entry_hash["batch"] = b.small_group.name
             batches << b.small_group.name
             entry_hash["to_hours"] = b.class_timing.to_hours
@@ -209,17 +235,41 @@ class Timetable < ActiveRecord::Base
           entry_hash = {}
           entry_hash["weekday"] = a.weekday.name
           weekdays << a.weekday.name
-          f.each do |field|
-            d = field.where("P_Id" => a.id)
+           teacher = b.teacher
+            subject = b.subject
+            room = b.room
+            
+              #  entry_hash["rooms"] = "rooms"
+              # field_entry = {}
+              # field_entry["name"] = "room"
+              # field_entry["values"] = rooms.pluck(:name).uniq
+              # field_entries << field_entry
+            
+           
+              #  entry_hash["teachers"] = "teachers"
+              # field_entry = {}
+              # field_entry["name"] = "teacher"
+              # field_entry["values"] = teacher.pluck(:name).uniq
+              # field_entries << field_entry
+            
+
+            
+              #  entry_hash["subjects"] = "subjects" 
+              # field_entry = {}
+              # field_entry["name"] = "subject"
+              # field_entry["values"] = subjects.pluck(:name).uniq
+              # field_entries << field_entry
+          # f.each do |field|
+          #   d = field.where("P_Id" => a.id)
 
 
-            entry_hash[field.table_name] = d.first.name if d.length > 0
-            field_entry = {}
-            field_entry["name"] = field.table_name
-            field_entry["values"] = field.uniq.pluck(:name)
-            field_entries << field_entry
+          #   entry_hash[field.table_name] = d.first.name if d.length > 0
+          #   field_entry = {}
+          #   field_entry["name"] = field.table_name
+          #   field_entry["values"] = field.uniq.pluck(:name)
+          #   field_entries << field_entry
 
-          end
+          # end
           entry_hash["batch"] = a.small_group.name
           batches << a.small_group.name
           entry_hash["to_hours"] = a.class_timing.to_hours
@@ -237,17 +287,41 @@ class Timetable < ActiveRecord::Base
           entry_hash = {}
           entry_hash["weekday"] = a.weekday.name
           weekdays << a.weekday.name
-          f.each do |field|
-            d = field.where("P_Id" => a.id)
+          teacher = a.teacher
+          subject = a.subject
+          room = a.room
+            
+              #  entry_hash["rooms"] = "rooms"
+              # field_entry = {}
+              # field_entry["name"] = "room"
+              # field_entry["values"] = rooms.pluck(:name).uniq
+              # field_entries << field_entry
+            
+           
+              #  entry_hash["teachers"] = "teachers"
+              # field_entry = {}
+              # field_entry["name"] = "teacher"
+              # field_entry["values"] = teacher.pluck(:name).uniq
+              # field_entries << field_entry
+            
+
+            
+              # entry_hash["subjects"] = "subjects" 
+              # field_entry = {}
+              # field_entry["name"] = "subject"
+              # field_entry["values"] = subjects.pluck(:name).uniq
+              # field_entries << field_entry
+          # f.each do |field|
+          #   d = field.where("P_Id" => a.id)
 
 
-            entry_hash[field.table_name] = d.first.name if d.length > 0
-            field_entry = {}
-            field_entry["name"] = field.table_name
-            field_entry["values"] = field.uniq.pluck(:name)
-            field_entries << field_entry
+          #   entry_hash[field.table_name] = d.first.name if d.length > 0
+          #   field_entry = {}
+          #   field_entry["name"] = field.table_name
+          #   field_entry["values"] = field.uniq.pluck(:name)
+          #   field_entries << field_entry
 
-          end
+          # end
           entry_hash["batch"] = a.small_group.name
           batches << a.small_group.name
           entry_hash["to_hours"] = a.class_timing.to_hours

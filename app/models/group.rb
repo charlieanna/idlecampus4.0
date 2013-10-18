@@ -20,6 +20,10 @@ class Group < ActiveRecord::Base
    
 
     end
+
+  def to_param
+    group_code
+  end
     
     
     # Generates a random string from a set of easily readable characters
