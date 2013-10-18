@@ -38,20 +38,20 @@
       $("#timetable").show()
       $scope.data.currentGroupCode = rdata.timetable.group_code
       entries = rdata.timetable.entries
-
-      $scope.data.timetable.weekdays = rdata.timetable.weekdays
-      $scope.data.timetable.batches = rdata.timetable.batches
-      $scope.data.timetable.entries = rdata.timetable.field_entries
-      $scope.data.timeArray = entries
-      $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
-        console.log "Subscribers"
-        console.log iq
-        $(iq).find("subscription").each ->
-         
-          jid = $(this).attr("jid")
-          jid = jid.substring(0, jid.indexOf("/"))
-          console.log jid
-          $scope.data.currentGroup.members.push jid
+      if entries?
+        $scope.data.timetable.weekdays = rdata.timetable.weekdays
+        $scope.data.timetable.batches = rdata.timetable.batches
+        $scope.data.timetable.entries = rdata.timetable.field_entries
+        $scope.data.timeArray = entries
+        $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
+          console.log "Subscribers"
+          console.log iq
+          $(iq).find("subscription").each ->
+           
+            jid = $(this).attr("jid")
+            jid = jid.substring(0, jid.indexOf("/"))
+            console.log jid
+            $scope.data.currentGroup.members.push jid
           
 
       console.log "HHHHHHHHHHHHH"
