@@ -78,6 +78,7 @@ GEM
       cucumber (>= 1.2.0)
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
+    daemons (1.1.9)
     debugger (1.6.1)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -287,6 +288,7 @@ DEPENDENCIES
   childprocess (= 0.3.6)
   coffee-rails (= 4.0.0)
   cucumber-rails (= 1.4.0)
+  daemons
   database_cleaner!
   debugger
   delayed_job_active_record

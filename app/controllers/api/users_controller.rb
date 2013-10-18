@@ -1,5 +1,5 @@
 class UsersController
-	respond_to :json
+	# respond_to :json
 	def create
     puts params
         @user = User.new
