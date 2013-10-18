@@ -1,4 +1,4 @@
-require '../spec_helper'
+require_relative '../spec_helper'
 
 describe "User signup" do
 	it "user should be able see signup page" do
