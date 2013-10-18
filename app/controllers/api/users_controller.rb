@@ -1,4 +1,4 @@
-class UsersController
+class UsersController < ApplicationController
 	# respond_to :json
 	def create
     puts params
