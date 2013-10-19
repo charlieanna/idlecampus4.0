@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018110104) do
+ActiveRecord::Schema.define(version: 20131019102640) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20131018110104) do
     t.integer  "from_minutes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "from"
+    t.time     "to"
   end
 
   create_table "cvzxc", force: true do |t|
@@ -142,7 +144,12 @@ ActiveRecord::Schema.define(version: 20131018110104) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.integer  "timetable_id"
   end
+
+  add_index "rooms", ["group_id"], name: "index_rooms_on_group_id"
+  add_index "rooms", ["timetable_id"], name: "index_rooms_on_timetable_id"
 
   create_table "sdsad", force: true do |t|
     t.text    "name", limit: 20
@@ -165,13 +172,23 @@ ActiveRecord::Schema.define(version: 20131018110104) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.integer  "timetable_id"
   end
+
+  add_index "subjects", ["group_id"], name: "index_subjects_on_group_id"
+  add_index "subjects", ["timetable_id"], name: "index_subjects_on_timetable_id"
 
   create_table "teachers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
+    t.integer  "timetable_id"
   end
+
+  add_index "teachers", ["group_id"], name: "index_teachers_on_group_id"
+  add_index "teachers", ["timetable_id"], name: "index_teachers_on_timetable_id"
 
   create_table "timetable_entries", force: true do |t|
     t.integer  "timetable_id"
