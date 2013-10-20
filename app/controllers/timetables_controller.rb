@@ -8,23 +8,33 @@ class TimetablesController < ApplicationController
 
 
   def create
+
+
+
+    result = TimetableParser.new(params).parse
+
+    group = Group.find_by_group_code(result['group_code'])
+
+    timetable = Timetable.find_or_create_by(group_id: group.id)
          
+    entries = result["entries"]
+
+    members = result["members"]
+
+    timetable.members = members
+
+    message = 'http://idlecampus.com/groups/'+"RNHVQR"+'/timetable.json'
+
+    timetable.message = message
+
+
+
+    timetable.build_timetable_entries(entries)
       
+    timetable.save
 
-   
-        timetable = Timetable.new(params)
-     
-
-
-        timetable.save
-
+    render status: 200, nothing: true
  
-        render status: 200, nothing: true
-
-      
-
- 
-   
   end
 
   
@@ -37,23 +47,29 @@ class TimetablesController < ApplicationController
     
     group = Group.find_by_group_code(group)
 
+
+
     teachers = group.teachers.pluck(:name)
     
     subjects = group.subjects.pluck(:name)
 
     rooms = group.teachers.pluck(:name)
 
-     field_entries = []
+   
+
+
+
+    field_entries = []
   
 
 
-     field_entry = {}
-     field_entry["name"] = "room"
-     field_entry["values"] = rooms.uniq
-     field_entries << field_entry
+    field_entry = {}
+    field_entry["name"] = "room"
+    field_entry["values"] = rooms.uniq
+    field_entries << field_entry
   
  
-    #  entry_hash["teachers"] = "teachers"
+    
     field_entry = {}
     field_entry["name"] = "teacher"
     field_entry["values"] = teachers.uniq
@@ -61,7 +77,7 @@ class TimetablesController < ApplicationController
   
 
   
-    #  entry_hash["subjects"] = "subjects" 
+   
     field_entry = {}
     field_entry["name"] = "subject"
     field_entry["values"] = subjects.uniq

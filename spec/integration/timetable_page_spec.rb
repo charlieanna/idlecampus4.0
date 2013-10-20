@@ -58,7 +58,7 @@ describe "Timetable Page" do
     it "shoud get me the timetable for the group" do
      group = Group.create(name:"Electronics",group_code:"9A2KVG")
 
-     # puts group.id
+  
         
      params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"10\",\"weekday\":\"Monday\",\"$$hashKey\":\"00M\",\"teacher\":\"Ankur\",\"subject\":\"Maths\",\"room\":\"room1\"}]],[[{\"from_hours\":\"10\",\"from_minutes\":\"00\",\"to_minutes\":\"00\",\"to_hours\":\"11\",\"weekday\":\"Monday\",\"$$hashKey\":\"00U\",\"teacher\":\"Ankur\",\"subject\":\"Maths\",\"room\":\"room1\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
 

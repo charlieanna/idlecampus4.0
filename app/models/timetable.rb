@@ -1,16 +1,14 @@
 class Timetable < ActiveRecord::Base
   attr_accessor :message, :members
   belongs_to :group
-    has_many :teachers
-    has_many :subjects
-    has_many :rooms
+  has_many :teachers
+  has_many :subjects
+  has_many :rooms
   has_many :timetable_fields
   has_many :timetable_entries, dependent: :destroy
   has_and_belongs_to_many :fields
   has_many :weekdays, through: :timetable_entries
-  # def to_json(options={})
-  # 	"dasda"
-  # end
+  
 
   after_save :send_push
 
@@ -20,29 +18,49 @@ class Timetable < ActiveRecord::Base
     Push.new(@members, @message).delay.send_push
   end
 
-  def self.build_timetable_entries(timetable,entries)
+  def build_timetable_entries(entries)
      entries.each do |ent|
 
       ent.each do |en|
 
         en.each do |entry|
 
-          class_timing = ClassTiming.find_or_create_by(:to_hours => entry['to_hours'], :to_minutes => entry['to_minutes'], :from_hours => entry['from_hours'], :from_minutes => entry['from_minutes'])
+          from = Time.new.utc
 
+          from = from.change({:hour => entry['from_hours'].to_i , :min => entry['from_minutes'].to_i })
+
+          to = Time.new.utc
+
+          to = to.change({:hour => entry['to_hours'].to_i , :min => entry['to_minutes'].to_i })
+
+
+
+
+          class_timing = ClassTiming.find_or_create_by(from: from,to: to)
+
+         
+          
+     
           small_group = SmallGroup.find_or_create_by(name: entry['batch'])
 
           weekday = Weekday.find_or_create_by(name: entry['weekday'])
 
 
 
-          timetableentry = TimetableEntry.find_or_create_by(:timetable_id => timetable.id, :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
+          timetableentry = TimetableEntry.find_or_create_by(:timetable_id => self.id, :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
+
+
 
           entry.each do
           |key, value|
+             
 
-            create_field(timetable,timetableentry, key, value)
+         
+          
 
-            timetableentry.save
+          create_field(timetableentry, key, value)
+
+          timetableentry.save
 
           end
 
@@ -51,39 +69,21 @@ class Timetable < ActiveRecord::Base
       end
     end
   end
-  def initialize(params)
-
-    @params = params
-
-    group = Group.find_by_group_code(params['timetable']["group"]["group_code"])
-    
-    timetable = Timetable.find_or_create_by(group_id: group.id)
-
-    entries = ActiveSupport::JSON.decode(params['timetable']["entries"])
-
-    members = params['timetable']["members"]
-
-    timetable.members = members
-
-    message = 'http://idlecampus.com/groups/'+"RNHVQR"+'/timetable.json'
-
-    timetable.message = message
-
-    build_timetable_entries(timetable,entries)
-
-    return timetable
-
- end
 
 
-  def self.create_field(timetable,timetableentry, key, value)
+
+
+  
+
+
+  def create_field(timetableentry, key, value)
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
-      teacher = Teacher.find_or_create_by(name: value,group:timetable.group) if key == "teacher"
+      teacher = Teacher.find_or_create_by(name: value,group:self.group) if key == "teacher"
 
-      subject = Subject.find_or_create_by(name: value,group:timetable.group) if key == "subject" 
+      subject = Subject.find_or_create_by(name: value,group:self.group) if key == "subject" 
 
-      room = Room.find_or_create_by(name: value,group:timetable.group) if key == "room" 
+      room = Room.find_or_create_by(name: value,group:self.group) if key == "room" 
 
       timetableentry.subject = subject if key == "subject"
 
@@ -114,24 +114,20 @@ class Timetable < ActiveRecord::Base
 
   def get_field_entry(name,values)
       
-               field_entry = {}
-               field_entry["name"] = name
-               field_entry["values"] = values.uniq
-             
-           
-            
-            
-              return field_entry
+    field_entry = {}
+    field_entry["name"] = name
+    field_entry["values"] = values.uniq
+    field_entry
   end
 
   def get_entry_hash_with_field(entry_hash,field)
-          teacher = field.teacher
-          subject = field.subject
-          room = field.room
-          entry_hash["teacher"] = teacher.name
-          entry_hash["subject"] = subject.name
-          entry_hash["room"] = room.name 
-          return entry_hash
+    teacher = field.teacher
+    subject = field.subject
+    room = field.room
+    entry_hash["teacher"] = teacher.name
+    entry_hash["subject"] = subject.name
+    entry_hash["room"] = room.name 
+    entry_hash
   end
 
 
