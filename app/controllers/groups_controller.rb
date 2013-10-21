@@ -7,9 +7,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
-     respond_with @group
+    @group = Group.find_by_group_code(params[:id])
+     render :json => @group
   end
+
 
   def new
     @group = Group.new

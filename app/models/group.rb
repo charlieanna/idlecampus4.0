@@ -26,6 +26,7 @@ class Group < ActiveRecord::Base
     end
 
   def to_param
+    
     group_code
   end
     
