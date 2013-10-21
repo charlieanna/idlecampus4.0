@@ -2,8 +2,9 @@ IdleCampus::Application.routes.draw do
   
   get "sessions/index"
   
-  match "users/checkEmail" => "users#checkEmail",via: 'get'
-  get "users/checkName"
+  match "checkEmail" => "user_validations#checkEmail",via: 'get'
+  match "checkName" => "user_validations#checkName",via: 'get'
+  
   post "users/frommobile"
   post "users/login"
   resources :users do 
@@ -28,10 +29,7 @@ IdleCampus::Application.routes.draw do
     resources :users, only: [:create]
   end
   
-  resources :check_emails,only: :show
-  resources :check_names,only: :show
-  
-  resources :email_validations,only: :show
+
   # get "timetable/create"
   #  post "timetable/create"
    # get "timetable/get_timetable_for_group"

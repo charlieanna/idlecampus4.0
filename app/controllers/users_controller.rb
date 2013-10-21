@@ -55,24 +55,24 @@ class UsersController < ApplicationController
   end
 
 
-  # def login
-  #   p params
-  #   if (!params[:device_identifier].eql? "web")
-  #     users_with_device = User.where(device_identifier: params[:device_identifier])
-  #     users_with_device.each do |user|
-  #       user.device_identifier = ""
-  #       user.save
-  #     end
-  # 
-  # 
-  #   end
-  #   user = User.find_by_jabber_id(params[:jabber_id])
-  #   if (user)
-  #     user.device_identifier = params[:device_identifier]
-  #     user.save
-  #   end
-  #   render :nothing => true
-  # end
+  def login
+    p params
+    if (!params[:device_identifier].eql? "web")
+      users_with_device = User.where(device_identifier: params[:device_identifier])
+      users_with_device.each do |user|
+        user.device_identifier = ""
+        user.save
+      end
+  
+  
+    end
+    user = User.find_by_jabber_id(params[:jabber_id])
+    if (user)
+      user.device_identifier = params[:device_identifier]
+      user.save
+    end
+    render :nothing => true
+  end
 
   # def test
   # 
@@ -96,18 +96,7 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  # def checkEmail
-  #   emails = User.where(:email => params["email"])
-  #   render :text => emails.size
-  # end
-  # 
-  def checkName
-    jabber_id = params["name"] + "@idlecampus.com"
-    p jabber_id
-    names = User.where(:jabber_id => jabber_id)
-    render :text => names.size
-  end
-
+ 
 
   def new
    
