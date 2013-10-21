@@ -28,3 +28,4 @@
 //= require app
 //= require timetable
 //= require entryCtrl
+

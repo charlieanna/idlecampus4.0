@@ -102,12 +102,12 @@ class UsersController < ApplicationController
   #   render :text => emails.size
   # end
   # 
-  # def checkName
-  #   jabber_id = params["name"] + "@idlecampus.com"
-  #   p jabber_id
-  #   names = User.where(:jabber_id => jabber_id)
-  #   render :text => names.size
-  # end
+  def checkName
+    jabber_id = params["name"] + "@idlecampus.com"
+    p jabber_id
+    names = User.where(:jabber_id => jabber_id)
+    render :text => names.size
+  end
 
 
   def new

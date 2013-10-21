@@ -60,10 +60,13 @@ hr {
 	text-shadow: 1px 1px 1px #3C3C3C;
 }
 
-label, input, button, select, textarea {
+  button, select, textarea {
 	cursor: default;
 }
 
+label {
+cursor: default !important;
+}
 /*********************/
 /*-	Navbar section	-*/
 /*********************/
