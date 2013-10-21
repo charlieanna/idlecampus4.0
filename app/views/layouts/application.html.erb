@@ -223,7 +223,7 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <title>IdleCampus</title>
+	    <title><%= yield(:title) %></title>
 
 	   
 
@@ -236,10 +236,12 @@
         <div class="wrapper">
 			<%= render "layouts/header" %>
 	
-
-			<!-- <%= flash[:alert] %>
-			<%= flash[:notice] %>
-			<%= flash[:success] %> -->
+    
+		<% flash.each do |key, value| %>
+		 <% if key!=:register && key!=:group%>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <% end %>
 
 			<%= yield %>
            

@@ -176,6 +176,7 @@
      console.log "node created"
  
      $scope.data.groupscreated.push grouptoadd
+     $scope.$digest()
 
 
 

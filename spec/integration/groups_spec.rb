@@ -1,7 +1,8 @@
 require_relative '../spec_helper'
  include SessionsHelper
 describe "Groups" do
- let(:user) {user = FactoryGirl.create(:user)}
+  
+ let(:user) { FactoryGirl.create(:user)}
   it "signed in user should be able to create a group" do
     
 	 
@@ -13,7 +14,7 @@ describe "Groups" do
             xhr :post, user_groups_path(user), group: { name:"Electronics" }
           end.to change(user.groups, :count).by(1)
 
-
+    
     
        
    end  
@@ -31,9 +32,7 @@ describe "Groups" do
 
     print response.body
    response.should be_success
-   # response.should render_template('email')
-    # expect(page).to have_css "ul#sidebar li"
-    # expect(page).to have_css "ul#groupscreated li",text:group2.name
+  
 
   end
 

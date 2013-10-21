@@ -12,7 +12,7 @@
 		<div id="login-content" class="clearfix">
 			
             <%= form_for @user,html: {name: "signupform",  "ng-submit" => "register()" } do |f|%>
-               
+            <%= render 'shared/error_messages' %>
 				<fieldset>
 					<div class="control-group">
 		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Username</label>

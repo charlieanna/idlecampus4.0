@@ -14,9 +14,7 @@ class UsersController < ApplicationController
     @user.device_identifier = "web"
     name = params[:user][:name]
     email = params[:user][:email]
- #    @user.password_confirmation = params[:password]
-    puts @user.valid?
-    puts @user.errors.full_messages
+ 
     if @user.save
 
 
@@ -36,6 +34,7 @@ class UsersController < ApplicationController
       redirect_to @user
 
     else
+      
       render 'new'
     end
 

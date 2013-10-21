@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019102640) do
+ActiveRecord::Schema.define(version: 20131021052832) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 20131019102640) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["jabber_id"], name: "index_users_on_jabber_id"
+  add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
   create_table "weekdays", force: true do |t|

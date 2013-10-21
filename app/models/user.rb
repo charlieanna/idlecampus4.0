@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
  #  before_save { email.downcase! }
  #  before_create :create_remember_token
- #  validates :jabber_id, presence: true, length: { maximum: 50 }
- # VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
- #  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
- #                    uniqueness: { case_sensitive: false }
+  validates :name, presence: true, length: { maximum: 50 },presence: true,uniqueness: { case_sensitive: false }
+ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
  has_many :groups
    has_secure_password
    # has_many :groups,through: :group_membership
