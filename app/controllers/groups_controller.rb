@@ -20,18 +20,13 @@ class GroupsController < ApplicationController
   
     @group = current_user.groups.build
     
-    
-     
     @group.name = params[:group][:name]
  
-    @groups = current_user.groups
     @group.group_code = Group.get_group_code
     
-    group = {}
-    group[:name] = @group.name
-    group[:code] = @group.group_code
+   
     
-    flash[:group] = group
+    flash[:group] = @group.to_hash
    
     if @group.save
      

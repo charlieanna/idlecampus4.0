@@ -9,7 +9,8 @@ class TimetableEntry < ActiveRecord::Base
 	belongs_to :class_timing
   belongs_to :small_group
   has_many :timetable_field_values
-
+  default_scope -> { includes(:room).includes(:teacher).includes(:subject)}
+ 
    def self.create_timetable_entries_with(timetable,entry)
         
       

@@ -5,32 +5,32 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
-
+    
     @user = User.new(user_params)
+    
+   
     @user.password_confirmation = @user.password
-    @user.email = params[:user][:email]
-    @user.jabber_id = "#{params[:user][:name]}@idlecampus.com"
-    password = params[:user][:password]
+   
+    
+    
     @user.device_identifier = "web"
-    name = params[:user][:name]
-    email = params[:user][:email]
- 
+   
+    
     if @user.save
+      
+      
+      sign_in @user
 
-
-       sign_in @user
       @group = current_user.groups.build
-      p cookies
+     
 
       @cookies = cookies
 
 
       flash[:success] = "Welcome to IdleCampus!"
-      attacher = {}
-      attacher[:name] = name
-      
-      attacher[:password] = password
-      flash[:register] = attacher
+     
+      flash[:register] = @user.to_hash
+
       redirect_to @user
 
     else
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
  
   def show
     @user = current_user
-    print @user
+    
    
     @groups = @user.groups
     
@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
     gon.register = flash[:register]  unless flash[:register].nil?
     gon.group = flash[:group] unless flash[:group].nil?
+    
   end
 
 

@@ -30,12 +30,6 @@ class SessionsController < ApplicationController
       flash[:attacher] = attacher
       redirect_to @user,:notice => "Welcome to IdleCampus"
 
-      #attacher = {}
-      #attacher[:JID] = @session_jid
-      #attacher[:SID] = @session_id
-      #attacher[:RID] = @session_random_id
-      #gon.attacher = attacher
-      #render :initbosh
     else
 
 

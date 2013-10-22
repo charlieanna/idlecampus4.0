@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021052832) do
+ActiveRecord::Schema.define(version: 20131021225106) do
 
   create_table "ASAS", force: true do |t|
     t.text    "name", limit: 20
@@ -202,6 +202,8 @@ ActiveRecord::Schema.define(version: 20131021052832) do
     t.integer  "location_id"
     t.integer  "room_id"
   end
+
+  add_index "timetable_entries", ["timetable_id"], name: "index_timetable_entries_on_timetable_id"
 
   create_table "timetable_field_values", force: true do |t|
     t.string   "name"

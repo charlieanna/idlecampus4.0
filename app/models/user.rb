@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
  #  before_save { email.downcase! }
- #  before_create :create_remember_token
+   before_create :set_jabber_id
+
   validates :name, presence: true, length: { maximum: 50 },presence: true,uniqueness: { case_sensitive: false }
  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -27,6 +28,20 @@ class User < ActiveRecord::Base
         user.device_identifier
       end
     end
+  end
+
+  def set_jabber_id
+    
+    self.jabber_id = "#{self.name}@idlecampus.com"
+    
+  end
+
+  def to_hash
+    attacher = {}
+    attacher[:name] = self.name
+      
+    attacher[:password] = self.password
+    return attacher
   end
 
   private

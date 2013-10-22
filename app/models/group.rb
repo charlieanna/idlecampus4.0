@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+
 	validates :name,presence: true
     has_one :timetable
     has_many :timetable_fields
@@ -35,6 +36,14 @@ class Group < ActiveRecord::Base
       def self.generate_group_code(size = 6)
         charset = %w{ 2 3 4 6 7 9 A C D E F G H J K M N P Q R T V W X Y Z}
         (0...size).map{ charset.to_a[rand(charset.size)] }.join
+      end
+
+
+      def to_hash
+        group = {}
+        group[:name] = self.name
+        group[:code] = self.group_code
+        group
       end
 
 

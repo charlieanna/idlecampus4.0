@@ -2,36 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f640af7e-d31b-4d83-baa8-47da1f4be24a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/hw0.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/factories/group_factory.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/factories/timetable_factory.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/features/creating_timetable_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/features/viewing_group_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/helpers/groups_helper_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/batch_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/class_timing_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/field_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/field_timetable_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/group_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/room_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/small_group_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/subject_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/teacher_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/models/weekday_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/requests/authentication_pages_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/requests/timetable_pages_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/requests/user_pages_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/views/groups/skip--test-framework.html.erb_spec.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/timetable.rb" afterPath="$PROJECT_DIR$/app/models/timetable.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/integration/timetable_page_spec.rb" afterPath="$PROJECT_DIR$/spec/integration/timetable_page_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/timetable_spec.rb" afterPath="$PROJECT_DIR$/spec/models/timetable_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/timetables_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/timetables_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IdleCampus.iml" afterPath="$PROJECT_DIR$/IdleCampus.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="IdleCampus.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1381950752841" ignored="false" />
+    <file path="/Dummy.txt" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1382372528902" ignored="false" />
     <file path="/authentication_steps.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923172607" ignored="false" />
     <file path="/signing_up.feature" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379923688649" ignored="false" />
     <file path="/authentication_pages_spec.rb" changelist="f640af7e-d31b-4d83-baa8-47da1f4be24a" time="1379924385648" ignored="false" />
@@ -126,7 +102,7 @@
       <file leaf-file-name="groups.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="9" selection-start="3364" selection-end="3364" vertical-scroll-proportion="0.0">
+            <state line="123" column="9" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -135,7 +111,7 @@
       <file leaf-file-name="timetables_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/timetables_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="37" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0">
+            <state line="117" column="37" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -144,7 +120,7 @@
       <file leaf-file-name="timetable.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/timetable.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="17" selection-start="2916" selection-end="2916" vertical-scroll-proportion="0.33333334">
+            <state line="177" column="17" selection-start="3599" selection-end="3599" vertical-scroll-proportion="-4.9428573">
               <folding />
             </state>
           </provider>
@@ -155,8 +131,8 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="10" column="20" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1381952343000" expanded="true" signature="83:160" placeholder="if ... end" />
-                <marker date="1381952343000" expanded="true" signature="141:148" placeholder="do ... end" />
+                <marker date="1382324868000" expanded="true" signature="83:160" placeholder="if ... end" />
+                <marker date="1382324868000" expanded="true" signature="141:148" placeholder="do ... end" />
               </folding>
             </state>
           </provider>
@@ -174,7 +150,7 @@
       <file leaf-file-name="push_spec.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/models/push_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="22" selection-start="0" selection-end="1497" vertical-scroll-proportion="0.0">
+            <state line="55" column="22" selection-start="0" selection-end="1509" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -183,7 +159,7 @@
       <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="10" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
+            <state line="22" column="10" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -284,6 +260,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -582,6 +559,10 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -594,10 +575,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -657,7 +634,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="RailsProjectView" />
     </panes>
   </component>
@@ -937,7 +913,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="709" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -954,7 +930,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38492706" sideWeight="0.82173175" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38492706" sideWeight="0.82173175" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1031,16 +1007,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="128" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="128" selection-start="289" selection-end="289" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/partials/wizard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
@@ -1055,21 +1027,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/sessions.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="20" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="9" selection-start="3413" selection-end="3413" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/timetables_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="37" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/timetable.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="17" selection-start="3599" selection-end="3599" vertical-scroll-proportion="-4.9428573">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/push.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="20" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1382324868000" expanded="true" signature="83:160" placeholder="if ... end" />
+            <marker date="1382324868000" expanded="true" signature="141:148" placeholder="do ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/integration/sending_push_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+    <entry file="file://$PROJECT_DIR$/spec/models/push_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="20" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.0">
+        <state line="55" column="22" selection-start="0" selection-end="1509" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="10" selection-start="570" selection-end="570" vertical-scroll-proportion="0.0">
+        <state line="22" column="10" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1088,54 +1101,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/groups.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="9" selection-start="3364" selection-end="3364" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/scripts/strophe.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1910" column="4" selection-start="61528" selection-end="61528" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/push.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="20" selection-start="189" selection-end="189" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1381952343000" expanded="true" signature="83:160" placeholder="if ... end" />
-            <marker date="1381952343000" expanded="true" signature="141:148" placeholder="do ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/integration/sending_push_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/push_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="22" selection-start="0" selection-end="1497" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/timetables_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="37" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/timetable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="17" selection-start="2916" selection-end="2916" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
