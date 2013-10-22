@@ -13,31 +13,7 @@
                 <button class="btn" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Subjects</button>
             </div>
             <div ng-switch="getCurrentStep()" ng-animate="'wave'" class="slide-frame">
-                <!-- <div ng-switch-when="one">
-                    <fieldset>
-                        <div class="control-group">
-
-                            <input name="field" type="text" ng-model="entry" placeholder="add new field here">
-                            <button class="addbtn btn btn-small" ng-click="addEntry(entry);entry=''" style="
-                                            width: 53px;
-                                                    height: 30px;
-                                                    padding-top: 0px;
-                                                    padding-left: 0px;
-                                                    padding-right: 0px;
-                                                    padding-bottom: 0px;
-                                            ">Add</button>
-
-                            <ul>
-                                <li ng-repeat="entry in data.timetable.entries">
-                                    <span>{{entry.name}}</span>
-                                </li>
-                            </ul>
-
-                        </div>
-
-                    </fieldset>
-                </div> -->
-
+              
                  <div ng-switch-when="one">
                     <fieldset>
                         <div class="control-group">
