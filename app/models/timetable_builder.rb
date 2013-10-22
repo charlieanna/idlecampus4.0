@@ -17,33 +17,29 @@ class TimetableBuilder
     return entries
   end
 
-  def create_field_entries
+  def get_field_entries
 
-
-    teachers = @group.teachers.pluck(:name)
-    
-    subjects = @group.subjects.pluck(:name)
-
-    rooms = @group.teachers.pluck(:name)
 
     field_entries = []
 
-    field_entry = FieldEntry.new("room",rooms).build
+    rooms_in_hash = Room.in_hash(@group)
 
-    field_entries << field_entry
+    field_entries << rooms_in_hash
 
     
-    field_entry = FieldEntry.new("teacher",teachers).build
+    teachers_in_hash = Teacher.in_hash(@group)
 
-    field_entries << field_entry
+    field_entries << teachers_in_hash
 
-    field_entry = FieldEntry.new("subject",subjects).build
+    subjects_in_hash = Subject.in_hash(@group)
     
   
-    field_entries << field_entry
+    field_entries << subjects_in_hash
 
     return field_entries
   end
+
+
 
 	def build
     
@@ -66,19 +62,44 @@ class TimetableBuilder
       return @timetable
     
    else
-    field_entries = create_field_entries
+    field_entries = get_field_entries
     
     entries = get_entries
- 
-   
+
     weekdays = []
+    
+    entries.each do |entry|
+      weekdays << entry.weekday.name
+    end
+    weekdays.uniq!
     batches = []
+    entries.each do |entry|
+      batches << entry.small_group.name
+    end
+    batches.uniq!
+    
   
     
     
 
+    entries_array = get_entries_array(entries)
+   
 
-    if entries.length > 0
+    timetable_hash = {}
+    entries_hash = {}
+    entries_hash["group_code"] = @timetable.group.group_code
+    entries_hash["field_entries"] = field_entries.uniq
+    entries_hash["entries"] = entries_array
+    entries_hash["weekdays"] = weekdays.uniq
+    entries_hash["batches"] = batches.uniq.compact
+    timetable_hash["timetable"] = entries_hash
+    @timetable = ActiveSupport::JSON.encode(timetable_hash)
+    return @timetable
+  end
+end
+
+def get_entries_array(entries)
+     if entries.length > 0
 
       f = []
       entries_array = []
@@ -113,10 +134,9 @@ class TimetableBuilder
 
           if a.weekday == b.weekday and a.class_timing == b.class_timing && a.small_group != b.small_group
             found = true
-            entry_hash = Entry.new(b).in_hash
+            entry_hash = b.to_hash
           
-            batches << b.small_group.name
-            weekdays << b.weekday.name
+           
             e << entry_hash
 
             check << entry_hash
@@ -125,7 +145,8 @@ class TimetableBuilder
         end
         #agar ek baar bhi true hua toh element ko array me daaldo. aur agar found nahi mila toh usey seedhe parent array me daalo
         if found
-          entry_hash = Entry.new(a).in_hash
+
+          entry_hash = a.to_hash
           
          
          
@@ -146,13 +167,9 @@ class TimetableBuilder
           entries_array << e
           #p entries_array
         else
-          entry_hash = Entry.new(a).in_hash
+          entry_hash = a.to_hash
          
-          batches << a.small_group.name
-          weekdays << a.weekday.name
-          #p e
-          #p entry_hash
-          #p check
+          
           if check.include?(entry_hash)
             #p "AAAAAAAAAA"
           else
@@ -168,7 +185,7 @@ class TimetableBuilder
       #find the first element of this array and then compare it to the i + 1 element ka first array
       #  compare the class_timings of both these elements. if they are same then put them in a same array
       #p "LLLLLLLLLLLLL"
-      p entries_array
+     
       i = 0
       while i < entries_array.length
         #loop thru each element
@@ -216,17 +233,7 @@ class TimetableBuilder
       end
       
     end
-    timetable_hash = {}
-    entries_hash = {}
-    entries_hash["group_code"] = @timetable.group.group_code
-    entries_hash["field_entries"] = field_entries.uniq
-    entries_hash["entries"] = entries_array
-    entries_hash["weekdays"] = weekdays.uniq
-    entries_hash["batches"] = batches.uniq.compact
-    timetable_hash["timetable"] = entries_hash
-    @timetable = ActiveSupport::JSON.encode(timetable_hash)
-    return @timetable
+    return entries_array
   end
-end
 
 end

@@ -1,5 +1,6 @@
 IdleCampus::Application.routes.draw do
   
+  get "password_resets/new"
   get "sessions/index"
   
   match "checkEmail" => "user_validations#checkEmail",via: 'get'
@@ -29,6 +30,7 @@ IdleCampus::Application.routes.draw do
     resources :users, only: [:create]
   end
   
+  resources :password_resets
 
   # get "timetable/create"
   #  post "timetable/create"

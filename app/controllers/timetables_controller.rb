@@ -9,8 +9,6 @@ class TimetablesController < ApplicationController
 
   def create
 
-
-
     result = TimetableParser.new(params).parse
 
     group = Group.find_by_group_code(result['group_code'])

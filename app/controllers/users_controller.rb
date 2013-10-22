@@ -75,74 +75,14 @@ class UsersController < ApplicationController
     render :nothing => true
   end
 
-  # def test
-  # 
-  #   users.each do |device_identifier|
-  # 
-  #     i = jabber_user.index('/')
-  #     puts i
-  #     if (i!=nil)
-  #       jabber_user = jabber_user[0, i]
-  #       puts jabber_user
-  #     end
-  #     user = User.find_by_jabber_id(jabber_user)
-  #     if (user != nil)
-  #       puts user
-  #       device_identifier = user.device_identifier
-  #       puts device_identifier
-  #       device = Device.find_by_device_identifier(device_identifier)
-  #       puts device
-  #       send_push(device, message)
-  #     end
-  #   end
-  # end
 
- 
 
   def new
    
     @user = User.new
   end
   
-  # def send_push
- #    p params
- #    puser = params["users"]
- # 
- #    puser.slice!(puser.index('/'), puser.size)
- #    message = params["message"]
- #    devices = []
- #    user = User.find_by_jabber_id(puser)
- #    device = user.device_identifier
- #    devices << device
- # 
- #    timetable_hash = {}
- #    entries_hash = {}
- #    entries_hash["devices"] = devices
- #    entries_hash["message"] = message
- #    timetable_hash["push"] = entries_hash
- #    p timetable_hash
- #    @devices = ActiveSupport::JSON.encode(timetable_hash)
- # 
- #    p "CCCCCCCCCC"
- # 
- #    p request.fullpath
- #    p request.domain
- #    p request.base_url
- #    p request.original_fullpath
- # 
- #    puts "timetable push"
- # 
- #    uri = URI('http://developer.idlecampus.com/push/push1')
- #    p "UUUUUUUUUUURRRRRRRRRR"
- # 
- #    headers = {"Content-Type" => "application/json"}
- #    http = Net::HTTP.new(uri.host, uri.port)
- # 
- # 
- #    resp, dat = http.post(uri.path, timetable_hash.to_json, headers)
- #    render :nothing => true
- # 
- #  end
+
 
   private 
   
