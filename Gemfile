@@ -29,7 +29,7 @@ end
 group :development do
   gem 'capistrano'
 end
-gem "mysql2", "~> 0.3.13"
+
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem "haml"
@@ -52,7 +52,6 @@ group :doc do
 end
 
 group :production do
-  gem "mysql2", "~> 0.3.13"
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
