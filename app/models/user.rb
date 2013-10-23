@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
    # has_many :groups,through: :group_membership
   # validates :password, length: { minimum: 6 }
 
+ 
+
 def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
