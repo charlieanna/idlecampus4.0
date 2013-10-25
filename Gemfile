@@ -29,8 +29,9 @@ end
 group :development do
   gem 'capistrano'
 end
-
+gem 'unicorn'
 gem 'daemons'
+gem 'sidekiq'
 gem 'delayed_job_active_record'
 gem "haml"
 gem 'newrelic_rpm'

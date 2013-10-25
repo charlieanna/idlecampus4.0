@@ -14,8 +14,8 @@ class Timetable < ActiveRecord::Base
 
 
   def send_push
-
-    Push.new(@members, @message).delay.send_push
+    PygmentsWorker.perform_async(self)
+    
   end
 
   def build_timetable_entries(entries)
