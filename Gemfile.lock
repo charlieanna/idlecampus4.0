@@ -16,6 +16,9 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_attr (0.8.2)
+      activemodel (>= 3.0.2, < 4.1)
+      activesupport (>= 3.0.2, < 4.1)
     activemodel (4.0.0)
       activesupport (= 4.0.0)
       builder (~> 3.1.0)
@@ -239,6 +242,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    shoulda-matchers (2.4.0)
+      activesupport (>= 3.0.0)
     sidekiq (2.14.1)
       celluloid (>= 0.14.1)
       connection_pool (>= 1.0.0)
@@ -285,6 +290,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_attr
   angularjs-rails
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.3.2.0)
@@ -320,6 +326,7 @@ DEPENDENCIES
   sass-rails (= 4.0.0)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
+  shoulda-matchers
   sidekiq
   spork-rails (= 4.0.0)
   sqlite3

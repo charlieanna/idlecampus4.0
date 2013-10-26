@@ -29,6 +29,10 @@ end
 group :development do
   gem 'capistrano'
 end
+group :test do
+gem 'active_attr'
+  gem 'shoulda-matchers'
+end
 gem 'unicorn'
 gem 'daemons'
 gem 'sidekiq'
