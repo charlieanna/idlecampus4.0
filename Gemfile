@@ -6,6 +6,7 @@ ruby '2.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'sidekiq'
+
 gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'
@@ -15,6 +16,7 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
+  gem 'capybara-angular'
 end
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]

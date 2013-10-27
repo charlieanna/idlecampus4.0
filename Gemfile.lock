@@ -54,6 +54,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-angular (0.0.2)
+      capybara
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.3.6)
@@ -297,6 +299,7 @@ DEPENDENCIES
   bullet
   capistrano
   capybara (= 2.1.0)
+  capybara-angular
   childprocess (= 0.3.6)
   coffee-rails (= 4.0.0)
   cucumber-rails (= 1.4.0)

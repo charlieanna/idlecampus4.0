@@ -48,7 +48,7 @@ config.mock_with :rspec
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
-
+    config.include Capybara::Angular::DSL
     config.before(:each) do
     DatabaseCleaner.start
   end
