@@ -23,7 +23,7 @@ describe "Timetable Page" do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  before {
+  before do
   	 visit '/'
 	  click_link "Log In"
 
@@ -36,7 +36,7 @@ describe "Timetable Page" do
      
 	   
     end
-  }
+  end
 
   describe "timetable creation" do
   	
