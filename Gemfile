@@ -30,10 +30,11 @@ group :development do
   gem 'capistrano'
 end
 group :test do
-gem 'active_attr', '0.7.0'
-  gem 'shoulda-matchers'
+
+gem 'shoulda-matchers'
 end
 gem 'unicorn'
+gem 'active_attr', '0.7.0'
 gem 'daemons'
 gem 'sidekiq'
 gem 'delayed_job_active_record'

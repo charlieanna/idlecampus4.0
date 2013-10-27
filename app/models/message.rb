@@ -1,11 +1,11 @@
-# class Message
-#   include ActiveAttr::Model
-  
-#   attribute :name
-#   attribute :email
-#   attribute :content
-  
-#   validates_presence_of :name
-#   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-#   validates_length_of :content, :maximum => 500
-# end
+class Message
+
+  include ActiveModel::Model
+   attr_accessor :name, :email, :content
+  validates_presence_of :name
+ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+                    
+  validates_length_of :content, :maximum => 500
+
+end

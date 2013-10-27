@@ -1,8 +1,8 @@
 IdleCampus::Application.routes.draw do
   
   get "password_resets/new"
-  get "sessions/index"
-  
+   
+
   match "checkEmail" => "user_validations#checkEmail",via: 'get'
   match "checkName" => "user_validations#checkName",via: 'get'
   
@@ -24,6 +24,9 @@ IdleCampus::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signout',  to: 'sessions#destroy',            via: 'delete'
   match '/signin',  to: 'sessions#new',            via: 'get'
+  match '/about',to: "static_pages#about",via: :get
+  resources :messages, only: [:new, :create]
+  match '/contact',to: "messages#new",via: :get
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   namespace :api do

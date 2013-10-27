@@ -5,6 +5,12 @@ class StaticPagesController < ApplicationController
     gon.names = "ankur kothari"
   end
 
+  def contact
+  end
+
+  def about
+  end
+
 
   private 
 	
