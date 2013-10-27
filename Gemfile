@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
-gem 'rake', '10.0.4'
-gem 'rails', '4.0.0'
+ gem 'rake', '10.0.4'
+# gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'sidekiq'
@@ -30,7 +30,7 @@ group :development do
   gem 'capistrano'
 end
 group :test do
-gem 'active_attr'
+gem 'active_attr', '0.7.0'
   gem 'shoulda-matchers'
 end
 gem 'unicorn'
