@@ -38,5 +38,45 @@ module Features
     def click_group(group)
       click_link group.name
     end
+    
+    def add_teacher(teacher)
+      fill_in "Teacher",with: "Debasis"
+      within "#teachers" do
+        click_button "Add"
+      end
+    end
+
+    def check_weekday(weekday)
+      check weekday
+    end
+
+    def add_batch(batch)
+      fill_in "Batch",with: "C1"
+      click "Add Batch"
+    end
+
+    def add_subject(subject)
+      fill_in "Subject",with: subject
+      within "#subjects" do
+        click_button "Add"
+      end
+    end
+
+    def add_room(room)
+      fill_in "Room",with: room
+      within "#rooms" do
+        click_button "Add"
+      end
+    end
+
+    def add_to_time
+      select '9', :from => 'from_hour'
+      select '10', :from => 'from_minutes'
+    end
+
+    def add_from_time
+      select '9', :from => 'to_hour'
+      select '10', :from => 'to_minutes'
+    end
   end
 end

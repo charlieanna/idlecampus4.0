@@ -22,52 +22,47 @@ feature "A teacher" do
   	create_group(@group)
   	click_group(@group)
   	click_button "Create Timetable"
-  	fill_in "Teacher",with: "Ankur"
-  	fill_in "Teacher",with: "Debasis"
-  	fill_in "Teacher",with: "Swati"
-  	fill_in "Teacher",with: "Ankita"
-  	fill_in "Teacher",with: "Aditi"
-  	check "Monday"
-  	check "Tuesday"
-  	check "Wendesday"
-  	check "Thursday"
-  	check "Friday"
-  	check "Saturday"
-  	check "Sunday"
-  	check "Add Group"
-  	fill_in "Batch",with: "C1"
-  	click "Add Batch"
-  	fill_in "Batch",with: "C2"
-  	click "Add Batch"
-  	fill_in "subject",with:"Maths"
-  	fill_in "subject",with:"Phyics"
-  	fill_in "subject",with:"Chemistry"
-  	fill_in "subject",with:"Computer Science"
-  	fill_in "subject",with:"Algorithms"
-  	fill_in "room1",with:"room1"
-  	fill_in "room2",with:"room2"
-  	fill_in "room3",with:"room3"
-    fill_in "room3",with:"room4"
-  	fill_in "room3",with:"room5"
-    select '9', :from => 'from_hour'
-    select '10', :from => 'from_minutes'
-    select '9', :from => 'to_hour'
-    select '10', :from => 'to_minutes'
+  	add_teacher "Ankur"
+    add_teacher "Debasis"
+  	add_teacher "Swati"
+  	add_teacher "Ankita"
+  	add_teacher "Aditi"
+
+  	check_weekday "Monday"
+  	check_weekday "Tuesday"
+  	check_weekday "Wendesday"
+  	check_weekday "Thursday"
+  	check_weekday "Friday"
+  	check_weekday "Saturday"
+  	check_weekday "Sunday"
+  	add_batch "C1"
+  	add_batch "C2"
+
+  	add_subject "Maths"
+  	add_subject "Phyics"
+  	add_subject "Chemistry"
+  	add_subject "Computer Science"
+  	add_subject "Algorithms"
+
+  	add_room "room1"
+  	add_room "room2"
+  	add_room "room3"
+    add_room "room4"
+  	add_room "room5"
+    add_to_time("9","0")
+    add_from_time("10","30")
     click_button "Add Row"
-   
+
     check "Add Batch?"
+
     select 'Ankur1',from:"Teachers"
     select "Ankur1",from:"Students"
     select "Room1",from:"Rooms"
     select 'Ankur2',from:"Teachers"
     select "Ankur2",from:"Students"
     select "Room2",from:"Rooms"
-    click_button "Send Timetable"
-
-
-
-
-  	
+   
   end
-	
+   click_button "Send Timetable"
+   expect(page).to have_content("Timetable Created.")
 end
