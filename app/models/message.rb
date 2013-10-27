@@ -8,4 +8,16 @@ class Message
                     
   validates_length_of :content, :maximum => 500
 
+
+   # Declare the e-mail headers. It accepts anything the mail method
+  # in ActionMailer accepts.
+  def headers
+    {
+      :subject => "My Contact Form",
+      :to => "ankothari@gmail.com",
+      :from => %("#{name}" <#{email}>)
+    }
+  end
+end
+
 end

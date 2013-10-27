@@ -30,7 +30,7 @@ group :development do
   gem 'capistrano'
 end
 group :test do
-
+gem 'mail_form'
 gem 'shoulda-matchers'
 end
 gem 'unicorn'
