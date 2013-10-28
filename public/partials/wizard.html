@@ -1,6 +1,6 @@
 <div ng-controller="EntryCtrl">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" id="close" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Timetable</h3>
     </div>
     <div class="modal-body">
@@ -19,8 +19,8 @@
                         <div class="control-group">
 
                         
-                     <input type="text" ng-model="value" placeholder="Teachers">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'teacher')" style="
+                     <input type="text" ng-model="value" placeholder="Teachers" id="newteacher">
+                       <button class="addbtn btn" id="addteacher" ng-click="addValueToEntry(value,'teacher')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -39,13 +39,13 @@
                 <div ng-switch-when="two">
                     <fieldset>
                         <div class="control-group">
-                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday"> Monday
-                            <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday"> Tuesday
-                            <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday"> Wednesday
-                            <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday"> Thursday
-                            <input type="checkbox" ng-click="checkWeekday('Friday')" ng-model="Friday"> Friday
-                            <input type="checkbox" ng-click="checkWeekday('Saturday')" ng-model="Saturday"> Saturday
-                            <input type="checkbox" ng-click="checkWeekday('Sunday')" ng-model="Sunday"> Sunday
+                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday" id="monday"> Monday
+                            <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday" id="tuesday"> Tuesday
+                            <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday" id="wednesday"> Wednesday
+                            <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday" id="thursday"> Thursday
+                            <input type="checkbox" ng-click="checkWeekday('Friday')" ng-model="Friday" id="friday"> Friday
+                            <input type="checkbox" ng-click="checkWeekday('Saturday')" ng-model="Saturday" id="saturday"> Saturday
+                            <input type="checkbox" ng-click="checkWeekday('Sunday')" ng-model="Sunday" id="sunday"> Sunday
                         </div>
 
                     </fieldset>
@@ -55,14 +55,14 @@
                         <div class="control-group">
                             <div class="controls">
                                 <label class="checkbox">
-                                    Add Batches?<input ng-model="checked" ng-click="changechecked()" type="checkbox" value=""/>
+                                    Add Batches?<input ng-model="checked" ng-click="changechecked()" type="checkbox" value="" id="addbatches"/>
 
-
+ 
                                 </label>
                                 <form ng-show="checked">
-                                    <input name="Add Batches" type="text" ng-model="batch">
+                                    <input name="Add Batches" type="text" ng-model="batch" id="newbatch">
 
-                                    <button class="addbtn btn" ng-click="addBatch(batch);batch=''" style="
+                                    <button class="addbtn btn" ng-click="addBatch(batch);batch=''" id="addbatch" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -88,8 +88,8 @@
 
 						
 
-                     <input type="text" ng-model="value" placeholder="Rooms">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'room')" style="
+                     <input type="text" ng-model="value" placeholder="Rooms" id="newroom">
+                       <button class="addbtn btn" id="addroom" ng-click="addValueToEntry(value,'room')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;
@@ -112,8 +112,8 @@
 
                         
 
-                     <input type="text" ng-model="value" placeholder="Subjects">
-                       <button class="addbtn btn" id="entryvalue" ng-click="addValueToEntry(value,'subject')" style="
+                     <input type="text" ng-model="value" id="newsubject" placeholder="Subjects">
+                       <button class="addbtn btn" id="addsubject" ng-click="addValueToEntry(value,'subject')" style="
                                             width: 53px;
                                                     height: 30px;
                                                     padding-top: 0px;

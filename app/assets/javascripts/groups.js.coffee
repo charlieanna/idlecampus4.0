@@ -33,8 +33,8 @@
     ).success((rdata, status, headers, config) ->
 
 
-      console.log "DDDDDDAAAAAATTTTTTTTAAAAAAA"
-      console.log rdata
+      # console.log "DDDDDDAAAAAATTTTTTTTAAAAAAA"
+#       console.log rdata
       $("#timetable").show()
       $scope.data.currentGroupCode = rdata.timetable.group_code
       entries = rdata.timetable.entries
@@ -72,14 +72,14 @@
 
     $scope.data.currentGroup = group
     $scope.data.currentGroup.members = []
-    $("#mygroupposts").show()
-    $("#myposts").hide()
-    console.log $scope.folders
+    # $("#mygroupposts").show()
+#     $("#myposts").hide()
+#     console.log $scope.folders
     # $scope.data.folders = Group.query(
 #       name: group
 #       verb: "find_by_name"
 #     )
-    console.log $scope.data.folders
+    # console.log $scope.data.folders
     $scope.data.pagetitle = "Groups"
     $scope.get()
 

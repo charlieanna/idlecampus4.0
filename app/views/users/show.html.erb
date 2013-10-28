@@ -20,7 +20,7 @@ Welcome <%= @user.name%>
 			            </button>
 			        </div>
 			    </div>
-        	 <form class="form-inline"> 
+        	 <form class="form-inline" id="new_group"> 
                   <input class="create-group-input span2" placeholder="Group Name" type="text"
                         id="creategroupinput" name="group" ng-model="data.creategroup"/>
                  
@@ -43,7 +43,7 @@ Welcome <%= @user.name%>
 
 	        </li>
 
-	        <li ng-repeat="group in data.groupscreated" id="{{group}}">
+	        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
                               <a href="" ng-click="groupclick(group)">{{group.name}}</a>
                             </li>
 			

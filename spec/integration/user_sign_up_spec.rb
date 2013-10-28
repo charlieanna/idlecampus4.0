@@ -12,12 +12,19 @@ feature 'Visitor signs up', :js => true do
   end
  
   scenario 'with valid email and password' do
-  puts @user.name
+ 
   
-    sign_up_with(@user.name,@user.email,"akk322")
+     sign_up_with(@user.name,@user.email,"akk322")
      
      expect(page).to have_content "Welcome #{@user.name}"     
-     expect(page).to have_link('Sign out')    
+     expect(page).to have_link('Sign out')   
+     
+    
+      
+      
+      
+      
+      
      
   end
  # 

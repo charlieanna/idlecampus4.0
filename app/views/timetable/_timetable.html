@@ -22,15 +22,15 @@
 <div class="row-fluid">
     <div class="span2"></div>
     <div class="span4">From:
-        <select class="span5" ng-model="from_date_hour_value" ng-options="c.display for c in from_date_hour"></select>
+        <select class="span5" ng-model="from_date_hour_value" ng-options="c.display for c in from_date_hour" id="from_hour"></select>
 
-        <select class="span5" ng-model="from_date_minute_value" ng-options="c.display for c in from_date_minute"></select>
+        <select class="span5" ng-model="from_date_minute_value" ng-options="c.display for c in from_date_minute" id="from_minute"></select>
 
     </div>
     <div class="span4">To:
-        <select class="span5" ng-model="to_date_hour_value" ng-options="c.display for c in to_date_hour"></select>
+        <select class="span5" ng-model="to_date_hour_value" ng-options="c.display for c in to_date_hour" id="to_hour"></select>
 
-        <select class="span5" ng-model="to_date_minute_value" ng-options="c.display for c in to_date_minute"></select>
+        <select class="span5" ng-model="to_date_minute_value" ng-options="c.display for c in to_date_minute" id="to_minute"></select>
 
     </div>
 </div>
@@ -114,7 +114,7 @@
                                 </td>
                                 <td ng-repeat="dt in time">
 
-                                    <a href="#addtimetableentry{{index}}" ng-model="index" ng-click="index=($parent.$index)*6+$index+1" role="button" class="editbtn btn" data-toggle="modal" id="sub1" style="
+                                    <a href="#addtimetableentry{{index}}" ng-model="index" ng-click="index=($parent.$index)*6+$index+1" role="button" class="editbtn btn" data-toggle="modal" id="sub{{($parent.$index)*6+$index+1}}" style="
                                     width: 53px;
                                             height: 30px;
                                             padding-top: 0px;
@@ -150,7 +150,7 @@
 
                           <div class="modal-header">
 
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">×</button>
                               <h3 id="myModalLabel"></h3>
 
                           </div>
@@ -158,7 +158,7 @@
 
 
                         <span ng-repeat="entry in data.timetable.entries" ng-hide="dt.length>1">
-                         {{entry.name}}<select class="span2" ng-model="datetime[entry.name]" ng-options="value for value in entry.values"></select>
+                         {{entry.name}}<select class="span2" ng-model="datetime[entry.name]" ng-options="value for value in entry.values" id="{{entry.name}}"></select>
 
                           <!--<select class="span2" ng-model="datetime[batch]" ng-options="batch for batch in data.timetable.batches" ng-show="data.timetable.batches.length>0"></select>-->
 

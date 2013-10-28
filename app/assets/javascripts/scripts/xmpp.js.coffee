@@ -266,7 +266,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.getGroupsCreated = ->
     $.get "/groups", (data) ->
-      
+      console.log "groups created"
       console.log data
       for d in data
         Data.groupscreated.push d

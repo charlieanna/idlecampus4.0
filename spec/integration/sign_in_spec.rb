@@ -41,6 +41,20 @@ subject { page }
       # it { should have_link('Profile',     href: user_path(user)) }
        it { should have_link('Sign out',    href: signout_path) }
        it { should_not have_link('Log In', href: signin_path) }
+       
+       it "and then creates a group" do
+         
+         group = user.groups.build(name:'Electronics')
+  
+         fill_in "group",with:group.name
+    
+    
+          within("#new_group") do
+             click_button "creategroupbutton"
+          end
+          
+          expect(page).to have_css("a",text: group.name)
+       end
     end
   end
   
