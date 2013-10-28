@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe "Authentication" do
+describe "Authentication", :js => true do
 
 subject { page }
 

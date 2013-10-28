@@ -6,7 +6,11 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
+  end
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -49,13 +53,19 @@ config.mock_with :rspec
     config.order = "random"
     config.include Capybara::DSL
     config.include Capybara::Angular::DSL
-    config.before(:each) do
-    DatabaseCleaner.start
-  end
+    config.use_transactional_fixtures = false
+  
+     config.before(:suite) do
+       DatabaseCleaner.strategy = :truncation
+     end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+     config.before(:each) do
+       DatabaseCleaner.start
+     end
+
+     config.after(:each) do
+       DatabaseCleaner.clean
+     end
 
   end
 end

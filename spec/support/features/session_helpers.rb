@@ -7,9 +7,10 @@ module Features
       fill_in "Email",with:email
       fill_in "Password",with:password
       click_button "Create Account"
-    end
+    end 
 
     def sign_in_as(user, options={})
+      
       if options[:no_capybara]
         remember_token = User.new_remember_token
         cookies[:remember_token] = remember_token

@@ -1,13 +1,15 @@
 require_relative '../spec_helper'
-describe "Teacher creates a group" do
+describe "Teacher creates a group" , :js => true do
   
   let(:user) { FactoryGirl.create(:user)}
   before do
-    sign_in_as user, no_capybara: true
+    visit signin_path
+    sign_in_as user
   end
   it "with a valid name" do
     group = FactoryGirl.build(:group,user: user)
-    fill_in "Group Name",with:group.name
+   
+    fill_in "group",with:group.name
      within("#new_group") do
         click_button "Create"
      end
@@ -32,7 +34,7 @@ describe "Teacher creates a group" do
 
   it "can click on the group that was created" do
     group1 = FactoryGirl.create(:group,user: user)
-    expect(page).to have_css "#groups #{group1}",text:group1.text
+    expect(page).to have_css "#groups #{group1.group_code}",text:group1.name
   end
 end
 

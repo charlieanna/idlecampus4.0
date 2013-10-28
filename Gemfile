@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
  gem 'rake', '10.0.4'
-# gem 'rails', '4.0.0'
+ gem 'rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'sidekiq'
-
+# gem 'sidekiq'
+# 
 gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'
@@ -21,8 +21,8 @@ end
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 group :test do
-	gem 'factory_girl_rails', '4.2.1'
-  gem 'selenium-webdriver', '2.35.1'
+  gem 'factory_girl_rails', '4.2.1'
+  gem "capybara-webkit"
  
   gem 'capybara', '2.1.0'
    gem 'cucumber-rails', '1.4.0', :require => false
@@ -32,13 +32,14 @@ group :development do
   gem 'capistrano'
 end
 group :test do
+   gem 'poltergeist'
 gem 'mail_form'
 gem 'shoulda-matchers'
 end
 gem 'unicorn'
 gem 'active_attr', '0.7.0'
 gem 'daemons'
-gem 'sidekiq'
+
 gem 'delayed_job_active_record'
 gem "haml"
 gem 'newrelic_rpm'
@@ -49,8 +50,6 @@ gem 'coffee-rails', '4.0.0'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
-# gem 'turbolinks', '1.1.1'
-# gem "rb-readline", "~> 0.5.0"
 gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
