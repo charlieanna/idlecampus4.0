@@ -285,10 +285,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+    # console.log "CREDENTIALS"
+#     console.log sid
+#     console.log rid
+#     console.log jid
     console.log connection
     callback = (status) ->
       console.log status
@@ -360,10 +360,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = $("#currentuser").text()
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+    # console.log "CREDENTIALS"
+  #   console.log sid
+  #   console.log rid
+  #   console.log jid
     if typeof gon isnt "undefined" and gon isnt null
       sid = gon.attacher.SID
       rid = gon.attacher.RID

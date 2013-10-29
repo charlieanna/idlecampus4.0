@@ -39,7 +39,7 @@ config.mock_with :rspec
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+   
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -53,16 +53,16 @@ config.mock_with :rspec
     config.order = "random"
     config.include Capybara::DSL
     config.include Capybara::Angular::DSL
-    config.use_transactional_fixtures = false
-  
+     config.use_transactional_fixtures = false
+ #  
      config.before(:suite) do
        DatabaseCleaner.strategy = :truncation
      end
-
+ 
      config.before(:each) do
        DatabaseCleaner.start
      end
-
+ 
      config.after(:each) do
        DatabaseCleaner.clean
      end

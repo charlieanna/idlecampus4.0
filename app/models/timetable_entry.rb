@@ -31,6 +31,39 @@ class TimetableEntry < ActiveRecord::Base
     return entry_hash
    end
 
+   def self.get(entry,timetable)
+     
+ 
+     from = Time.new.utc
+
+     from = from.change({:hour => entry['from_hours'].to_i , :min => entry['from_minutes'].to_i })
+     
+     to = Time.new.utc
+
+     to = to.change({:hour => entry['to_hours'].to_i , :min => entry['to_minutes'].to_i })
+
+
+
+
+     class_timing = ClassTiming.find_or_create_by(from: from,to: to)
+
+    
+     
+
+     small_group = SmallGroup.find_or_create_by(name: entry['batch'])
+     
+     
+     weekday = Weekday.find_or_create_by(name: entry['weekday'])
+          
+     timetableentry = TimetableEntry.find_or_create_by( :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
+#     
+
+     timetableentry = TimetableEntry.new
+     timetableentry.timetable = timetable
+     timetableentry.save
+     
+     return timetableentry
+   end
   
   
 end

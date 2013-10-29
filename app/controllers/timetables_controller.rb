@@ -8,13 +8,16 @@ class TimetablesController < ApplicationController
 
 
   def create
-    puts params
+    
+  
     result = TimetableParser.new(params).parse
-
+    
+    puts result
+    
     group = Group.find_by_group_code(result['group_code'])
 
     timetable = Timetable.find_or_create_by(group_id: group.id)
-         
+      
     entries = result["entries"]
 
     members = result["members"]
@@ -25,11 +28,15 @@ class TimetablesController < ApplicationController
 
     timetable.message = message
 
-
+   
 
     timetable.build_timetable_entries(entries)
-      
-    timetable.save
+     
+    if timetable.save
+      puts "saved"
+    else
+      puts "not saved"
+    end
 
     render status: 200, nothing: true
  

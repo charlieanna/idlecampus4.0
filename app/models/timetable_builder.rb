@@ -8,12 +8,12 @@ class TimetableBuilder
 
 	 def get_entries
     entries = @timetable.timetable_entries
-    entries.sort do |a, b|
-
-      a.class_timing <=> b.class_timing
-
-
-    end
+    # entries.sort do |a, b|
+ # 
+ #      a.class_timing <=> b.class_timing
+ # 
+ # 
+ #    end
     return entries
   end
 

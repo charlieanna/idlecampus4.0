@@ -19,9 +19,9 @@ feature 'Visitor signs up', :js => true do
      expect(page).to have_content "Welcome #{@user.name}"     
      expect(page).to have_link('Sign out')   
      
-    
+     
       
-      
+     click_button "SendTimetable" 
       
       
       

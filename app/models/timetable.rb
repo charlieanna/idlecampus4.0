@@ -24,43 +24,27 @@ class Timetable < ActiveRecord::Base
       ent.each do |en|
 
         en.each do |entry|
-
-          from = Time.new.utc
-
-          from = from.change({:hour => entry['from_hours'].to_i , :min => entry['from_minutes'].to_i })
-
-          to = Time.new.utc
-
-          to = to.change({:hour => entry['to_hours'].to_i , :min => entry['to_minutes'].to_i })
-
-
-
-
-          class_timing = ClassTiming.find_or_create_by(from: from,to: to)
-
-         
+           
           
-     
-          small_group = SmallGroup.find_or_create_by(name: entry['batch'])
-
-          weekday = Weekday.find_or_create_by(name: entry['weekday'])
-
-
-
-          timetableentry = TimetableEntry.find_or_create_by(:timetable_id => self.id, :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
-
-
+          timetableentry = TimetableEntry.get(entry,self)
+          
+          
+    
+          
 
           entry.each do
           |key, value|
              
 
-         
+          puts key
+          puts value
           
 
           create_field(timetableentry, key, value)
-
+          
           timetableentry.save
+          
+           
 
           end
 
@@ -77,6 +61,7 @@ class Timetable < ActiveRecord::Base
 
 
   def create_field(timetableentry, key, value)
+    puts key
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
       teacher = Teacher.find_or_create_by(name: value,group:self.group) if key == "teacher"

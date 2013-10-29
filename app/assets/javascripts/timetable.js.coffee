@@ -259,10 +259,10 @@
 
 
   $scope.getDisplayTime = (time1) ->
-    console.log "TTTTTTTTT"
-    console.log time1
-    console.log time1[0]
-    console.log time1[0][0]
+    # console.log "TTTTTTTTT"
+#     console.log time1
+#     console.log time1[0]
+#     console.log time1[0][0]
     if time1.length > 0
 
       from_date_hour = time1[0][0].from_hours
@@ -320,18 +320,18 @@
         from_minutes: $scope.from_date_minute_value.value
         to_minutes: $scope.to_date_minute_value.value
         to_hours: $scope.to_date_hour_value.value
-      console.log "AAAAAAAAAAAA"
-      console.log $scope.data.timetable.weekdays[m]
+      # console.log "AAAAAAAAAAAA"
+ #      console.log $scope.data.timetable.weekdays[m]
       timetableEntry.weekday = $scope.data.timetable.weekdays[m]
-      console.log timetableEntry
+      # console.log timetableEntry
       a = []
       a.push timetableEntry
-      console.log $scope.data.timeArray[m]
+      # console.log $scope.data.timeArray[m]
       $scope.data.timeArray[r].push a
-      console.log $scope.data.timeArray
+      # console.log $scope.data.timeArray
 
       m++
-    console.log $scope.data.timeArray
+    # console.log $scope.data.timeArray
 
 
   $scope.new = ->
