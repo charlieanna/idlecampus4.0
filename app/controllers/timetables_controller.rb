@@ -15,7 +15,7 @@ class TimetablesController < ApplicationController
     puts result
     
     group = Group.find_by_group_code(result['group_code'])
-
+    
     timetable = Timetable.find_or_create_by(group_id: group.id)
       
     entries = result["entries"]
