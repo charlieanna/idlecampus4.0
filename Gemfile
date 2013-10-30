@@ -20,7 +20,7 @@ gem 'rb-readline'
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 group :test do
-	gem 'factory_girl_rails', '4.2.1'
+  gem 'factory_girl_rails', '4.2.1'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
    gem 'cucumber-rails', '1.4.0', :require => false
@@ -38,8 +38,8 @@ gem 'coffee-rails', '4.0.0'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
-# gem 'turbolinks', '1.1.1'
-# gem "rb-readline", "~> 0.5.0"
+# # gem 'turbolinks', '1.1.1'
+# # gem "rb-readline", "~> 0.5.0"
 gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
