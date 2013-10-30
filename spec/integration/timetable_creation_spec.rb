@@ -29,7 +29,7 @@ feature 'Visitor signs up', :js => true do
       
       click_button "Teachers"
      
-      teachers = FactoryGirl.build_list(:teacher,7)
+      teachers = FactoryGirl.build_list(:teacher,28)
      
       teachers.each do |teacher|
         fill_in "newteacher",with: teacher.name
@@ -94,80 +94,76 @@ feature 'Visitor signs up', :js => true do
       click_button "AddRow"
       # check "addbatch1"
       
-      # teachers.each_index do |index| 
- #        puts  "sub#{index+1}"
- #        click_link_def "sub#{index+1}"
- #        select "teacher#{index+1}",from: "teacher"
- #        select "subject#{index+1}",from: "subject"
- #        select "room#{index+1}",from: "room"
- #        click_button "close"   
- #      end
+     add_entry(1,7)
       
-      click_link_def "sub1" 
+      # click_link_def "sub1" 
  #      
-      select "teacher1",from: "teacher1"
-      select "subject1",from: "subject1"
-      select "room1",from: "room1"
-#       # select "teacher1",from: "teacher1"
-#  #      select "subject1",from: "subject1"
-#  #      select "room1",from: "room1"
-#  #      select "teacher1",from: "teacher2"
-#  #      select "subject1",from: "subject2"
-#  #      select "room1",from: "room2"
-      click_button "close1"   
-      click_link_def "sub2"
-      select "teacher2",from: "teacher2"
-      select "subject2",from: "subject2"
-      select "room2",from: "room2"
-      click_button "close2" 
+     #  select "teacher1",from: "teacher1"
+#       select "subject1",from: "subject1"
+#       select "room1",from: "room1"
+# #       # select "teacher1",from: "teacher1"
+# #  #      select "subject1",from: "subject1"
+# #  #      select "room1",from: "room1"
+# #  #      select "teacher1",from: "teacher2"
+# #  #      select "subject1",from: "subject2"
+# #  #      select "room1",from: "room2"
+#       click_button "close1"   
+#       click_link_def "sub2"
+#       select "teacher2",from: "teacher2"
+#       select "subject2",from: "subject2"
+#       select "room2",from: "room2"
+#       click_button "close2" 
 #       click_link_def "sub3"
-#       select "teacher3",from: "teacher"
-#       select "subject3",from: "subject"
-#       select "room3",from: "room"
-#       click_button "close" 
-# #       
-# #      
-#       # check "addbatch4" 
+#       select "teacher3",from: "teacher3"
+#       select "subject3",from: "subject3"
+#       select "room3",from: "room3"
+#       click_button "close3" 
+# # #       
+# # #      
+# #       # check "addbatch4" 
 #       click_link_def "sub4"
 #       
-#       select "teacher1",from: "teacher"
-#       select "subject1",from: "subject"
-#       select "room1",from: "room"
-#       # select "teacher1",from: "teacher1"
-#  #      select "subject1",from: "subject1"
-#  #      select "room1",from: "room1"
-#  #      select "teacher1",from: "teacher2"
-#  #      select "subject1",from: "subject2"
-#  #      select "room1",from: "room2"
-#       click_button "close" 
-# 
+#       select "teacher1",from: "teacher4"
+#       select "subject1",from: "subject4"
+#       select "room1",from: "room4"
+# #       # select "teacher1",from: "teacher1"
+# #  #      select "subject1",from: "subject1"
+# #  #      select "room1",from: "room1"
+# #  #      select "teacher1",from: "teacher2"
+# #  #      select "subject1",from: "subject2"
+# #  #      select "room1",from: "room2"
+#        click_button "close4" 
+# # 
 #       click_link_def "sub5"
-#       select "teacher3",from: "teacher"
-#       select "subject2",from: "subject"
-#       select "room2",from: "room"
-#       click_button "close"
+#       select "teacher3",from: "teacher5"
+#       select "subject2",from: "subject5"
+#       select "room2",from: "room5"
+#       click_button "close5"
 #       click_link_def "sub6"
-#       select "teacher6",from: "teacher"
-#       select "subject6",from: "subject"
-#       select "room6",from: "room" 
-#       click_button "close"
-#      
-#       
+#       select "teacher6",from: "teacher6"
+#       select "subject6",from: "subject6"
+#       select "room6",from: "room6" 
+#       click_button "close6"
+# #      
 # #       
-# #       
+# # #       
+# # #       
 #        click_link_def "sub7"
-#        select "teacher7",from: "teacher"
-#        select "subject7",from: "subject"
-#      select "room7",from: "room"
-#        click_button "close" 
-       open_page
+#        select "teacher7",from: "teacher7"
+#        select "subject7",from: "subject7"
+#      select "room7",from: "room7"
+#        click_button "close7" 
        
-#   #     
-    #   select "11 AM",from: "from_hour"
-#       select 30,from: "from_minute"
-#       select "2 PM",from: "to_hour"
-#       select 10,from: "to_minute"
-#       click_button "AddRow"
+       
+  #     
+      select "11 AM",from: "from_hour"
+      select 30,from: "from_minute"
+      select "2 PM",from: "to_hour"
+      select 10,from: "to_minute"
+      click_button "AddRow"
+      
+      add_entry(8,14)
+    
 # # #    
 #       click_link_def "sub8" 
 #       select "teacher1",from: "teacher"
@@ -206,11 +202,13 @@ feature 'Visitor signs up', :js => true do
 #       select "subject1",from: "subject"
 #       select "room1",from: "room"
 #       click_button "close" 
-#       select "3 PM",from: "from_hour"
-#       select 10,from: "from_minute"
-#       select "5 PM",from: "to_hour"
-#       select 20,from: "to_minute"
-#       click_button "AddRow"
+      select "3 PM",from: "from_hour"
+      select 10,from: "from_minute"
+      select "5 PM",from: "to_hour"
+      select 20,from: "to_minute"
+      click_button "AddRow"
+      
+      add_entry(15,21)
 #       
 #         
 #       click_link_def "sub15"
@@ -245,11 +243,13 @@ feature 'Visitor signs up', :js => true do
 #       select "room2",from: "room"
 #       click_button "close" 
 # #   #     
-#       select "5 PM",from: "from_hour"
-#       select 30,from: "from_minute"
-#       select "7 PM",from: "to_hour"
-#       select 10,from: "to_minute"
-#       click_button "AddRow"
+      select "5 PM",from: "from_hour"
+      select 30,from: "from_minute"
+      select "7 PM",from: "to_hour"
+      select 10,from: "to_minute"
+      click_button "AddRow"
+      
+      add_entry(22,28)
 #       click_link_def "sub22" 
 #       select "teacher1",from: "teacher"
 #       select "subject1",from: "subject"
@@ -299,6 +299,17 @@ scenario 'with valid email and password' do
       click_link @group1.name
   end
  
+end
+
+def add_entry(from,to)
+  from.upto(to) do |index| 
+    puts  "sub#{index}"
+    click_link_def "sub#{index}"
+    select "teacher#{index}",from: "teacher#{index}"
+    select "subject#{index}",from: "subject#{index}"
+    select "room#{index}",from: "room#{index}"
+    click_button "close#{index}"   
+  end
 end
 
 def click_link_def(el)
