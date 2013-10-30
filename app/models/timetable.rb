@@ -67,17 +67,21 @@ class Timetable < ActiveRecord::Base
    
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
+      puts value
       teacher = Teacher.find_or_create_by(name: value,group:self.group) if key == "teacher"
 
       subject = Subject.find_or_create_by(name: value,group:self.group) if key == "subject" 
 
       room = Room.find_or_create_by(name: value,group:self.group) if key == "room" 
-
+      
+      
       timetableentry.subject = subject if key == "subject"
 
       timetableentry.teacher = teacher if key == "teacher"
 
       timetableentry.room = room if key == "room"
+      
+      
 
       timetableentry.save
 
