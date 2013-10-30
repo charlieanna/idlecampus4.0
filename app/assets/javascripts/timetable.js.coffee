@@ -294,7 +294,7 @@
         display_to = display_to + to_date_minute
         display_to = display_to + "AM"
 
-      console.log display_from + "-" + display_to
+      # console.log display_from + "-" + display_to
       display_from + "-" + display_to
 
   Timetable = $resource("/timetable/gettcb", {},
@@ -341,8 +341,8 @@
 
   $scope.addBatchToEntry = (entry) ->
 
-    console.log "PPPPPPPPP"
-    console.log entry
+    # console.log "PPPPPPPPP"
+  #   console.log entry
     weekday = entry.weekday
 
 
@@ -365,15 +365,15 @@
 
     console.log e
     while r < $scope.data.timeArray.length
-      console.log "OOOOOOOOOOO"
-      console.log $scope.data.timeArray[r]
+      # console.log "OOOOOOOOOOO"
+#       console.log $scope.data.timeArray[r]
       v = 0
       while v < $scope.data.timeArray[r].length
         console.log  $scope.data.timeArray[r][v]
         w = 0
         while w < $scope.data.timeArray[r][v].length
-          console.log "SSSSSDDDDDDDD"
-          console.log r+" "+v
+          # console.log "SSSSSDDDDDDDD"
+ #          console.log r+" "+v
           $scope.data.timeArray[r][v] = e if $scope.data.timeArray[r][v][w] == entry
           w++
         v++

@@ -62,6 +62,7 @@ class TimetableBuilder
       return @timetable
     
    else
+     
     field_entries = get_field_entries
     
     entries = get_entries
@@ -99,6 +100,8 @@ class TimetableBuilder
 end
 
 def get_entries_array(entries)
+  batches = []
+  weekdays = []
      if entries.length > 0
 
       f = []

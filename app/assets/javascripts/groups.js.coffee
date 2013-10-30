@@ -48,8 +48,8 @@
         $scope.data.timetable.entries = rdata.timetable.field_entries
         $scope.data.timeArray = entries
         $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
-          console.log "Subscribers"
-          console.log iq
+          # console.log "Subscribers"
+#           console.log iq
           $(iq).find("subscription").each ->
            
             jid = $(this).attr("jid")
@@ -58,8 +58,8 @@
             $scope.data.currentGroup.members.push jid
           
 
-      console.log "HHHHHHHHHHHHH"
-      console.log $scope.data
+      # console.log "HHHHHHHHHHHHH"
+    #   console.log $scope.data
 
 
     ).error (data, status, headers, config) ->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022161542) do
+ActiveRecord::Schema.define(version: 20131030074700) do
 
   create_table "batches", force: true do |t|
     t.string   "name"
@@ -46,60 +46,24 @@ ActiveRecord::Schema.define(version: 20131022161542) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
-  create_table "fields", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "fields_timetables", force: true do |t|
-    t.integer  "field_id"
-    t.integer  "timetable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "group_memberships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "group_memberships", ["group_id"], name: "index_group_memberships_on_group_id"
-  add_index "group_memberships", ["user_id", "group_id"], name: "index_group_memberships_on_user_id_and_group_id"
-  add_index "group_memberships", ["user_id"], name: "index_group_memberships_on_user_id"
-
   create_table "groups", force: true do |t|
     t.string   "name"
     t.string   "group_code"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "owner_id"
-    t.string   "slug"
   end
 
-  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
-  add_index "groups", ["slug"], name: "index_groups_on_slug"
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
-
-  create_table "locations", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "rooms", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "group_id"
-    t.integer  "timetable_id"
   end
 
   add_index "rooms", ["group_id"], name: "index_rooms_on_group_id"
-  add_index "rooms", ["timetable_id"], name: "index_rooms_on_timetable_id"
 
   create_table "small_groups", force: true do |t|
     t.string   "name"
@@ -113,22 +77,18 @@ ActiveRecord::Schema.define(version: 20131022161542) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "group_id"
-    t.integer  "timetable_id"
   end
 
   add_index "subjects", ["group_id"], name: "index_subjects_on_group_id"
-  add_index "subjects", ["timetable_id"], name: "index_subjects_on_timetable_id"
 
   create_table "teachers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "group_id"
-    t.integer  "timetable_id"
   end
 
   add_index "teachers", ["group_id"], name: "index_teachers_on_group_id"
-  add_index "teachers", ["timetable_id"], name: "index_teachers_on_timetable_id"
 
   create_table "timetable_entries", force: true do |t|
     t.integer  "timetable_id"
@@ -139,26 +99,10 @@ ActiveRecord::Schema.define(version: 20131022161542) do
     t.integer  "small_group_id"
     t.integer  "subject_id"
     t.integer  "teacher_id"
-    t.integer  "location_id"
     t.integer  "room_id"
   end
 
   add_index "timetable_entries", ["timetable_id"], name: "index_timetable_entries_on_timetable_id"
-
-  create_table "timetable_field_values", force: true do |t|
-    t.string   "name"
-    t.integer  "timetable_field_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "timetable_fields", force: true do |t|
-    t.string   "name"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "timetable_id"
-  end
 
   create_table "timetables", force: true do |t|
     t.datetime "created_at"

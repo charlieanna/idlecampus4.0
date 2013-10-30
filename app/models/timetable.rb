@@ -1,4 +1,8 @@
 class Timetable < ActiveRecord::Base
+  before_save :saved
+  def saved
+    puts "#{self} saved"
+  end
   attr_accessor :message, :members
   belongs_to :group
   has_many :teachers
@@ -36,8 +40,7 @@ class Timetable < ActiveRecord::Base
           |key, value|
              
 
-          puts key
-          puts value
+        
           
 
           create_field(timetableentry, key, value)
@@ -61,7 +64,7 @@ class Timetable < ActiveRecord::Base
 
 
   def create_field(timetableentry, key, value)
-    puts key
+   
     if key != "from_hours" && key != "from_minutes" && key != "to_minutes" && key != "to_hours" && key != "weekday" && key != "$$hashKey" && key != "batch"
      
       teacher = Teacher.find_or_create_by(name: value,group:self.group) if key == "teacher"

@@ -13,8 +13,12 @@ class TimetableEntry < ActiveRecord::Base
    
 
    def to_hash
-
+     
     entry_hash = {}
+    puts self.id
+    if self.id == 5
+      debugger
+    end
     entry_hash["weekday"] = self.weekday.name
     
     entry_hash["teacher"] = self.teacher.name
@@ -58,7 +62,7 @@ class TimetableEntry < ActiveRecord::Base
      timetableentry = TimetableEntry.find_or_create_by( :weekday_id => weekday.id, :class_timing_id => class_timing.id, :small_group_id => small_group.id)
 #     
 
-     timetableentry = TimetableEntry.new
+     # timetableentry = TimetableEntry.new
      timetableentry.timetable = timetable
      timetableentry.save
      

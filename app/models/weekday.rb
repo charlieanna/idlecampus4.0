@@ -1,4 +1,6 @@
 class Weekday < ActiveRecord::Base
- 
-  # has_many :timetable_entries
+  before_save :saved
+  def saved
+    puts "#{self} saved"
+  end
 end

@@ -118,7 +118,7 @@ feature 'Visitor signs up', :js => true do
       click_button "close" 
 #       
 #      
-check "addbatch4" 
+      check "addbatch4" 
       click_link_def "sub4"
       
       select "teacher1",from: "teacher0"
@@ -280,13 +280,14 @@ end
 scenario 'with valid email and password' do
  
       click_button "SendTimetable" 
-      open_page
- 
+      
+      click_link @group1.name
   end
+ 
 end
 
 def click_link_def(el)
-  puts "##{el}"
+ 
   page.find("##{el}").trigger(:click) 
 end
 def open_page

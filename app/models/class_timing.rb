@@ -1,6 +1,9 @@
 class ClassTiming < ActiveRecord::Base
 	validate :from_is_less_than_to
-
+  before_save :saved
+  def saved
+    puts "#{self} saved"
+  end
 	def to_hours
 		self.to.hour.to_s
 	end

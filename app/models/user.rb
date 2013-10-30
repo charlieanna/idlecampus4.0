@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
- #  before_save { email.downcase! }
+  before_save :saved
+  def saved
+    puts "#{self} saved"
+  end
    before_create :set_jabber_id
 
   validates :name, presence: true, length: { maximum: 50 },presence: true,uniqueness: { case_sensitive: false }

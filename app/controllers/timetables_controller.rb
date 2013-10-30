@@ -54,6 +54,7 @@ class TimetablesController < ApplicationController
      
     timetable_in_hash = TimetableBuilder.new(group).build
     
+    puts timetable_in_hash
     render :json => timetable_in_hash
 
  end
