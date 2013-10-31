@@ -12,7 +12,7 @@ class TimetablesController < ApplicationController
   
     result = TimetableParser.new(params).parse
     
-    puts result
+    # puts result
     
     group = Group.find_by_group_code(result['group_code'])
     
@@ -47,14 +47,14 @@ class TimetablesController < ApplicationController
 
 
   def show
-    
+     
     group = params["group_id"]
     
     group = Group.find_by_group_code(group)
-     
+    
     timetable_in_hash = TimetableBuilder.new(group).build
     
-    puts timetable_in_hash
+     # puts timetable_in_hash
     render :json => timetable_in_hash
 
  end

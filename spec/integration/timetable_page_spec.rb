@@ -49,6 +49,8 @@ describe "Timetable Page",js: true do
     
       	xhr :post, group_timetable_path(group),params
         expect(response.code).to eq("200")
+        
+        
      end
     end
   end

@@ -53,19 +53,22 @@ config.mock_with :rspec
     config.order = "random"
     config.include Capybara::DSL
     config.include Capybara::Angular::DSL
-     config.use_transactional_fixtures = false
- #  
-     config.before(:suite) do
-       DatabaseCleaner.strategy = :truncation
-     end
- 
-     config.before(:each) do
-       DatabaseCleaner.start
-     end
- 
-     config.after(:each) do
-       DatabaseCleaner.clean
-     end
+        
+      config.use_transactional_fixtures = false
+         
+      config.before :each do
+        if Capybara.current_driver == :rack_test
+          DatabaseCleaner.strategy = :transaction
+        else
+          DatabaseCleaner.strategy = :truncation
+        end
+        DatabaseCleaner.start
+      end
+         
+      config.after do
+        DatabaseCleaner.clean
+      end
+          
 
   end
 end

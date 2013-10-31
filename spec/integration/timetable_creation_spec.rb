@@ -95,40 +95,40 @@ feature 'Visitor signs up', :js => true do
       select 20,from: "to_minute"
       click_button "AddRow"
      
-      check "addbatch1" 
-      click_link_def "sub1"
-     
-      select "teacher1",from: "teacher1"
-      select "subject1",from: "subject1"
-      select "room1",from: "room1"
-     
-      select "teacher1",from: "teacher2"
-      select "subject1",from: "subject2"
-      select "room1",from: "room2"
-
-      select "teacher1",from: "teacher3"
-      select "subject1",from: "subject3"
-      select "room1",from: "room3"
-       click_button "close1" 
-       check "addbatch2" 
-       click_link_def "sub2"
-      
-      
-       select "teacher1",from: "teacher1"
-       select "subject1",from: "subject1"
-       select "room1",from: "room1"
-     
-       select "teacher1",from: "teacher2"
-       select "subject1",from: "subject2"
-       select "room1",from: "room2"
-
-       select "teacher1",from: "teacher3"
-       select "subject1",from: "subject3"
-       select "room1",from: "room3"
-       click_button "close2"
-        
-       open_page  
-       add_entry(3,7)
+      # check "addbatch1" 
+     #  click_link_def "sub1"
+     # 
+     #  select "teacher1",from: "teacher1"
+     #  select "subject1",from: "subject1"
+     #  select "room1",from: "room1"
+     # 
+     #  select "teacher1",from: "teacher2"
+     #  select "subject1",from: "subject2"
+     #  select "room1",from: "room2"
+     # 
+     #  select "teacher1",from: "teacher3"
+     #  select "subject1",from: "subject3"
+     #  select "room1",from: "room3"
+     #   click_button "close1" 
+     #   check "addbatch2" 
+     #   click_link_def "sub2"
+     #  
+     #  
+     #   select "teacher1",from: "teacher1"
+     #   select "subject1",from: "subject1"
+     #   select "room1",from: "room1"
+     # 
+     #   select "teacher1",from: "teacher2"
+     #   select "subject1",from: "subject2"
+     #   select "room1",from: "room2"
+     # 
+     #   select "teacher1",from: "teacher3"
+     #   select "subject1",from: "subject3"
+     #   select "room1",from: "room3"
+     #   click_button "close2"
+     #    
+         
+       add_entry(1,7)
 
       select "11 AM",from: "from_hour"
       select 30,from: "from_minute"
@@ -138,7 +138,7 @@ feature 'Visitor signs up', :js => true do
       
        add_entry(8,14)
     
-
+  
       select "3 PM",from: "from_hour"
       select 10,from: "from_minute"
       select "5 PM",from: "to_hour"
@@ -161,9 +161,19 @@ end
 scenario 'with valid email and password' do
  
       click_button "SendTimetable" 
-      
-      click_link @group1.name
+      sleep(5)
+ # #      
+ #       click_link @group1.name
   end
+ 
+
+
+
+# scenario 'clicks the group after creating the timetable' do
+#  
+#      
+#       # click_link @group1.name
+#   end
  
 end
 
