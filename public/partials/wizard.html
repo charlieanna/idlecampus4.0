@@ -39,7 +39,8 @@
                 <div ng-switch-when="two">
                     <fieldset>
                         <div class="control-group">
-                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday" id="monday"> Monday
+							{{data.timetable.weekdays}}
+                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday" id="monday" ng-checked="checkPresence('Monday')"> Monday
                             <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday" id="tuesday"> Tuesday
                             <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday" id="wednesday"> Wednesday
                             <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday" id="thursday"> Thursday

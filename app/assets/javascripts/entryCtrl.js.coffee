@@ -92,6 +92,15 @@
   $scope.addBatch = (batch) ->
     $scope.data.timetable.batches.push batch
     $scope.batch = ""
+	
+  $scope.checkPresence = (weekday) ->
+    $scope.Monday = true if $scope.data.timetable.weekdays.indexOf("Monday") != -1
+    $scope.Tuesday = true if $scope.data.timetable.weekdays.indexOf("Tuesday") != -1
+    $scope.Wednesday = true if $scope.data.timetable.weekdays.indexOf("Wednesday") != -1
+    $scope.Thursday = true if $scope.data.timetable.weekdays.indexOf("Thursday") != -1
+    $scope.Friday = true if $scope.data.timetable.weekdays.indexOf("Friday") != -1
+    $scope.Saturday = true if $scope.data.timetable.weekdays.indexOf("Saturday") != -1
+    $scope.Sunday = true if $scope.data.timetable.weekdays.indexOf("Sunday") != -1    
 
   $scope.checkWeekday = (weekday) ->
     # console.log weekday
