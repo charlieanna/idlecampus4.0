@@ -6,7 +6,7 @@ class Room < ActiveRecord::Base
     puts "#{self} saved"
   end
 	def self.in_hash(group)
-		 rooms = group.teachers.pluck(:name)
+		 rooms = group.rooms.pluck(:name)
 		 field_entry = {}
      field_entry["name"] = "room"
      field_entry["values"] = rooms.uniq

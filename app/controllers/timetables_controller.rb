@@ -12,7 +12,7 @@ class TimetablesController < ApplicationController
   
     result = TimetableParser.new(params).parse
     
-    # puts result
+    puts result
     
     group = Group.find_by_group_code(result['group_code'])
     

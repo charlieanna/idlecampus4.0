@@ -19,7 +19,7 @@ class TimetableBuilder
 
   def get_field_entries
 
-
+    
     field_entries = []
 
     rooms_in_hash = Room.in_hash(@group)
@@ -36,7 +36,11 @@ class TimetableBuilder
   
     field_entries << subjects_in_hash
 
+    
+    
     return field_entries
+    
+    
   end
 
 

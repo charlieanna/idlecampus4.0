@@ -4,7 +4,7 @@ class TimetableParser
 	end
 
 	def parse
-
+    
 		result = Hash.new
 		
 		group = @params['timetable']["group"]["group_code"]

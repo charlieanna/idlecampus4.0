@@ -29,7 +29,7 @@ feature 'Visitor signs up', :js => true do
       
       click_button "Teachers"
      
-      teachers = FactoryGirl.build_list(:teacher,28)
+      teachers = FactoryGirl.build_list(:teacher,35)
      
       teachers.each do |teacher|
         fill_in "newteacher",with: teacher.name
@@ -53,7 +53,7 @@ feature 'Visitor signs up', :js => true do
      
       click_button "Subjects"
      
-      subjects = FactoryGirl.build_list(:subject,28)
+      subjects = FactoryGirl.build_list(:subject,35)
      
       subjects.each do |subject|
         fill_in "newsubject",with: subject.name
@@ -62,7 +62,7 @@ feature 'Visitor signs up', :js => true do
       end
      
       click_button "Rooms"
-      rooms = FactoryGirl.build_list(:room,28)
+      rooms = FactoryGirl.build_list(:room,35)
      
       rooms.each do |room|
         fill_in "newroom",with: room.name
@@ -135,36 +135,58 @@ feature 'Visitor signs up', :js => true do
       select "2 PM",from: "to_hour"
       select 10,from: "to_minute"
       click_button "AddRow"
-      
-       add_entry(8,14)
-    
-  
+      # 
+        add_entry(8,14)
+      #     
+      #   
       select "3 PM",from: "from_hour"
       select 10,from: "from_minute"
       select "5 PM",from: "to_hour"
       select 20,from: "to_minute"
       click_button "AddRow"
-      
-       add_entry(15,21)
-     
+      # 
+        add_entry(15,21)
+      #      
       select "5 PM",from: "from_hour"
       select 30,from: "from_minute"
       select "7 PM",from: "to_hour"
       select 10,from: "to_minute"
       click_button "AddRow"
+      # 
+         add_entry(22,28)
+      #   
+        select "7 PM",from: "from_hour"
+        select 30,from: "from_minute"
+        select "9 PM",from: "to_hour"
+        select 10,from: "to_minute"
+        click_button "AddRow"
+      #   
+         add_entry(29,35)
+      #   
       
-        add_entry(22,28)
 
-      
+        # open_page
 end
 
 scenario 'with valid email and password' do
- 
-      click_button "SendTimetable" 
-      sleep(5)
+  # 1.upto(35) do |index|
+ #    expect(page).to have_css "a#sub#{index}"
+ #  end
+       click_button "SendTimetable" 
+       sleep(5)
  # #      
- #       click_link @group1.name
-  end
+        # click_link @group1.name
+ end 
+  
+# scenario "only after the presence of a single entry only then the send timetable should be present" do
+#     1.upto(35) do |index|
+#       expect(page).to have_css "a#sub#{index}"
+#     end
+#   expect(page).to have_button('SendTimetable')
+#   
+# end
+
+
  
 
 
@@ -179,7 +201,7 @@ end
 
 def add_entry(from,to)
   from.upto(to) do |index| 
-    puts  "sub#{index}"
+    # puts  "sub#{index}"
     click_link_def "sub#{index}"
     select "teacher#{index}",from: "teacher#{index}"
     select "subject#{index}",from: "subject#{index}"
