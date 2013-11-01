@@ -128,41 +128,41 @@ feature 'Visitor signs up', :js => true do
        click_button "close2"
      #    
        
-         # add_entry(3,7)
-       open_page 
-      # select "11 AM",from: "from_hour"
-  #     select 30,from: "from_minute"
-  #     select "2 PM",from: "to_hour"
-  #     select 10,from: "to_minute"
-  #     click_button "AddRow"
-  #     # 
-  #       add_entry(8,14)
-  #     #     
-  #     #   
-  #     select "3 PM",from: "from_hour"
-  #     select 10,from: "from_minute"
-  #     select "5 PM",from: "to_hour"
-  #     select 20,from: "to_minute"
-  #     click_button "AddRow"
-  #     # 
-  #       add_entry(15,21)
-  #     #      
-  #     select "5 PM",from: "from_hour"
-  #     select 30,from: "from_minute"
-  #     select "7 PM",from: "to_hour"
-  #     select 10,from: "to_minute"
-  #     click_button "AddRow"
-  #     # 
-  #        add_entry(22,28)
-  #     #   
-  #       select "7 PM",from: "from_hour"
-  #       select 30,from: "from_minute"
-  #       select "9 PM",from: "to_hour"
-  #       select 10,from: "to_minute"
-  #       click_button "AddRow"
-  #     #   
-  #        add_entry(29,35)
-  #     #   
+          # add_entry(3,7)
+     #    
+     #  select "11 AM",from: "from_hour"
+     #  select 30,from: "from_minute"
+     #  select "2 PM",from: "to_hour"
+     #  select 10,from: "to_minute"
+     #  click_button "AddRow"
+     #  # 
+     #    add_entry(8,14)
+     #  #     
+     #  #   
+     #  select "3 PM",from: "from_hour"
+     #  select 10,from: "from_minute"
+     #  select "5 PM",from: "to_hour"
+     #  select 20,from: "to_minute"
+     #  click_button "AddRow"
+     #  # 
+     #    add_entry(15,21)
+     #  #      
+     #  select "5 PM",from: "from_hour"
+     #  select 30,from: "from_minute"
+     #  select "7 PM",from: "to_hour"
+     #  select 10,from: "to_minute"
+     #  click_button "AddRow"
+     #  # 
+     #     add_entry(22,28)
+     #  #   
+     #    select "7 PM",from: "from_hour"
+     #    select 30,from: "from_minute"
+     #    select "9 PM",from: "to_hour"
+     #    select 10,from: "to_minute"
+     #    click_button "AddRow"
+     #  #   
+     #     add_entry(29,35)
+     #  #   
       
 
         # open_page
@@ -173,10 +173,17 @@ scenario 'with valid email and password' do
  #    expect(page).to have_css "a#sub#{index}"
  #  end
        click_button "SendTimetable" 
+       page.save_screenshot('screenshot.png')
        # sleep(5)
        page.should have_content("timetable saved")
- # #      
+ # #   
+ 
+      # visit '/'  
+       # open_page 
        click_link @group1.name
+       
+       
+       page.should have_content("timetable saved")
  end 
   
 # scenario "only after the presence of a single entry only then the send timetable should be present" do
@@ -202,7 +209,7 @@ end
 
 def add_entry(from,to)
   from.upto(to) do |index| 
-    # puts  "sub#{index}"
+     puts  "sub#{index}"
     click_link_def "sub#{index}"
     select "teacher#{index}",from: "teacher#{index}"
     select "subject#{index}",from: "subject#{index}"
