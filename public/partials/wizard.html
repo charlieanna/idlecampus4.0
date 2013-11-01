@@ -58,13 +58,14 @@
                             <div class="controls">
 								
                                 <label class="checkbox">
-                                    Add Batches?<input ng-model="checked" ng-click="changechecked()" type="checkbox" value="" id="addbatches"/>
+                                    Add Batches?<input ng-model="data.checked"  type="checkbox" value="" id="addbatches"/>
 
  
                                 </label>
-								 <!-- {{isChecked()}} -->
+								  {{data.checked}} 
 								
-                                <form ng-show="isChecked()">
+                                <form ng-show="data.checked">
+									
                                     <input name="Add Batches" type="text" ng-model="batch" id="newbatch">
 
                                     <button class="addbtn btn" ng-click="addBatch(batch);batch=''" id="addbatch" style="
