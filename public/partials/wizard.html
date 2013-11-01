@@ -39,14 +39,15 @@
                 <div ng-switch-when="two">
                     <fieldset>
                         <div class="control-group">
-							{{data.timetable.weekdays}}
-                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday" id="monday" ng-checked="checkPresence('Monday')"> Monday
-                            <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday" id="tuesday"> Tuesday
-                            <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday" id="wednesday"> Wednesday
-                            <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday" id="thursday"> Thursday
-                            <input type="checkbox" ng-click="checkWeekday('Friday')" ng-model="Friday" id="friday"> Friday
-                            <input type="checkbox" ng-click="checkWeekday('Saturday')" ng-model="Saturday" id="saturday"> Saturday
-                            <input type="checkbox" ng-click="checkWeekday('Sunday')" ng-model="Sunday" id="sunday"> Sunday
+							
+							{{checkPresence()}}
+                            <input type="checkbox" ng-click="checkWeekday('Monday')" ng-model="Monday" id="monday" ng-checked="Monday"> Monday
+                            <input type="checkbox" ng-click="checkWeekday('Tuesday')" ng-model="Tuesday" id="tuesday" ng-checked="Tuesday"> Tuesday
+                            <input type="checkbox" ng-click="checkWeekday('Wednesday')" ng-model="Wednesday" id="wednesday" ng-checked="Wednesday"> Wednesday
+                            <input type="checkbox" ng-click="checkWeekday('Thursday')" ng-model="Thursday" id="thursday" ng-checked="Thursday"> Thursday
+                            <input type="checkbox" ng-click="checkWeekday('Friday')" ng-model="Friday" id="friday" ng-checked="Friday"> Friday
+                            <input type="checkbox" ng-click="checkWeekday('Saturday')" ng-model="Saturday" id="saturday" ng-checked="Saturday"> Saturday
+                            <input type="checkbox" ng-click="checkWeekday('Sunday')" ng-model="Sunday" id="sunday" ng-checked="Sunday"> Sunday
                         </div>
 
                     </fieldset>

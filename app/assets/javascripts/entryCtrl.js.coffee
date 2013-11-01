@@ -93,7 +93,14 @@
     $scope.data.timetable.batches.push batch
     $scope.batch = ""
 	
-  $scope.checkPresence = (weekday) ->
+  $scope.checkPresence =  ->
+    $scope.Monday = false
+    $scope.Tuesday = false
+    $scope.Wednesday = false
+    $scope.Thursday = false
+    $scope.Friday = false
+    $scope.Saturday = false
+    $scope.Sunday = false
     $scope.Monday = true if $scope.data.timetable.weekdays.indexOf("Monday") != -1
     $scope.Tuesday = true if $scope.data.timetable.weekdays.indexOf("Tuesday") != -1
     $scope.Wednesday = true if $scope.data.timetable.weekdays.indexOf("Wednesday") != -1
@@ -103,7 +110,7 @@
     $scope.Sunday = true if $scope.data.timetable.weekdays.indexOf("Sunday") != -1    
 
   $scope.checkWeekday = (weekday) ->
-    # console.log weekday
+
     $scope.Monday = !$scope.Monday if weekday == "Monday"
     $scope.Tuesday = !$scope.Tuesday if weekday == "Tuesday"
     $scope.Wednesday = !$scope.Wednesday if weekday == "Wednesday"
@@ -111,8 +118,7 @@
     $scope.Friday = !$scope.Friday if weekday == "Friday"
     $scope.Saturday = !$scope.Saturday if weekday == "Saturday"
     $scope.Sunday = !$scope.Sunday if weekday == "Sunday"
-    # console.log $scope.Monday
-    # console.log $scope.data.timetable.weekdays.indexOf(weekday)
+   
 
     if $scope.Monday is true and $scope.data.timetable.weekdays.indexOf("Monday") == -1
       $scope.data.timetable.weekdays.push "Monday"
@@ -129,9 +135,7 @@
     if $scope.Sunday is true and $scope.data.timetable.weekdays.indexOf("Sunday") == -1
       $scope.data.timetable.weekdays.push "Sunday"
 
-    # console.log $scope.data.timetable.weekdays
-#     console.log $scope.Monday
-#     console.log index
+
     if weekday == "Monday" and $scope.Monday is false
       index = $scope.data.timetable.weekdays.indexOf("Monday")
       $scope.data.timetable.weekdays.splice(index, 1)
