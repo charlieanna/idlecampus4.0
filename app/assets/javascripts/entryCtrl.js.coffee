@@ -53,7 +53,11 @@
   $scope.step = 0;
   $scope.wizard = { tacos: 2 };
 
-
+  
+  $scope.isChecked = ->
+		  $scope.checked = false
+    $scope.checked = true if $scope.data.timetable.batches.length > 0  
+		 
   $scope.changechecked = ->
     console.log $scope.checked
     $scope.checked = !$scope.checked

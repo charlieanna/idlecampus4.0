@@ -56,12 +56,15 @@
                     <fieldset>
                         <div class="control-group">
                             <div class="controls">
+								
                                 <label class="checkbox">
                                     Add Batches?<input ng-model="checked" ng-click="changechecked()" type="checkbox" value="" id="addbatches"/>
 
  
                                 </label>
-                                <form ng-show="checked">
+								 <!-- {{isChecked()}} -->
+								
+                                <form ng-show="isChecked()">
                                     <input name="Add Batches" type="text" ng-model="batch" id="newbatch">
 
                                     <button class="addbtn btn" ng-click="addBatch(batch);batch=''" id="addbatch" style="
@@ -73,6 +76,7 @@
                                                     padding-bottom: 0px;
                                             ">Add</button>
                                     <ul>
+										
                                         <li ng-repeat="batch in data.timetable.batches">
                                             {{batch}}
 
