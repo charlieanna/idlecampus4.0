@@ -247,53 +247,6 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
       console.log data
 
 
-  $scope.register = ->
-    callback = undefined
-    connection = undefined
-    email = undefined
-    form = undefined
-    password = undefined
-    user = undefined
-    form = $scope.signupform
-    if form.$valid
-      $scope.spin = "icon-spinner icon-spin icon-large"
-      email = $scope.signupform.uEmail.$viewValue
-      user = $scope.signupform.size.$viewValue
-      password = $scope.signupform.uPassword.$viewValue
-      console.log email
-      callback = undefined
-      connection = undefined
-      console.log "" + user + " " + password + " " + email
-      connection = new Strophe.Connection("http://idlecampus.com/http-bind")
-      console.log connection
-      callback = (status) ->
-        console.log status
-        if status is Strophe.Status.REGISTER
-          connection.register.fields.username = user
-          connection.register.fields.password = password
-          connection.register.submit()
-        else if status is Strophe.Status.REGISTERED
-          alert "registered!"
-          $scope.$apply ->
-            $scope.spin = ""
-
-          $("#signup-form").dialog "close"
-          $.post("/users",
-            email: email
-            jabber_id: user + "@idlecampus.com"
-            device_identifier: "web"
-            password: password
-          ).done ->
-
-          connection.authenticate()
-          $scope.$digest()
-        else if status is Strophe.Status.CONNECTED
-          console.log "logged in!"
-        else
-
-      console.log connection.register
-      connection.register.connect "idlecampus.com", callback, 60, 1
-      $scope.XMPP.connection = connection
 
   $scope.connect = (user, password) ->
     connection = undefined
@@ -313,7 +266,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.getGroupsCreated = ->
     $.get "/groups", (data) ->
-      
+      console.log "groups created"
       console.log data
       for d in data
         Data.groupscreated.push d
@@ -326,24 +279,16 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
         $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
 	  
   $scope.register1 = ->
-    callback = undefined
-    connection = undefined
-    email = undefined
-    form = undefined
-    jid = undefined
-    password = undefined
-    rid = undefined
-    sid = undefined
-    user = undefined
+   
     form = $scope.signupform
     connection = new Strophe.Connection("http://idlecampus.com/http-bind")
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+    # console.log "CREDENTIALS"
+#     console.log sid
+#     console.log rid
+#     console.log jid
     console.log connection
     callback = (status) ->
       console.log status
@@ -400,10 +345,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     localStorage.clear()
 
   $scope.attach = ->
-    conn = undefined
-    jid = undefined
-    rid = undefined
-    sid = undefined
+   
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     console.log conn
     conn.xmlInput = (body) ->
@@ -418,10 +360,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = $("#currentuser").text()
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+    # console.log "CREDENTIALS"
+  #   console.log sid
+  #   console.log rid
+  #   console.log jid
     if typeof gon isnt "undefined" and gon isnt null
       sid = gon.attacher.SID
       rid = gon.attacher.RID

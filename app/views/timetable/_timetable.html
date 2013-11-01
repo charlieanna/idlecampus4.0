@@ -1,6 +1,10 @@
 <div class="row" ng-controller="TimetableCtrl">
+<<<<<<< HEAD
 
 	{{data}}
+=======
+	
+>>>>>>> working
 <div class="row">
     <div class="offset1 span5">
         <img src="../img/GroupName.png">:<span id="groupname"> {{data.currentGroup.name}}</span>
@@ -15,6 +19,8 @@
 
 </div>
 
+
+
 <div class="row">
     <div class="span2">
         <a href="#createalert" role="button" class="btn pull-right" data-toggle="modal"><i class="icon-plus-sign"></i>Send
@@ -25,15 +31,15 @@
 <div class="row-fluid">
     <div class="span2"></div>
     <div class="span4">From:
-        <select class="span5" ng-model="from_date_hour_value" ng-options="c.display for c in from_date_hour"></select>
+        <select class="span5" ng-model="from_date_hour_value" ng-options="c.display for c in from_date_hour" id="from_hour"></select>
 
-        <select class="span5" ng-model="from_date_minute_value" ng-options="c.display for c in from_date_minute"></select>
+        <select class="span5" ng-model="from_date_minute_value" ng-options="c.display for c in from_date_minute" id="from_minute"></select>
 
     </div>
     <div class="span4">To:
-        <select class="span5" ng-model="to_date_hour_value" ng-options="c.display for c in to_date_hour"></select>
+        <select class="span5" ng-model="to_date_hour_value" ng-options="c.display for c in to_date_hour" id="to_hour"></select>
 
-        <select class="span5" ng-model="to_date_minute_value" ng-options="c.display for c in to_date_minute"></select>
+        <select class="span5" ng-model="to_date_minute_value" ng-options="c.display for c in to_date_minute" id="to_minute"></select>
 
     </div>
 </div>
@@ -66,7 +72,7 @@
                         <button id="SendTimetable" class="btn" ng-click="send()">Send Timetable</button>
                     </div>
                     <div class="span2" style="width: 100px;">
-                        <button id="CreateTimetable" type="button" class="btn ng-scope"
+                        <button id="CreateTimetable" type="button" class="btn ng-scope" name="CreateTimetable"
                                 bs-modal="'/partials/wizard.html'"
                                 data-toggle="modal">Create Timetable
                         </button>
@@ -117,7 +123,7 @@
                                 </td>
                                 <td ng-repeat="dt in time">
 
-                                    <a href="#addtimetableentry1" ng-model="index" ng-click="index=($parent.$index)*6+$index+1" role="button" class="editbtn btn" data-toggle="modal" id="sub1" style="
+                                    <a href="#addtimetableentry{{index}}" ng-model="index" ng-click="index=($parent.$index)*7+$index+1" role="button" class="editbtn btn" data-toggle="modal" id="sub{{($parent.$index)*7+$index+1}}" style="
                                     width: 53px;
                                             height: 30px;
                                             padding-top: 0px;
@@ -125,18 +131,19 @@
                                             padding-right: 0px;
                                             padding-bottom: 0px;
                                     ">Add</a>
+                                    
                       <span ng-hide="dt.length>1">
                        <!--{{dt.length>1}}-->
 
 
-                      <input type="checkbox" ng-click="addBatchToEntry(dt[0])"><br/>  Add Group:</span>
+                      <input type="checkbox" ng-click="addBatchToEntry(dt[0])" id="addbatch{{($parent.$index)*7+$index+1}}"><br/>  Add Group:</span>
 
 
                        <span ng-repeat="datetime in dt">
                            <!--{{datetime}} {{data.timetable.batches.length>0}}-->
                          <span>
 
-                             <span ng-repeat="entry in data.timetable.entries" name="subject" id="s{{($parent.$index)*6+$index+1}}"> {{entry.name}} : {{datetime[entry.name]}}
+                             <span ng-repeat="entry in data.timetable.entries" name="subject" id="s{{($parent.$index)*7+$index+1}}"> {{entry.name}} : {{datetime[entry.name]}}
                              </span>
                     <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
                     </span>
@@ -152,7 +159,7 @@
 
                           <div class="modal-header">
 
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close{{index}}">×</button>
                               <h3 id="myModalLabel"></h3>
 
                           </div>
@@ -160,7 +167,7 @@
 
 
                         <span ng-repeat="entry in data.timetable.entries" ng-hide="dt.length>1">
-                         {{entry.name}}<select class="span2" ng-model="datetime[entry.name]" ng-options="value for value in entry.values"></select>
+                         {{entry.name}}<select class="span2" ng-model="datetime[entry.name]" ng-options="value for value in entry.values" id="{{entry.name}}{{index}}"></select>
 
                           <!--<select class="span2" ng-model="datetime[batch]" ng-options="batch for batch in data.timetable.batches" ng-show="data.timetable.batches.length>0"></select>-->
 
@@ -170,7 +177,7 @@
 
                                  <span ng-repeat="entry in data.timetable.entries">
 
-                         {{entry.name}}: <select class="span2" ng-model="dt[$parent.$index][entry.name]" ng-options="value for value in entry.values"></select>
+                         {{entry.name}}: <select class="span2" ng-model="dt[$parent.$index][entry.name]" ng-options="value for value in entry.values" id="{{entry.name}}{{$parent.$index+1}}"></select>
 
 
 

@@ -259,10 +259,10 @@
 
 
   $scope.getDisplayTime = (time1) ->
-    console.log "TTTTTTTTT"
-    console.log time1
-    console.log time1[0]
-    console.log time1[0][0]
+    # console.log "TTTTTTTTT"
+#     console.log time1
+#     console.log time1[0]
+#     console.log time1[0][0]
     if time1.length > 0
 
       from_date_hour = time1[0][0].from_hours
@@ -294,7 +294,7 @@
         display_to = display_to + to_date_minute
         display_to = display_to + "AM"
 
-      console.log display_from + "-" + display_to
+      # console.log display_from + "-" + display_to
       display_from + "-" + display_to
 
   Timetable = $resource("/timetable/gettcb", {},
@@ -320,18 +320,18 @@
         from_minutes: $scope.from_date_minute_value.value
         to_minutes: $scope.to_date_minute_value.value
         to_hours: $scope.to_date_hour_value.value
-      console.log "AAAAAAAAAAAA"
-      console.log $scope.data.timetable.weekdays[m]
+      # console.log "AAAAAAAAAAAA"
+ #      console.log $scope.data.timetable.weekdays[m]
       timetableEntry.weekday = $scope.data.timetable.weekdays[m]
-      console.log timetableEntry
+      # console.log timetableEntry
       a = []
       a.push timetableEntry
-      console.log $scope.data.timeArray[m]
+      # console.log $scope.data.timeArray[m]
       $scope.data.timeArray[r].push a
-      console.log $scope.data.timeArray
+      # console.log $scope.data.timeArray
 
       m++
-    console.log $scope.data.timeArray
+    # console.log $scope.data.timeArray
 
 
   $scope.new = ->
@@ -341,8 +341,8 @@
 
   $scope.addBatchToEntry = (entry) ->
 
-    console.log "PPPPPPPPP"
-    console.log entry
+    # console.log "PPPPPPPPP"
+  #   console.log entry
     weekday = entry.weekday
 
 
@@ -365,15 +365,15 @@
 
     console.log e
     while r < $scope.data.timeArray.length
-      console.log "OOOOOOOOOOO"
-      console.log $scope.data.timeArray[r]
+      # console.log "OOOOOOOOOOO"
+#       console.log $scope.data.timeArray[r]
       v = 0
       while v < $scope.data.timeArray[r].length
         console.log  $scope.data.timeArray[r][v]
         w = 0
         while w < $scope.data.timeArray[r][v].length
-          console.log "SSSSSDDDDDDDD"
-          console.log r+" "+v
+          # console.log "SSSSSDDDDDDDD"
+ #          console.log r+" "+v
           $scope.data.timeArray[r][v] = e if $scope.data.timeArray[r][v][w] == entry
           w++
         v++
@@ -394,24 +394,16 @@
     values = []
     values = JSON.stringify($scope.data.timeArray)
 #    alert $scope.data.currentGroup.group_code
+    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
     if $scope.data.currentGroup
-      members = []
-      $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
-        console.log "Subscribers"
-        console.log iq
-        $(iq).find("subscription").each ->
-         
-          jid = $(this).attr("jid")
-          jid = jid.substring(0, jid.indexOf("/"))
-          members.push jid
-          console.log jid
+      
         $.ajax
           type: "POST"
-          url: "/timetable/create"
+          url: url
           data:
             timetable:
-              members: members
+              members: $scope.data.currentGroup.members
               entries: values
               group: $scope.data.currentGroup
 

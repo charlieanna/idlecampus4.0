@@ -142,7 +142,7 @@
 	        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
         
 	        background:#d7dadc;
-	        width:56px;
+	        /*width:56px;*/
 	/*        border:1px solid #dcdcdc;*/
         
 	        display:inline-block;
@@ -152,7 +152,7 @@
 	        font-weight:200;
 	        padding:9px 11px;
 	        text-decoration:none;
-        
+            margin-right: 10px;
 	        text-shadow:0px 1px 0px #ffffff;
         
 	    }
@@ -223,7 +223,7 @@
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <title>IdleCampus</title>
+	    <title><%= yield(:title) %></title>
 
 	   
 
@@ -236,10 +236,12 @@
         <div class="wrapper">
 			<%= render "layouts/header" %>
 	
-
-			<!-- <%= flash[:alert] %>
-			<%= flash[:notice] %>
-			<%= flash[:success] %> -->
+    
+		<% flash.each do |key, value| %>
+		 <% if key!=:register && key!=:group%>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <% end %>
 
 			<%= yield %>
            

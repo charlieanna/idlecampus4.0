@@ -3,10 +3,27 @@ Welcome <%= @user.name%>
 <aside class="span3">
     <section>
         <div ng-controller="GroupsCtrl">
-        	 <form class="form-inline"> 
+			<div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
+			         aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-header">
+			            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			            <h3 id="myModalLabel">Create Alert</h3>
+			        </div>
+			        <div class="modal-body">
+			            <input placeholder="Alert" type="text"
+			                   id="createalertinput" ng-model="data.message"/>
+			        </div>
+			        <div class="modal-footer">
+			            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			            <button data-dismiss="modal" class="btn btn-primary"
+			                    ng-click="publishgroupalert()">Send
+			            </button>
+			        </div>
+			    </div>
+        	 <form class="form-inline" id="new_group"> 
                   <input class="create-group-input span2" placeholder="Group Name" type="text"
-                        id="creategroupinput" ng-model="data.creategroup"/>
-
+                        id="creategroupinput" name="group" ng-model="data.creategroup"/>
+                 
                  <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
                          ng-click="createGroup()">Create
                  </button> 
@@ -26,7 +43,7 @@ Welcome <%= @user.name%>
 
 	        </li>
 
-	        <li ng-repeat="group in data.groupscreated" id="{{group}}">
+	        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
                               <a href="" ng-click="groupclick(group)">{{group.name}}</a>
                             </li>
 			

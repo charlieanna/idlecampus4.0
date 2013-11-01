@@ -6,7 +6,11 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
-
+  require 'capybara/poltergeist'
+  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {:js_errors => false})
+  end
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -14,7 +18,9 @@ Spork.prefork do
   # Checks for pending migrations before tests are run.
   # If you are not using ActiveRecord, you can remove this line.
   ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
-
+  RSpec.configure do |config|
+    config.include Features::SessionHelpers, type: :feature
+  end
   RSpec.configure do |config|
     # ## Mock Framework
     #
@@ -23,14 +29,17 @@ Spork.prefork do
     # config.mock_with :mocha
     # config.mock_with :flexmock
     # config.mock_with :rr
+config.mock_with :rspec
 
+  config.include(MailerMacros)
+  config.before(:each) { reset_email }
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
     # instead of true.
-    config.use_transactional_fixtures = true
+   
 
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
@@ -43,6 +52,24 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
+    config.include Capybara::Angular::DSL
+        
+      config.use_transactional_fixtures = false
+         
+      config.before :each do
+        if Capybara.current_driver == :rack_test
+          DatabaseCleaner.strategy = :transaction
+        else
+          DatabaseCleaner.strategy = :truncation
+        end
+        DatabaseCleaner.start
+      end
+         
+      config.after do
+        DatabaseCleaner.clean
+      end
+          
+
   end
 end
 

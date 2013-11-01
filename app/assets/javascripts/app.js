@@ -42,11 +42,22 @@ app.factory("Data", [
       weekdays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       batches: [],
       timeArray: [],
-      timetable: {
-        weekdays: [],
-        batches: [],
-        entries: []
+       timetable: {
+    weekdays: [],
+    batches: [],
+    entries: [
+      {
+        name: "teacher",
+        values: []
+      }, {
+        name: "subject",
+        values: []
+      }, {
+        name: "room",
+        values: []
       }
+    ]
+  }
     };
   }
 ]);
