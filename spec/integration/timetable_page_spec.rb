@@ -78,6 +78,8 @@ describe "Timetable Page",js: true do
    
      xhr :post, group_timetable_path(group),params
      
+     
+     
      xhr :get,group_timetable_path(group),group_code: "9A2KVG"
      
      result = response.body
@@ -119,6 +121,8 @@ describe "Timetable Page",js: true do
        expect(teachers_from_entries).to eq teachers_array
        
        expect(weekdays_from_entries).to eq(weekdays)
+       
+       save_and_open_page
  #     
       expect(response.code).to eq("200")
 
