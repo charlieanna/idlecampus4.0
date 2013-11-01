@@ -41,7 +41,18 @@
       $scope.data.timeArray = []
       $scope.data.timetable.weekdays = []
       $scope.data.timetable.batches = []
-      $scope.data.timetable.entries = []
+      $scope.data.timetable.entries =  [
+        {
+          name: "teacher",
+          values: []
+        }, {
+          name: "subject",
+          values: []
+        }, {
+          name: "room",
+          values: []
+        }
+      ]
       if entries?
         $scope.data.timetable.weekdays = rdata.timetable.weekdays
         $scope.data.timetable.batches = rdata.timetable.batches
