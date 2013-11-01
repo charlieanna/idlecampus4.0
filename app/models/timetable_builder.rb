@@ -161,7 +161,7 @@ def get_entries_array(entries)
           
          
          
-           teacher = b.teacher
+            teacher = b.teacher
             subject = b.subject
             room = b.room
             entry_hash["teacher"] = teacher.name

@@ -19,11 +19,11 @@ class TimetableEntry < ActiveRecord::Base
     # if self.id == 5
  #      debugger
  #    end
- # puts self.weekday.name
-#  puts self.teacher.name
-#  puts self.room.name
-#  puts self.class_timing
-#  puts self.small_group
+ puts self.weekday.name
+ puts self.teacher.name
+ puts self.room.name
+ puts self.class_timing
+ puts self.small_group
 #  if self.class_timing.nil?
 #    debugger
 #  end
