@@ -173,9 +173,10 @@ scenario 'with valid email and password' do
  #    expect(page).to have_css "a#sub#{index}"
  #  end
        click_button "SendTimetable" 
-       sleep(5)
+       # sleep(5)
+       page.should have_content("timetable saved")
  # #      
-        # click_link @group1.name
+       click_link @group1.name
  end 
   
 # scenario "only after the presence of a single entry only then the send timetable should be present" do
