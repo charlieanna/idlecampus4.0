@@ -110,8 +110,8 @@
                                 </td>
                                 <td ng-repeat="dt in time">
 
-                                    <a href="#addtimetableentry{{index}}" ng-model="index"
-                                       ng-click="index=($parent.$index)*7+$index+1" role="button" class="editbtn btn"
+                                    <a href="#addtimetableentry{{($parent.$index)*7+$index+1;index = ($parent.$index)*7+$index+1;}}" ng-model="index"
+                                       role="button" class="editbtn btn" 
                                        data-toggle="modal" id="sub{{($parent.$index)*7+$index+1}}" style="
                                     width: 53px;
                                             height: 30px;
@@ -120,6 +120,7 @@
                                             padding-right: 0px;
                                             padding-bottom: 0px;
                                     ">Add</a>
+																		
                                     
                       <span ng-hide="data.timetable.batches.length == 0">
                       <!-- {{data.timetable.batches.length > 0}} -->
@@ -133,8 +134,8 @@
                            <!--{{datetime}} {{data.timetable.batches.length>0}}-->
                          <span>
 
-                             <span ng-repeat="entry in data.timetable.entries" name="subject"
-                                   id="s{{($parent.$index)*7+$index+1}}"> {{entry.name}} : {{datetime[entry.name]}}
+                             <span ng-repeat="entry in data.timetable.entries"
+                                   id="{{entry.name}}{{index}}"> {{entry.name}} : {{datetime[entry.name]}}
                              </span>
                     <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
                     </span>

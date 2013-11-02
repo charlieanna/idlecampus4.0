@@ -11,7 +11,7 @@ feature 'Visitor signs up', :js => true do
     
      
      @group1 = @user.groups.build(name:'Electronics')
-     # group2 = @user.groups.build(name:'Mechanical')
+     @group2 = @user.groups.build(name:'Mechanical')
      
      fill_in "group",with:@group1.name
     
@@ -19,8 +19,15 @@ feature 'Visitor signs up', :js => true do
       within("#new_group") do
          click_button "creategroupbutton"
       end
-
+      
+      fill_in "group",with:@group2.name
     
+    
+       within("#new_group") do
+          click_button "creategroupbutton"
+       end
+
+       # open_page
       click_link @group1.name
          #     
       # expect(page).to have_css("#timetable")
@@ -44,7 +51,7 @@ feature 'Visitor signs up', :js => true do
      
       check "monday"
       check "tuesday"
-       check "wednesday"
+      check "wednesday"
       check "thursday"
       check "friday"
       check "saturday"
@@ -95,40 +102,40 @@ feature 'Visitor signs up', :js => true do
       select 20,from: "to_minute"
       click_button "AddRow"
      
-      check "addbatch1" 
-      click_link_def "sub1"
-     
-      select "teacher1",from: "teacher11"
-      select "subject1",from: "subject11"
-      select "room1",from: "room11"
-     
-      select "teacher1",from: "teacher12"
-      select "subject1",from: "subject12"
-      select "room1",from: "room12"
-     
-      select "teacher1",from: "teacher13"
-      select "subject1",from: "subject13"
-      select "room1",from: "room13"
-       click_button "close1" 
-        check "addbatch2" 
-        click_link_def "sub2"
-  #     
-  #     
-       select "teacher1",from: "teacher21"
-       select "subject1",from: "subject21"
-       select "room1",from: "room21"
-     
-       select "teacher1",from: "teacher22"
-       select "subject1",from: "subject22"
-       select "room1",from: "room22"
-     
-       select "teacher1",from: "teacher23"
-       select "subject1",from: "subject23"
-       select "room1",from: "room23"
-       click_button "close2"
+      # check "addbatch1" 
+  #     click_link_def "sub1"
+  #    
+  #     select "teacher1",from: "teacher11"
+  #     select "subject1",from: "subject11"
+  #     select "room1",from: "room11"
+  #    
+  #     select "teacher1",from: "teacher12"
+  #     select "subject1",from: "subject12"
+  #     select "room1",from: "room12"
+  #    
+  #     select "teacher1",from: "teacher13"
+  #     select "subject1",from: "subject13"
+  #     select "room1",from: "room13"
+  #      click_button "close1" 
+  #       check "addbatch2" 
+  #       click_link_def "sub2"
+  # #     
+  # #     
+  #      select "teacher1",from: "teacher21"
+  #      select "subject1",from: "subject21"
+  #      select "room1",from: "room21"
+  #    
+  #      select "teacher1",from: "teacher22"
+  #      select "subject1",from: "subject22"
+  #      select "room1",from: "room22"
+  #    
+  #      select "teacher1",from: "teacher23"
+  #      select "subject1",from: "subject23"
+  #      select "room1",from: "room23"
+  #      click_button "close2"
      #    
        
-       add_entry(3,7)
+       add_entry(1,7)
        # open_page
       select "11 AM",from: "from_hour"
       select 30,from: "from_minute"
@@ -162,50 +169,43 @@ feature 'Visitor signs up', :js => true do
         click_button "AddRow"
       #   
          add_entry(29,35)
-     #  #   
+      #   
       
 
-        # open_page
+         # open_page
 end
 
 scenario 'with valid email and password' do
-  # 1.upto(35) do |index|
- #    expect(page).to have_css "a#sub#{index}"
- #  end
-       click_button "SendTimetable" 
-       page.save_screenshot('screenshot.png')
-        sleep(5)
-       page.should have_content("timetable saved")
- # #   
- 
-      # visit '/'  
-       # open_page
-        
-       click_link @group1.name
-       
-       
-       page.should have_content("timetable saved")
+
+  click_button "SendTimetable" 
+  page.save_screenshot('screenshot.png')
+  sleep(5)
+  page.should have_content("timetable saved")
+
+
+  click_link @group2.name
+
+
+
+  click_link @group1.name
+
+  check_presence
+
+  page.should have_content("timetable saved")
  end 
   
-# scenario "only after the presence of a single entry only then the send timetable should be present" do
-#     1.upto(35) do |index|
-#       expect(page).to have_css "a#sub#{index}"
-#     end
-#   expect(page).to have_button('SendTimetable')
-#   
-# end
-
 
  
+end
 
 
 
-# scenario 'clicks the group after creating the timetable' do
-#  
-#      
-#       # click_link @group1.name
-#   end
- 
+def check_presence
+  1.upto(35) do |index|
+     expect(page).to have_css("#teacher#{index}")
+     expect(page).to have_css("#subject#{index}")
+     expect(page).to have_css("#room#{index}")
+  end
 end
 
 def add_entry(from,to)
@@ -213,8 +213,14 @@ def add_entry(from,to)
      puts  "sub#{index}"
     click_link_def "sub#{index}"
     select "teacher#{index}",from: "teacher#{index}"
+    # open_page
+     expect(page).to have_css("#teacher#{index}",text:"teacher#{index}")
     select "subject#{index}",from: "subject#{index}"
+     expect(page).to have_css("#subject#{index}",text:"subject#{index}")
     select "room#{index}",from: "room#{index}"
+    
+      expect(page).to have_css("#room#{index}")
+    
     click_button "close#{index}"   
   end
 end
