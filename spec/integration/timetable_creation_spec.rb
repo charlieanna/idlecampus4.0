@@ -46,9 +46,9 @@ feature 'Visitor signs up', :js => true do
       check "tuesday"
        check "wednesday"
       check "thursday"
- #      check "friday"
- #      check "saturday"
- #      check "sunday"
+      check "friday"
+      check "saturday"
+      check "sunday"
      
      
       click_button "Subjects"
@@ -98,70 +98,70 @@ feature 'Visitor signs up', :js => true do
       check "addbatch1" 
       click_link_def "sub1"
      
-      select "teacher1",from: "teacher1"
-      select "subject1",from: "subject1"
-      select "room1",from: "room1"
+      select "teacher1",from: "teacher11"
+      select "subject1",from: "subject11"
+      select "room1",from: "room11"
      
-      select "teacher1",from: "teacher2"
-      select "subject1",from: "subject2"
-      select "room1",from: "room2"
+      select "teacher1",from: "teacher12"
+      select "subject1",from: "subject12"
+      select "room1",from: "room12"
      
-      select "teacher1",from: "teacher3"
-      select "subject1",from: "subject3"
-      select "room1",from: "room3"
+      select "teacher1",from: "teacher13"
+      select "subject1",from: "subject13"
+      select "room1",from: "room13"
        click_button "close1" 
         check "addbatch2" 
         click_link_def "sub2"
   #     
   #     
-       select "teacher1",from: "teacher1"
-       select "subject1",from: "subject1"
-       select "room1",from: "room1"
+       select "teacher1",from: "teacher21"
+       select "subject1",from: "subject21"
+       select "room1",from: "room21"
      
-       select "teacher1",from: "teacher2"
-       select "subject1",from: "subject2"
-       select "room1",from: "room2"
+       select "teacher1",from: "teacher22"
+       select "subject1",from: "subject22"
+       select "room1",from: "room22"
      
-       select "teacher1",from: "teacher3"
-       select "subject1",from: "subject3"
-       select "room1",from: "room3"
+       select "teacher1",from: "teacher23"
+       select "subject1",from: "subject23"
+       select "room1",from: "room23"
        click_button "close2"
      #    
        
-         add_entry(3,4)
-         open_page
-     #  select "11 AM",from: "from_hour"
-     #  select 30,from: "from_minute"
-     #  select "2 PM",from: "to_hour"
-     #  select 10,from: "to_minute"
-     #  click_button "AddRow"
-     #  # 
-     #    add_entry(8,14)
+       add_entry(3,7)
+       # open_page
+      select "11 AM",from: "from_hour"
+      select 30,from: "from_minute"
+      select "2 PM",from: "to_hour"
+      select 10,from: "to_minute"
+      click_button "AddRow"
+      # 
+        add_entry(8,14)
      #  #     
      #  #   
-     #  select "3 PM",from: "from_hour"
-     #  select 10,from: "from_minute"
-     #  select "5 PM",from: "to_hour"
-     #  select 20,from: "to_minute"
-     #  click_button "AddRow"
-     #  # 
-     #    add_entry(15,21)
+      select "3 PM",from: "from_hour"
+      select 10,from: "from_minute"
+      select "5 PM",from: "to_hour"
+      select 20,from: "to_minute"
+      click_button "AddRow"
+      # 
+        add_entry(15,21)
      #  #      
-     #  select "5 PM",from: "from_hour"
-     #  select 30,from: "from_minute"
-     #  select "7 PM",from: "to_hour"
-     #  select 10,from: "to_minute"
-     #  click_button "AddRow"
-     #  # 
-     #     add_entry(22,28)
-     #  #   
-     #    select "7 PM",from: "from_hour"
-     #    select 30,from: "from_minute"
-     #    select "9 PM",from: "to_hour"
-     #    select 10,from: "to_minute"
-     #    click_button "AddRow"
-     #  #   
-     #     add_entry(29,35)
+      select "5 PM",from: "from_hour"
+      select 30,from: "from_minute"
+      select "7 PM",from: "to_hour"
+      select 10,from: "to_minute"
+      click_button "AddRow"
+      # 
+         add_entry(22,28)
+      #   
+        select "7 PM",from: "from_hour"
+        select 30,from: "from_minute"
+        select "9 PM",from: "to_hour"
+        select 10,from: "to_minute"
+        click_button "AddRow"
+      #   
+         add_entry(29,35)
      #  #   
       
 
@@ -174,7 +174,7 @@ scenario 'with valid email and password' do
  #  end
        click_button "SendTimetable" 
        page.save_screenshot('screenshot.png')
-       # sleep(5)
+        sleep(5)
        page.should have_content("timetable saved")
  # #   
  
