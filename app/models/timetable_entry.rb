@@ -15,6 +15,7 @@ class TimetableEntry < ActiveRecord::Base
    def to_hash
      
     entry_hash = {}
+    
     puts self.id
     # if self.id == 5
  #      debugger

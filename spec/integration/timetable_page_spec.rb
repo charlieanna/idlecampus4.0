@@ -38,7 +38,7 @@ describe "Timetable Page",js: true do
     end
   end
 
-  describe "timetable creation",pending: true do
+  describe "timetable creation" do
   	
 
   	describe "with valid information" do
@@ -55,7 +55,7 @@ describe "Timetable Page",js: true do
     end
   end
 
-  describe "getting the timetable",pending: true do
+  describe "getting the timetable" do
 
     it "shoud get me the timetable for the group" do
      group = Group.create(name:"Electronics",group_code:"9A2KVG")
@@ -135,7 +135,7 @@ describe "Timetable Page",js: true do
 
   
         
-     params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C1\",\"weekday\":\"Monday\",\"$$hashKey\":\"06B\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C2\",\"weekday\":\"Monday\",\"$$hashKey\":\"06D\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C3\",\"weekday\":\"Monday\",\"$$hashKey\":\"06F\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"}],[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C1\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"081\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C2\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"083\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C3\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"085\",\"teacher\":\"teacher3\",\"subject\":\"subject1\",\"room\":\"room1\"}],[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"weekday\":\"Wednesday\",\"$$hashKey\":\"055\",\"subject\":\"subject3\",\"room\":\"room3\"}],[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"weekday\":\"Thursday\",\"$$hashKey\":\"05P\",\"teacher\":\"teacher4\",\"subject\":\"subject4\",\"room\":\"room4\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
+     params = {"timetable"=>{"members"=>@users,"entries"=>"[[[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C1\",\"weekday\":\"Monday\",\"$$hashKey\":\"051\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C2\",\"weekday\":\"Monday\",\"$$hashKey\":\"053\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C3\",\"weekday\":\"Monday\",\"$$hashKey\":\"055\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"}],[{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C1\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"06R\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C2\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"06T\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"},{\"from_hours\":\"09\",\"from_minutes\":\"10\",\"to_minutes\":\"20\",\"to_hours\":\"11\",\"batch\":\"C3\",\"weekday\":\"Tuesday\",\"$$hashKey\":\"06V\",\"teacher\":\"teacher1\",\"subject\":\"subject1\",\"room\":\"room1\"}]]]", "group"=>{"name"=>"dsadasdas", "group_code"=>"9A2KVG", "$$hashKey"=>"009"}}, "group_id"=>"9A2KVG"}
  
      xhr :post, group_timetable_path(group),params
     
