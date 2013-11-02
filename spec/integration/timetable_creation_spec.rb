@@ -44,8 +44,8 @@ feature 'Visitor signs up', :js => true do
      
       check "monday"
       check "tuesday"
-      # check "wednesday"
- #      check "thursday"
+       check "wednesday"
+      check "thursday"
  #      check "friday"
  #      check "saturday"
  #      check "sunday"
@@ -128,8 +128,8 @@ feature 'Visitor signs up', :js => true do
        click_button "close2"
      #    
        
-          # add_entry(3,7)
-     #    
+         add_entry(3,4)
+         open_page
      #  select "11 AM",from: "from_hour"
      #  select 30,from: "from_minute"
      #  select "2 PM",from: "to_hour"
@@ -179,7 +179,8 @@ scenario 'with valid email and password' do
  # #   
  
       # visit '/'  
-       # open_page 
+       # open_page
+        
        click_link @group1.name
        
        
