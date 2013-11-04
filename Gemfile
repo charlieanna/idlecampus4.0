@@ -37,7 +37,7 @@ gem 'mail_form'
 gem 'shoulda-matchers'
 end
 gem 'unicorn'
-gem 'active_attr', '0.7.0'
+
 gem 'daemons'
 
 gem 'delayed_job_active_record'
