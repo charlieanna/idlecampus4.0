@@ -16,15 +16,15 @@ group :development, :test do
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
-  gem 'capybara-angular'
+  
 end
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 group :test do
   gem 'factory_girl_rails', '4.2.1'
-  gem "capybara-webkit"
  
-  gem 'capybara', '2.1.0'
+ 
+ 
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
