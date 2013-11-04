@@ -4,7 +4,8 @@ ruby '2.0.0'
  gem 'rake', '10.0.4'
  gem 'rails', '4.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby'
+
 # gem 'sidekiq'
 # 
 # gem 'debugger', group: [:development, :test]
