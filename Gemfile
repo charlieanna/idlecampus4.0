@@ -2,12 +2,12 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
  gem 'rake', '10.0.4'
- gem 'rails', '4.0.0'
+ gem 'rails', '4.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.0.1'
 # gem 'sidekiq'
 # 
-gem 'debugger', group: [:development, :test]
+# gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
@@ -39,14 +39,14 @@ end
 gem 'unicorn'
 
 gem 'daemons'
-
+# 
 gem 'delayed_job_active_record'
 gem "haml"
 gem 'newrelic_rpm'
 gem 'gon'
-gem 'sass-rails', '4.0.0'
+gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.0'
+gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
