@@ -28,17 +28,17 @@ group :test do
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
-# group :development do
-#   gem 'capistrano'
-# end
-# group :test do
-#    gem 'poltergeist'
-# gem 'mail_form'
-# gem 'shoulda-matchers'
-# end
-# gem 'unicorn'
-# gem 'active_attr', '0.7.0'
-# gem 'daemons'
+group :development do
+  gem 'capistrano'
+end
+group :test do
+   gem 'poltergeist'
+gem 'mail_form'
+gem 'shoulda-matchers'
+end
+gem 'unicorn'
+gem 'active_attr', '0.7.0'
+gem 'daemons'
 # 
 # gem 'delayed_job_active_record'
 # gem "haml"
