@@ -39,24 +39,24 @@ end
 gem 'unicorn'
 gem 'active_attr', '0.7.0'
 gem 'daemons'
-# 
-# gem 'delayed_job_active_record'
-# gem "haml"
-# gem 'newrelic_rpm'
-# gem 'gon'
-# gem 'sass-rails', '4.0.0'
-# gem 'uglifier', '2.1.1'
-# gem 'coffee-rails', '4.0.0'
-# gem 'jquery-rails', '3.0.4'
-# gem 'jquery-ui-rails'
-# gem 'jquery-fileupload-rails'
-# gem 'jbuilder', '1.0.2'
-# gem 'rest-client'
-# gem 'hpricot'
-# gem 'angularjs-rails'
-# group :doc do
-#   gem 'sdoc', '0.3.20', require: false
-# end
+
+gem 'delayed_job_active_record'
+gem "haml"
+gem 'newrelic_rpm'
+gem 'gon'
+gem 'sass-rails', '4.0.0'
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.0'
+gem 'jquery-rails', '3.0.4'
+gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
+gem 'jbuilder', '1.0.2'
+gem 'rest-client'
+gem 'hpricot'
+gem 'angularjs-rails'
+group :doc do
+  gem 'sdoc', '0.3.20', require: false
+end
 # 
 group :production do
   gem 'pg', '0.15.1'
