@@ -102,40 +102,40 @@ feature 'Visitor signs up', :js => true do
       select 20,from: "to_minute"
       click_button "AddRow"
      
-      # check "addbatch1" 
-  #     click_link_def "sub1"
-  #    
-  #     select "teacher1",from: "teacher11"
-  #     select "subject1",from: "subject11"
-  #     select "room1",from: "room11"
-  #    
-  #     select "teacher1",from: "teacher12"
-  #     select "subject1",from: "subject12"
-  #     select "room1",from: "room12"
-  #    
-  #     select "teacher1",from: "teacher13"
-  #     select "subject1",from: "subject13"
-  #     select "room1",from: "room13"
-  #      click_button "close1" 
-  #       check "addbatch2" 
-  #       click_link_def "sub2"
-  # #     
-  # #     
-  #      select "teacher1",from: "teacher21"
-  #      select "subject1",from: "subject21"
-  #      select "room1",from: "room21"
-  #    
-  #      select "teacher1",from: "teacher22"
-  #      select "subject1",from: "subject22"
-  #      select "room1",from: "room22"
-  #    
-  #      select "teacher1",from: "teacher23"
-  #      select "subject1",from: "subject23"
-  #      select "room1",from: "room23"
-  #      click_button "close2"
+      check "addbatch1" 
+      click_link_def "sub1"
+     
+      select "teacher1",from: "teacher11"
+      select "subject1",from: "subject11"
+      select "room1",from: "room11"
+     
+      select "teacher1",from: "teacher12"
+      select "subject1",from: "subject12"
+      select "room1",from: "room12"
+     
+      select "teacher1",from: "teacher13"
+      select "subject1",from: "subject13"
+      select "room1",from: "room13"
+       click_button "close1" 
+        check "addbatch2" 
+        click_link_def "sub2"
+  #     
+  #     
+       select "teacher1",from: "teacher21"
+       select "subject1",from: "subject21"
+       select "room1",from: "room21"
+     
+       select "teacher1",from: "teacher22"
+       select "subject1",from: "subject22"
+       select "room1",from: "room22"
+     
+       select "teacher1",from: "teacher23"
+       select "subject1",from: "subject23"
+       select "room1",from: "room23"
+       click_button "close2"
      #    
        
-       add_entry(1,7)
+       add_entry(3,7)
        # open_page
       select "11 AM",from: "from_hour"
       select 30,from: "from_minute"
@@ -172,7 +172,7 @@ feature 'Visitor signs up', :js => true do
       #   
       
 
-         # open_page
+          open_page
 end
 
 scenario 'with valid email and password' do
@@ -188,7 +188,7 @@ scenario 'with valid email and password' do
 
 
   click_link @group1.name
-
+  
   check_presence
 
   page.should have_content("timetable saved")
@@ -201,7 +201,8 @@ end
 
 
 def check_presence
-  1.upto(35) do |index|
+  
+  3.upto(35) do |index|
      expect(page).to have_css("#teacher#{index}")
      expect(page).to have_css("#subject#{index}")
      expect(page).to have_css("#room#{index}")
@@ -225,9 +226,6 @@ def add_entry(from,to)
   end
 end
 
-def add_with_batch_at(place)
-  
-end
 
 def click_link_def(el)
  

@@ -131,14 +131,14 @@
 
 
                        <span ng-repeat="datetime in dt">
-                           <!--{{datetime}} {{data.timetable.batches.length>0}}-->
+                          
                          <span>
 
                              <span ng-repeat="entry in data.timetable.entries"
                                    id="{{entry.name}}{{index}}"> {{entry.name}} : {{datetime[entry.name]}}
                              </span>
-                    <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
-                    </span>
+                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
+                       </span>
 
                       <br/>
 
@@ -164,10 +164,6 @@
                          {{entry.name}}<select class="span2" ng-model="datetime[entry.name]"
                                                ng-options="value for value in entry.values"
                                                id="{{entry.name}}{{index}}"></select>
-
-                          <!--<select class="span2" ng-model="datetime[batch]" ng-options="batch for batch in data.timetable.batches" ng-show="data.timetable.batches.length>0"></select>-->
-
-
                         </span>
                               <span ng-repeat="batch in data.timetable.batches" ng-show="dt.length>1">
 
