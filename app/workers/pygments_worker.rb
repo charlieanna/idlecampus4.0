@@ -1,7 +1,7 @@
 class PygmentsWorker
   include Sidekiq::Worker
   
-  def perform(self)
-    Push.new(self.members, self.message).delay.send_push
+  def perform(timetable)
+    Push.new(timetable.members, timetable.message).delay.send_push
   end
 end
