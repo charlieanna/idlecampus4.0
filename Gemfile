@@ -28,37 +28,37 @@ group :test do
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
-group :development do
-  gem 'capistrano'
-end
-group :test do
-   gem 'poltergeist'
-gem 'mail_form'
-gem 'shoulda-matchers'
-end
-gem 'unicorn'
-gem 'active_attr', '0.7.0'
-gem 'daemons'
-
-gem 'delayed_job_active_record'
-gem "haml"
-gem 'newrelic_rpm'
-gem 'gon'
-gem 'sass-rails', '4.0.0'
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.0'
-gem 'jquery-rails', '3.0.4'
-gem 'jquery-ui-rails'
-gem 'jquery-fileupload-rails'
-gem 'jbuilder', '1.0.2'
-gem 'rest-client'
-gem 'hpricot'
-gem 'angularjs-rails'
-group :doc do
-  gem 'sdoc', '0.3.20', require: false
-end
-
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
-end
+# group :development do
+#   gem 'capistrano'
+# end
+# group :test do
+#    gem 'poltergeist'
+# gem 'mail_form'
+# gem 'shoulda-matchers'
+# end
+# gem 'unicorn'
+# gem 'active_attr', '0.7.0'
+# gem 'daemons'
+# 
+# gem 'delayed_job_active_record'
+# gem "haml"
+# gem 'newrelic_rpm'
+# gem 'gon'
+# gem 'sass-rails', '4.0.0'
+# gem 'uglifier', '2.1.1'
+# gem 'coffee-rails', '4.0.0'
+# gem 'jquery-rails', '3.0.4'
+# gem 'jquery-ui-rails'
+# gem 'jquery-fileupload-rails'
+# gem 'jbuilder', '1.0.2'
+# gem 'rest-client'
+# gem 'hpricot'
+# gem 'angularjs-rails'
+# group :doc do
+#   gem 'sdoc', '0.3.20', require: false
+# end
+# 
+# group :production do
+#   gem 'pg', '0.15.1'
+#   gem 'rails_12factor', '0.0.2'
+# end
