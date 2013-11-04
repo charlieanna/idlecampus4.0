@@ -18,6 +18,6 @@ class Message
       :from => %("#{name}" <#{email}>)
     }
   end
-end
+
 
 end
