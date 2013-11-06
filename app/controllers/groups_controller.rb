@@ -51,8 +51,8 @@ class GroupsController < ApplicationController
     # publish item
     pubsub.publish_item_to(@group.group_code, item)
     
-    
-    
+    subs = pubsub.get_subscribers_from(@group.group_code)
+    puts subs
     flash[:group] = @group.to_hash
    
     if @group.save
