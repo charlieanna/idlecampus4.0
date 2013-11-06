@@ -1,4 +1,10 @@
 require 'json'
+require "xmpp4r"
+
+require "xmpp4r/pubsub"
+require "xmpp4r/pubsub/helper/servicehelper.rb"
+require "xmpp4r/pubsub/helper/nodebrowser.rb"
+require "xmpp4r/pubsub/helper/nodehelper.rb"
 class GroupsController < ApplicationController
   respond_to :json,:html
   def index
@@ -17,6 +23,8 @@ class GroupsController < ApplicationController
   end
 
   def create
+   
+    # pubsub.create_node('home/localhost/pub/updates')
   
     @group = current_user.groups.build
     
@@ -24,7 +32,26 @@ class GroupsController < ApplicationController
  
     @group.group_code = Group.get_group_code
     
-   
+    service = 'pubsub.idlecampus.com'
+    jid = "a@idlecampus.com"
+    client = Jabber::Client.new(jid)
+    pubsub = Jabber::PubSub::ServiceHelper.new(client, service)
+    puts @group.group_code
+    Jabber::debug = true
+    client.connect
+    client.auth("a")
+    client.send(Jabber::Presence.new.set_type(:available))
+    pubsub.create_node(@group.group_code)
+    
+    item = Jabber::PubSub::Item.new
+    xml = REXML::Element.new("greeting")
+    xml.text = 'hello world!'
+
+    item.add(xml);
+    # publish item
+    pubsub.publish_item_to(@group.group_code, item)
+    
+    
     
     flash[:group] = @group.to_hash
    

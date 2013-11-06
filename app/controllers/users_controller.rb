@@ -24,7 +24,8 @@ class UsersController < ApplicationController
     
       @client.register(password, fields)
    
-    
+      @client.auth(password)
+      @client.send(Jabber::Presence.new.set_type(:available))
     if @user.save
       
       
