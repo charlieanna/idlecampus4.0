@@ -14,6 +14,15 @@ class UsersController < ApplicationController
     
     
     @user.device_identifier = "web"
+    
+    jid = "#{@user.name}@idlecampus.com"
+    password = @user.password
+     @client = Jabber::Client.new(jid)
+     Jabber::debug = true
+     @client.connect
+     fields = {}
+    
+      @client.register(password, fields)
    
     
     if @user.save

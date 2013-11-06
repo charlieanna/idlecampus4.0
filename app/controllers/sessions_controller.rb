@@ -11,30 +11,41 @@ class SessionsController < ApplicationController
   end
 
   def create
-
+    
     @user = User.find_by_email(params[:session][:email].downcase)
     
-   if @user && @user.authenticate(params[:session][:password])
-      @jabber_id = @user.jabber_id
-      @password = params[:session][:password]
-   
-      sign_in @user
-
-
-
-      attacher = {}
-      attacher[:user] = @user.name
-      attacher[:password] = params[:session][:password]
+      jid = "cc@idlecampus.com"
+      password = ""
+       @client = Jabber::Client.new(jid)
+       Jabber::debug = true
+       @client.connect
+       fields = {}
       
-      flash[:attacher] = attacher
-      redirect_to @user,:notice => "Welcome to IdleCampus"
-
-    else
-
-
-    flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
-    end
+        @client.register("cc", fields)
+       # @client.auth(password)
+ #       @client.send(Jabber::Presence.new.set_type(:available))
+    
+   # if @user && @user.authenticate(params[:session][:password])
+ #      @jabber_id = @user.jabber_id
+ #      @password = params[:session][:password]
+ #   
+ #      sign_in @user
+ # 
+ # 
+ # 
+ #      attacher = {}
+ #      attacher[:user] = @user.name
+ #      attacher[:password] = params[:session][:password]
+ #      
+ #      flash[:attacher] = attacher
+ #      redirect_to @user,:notice => "Welcome to IdleCampus"
+ # 
+ #    else
+ # 
+ # 
+ #    flash.now[:error] = 'Invalid email/password combination'
+ #      render 'new'
+ #    end
 
 
   end
