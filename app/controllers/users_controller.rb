@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
       flash[:success] = "Welcome to IdleCampus!"
      
-      flash[:register] = @user.to_hash
+      # flash[:register] = @user.to_hash
 
       redirect_to @user
 
