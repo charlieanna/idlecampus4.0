@@ -40,7 +40,7 @@ end
 gem 'unicorn'
 
 gem 'daemons'
-# 
+gem "xmpp4r", "~> 0.5.5"
 gem 'delayed_job_active_record'
 gem "haml"
 gem 'newrelic_rpm'

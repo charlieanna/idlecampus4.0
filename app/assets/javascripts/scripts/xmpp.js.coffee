@@ -250,7 +250,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.connect = (user, password) ->
     connection = undefined
-    connection = new Strophe.Connection("http://54.254.135.165/http-bind")
+    connection = new Strophe.Connection("http://idlecampus.com/http-bind")
     connection.connect user, password, (status) ->
       $scope.XMPP.connection = connection
       console.log status
@@ -281,7 +281,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
   $scope.register1 = ->
    
     form = $scope.signupform
-    connection = new Strophe.Connection("http://54.254.135.165/http-bind")
+    connection = new Strophe.Connection("http://idlecampus.com//http-bind")
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
@@ -346,7 +346,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.attach = ->
    
-    conn = new Strophe.Connection("http://54.254.135.165/http-bind")
+    conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     console.log conn
     conn.xmlInput = (body) ->
       console.log body
