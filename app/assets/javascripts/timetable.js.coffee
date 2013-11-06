@@ -365,7 +365,7 @@
             group: $scope.data.currentGroup
 
         success: ->
-          $("#result").save()
+          $("#result").show()
 
         dataType: ""
 
