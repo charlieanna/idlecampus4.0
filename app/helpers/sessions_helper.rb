@@ -53,7 +53,7 @@ module SessionsHelper
 def sign_in_to_xmpp_with_password(user,password)
 
      @session_jid, @session_id, @session_random_id =
-         RubyBOSH.initialize_session(user.jabber_id, password, "http://idlecampus.com/http-bind")
+         RubyBOSH.initialize_session(user.jabber_id, password, "http://54.254.135.165/http-bind")
      cookies[:JID] = @session_jid
      cookies[:SID] = @session_id
      cookies[:RID] = @session_random_id

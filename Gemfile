@@ -8,7 +8,7 @@ gem 'bcrypt-ruby'
 
 gem 'sidekiq'
 # 
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
