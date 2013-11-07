@@ -25,8 +25,9 @@ class GroupsController < ApplicationController
   def create
    
     # pubsub.create_node('home/localhost/pub/updates')
-    DRb.start_service
-    rbm = DRbObject.new_with_uri "druby://localhost:7777"
+    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+    
+   
     
     @group = current_user.groups.build
     
@@ -34,28 +35,19 @@ class GroupsController < ApplicationController
  
     @group.group_code = Group.get_group_code
     
-    service = 'pubsub.idlecampus.com'
-    jid = "a@idlecampus.com"
-    client = Jabber::Client.new(jid)
-    pubsub = Jabber::PubSub::ServiceHelper.new(client, service)
-    puts @group.group_code
-    Jabber::debug = true
-    client.connect
-    client.auth("a")
-    client.send(Jabber::Presence.new.set_type(:available))
-    pubsub.create_node(@group.group_code)
+    xmpp.create_group(@group.group_code)
     
-    item = Jabber::PubSub::Item.new
-    xml = REXML::Element.new("greeting")
-    xml.text = 'hello world!'
-
-    item.add(xml);
-    # publish item
-    pubsub.publish_item_to(@group.group_code, item)
-    
-    subs = pubsub.get_subscribers_from(@group.group_code)
-    puts subs
-    flash[:group] = @group.to_hash
+    # item = Jabber::PubSub::Item.new
+  #   xml = REXML::Element.new("greeting")
+  #   xml.text = 'hello world!'
+  # 
+  #   item.add(xml);
+  #   # publish item
+  #   pubsub.publish_item_to(@group.group_code, item)
+  #   
+  #   subs = pubsub.get_subscribers_from(@group.group_code)
+  #   puts subs
+    # flash[:group] = @group.to_hash
    
     if @group.save
      

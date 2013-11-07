@@ -75,6 +75,15 @@ class TopfunkyIM
     # @mainthread.wakeup
     @client.close
   end
+  
+  def create_group(group)
+    service = 'pubsub.idlecampus.com'
+   
+    
+    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+    
+    pubsub.create_node(group)
+  end
 
 
   def setup_avatar
