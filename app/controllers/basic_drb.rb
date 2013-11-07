@@ -69,6 +69,15 @@ class TopfunkyIM
     @client = Jabber::Client.new(@jid)
     @client.connect
     @client.auth(password)
+    
+    service = 'pubsub.idlecampus.com'
+   
+    
+    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+    
+    pubsub.create_node("#{@jid}/groups")
+    
+    
   end
 
   def logout
@@ -79,10 +88,17 @@ class TopfunkyIM
   def create_group(group)
     service = 'pubsub.idlecampus.com'
    
-    
+     options = {'pubsub#access_model'=>'open'}
     pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
-    pubsub.create_node(group)
+    
+    item1 = Jabber::PubSub::Item.new
+       item1.text = group
+       
+      pubsub.publish_item_to("#{@jid}/groups", item1) 
+    pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
+    
+    # pubsub.subscribe_to("QGCA433")
   end
   
   def get_subscriptions_from_all_nodes
@@ -92,6 +108,28 @@ class TopfunkyIM
     pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
     return pubsub.get_subscriptions_from_all_nodes
+  end
+  
+  def get_subscriptions_from(group)
+    
+    service = 'pubsub.idlecampus.com'
+   
+    
+    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+    
+  
+    
+    subscriptions =  pubsub.get_subscriptions_from("QGCA4333")
+    
+    puts subscriptions
+    
+    res = []
+         subscriptions.each { |sub|
+              res << sub.jid
+            }
+          puts res
+    
+    subscriptions
   end
 
 
