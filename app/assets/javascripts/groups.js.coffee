@@ -28,9 +28,7 @@
       method: "GET"
       url: url
     ).success((rdata, status, headers, config) ->
-      entries = undefined
-      entries = undefined
-      entries = undefined
+     
       $("#timetable").show()
       $scope.data.currentGroupCode = rdata.timetable.group_code
       entries = rdata.timetable.entries
@@ -56,9 +54,7 @@
         $scope.data.timeArray = entries
         $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
           $(iq).find("subscription").each ->
-            jid = undefined
-            jid = undefined
-            jid = undefined
+           
             jid = $(this).attr("jid")
             jid = jid.substring(0, jid.indexOf("/"))
             console.log jid
@@ -68,12 +64,13 @@
     ).error (data, status, headers, config) ->
 
 
-  $scope.groupclick = (name,code) ->
-    $scope.data.isVisible = true
-    $scope.data.currentGroup = group
-    $scope.data.currentGroup.members = []
-    $scope.data.pagetitle = "Groups"
-    $scope.get()
+  $scope.groupclick = (group) ->
+			
+		  $scope.data.isVisible = true
+		  $scope.data.currentGroup = group
+		  $scope.data.currentGroup.members = []
+		  $scope.data.pagetitle = "Groups"
+		  $scope.get()
 
   $scope.backtofolders = ->
     console.log "backtofolders"
@@ -88,12 +85,7 @@
     $scope.XMPP.connection.pubsub.getSubscriptions ((iq) ->
       console.log iq
       $(iq).find("subscription").each ->
-        group = undefined
-        node = undefined
-        group = undefined
-        node = undefined
-        group = undefined
-        node = undefined
+   
         node = $(this).attr("node")
         console.log "getgroupsfollwoing"
         $scope.groupsfollowing.push node
@@ -110,9 +102,7 @@
 
   $scope.getGroupsCreated = ->
     $.get("/groups").done (data) ->
-      group_code = undefined
-      group_code = undefined
-      group_code = undefined
+      
       group_code = data.group_code
       console.log data
 
@@ -121,9 +111,7 @@
     $scope.$digest()
 
   $scope.joinGroup = ->
-    group = undefined
-    group = undefined
-    group = undefined
+   
     group = $scope.joingroup
     console.log group
     $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
@@ -134,9 +122,7 @@
     ), true
 
   $scope.createGroup = (group) ->
-    group_code = undefined
-    group_code = undefined
-    group_code = undefined
+    
     group = $scope.data.creategroup
     console.log group
     group_code = ""
@@ -144,17 +130,15 @@
       group:
         name: group
     ).done (data) ->
-      grouptoadd = undefined
-      grouptoadd = undefined
-      grouptoadd = undefined
+     
       group_code = data.group_code
       console.log data
-      $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
-        console.log data
-
-      $scope.XMPP.connection.pubsub.createNode group_code,
-        "pubsub#notification_type": "normal"
-      , ->
+      # $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
+ #        console.log data
+ # 
+ #      $scope.XMPP.connection.pubsub.createNode group_code,
+ #        "pubsub#notification_type": "normal"
+ #      , ->
 
       grouptoadd =
         name: group
@@ -181,15 +165,7 @@
 
 
   $scope.publishgroupnote = ->
-    currentgroup = undefined
-    message = undefined
-    note = undefined
-    currentgroup = undefined
-    message = undefined
-    note = undefined
-    currentgroup = undefined
-    message = undefined
-    note = undefined
+   
     note = $scope.groupnoteform
     message = $build("html",
       xmlns: "http://jabber.org/protocol/xhtml-im"
@@ -203,12 +179,7 @@
 
 
   $scope.publishgroupalert = ->
-    currentgroup = undefined
-    message = undefined
-    currentgroup = undefined
-    message = undefined
-    currentgroup = undefined
-    message = undefined
+   
     message = $scope.groupalertform
     currentgroup = $scope.data.currentGroup
     console.log currentgroup
@@ -217,9 +188,7 @@
 
 
   $scope.publishgroupassignment = ->
-    message = undefined
-    message = undefined
-    message = undefined
+   
     message = $scope.assignment
     console.log group
     $scope.XMPP.connection.pubsub.publish currentgroup, message, (data) ->

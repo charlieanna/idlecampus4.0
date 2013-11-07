@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       
       sign_in @user
 
-      @group = current_user.groups.build
+      # @group = current_user.groups.build
      
 
       @cookies = cookies
@@ -62,10 +62,10 @@ class UsersController < ApplicationController
    
     @groups = @user.groups
     
-    @group = @user.groups.build
-    gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
-    gon.register = flash[:register]  unless flash[:register].nil?
-    gon.group = flash[:group] unless flash[:group].nil?
+     @group = @user.groups.build
+ #    gon.attacher = flash[:attacher]  unless flash[:attacher].nil?
+ #    gon.register = flash[:register]  unless flash[:register].nil?
+ #    gon.group = flash[:group] unless flash[:group].nil?
     
   end
 
