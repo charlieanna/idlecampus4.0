@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     
     @user = User.find_by_email(params[:session][:email].downcase)
     
-     DRb.start_service("druby://localhost:7777", TopfunkyIM.new("a@idlecampus.com","a", nil, false))
+    
 #     DRb.thread.join
     
     
@@ -24,23 +24,12 @@ class SessionsController < ApplicationController
    if @user && @user.authenticate(params[:session][:password])
       @jabber_id = @user.jabber_id
       @password = params[:session][:password]
-   
+      
       sign_in @user
  
-      jid =  @jabber_id
-      password = params[:session][:password]
-      @client = Jabber::Client.new(jid)
-      Jabber::debug = true
-      @client.connect
-      
-      @client.auth(password)
-      @client.send(Jabber::Presence.new.set_type(:available))
+       DRb.start_service("druby://localhost:7777", TopfunkyIM.new(@jabber_id,@password, nil, false))
  
-      # attacher = {}
-#       attacher[:user] = @user.name
-#       attacher[:password] = params[:session][:password]
-#       
-#       flash[:attacher] = attacher
+  
       redirect_to @user,:notice => "Welcome to IdleCampus"
  
     else
