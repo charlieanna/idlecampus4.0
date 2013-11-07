@@ -1,4 +1,6 @@
 require 'ruby_bosh'
+require 'drb'
+require 'basic_drb'
 class SessionsController < ApplicationController
   respond_to :html, :js
 
@@ -14,7 +16,8 @@ class SessionsController < ApplicationController
     
     @user = User.find_by_email(params[:session][:email].downcase)
     
-     
+     DRb.start_service("druby://localhost:7777", TopfunkyIM.new("a@idlecampus.com","a", nil, false))
+#     DRb.thread.join
     
     
     
@@ -52,6 +55,8 @@ class SessionsController < ApplicationController
 
 
   def destroy
+    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+    xmpp.logout
     sign_out
     redirect_to root_url
 

@@ -1,3 +1,5 @@
+require 'drb'
+require 'basic_drb'
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show]
   before_action :correct_user,   only: [:show]
@@ -5,6 +7,8 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
+    
+  
     
     @user = User.new(user_params)
     
@@ -15,19 +19,17 @@ class UsersController < ApplicationController
     
     @user.device_identifier = "web"
     
-    jid = "#{@user.name}@idlecampus.com"
-    password = @user.password
-     @client = Jabber::Client.new(jid)
-     Jabber::debug = true
-     @client.connect
-     fields = {}
-    
-      @client.register(password, fields)
    
-      @client.auth(password)
-      @client.send(Jabber::Presence.new.set_type(:available))
+   
+    
+    
     if @user.save
       
+      TopfunkyIM.register(@user.name,@user.password)
+      
+      DRb.start_service("druby://localhost:7777", TopfunkyIM.new(@user.jabber_id,@user.password, nil, false))
+   
+      xmpp = DRbObject.new_with_uri "druby://localhost:7777"
       
       sign_in @user
 

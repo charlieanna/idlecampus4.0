@@ -25,7 +25,9 @@ class GroupsController < ApplicationController
   def create
    
     # pubsub.create_node('home/localhost/pub/updates')
-  
+    DRb.start_service
+    rbm = DRbObject.new_with_uri "druby://localhost:7777"
+    
     @group = current_user.groups.build
     
     @group.name = params[:group][:name]
