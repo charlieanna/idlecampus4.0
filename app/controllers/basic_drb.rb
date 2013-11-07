@@ -84,6 +84,15 @@ class TopfunkyIM
     
     pubsub.create_node(group)
   end
+  
+  def get_subscriptions_from_all_nodes
+    service = 'pubsub.idlecampus.com'
+   
+    
+    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+    
+    return pubsub.get_subscriptions_from_all_nodes
+  end
 
 
   def setup_avatar

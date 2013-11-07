@@ -42,10 +42,16 @@ Welcome <%= @user.name%>
 	            </a>
 
 	        </li>
+					
+					<% @groups.each do |group| %>
+					<li>
+						<a href="" ng-click="groupclick('<%= group.name %>','<%= group.group_code %>')"><%= group.name %></a>
+				 </li>
+					<% end %>
 
-	        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
+	        <!-- <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
                               <a href="" ng-click="groupclick(group)">{{group.name}}</a>
-                            </li>
+                            </li> -->
 			
 			
             <!-- <i class="icon-spinner icon-spin"></i> Spinner icon when loading content... -->

@@ -68,7 +68,7 @@
     ).error (data, status, headers, config) ->
 
 
-  $scope.groupclick = (group) ->
+  $scope.groupclick = (name,code) ->
     $scope.data.isVisible = true
     $scope.data.currentGroup = group
     $scope.data.currentGroup.members = []

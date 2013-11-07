@@ -37,6 +37,9 @@ class GroupsController < ApplicationController
     
     xmpp.create_group(@group.group_code)
     
+    subscriptions = xmpp.get_subscriptions_from_all_nodes()
+    puts "subscriptions: #{subscriptions}\n\n"
+    
     # item = Jabber::PubSub::Item.new
   #   xml = REXML::Element.new("greeting")
   #   xml.text = 'hello world!'

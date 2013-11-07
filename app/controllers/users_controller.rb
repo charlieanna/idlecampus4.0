@@ -37,6 +37,8 @@ class UsersController < ApplicationController
      
 
       @cookies = cookies
+      
+      @groups = current_user.groups
 
 
       flash[:success] = "Welcome to IdleCampus!"
