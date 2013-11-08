@@ -106,9 +106,9 @@
       group_code = data.group_code
       console.log data
 
-    $scope.data.groupscreated = data
+      $scope.data.groupscreated = data
     console.log $scope.data.groupscreated
-    $scope.$digest()
+    # $scope.$digest()
 
   $scope.joinGroup = ->
    

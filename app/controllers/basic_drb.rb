@@ -89,13 +89,13 @@ class TopfunkyIM
     @client.connect
     @client.auth(password)
     
-    service = 'pubsub.idlecampus.com'
+    # service = 'pubsub.idlecampus.com'
    
     
-    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
-    
-    pubsub.create_node("#{@jid}/groups", Jabber::PubSub::NodeConfig.new("#{@jid}/groups", {'pubsub#access_model'=>'open'}))
-    
+    # pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+  #   
+  #   pubsub.create_node("#{@jid}/groups", Jabber::PubSub::NodeConfig.new("#{@jid}/groups", {'pubsub#access_model'=>'open'}))
+  #   
     
   end
 
@@ -117,17 +117,17 @@ class TopfunkyIM
        
        pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
        
-       item = Jabber::PubSub::Item.new
-       xml = REXML::Element.new("value")
-       xml.text = group
-
-       item.add(xml);
+       # item = Jabber::PubSub::Item.new
+  #      xml = REXML::Element.new("value")
+  #      xml.text = group
+  # 
+  #      item.add(xml);
        # publish item
        # pubsub.publish_item_to(node, item)
        
        
        
-       pubsub.publish_item_with_id_to("#{@jid}/groups", item, "blubb")
+       # pubsub.publish_item_with_id_to("#{@jid}/groups", item, "blubb")
      
       
   end

@@ -2,7 +2,7 @@ Welcome <%= @user.name%>
 <div class="row">
 <aside class="span3">
     <section>
-        <div ng-controller="GroupsCtrl" >
+        <div ng-controller="GroupsCtrl"  ng-init="getGroupsCreated();">
 			<div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
 			         aria-labelledby="myModalLabel" aria-hidden="true">
 			        <div class="modal-header">
