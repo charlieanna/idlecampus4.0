@@ -56,12 +56,6 @@ class TimetablesController < ApplicationController
      
     group = params["group_id"]
     
-    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
-     
-    subscriptions = xmpp.get_subscriptions_from(group)
-     
-    puts "subscriptions: #{subscriptions}\n\n"
-    
     group = Group.find_by_group_code(group)
     
     timetable_in_hash = TimetableBuilder.new(group).build
