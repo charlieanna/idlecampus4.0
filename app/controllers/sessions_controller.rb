@@ -46,7 +46,7 @@ class SessionsController < ApplicationController
   def destroy
     xmpp = DRbObject.new_with_uri "druby://localhost:7777"
     xmpp.logout
-    # DRb.stop_service
+    DRb.stop_service
     sign_out
     redirect_to root_url
 
