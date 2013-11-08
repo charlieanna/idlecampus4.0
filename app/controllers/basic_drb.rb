@@ -11,14 +11,33 @@ require 'drb'
 
 require 'yaml'
 
-# Jabber::debug = true
-
-
-username = "a@idlecampus.com"
-password = "a"
-
-#########
-
+module Jabber
+  module PubSub
+    ##
+    # A Helper representing a PubSub Service
+    class ServiceHelper
+      def get_subscriptions_from_new(node)
+        puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+             iq = basic_pubsub_query(:get,true)
+             entities = iq.pubsub.add(REXML::Element.new('subscriptions'))
+             entities.attributes['node'] = node
+             res = nil
+             @stream.send_with_id(iq) { |reply|
+               if reply.pubsub.first_element('subscriptions')
+                 res = []
+                 if reply.pubsub.first_element('subscriptions').attributes['node'] == node
+                   reply.pubsub.first_element('subscriptions').each_element('subscription') { |subscription|
+                   res << PubSub::Subscription.import(subscription)
+                   }
+                 end
+               end
+               true
+             }
+             res
+           end
+    end
+  end
+end
 class Jabber::JID
 
   ##
@@ -75,7 +94,7 @@ class TopfunkyIM
     
     pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
-    pubsub.create_node("#{@jid}/groups")
+    pubsub.create_node("#{@jid}/groups", Jabber::PubSub::NodeConfig.new("#{@jid}/groups", {'pubsub#access_model'=>'open'}))
     
     
   end
@@ -88,17 +107,29 @@ class TopfunkyIM
   def create_group(group)
     service = 'pubsub.idlecampus.com'
    
-     options = {'pubsub#access_model'=>'open'}
+    options = {'pubsub#access_model'=>'open'}
+    
     pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
     
-    item1 = Jabber::PubSub::Item.new
-       item1.text = group
+    # item1 = Jabber::PubSub::Item.new
+       # item1.text = group
        
-      pubsub.publish_item_to("#{@jid}/groups", item1) 
-    pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
-    
-    # pubsub.subscribe_to("QGCA433")
+       pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
+       
+       item = Jabber::PubSub::Item.new
+       xml = REXML::Element.new("value")
+       xml.text = group
+
+       item.add(xml);
+       # publish item
+       # pubsub.publish_item_to(node, item)
+       
+       
+       
+       pubsub.publish_item_with_id_to("#{@jid}/groups", item, "blubb")
+     
+      
   end
   
   def get_subscriptions_from_all_nodes
@@ -119,9 +150,9 @@ class TopfunkyIM
     
   
     
-    subscriptions =  pubsub.get_subscriptions_from("QGCA4333")
+    subscriptions =  pubsub.get_subscriptions_from_new(group)
     
-    puts subscriptions
+    
     
     res = []
          subscriptions.each { |sub|
@@ -129,7 +160,7 @@ class TopfunkyIM
             }
           puts res
     
-    subscriptions
+    res
   end
 
 
@@ -278,4 +309,6 @@ class TopfunkyIM
   end
 
 end
+
+
 
