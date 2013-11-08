@@ -24,15 +24,15 @@ class TimetablesController < ApplicationController
     
     xmpp = DRbObject.new_with_uri "druby://localhost:7777"
      
-    subscriptions = xmpp.get_subscriptions_from(group)
+    members = xmpp.get_subscriptions_from(result['group_code'])
      
-    puts "subscriptions: #{subscriptions}\n\n"
+    puts "subscriptions: #{members}\n\n"
 
     timetable.members = members
 
     message = 'http://idlecampus.com/groups/'+"RNHVQR"+'/timetable.json'
 
-    timetable.message = subscriptions
+    timetable.message = message
 
    
 
