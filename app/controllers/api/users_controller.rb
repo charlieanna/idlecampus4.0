@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-	# respond_to :json
+class Api::UsersController < ApplicationController
+	respond_to :json
 	def create
     puts params
         @user = User.new
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         @user.password_confirmation = @user.password
         @user.email = params[:email]
         @user.jabber_id =  params[:jabber_id]
-       
+        @user.name = params[:name]
         @user.device_identifier = params[:device_identifier]
         puts @user
         puts @user.valid?
