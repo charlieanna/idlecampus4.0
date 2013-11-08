@@ -102,6 +102,7 @@ class TopfunkyIM
   def logout
     # @mainthread.wakeup
     @client.close
+    
   end
   
   def create_group(group)
