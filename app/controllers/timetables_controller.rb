@@ -44,8 +44,10 @@ class TimetablesController < ApplicationController
       
       members = members.map do |member|
         index = member.index('/')
-        if index > 0
+        unless index.nil?
           member.slice(0..index-1)
+        else 
+          member
         end
       end
     end
