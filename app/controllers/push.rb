@@ -1,12 +1,13 @@
 class Push
+  include Sidekiq::Worker
     attr_reader :members,:message
   def initialize(members,message)
     @message = message
     @members = members
-    puts "MESSAGE"
-    puts @message
-    puts "MEMBERS"
-    puts @members
+    logger.info "MESSAGE"
+    logger.info @message
+    logger.info "MEMBERS"
+    logger.info @members
   end
   
   def devices
@@ -24,11 +25,11 @@ class Push
       entries_hash = {}
       
       entries_hash["devices"] = devices
-      puts entries_hash
+      logger.info entries_hash
       entries_hash["message"] = message
-      puts entries_hash
+      logger.info entries_hash
       timetable_hash["push"] = entries_hash
-      puts timetable_hash
+      logger.info timetable_hash
       return timetable_hash
     end
     
@@ -36,9 +37,9 @@ class Push
 
       hash = create_push
       
-      puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      logger.info "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
       
-      puts hash
+      logger.info hash
 
       uri = URI('http://developer.idlecampus.com/push/push1')
     
