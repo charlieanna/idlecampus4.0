@@ -25,7 +25,7 @@ IdleCampus::Application.routes.draw do
        resources :users,only: :create
       
   end
-   mount Sidekiq::Web, at: "/sidekiq"
+  
   root  'static_pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
