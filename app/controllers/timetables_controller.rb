@@ -24,7 +24,17 @@ class TimetablesController < ApplicationController
     
     xmpp = DRbObject.new_with_uri "druby://localhost:7777"
      
-    members = xmpp.get_subscriptions_from(result['group_code'])
+    subscriptions = xmpp.get_subscriptions_from(result['group_code'])
+    
+    res = []
+         subscriptions.each { |sub|
+              res << sub.jid.to_s
+            }
+            
+            puts "MEMBERSSSSSS"
+          puts res
+    
+    members = res
      
     puts "subscriptions: #{members}\n\n"
 
@@ -34,7 +44,7 @@ class TimetablesController < ApplicationController
 
     timetable.message = message
 
-   
+    
 
     timetable.build_timetable_entries(entries)
      

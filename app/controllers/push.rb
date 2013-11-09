@@ -3,7 +3,10 @@ class Push
   def initialize(members,message)
     @message = message
     @members = members
-    
+    puts "MESSAGE"
+    puts @message
+    puts "MEMBERS"
+    puts @members
   end
   
   def devices

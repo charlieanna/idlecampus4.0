@@ -1,9 +1,10 @@
 class PygmentsWorker
   include Sidekiq::Worker
   
-  def perform(timetable_id)
+  def perform(args)
+    puts "AAAAASDADASDADAD"
+    puts args
     
-    timetable = Timetable.find(timetable_id)
-    Push.new(timetable.members, timetable.message).send_push
+    Push.new(args["members"], args["message"]).send_push
   end
 end

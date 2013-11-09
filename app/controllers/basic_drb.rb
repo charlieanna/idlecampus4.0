@@ -153,15 +153,9 @@ class TopfunkyIM
     
     subscriptions =  pubsub.get_subscriptions_from_new(group)
     
+    return subscriptions
     
     
-    res = []
-         subscriptions.each { |sub|
-              res << sub.jid
-            }
-          puts res
-    
-    res
   end
 
 
