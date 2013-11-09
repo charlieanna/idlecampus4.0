@@ -21,6 +21,8 @@ group :development, :test do
 end
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
+gem 'sinatra', require: false
+gem 'slim'
 group :test do
   gem 'factory_girl_rails', '4.2.1'
  
