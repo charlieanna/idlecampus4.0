@@ -11,6 +11,7 @@ class Push
   
   def devices
     User.get_devices(@members)
+   
   end
   
 
@@ -21,9 +22,13 @@ class Push
       
       timetable_hash = {}
       entries_hash = {}
+      
       entries_hash["devices"] = devices
+      puts entries_hash
       entries_hash["message"] = message
+      puts entries_hash
       timetable_hash["push"] = entries_hash
+      puts timetable_hash
       return timetable_hash
     end
     

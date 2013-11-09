@@ -20,41 +20,15 @@ class TimetablesController < ApplicationController
       
     entries = result["entries"]
 
-    members = result["members"]
+    # members = result["members"]
     
-    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
-     
-    subscriptions = xmpp.get_subscriptions_from(result['group_code'])
+    members = group.get_users
     
-    res = []
-         subscriptions.each { |sub|
-              res << sub.jid.to_s
-            }
-            
-            puts "MEMBERSSSSSS"
-          puts res
-    
-    members = res
-     
-    puts "subscriptions: #{members}\n\n"
-    
-    
-    
-    if members
-      
-      members = members.map do |member|
-        index = member.index('/')
-        unless index.nil?
-          member.slice(0..index-1)
-        else 
-          member
-        end
-      end
-    end
+  
 
     timetable.members = members
 
-    message = 'http://idlecampus.com/groups/'+"RNHVQR"+'/timetable.json'
+    message = 'http://idlecampus.com/groups/'+result['group_code']+'/timetable.json'
 
     timetable.message = message
 

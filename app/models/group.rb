@@ -11,7 +11,38 @@ class Group < ActiveRecord::Base
     has_many :subjects
     has_many :rooms
     
-    # has_many :user,through: :group_membership
+  def get_users
+    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+     
+    subscriptions = xmpp.get_subscriptions_from(self.group_code)
+    
+    res = []
+         subscriptions.each { |sub|
+              res << sub.jid.to_s
+            }
+            
+            puts "MEMBERSSSSSS"
+          puts res
+    
+    members = res
+     
+    puts "subscriptions: #{members}\n\n"
+    
+    
+    
+    if members
+      
+      members = members.map do |member|
+        index = member.index('/')
+        unless index.nil?
+          member.slice(0..index-1)
+        else 
+          member
+        end
+      end
+    end
+    return members
+  end
     
     def  self.get_group_code
       groups = Group.all
@@ -49,5 +80,6 @@ class Group < ActiveRecord::Base
         group
       end
 
+      
 
 end

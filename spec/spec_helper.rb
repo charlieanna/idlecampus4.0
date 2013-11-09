@@ -52,7 +52,7 @@ config.mock_with :rspec
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
-    config.include Capybara::Angular::DSL
+   
         
       config.use_transactional_fixtures = false
          
