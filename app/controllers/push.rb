@@ -35,6 +35,10 @@ class Push
     def send_push
 
       hash = create_push
+      
+      puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+      
+      puts hash
 
       uri = URI('http://developer.idlecampus.com/push/push1')
     

@@ -24,7 +24,9 @@ class TimetablesController < ApplicationController
     
     members = group.get_users
     
-  
+    puts "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+    
+    puts members
 
     timetable.members = members
 

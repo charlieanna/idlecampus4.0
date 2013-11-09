@@ -18,9 +18,12 @@ class Timetable < ActiveRecord::Base
 
 
   def send_push
+    
     args = {}
     args["members"] = self.members
     args["message"] = self.message
+    puts "ARGSARGSARGSARGSARGSARGSARGS"
+    puts args
      PygmentsWorker.perform_async(args)
     # Push.new(@members, @message).delay.send_push
   end
