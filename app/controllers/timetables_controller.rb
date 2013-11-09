@@ -37,6 +37,18 @@ class TimetablesController < ApplicationController
     members = res
      
     puts "subscriptions: #{members}\n\n"
+    
+    
+    
+    if members
+      
+      members = members.map do |member|
+        index = member.index('/')
+        if index > 0
+          member.slice(0..index-1)
+        end
+      end
+    end
 
     timetable.members = members
 
