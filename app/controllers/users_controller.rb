@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     end
     render :nothing => true
   end
-
+   
 
 
   def new
