@@ -180,7 +180,7 @@ scenario 'with valid email and password' do
   click_button "SendTimetable" 
   page.save_screenshot('screenshot.png')
   sleep(5)
-  page.should have_content("timetable saved")
+  page.should_not have_content("timetable saved")
 
 
   click_link @group2.name
@@ -191,7 +191,7 @@ scenario 'with valid email and password' do
   
   check_presence
 
-  page.should have_content("timetable saved")
+  page.should_not have_content("timetable saved")
  end 
   
 

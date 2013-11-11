@@ -3,6 +3,7 @@ require_relative '../spec_helper'
 describe "Timetable Page",js: true do
    before(:all) do
     @user1 = FactoryGirl.create(:user, :device_identifier => "a9c72e102f1bc1b0")
+   
     @user2 = FactoryGirl.create(:user, :device_identifier => "7d94095209b6e051")
     @user3 = FactoryGirl.create(:user, :device_identifier => "85718da6d39b75c5")
     @user4 = FactoryGirl.create(:user, :device_identifier => "4BA905D6-443D-4631-A7BD-DEDEA1638BA1")

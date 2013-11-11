@@ -365,7 +365,8 @@
             group: $scope.data.currentGroup
 
         success: ->
-          $("#result").show()
+          alert("Timetable Saved")
+          # $("#result").show()
 
         dataType: ""
 
