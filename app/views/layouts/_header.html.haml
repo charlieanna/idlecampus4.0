@@ -12,9 +12,12 @@
       =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"padding: 9px 11px;", "ng-click" => "signout()"
 
     - else
+      
+      = link_to "Blog","http://blog.idlecampus.com",class: "btn btn-success pull-right",id:"signupbutton"
       = link_to "Log In",signin_path,class: "btn btn-success pull-right",id:"signinbutton"
       = link_to "Sign Up!",signup_path,class: "btn btn-primary pull-right",id:"signupbutton"
       = link_to "Contact Us",contact_path,class: "btn btn-primary pull-right",id:"signupbutton"
       = link_to "About Us",about_path,class: "btn btn-primary pull-right",id:"signupbutton"
+		
 
 
