@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/IdleCampus.iml" filepath="$PROJECT_DIR$/IdleCampus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/public/products_WB0663265/build/lib/DataTables-1.9.4/extras/TableTools/media/media.iml" filepath="$PROJECT_DIR$/public/products_WB0663265/build/lib/DataTables-1.9.4/extras/TableTools/media/media.iml" />
+      <module fileurl="file://$PROJECT_DIR$/public/products_WB0663265/source/lib/DataTables-1.9.4/extras/TableTools/media/media1.iml" filepath="$PROJECT_DIR$/public/products_WB0663265/source/lib/DataTables-1.9.4/extras/TableTools/media/media1.iml" />
     </modules>
   </component>
 </project>

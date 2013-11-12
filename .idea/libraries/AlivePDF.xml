@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AlivePDF">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/public/products_WB0663265/build/lib/DataTables-1.9.4/extras/TableTools/media/as3/lib/AlivePDF.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

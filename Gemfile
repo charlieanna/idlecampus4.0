@@ -31,6 +31,7 @@ group :test do
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
+gem "devise", "~> 3.2.0"
 group :development do
   gem 'capistrano'
 end
