@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
    else 
      render text: "group not found"
    end
-  end
+  end   
 
 
   def new
