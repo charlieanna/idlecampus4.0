@@ -19,7 +19,7 @@ IdleCampus::Application.routes.draw do
       
     end
   end
-  
+  resources :alerts, only: [:new, :create]
   namespace :api do
      
        resources :users,only: :create

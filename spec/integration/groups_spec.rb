@@ -35,7 +35,7 @@ describe "Teacher creates a group" , :js => true do
      
   
       
-      click_button "SendTimetable"
+    click_button "SendTimetable"
     
    end 
    

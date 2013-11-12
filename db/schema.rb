@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030073750) do
+ActiveRecord::Schema.define(version: 20131112063601) do
+
+  create_table "alerts", force: true do |t|
+    t.string   "message"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "alerts", ["group_id"], name: "index_alerts_on_group_id"
 
   create_table "batches", force: true do |t|
     t.string   "name"

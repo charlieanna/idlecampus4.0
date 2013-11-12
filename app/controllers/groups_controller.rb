@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_group_code(params[:id])
+    @alert = @group.alerts.build
     if @group
      render :json => @group
    else

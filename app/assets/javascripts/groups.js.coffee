@@ -180,11 +180,15 @@
 
   $scope.publishgroupalert = ->
    
-    message = $scope.groupalertform
+    message = $scope.data.message
     currentgroup = $scope.data.currentGroup
-    console.log currentgroup
-    $scope.XMPP.connection.pubsub.publish currentgroup, message, (data) ->
-      console.log data
+    $.post("/alerts",
+      alert:
+        message: message
+        group: currentgroup.group_code
+    ).done (data) ->
+		
+   
 
 
   $scope.publishgroupassignment = ->

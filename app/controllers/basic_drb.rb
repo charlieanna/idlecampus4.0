@@ -110,13 +110,13 @@ class TopfunkyIM
    
     options = {'pubsub#access_model'=>'open'}
     
-    pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
+    @pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
     
     # item1 = Jabber::PubSub::Item.new
        # item1.text = group
        
-       pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
+       @pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
        
        # item = Jabber::PubSub::Item.new
   #      xml = REXML::Element.new("value")
@@ -131,6 +131,16 @@ class TopfunkyIM
        # pubsub.publish_item_with_id_to("#{@jid}/groups", item, "blubb")
      
       
+  end
+  
+  def publish(message,group)
+     item = Jabber::PubSub::Item.new
+     xml = REXML::Element.new("value")
+     xml.text = message
+
+     item.add(xml);
+    
+     @pubsub.publish_item_to(group, item)
   end
   
   def get_subscriptions_from_all_nodes

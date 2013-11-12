@@ -10,6 +10,7 @@ class Group < ActiveRecord::Base
     has_many :teachers
     has_many :subjects
     has_many :rooms
+    has_many :alerts
     
   def get_users
     xmpp = DRbObject.new_with_uri "druby://localhost:7777"
