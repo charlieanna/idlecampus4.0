@@ -130,7 +130,7 @@
                              id="addbatch{{($parent.$index)*7+$index+1}}"><br/>  Add Group:</span>
 
 
-                       <span ng-repeat="datetime in dt">
+                       <div ng-repeat="datetime in dt">
                           
                          <span>
 													 <table style="border: 1px solid black;">
@@ -138,8 +138,8 @@
                                    id="{{entry.name}}{{index}}"><td style="border: 1px solid black;"> {{entry.name}} : {{datetime[entry.name]}}</td>
                              </tr>
 													 </table>
-                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
-                       </span>
+                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}</div>
+                       </div>
 
                       <br/>
 
