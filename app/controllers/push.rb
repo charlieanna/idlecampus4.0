@@ -1,7 +1,7 @@
 class Push
   include Sidekiq::Worker
     attr_reader :members,:message
-  def initialize(members,message,appåå)
+  def initialize(members,message,app)
     @message = message
     @members = members
     @app = app
