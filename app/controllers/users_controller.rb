@@ -98,8 +98,10 @@ class UsersController < ApplicationController
   
   def send_push
     #  {"users"=>"zb@idlecampus.com", "message"=>"dsvdxv", "controller"=>"users", "action"=>"send_push"}
+    members = []
+    members.push(params["users"])
     args = {}
-    args["members"] = params["users"]
+    args["members"] = members
     args["message"] = params["message"]
     args["app"] = "message"
     puts "ARGSARGSARGSARGSARGSARGSARGS"
