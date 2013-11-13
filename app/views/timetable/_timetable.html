@@ -133,10 +133,11 @@
                        <span ng-repeat="datetime in dt">
                           
                          <span>
-
-                             <span ng-repeat="entry in data.timetable.entries"
-                                   id="{{entry.name}}{{index}}"> {{entry.name}} : {{datetime[entry.name]}}
-                             </span>
+													 <table style="border: 1px solid black;">
+                             <tr ng-repeat="entry in data.timetable.entries"
+                                   id="{{entry.name}}{{index}}"><td style="border: 1px solid black;"> {{entry.name}} : {{datetime[entry.name]}}</td>
+                             </tr>
+													 </table>
                        <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
                        </span>
 
