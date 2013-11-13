@@ -150,7 +150,7 @@
       <file leaf-file-name="_timetable.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/timetable/_timetable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="43" selection-start="3807" selection-end="3807" vertical-scroll-proportion="-0.85020244">
+            <state line="106" column="40" selection-start="3807" selection-end="3807" vertical-scroll-proportion="0.18218623">
               <folding />
             </state>
           </provider>
@@ -616,7 +616,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/timetable/_timetable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="43" selection-start="3807" selection-end="3807" vertical-scroll-proportion="-0.85020244">
+        <state line="106" column="40" selection-start="3807" selection-end="3807" vertical-scroll-proportion="0.18218623">
           <folding />
         </state>
       </provider>

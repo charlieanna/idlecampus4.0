@@ -77,9 +77,6 @@
                 </div>
 
 
-
-
-
                 <div class="widget widget-table" style="
                 margin-top: 30px;
                 ">
@@ -110,8 +107,9 @@
                                 </td>
                                 <td ng-repeat="dt in time">
 
-                                    <a href="#addtimetableentry{{($parent.$index)*7+$index+1;index = ($parent.$index)*7+$index+1;}}" ng-model="index"
-                                       role="button" class="editbtn btn" 
+                                    <a href="#addtimetableentry{{($parent.$index)*7+$index+1;index = ($parent.$index)*7+$index+1;}}"
+                                       ng-model="index"
+                                       role="button" class="editbtn btn"
                                        data-toggle="modal" id="sub{{($parent.$index)*7+$index+1}}" style="
                                     width: 53px;
                                             height: 30px;
@@ -120,8 +118,8 @@
                                             padding-right: 0px;
                                             padding-bottom: 0px;
                                     ">Add</a>
-																		
-                                    
+
+
                       <span ng-hide="data.timetable.batches.length == 0">
                       <!-- {{data.timetable.batches.length > 0}} -->
 
@@ -130,16 +128,15 @@
                              id="addbatch{{($parent.$index)*7+$index+1}}"><br/>  Add Group:</span>
 
 
-                       <div ng-repeat="datetime in dt">
-                          
+                       <span ng-repeat="datetime in dt">
+
                          <span>
-													 <table style="border: 1px solid black;">
-                             <tr ng-repeat="entry in data.timetable.entries"
-                                   id="{{entry.name}}{{index}}"><td style="border: 1px solid black;"> {{entry.name}} : {{datetime[entry.name]}}</td>
-                             </tr>
-													 </table>
-                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}</div>
-                       </div>
+
+                             <span ng-repeat="entry in data.timetable.entries"
+                                   id="{{entry.name}}{{index}}"> {{entry.name}} : {{datetime[entry.name]}}
+                             </span>
+                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
+                       </span>
 
                       <br/>
 

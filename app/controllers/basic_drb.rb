@@ -63,11 +63,7 @@ class TopfunkyIM
     login(username, password)
 
    
-    # 
-    # listen_for_subscription_requests
-    # listen_for_presence_notifications
-    # listen_for_messages
-
+   
     send_initial_presence
 
     Thread.stop if stop_thread
@@ -89,13 +85,7 @@ class TopfunkyIM
     @client.connect
     @client.auth(password)
     
-    # service = 'pubsub.idlecampus.com'
    
-    
-    # pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
-  #   
-  #   pubsub.create_node("#{@jid}/groups", Jabber::PubSub::NodeConfig.new("#{@jid}/groups", {'pubsub#access_model'=>'open'}))
-  #   
     
   end
 
@@ -113,22 +103,9 @@ class TopfunkyIM
     @pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
     
     
-    # item1 = Jabber::PubSub::Item.new
-       # item1.text = group
-       
-       @pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open'}))
-       
-       # item = Jabber::PubSub::Item.new
-  #      xml = REXML::Element.new("value")
-  #      xml.text = group
-  # 
-  #      item.add(xml);
-       # publish item
-       # pubsub.publish_item_to(node, item)
-       
-       
-       
-       # pubsub.publish_item_with_id_to("#{@jid}/groups", item, "blubb")
+
+    @pubsub.create_node(group, Jabber::PubSub::NodeConfig.new(group, {'pubsub#access_model'=>'open','pubsub#notification_type' => 'normal'}))
+
      
       
   end
