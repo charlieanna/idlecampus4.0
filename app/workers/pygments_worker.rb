@@ -5,6 +5,6 @@ class PygmentsWorker
     # logger.info  "AAAAASDADASDADAD"
 #     logger.info  args
     
-    Push.new(args["members"], args["message"]).send_push
+    Push.new(args["members"], args["message"],args["app"]).send_push
   end
 end

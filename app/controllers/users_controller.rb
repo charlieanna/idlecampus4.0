@@ -97,7 +97,14 @@ class UsersController < ApplicationController
   end
   
   def send_push
-    puts params
+    #  {"users"=>"zb@idlecampus.com", "message"=>"dsvdxv", "controller"=>"users", "action"=>"send_push"}
+    args = {}
+    args["members"] = params["users"]
+    args["message"] = params["message"]
+    args["app"] = "message"
+    puts "ARGSARGSARGSARGSARGSARGSARGS"
+    puts args
+    PygmentsWorker.perform_async(args)
   end
   
 
