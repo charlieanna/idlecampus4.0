@@ -43,10 +43,18 @@ def send_password_reset
   end
 
    def self.get_devices(jabber_ids)
-     puts "JABERID"
+     members = jabber_ids
      puts jabber_ids
-    if jabber_ids
-      users = User.where(jabber_id:jabber_ids)
+     members = members.map do |member|
+       index = member.index('/')
+       unless index.nil?
+         member.slice(0..index-1)
+       else 
+         member
+       end
+     end
+    if members
+      users = User.where(jabber_id:members)
       users.map do |user|
         puts "USER"
         puts user.jabber_id
