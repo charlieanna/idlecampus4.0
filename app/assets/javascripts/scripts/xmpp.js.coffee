@@ -340,9 +340,9 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
     $scope.XMPP.connection = connection
 
-  $scope.signout = ->
-    $scope.XMPP.connection.disconnect()
-    localStorage.clear()
+  # $scope.signout = ->
+#     $scope.XMPP.connection.disconnect()
+#     localStorage.clear()
 
   $scope.attach = ->
    

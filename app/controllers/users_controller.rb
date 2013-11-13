@@ -96,6 +96,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def send_push
+    puts params
+  end
+  
 
 
   private 

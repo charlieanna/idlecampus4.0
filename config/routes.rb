@@ -9,6 +9,7 @@ IdleCampus::Application.routes.draw do
   
   post "users/frommobile"
   post "users/login"
+   post "users/send_push"
   resources :users do 
     resources :groups
   end
