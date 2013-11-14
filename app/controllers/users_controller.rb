@@ -106,8 +106,8 @@ class UsersController < ApplicationController
     args["app"] = "message"
     puts "ARGSARGSARGSARGSARGSARGSARGS"
     puts args
-    Push.new(args["members"], args["message"],args["app"]).delay.send_push
-    # PygmentsWorker.perform_async(args)
+    
+    PygmentsWorker.perform_async(args)
     render :nothing => true
   end
   
