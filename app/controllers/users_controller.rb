@@ -108,7 +108,7 @@ class UsersController < ApplicationController
     puts args
     
     PygmentsWorker.perform_async(args)
-    render :nothing => true
+    render text: "OK"
   end
   
 
