@@ -104,9 +104,6 @@ class UsersController < ApplicationController
     args["members"] = members
     args["message"] = params["message"]
     args["app"] = "message"
-    puts "ARGSARGSARGSARGSARGSARGSARGS"
-    puts args
-    
     PygmentsWorker.perform_async(args)
     render text: "OK"
   end
