@@ -4,8 +4,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
   group_name = undefined
   group_code = undefined
   $scope.$watch "spin", (newValue, oldValue) ->
-    console.log "spin"
-    console.log newValue
+  
 
   $scope.changeEmail = ->
     console.log $scope.email

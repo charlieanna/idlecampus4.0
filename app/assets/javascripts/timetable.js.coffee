@@ -226,16 +226,16 @@
   $scope.to_date_hour_value = $scope.to_date_hour[10]
   $scope.to_date_minute_value = $scope.to_date_minute[0]
   $scope.$watch "data.timeArray", (newValue, oldValue) ->
-    console.log "timearray"
-    console.log newValue
+    
+    # console.log newValue
 
   $scope.$watch "data.timetable", (newValue, oldValue) ->
-    console.log "timetable"
-    console.log newValue
+   
+    # console.log newValue
 
   $scope.$watch "data", (newValue, oldValue) ->
-    console.log "data"
-    console.log newValue
+ 
+    # console.log newValue
 
   $scope.weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   $scope.addsmallgroup = (i) ->

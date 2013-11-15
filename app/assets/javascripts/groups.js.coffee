@@ -6,20 +6,20 @@
   $scope.folders = []
   $scope.groupMessages = []
   $scope.$watch "groupscreated", (newValue, oldValue) ->
-    console.log "watch"
-    console.log newValue
+    # console.log "watch"
+ #    console.log newValue
 
   $scope.$watch "currentGroup", (newValue, oldValue) ->
-    console.log "currentGroup"
-    console.log newValue
+    # console.log "currentGroup"
+ #    console.log newValue
 
   $scope.$watch "folders", (newValue, oldValue) ->
-    console.log "folders"
-    console.log newValue
+    # console.log "folders"
+#     console.log newValue
 
   $scope.$watch "groupMessages", (newValue, oldValue) ->
-    console.log "groupMessages"
-    console.log newValue
+    # console.log "groupMessages"
+#     console.log newValue
 
   $scope.get = ->
     $scope.data.checked = false

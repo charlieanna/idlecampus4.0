@@ -1,7 +1,7 @@
 module SessionsHelper
 
   def sign_in(user,password)
-  	p "signing in"
+
 
     remember_token = User.new_remember_token
 
@@ -12,7 +12,7 @@ module SessionsHelper
   end
   
   def sign_in(user)
-  	p "signing in"
+    
 
     remember_token = User.new_remember_token
 

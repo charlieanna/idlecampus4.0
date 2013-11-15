@@ -53,6 +53,8 @@ class Jabber::JID
 end
 
 class TopfunkyIM
+  
+ 
 
   def initialize(username, password, config={}, stop_thread=true)
     @config          = config
