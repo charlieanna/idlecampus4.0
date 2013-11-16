@@ -6,7 +6,8 @@ class NotesController < ApplicationController
   end
 
   def create
-
+    text = params["note_text"]
+    puts text
     @note = Note.new(notes_params)
 
     #get current group
@@ -16,8 +17,8 @@ class NotesController < ApplicationController
     #user.notes << @note
    
       if @note.save
-        p [@note.to_jq_upload].to_json
-        render text: "ok"
+       
+        render :json => @note
       else
         puts @note.errors.full_messages
       end

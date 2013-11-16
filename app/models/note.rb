@@ -15,4 +15,10 @@ class Note < ActiveRecord::Base
     "delete_type" => "DELETE" 
    }
   end
+  
+  # before_create :default_name
+#   
+#    def default_name
+#      self.name ||= File.basename(file.filename, '.*').titleize
+#    end
 end

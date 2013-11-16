@@ -28,5 +28,6 @@
 //= require app
 //= require timetable
 //= require entryCtrl
+//= require jquery-fileupload/vendor/tmpl
 //= require notes
 //= require jquery-fileupload/basic
