@@ -2,8 +2,8 @@ Welcome <%= @user.name %>
 <div class="tab-content">
     <div class="tab-pane active" id="tab1">
         <div class="row-fluid">
-            <div class="span1"></div>
-            <div class="span9">
+            <div class="span3"></div>
+            <div class="span7">
 
                 <div class="tabbable" style="margin:0 auto">
                     <ul class="nav nav-tabs">
@@ -24,7 +24,7 @@ Welcome <%= @user.name %>
 											                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 											                    <div class="fileupload-buttonbar">
 																						
-								                            <textarea class="row-fluid" id="note_text" rows="3"
+								                            <textarea class="row-fluid span11" id="note_text" rows="3"
 								                                      placeholder="Enter your note here:"></textarea>
 											                      <%= f.file_field :file %>
 
@@ -49,7 +49,7 @@ Welcome <%= @user.name %>
 
 
                         <div class="tab-pane" id="tabs-2">
-                            <textarea class="row-fluid" ng-model="data.groupalertform" rows="3"
+                            <textarea class="row-fluid span11" ng-model="data.groupalertform" rows="3"
                                       placeholder="Enter your alert here:"></textarea>
                             <!--   <textarea class="input-block-level" placeholder="type the name of the group here..." id="nodemessage"></textarea> -->
                             <a class="btn" ng-click="publishgroupalert()">Send</a>
