@@ -1,8 +1,5 @@
 class Group < ActiveRecord::Base
-  before_save :saved
-  def saved
-    puts "#{self} saved"
-  end
+  has_many :folders
 	validates :name,presence: true
     has_one :timetable
     has_many :timetable_fields

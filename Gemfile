@@ -42,7 +42,7 @@ gem 'mail_form'
 gem 'shoulda-matchers'
 end
 gem 'unicorn'
-
+gem 'carrierwave'
 gem 'daemons'
 gem "xmpp4r", "~> 0.5.5"
 gem 'delayed_job_active_record'
@@ -52,6 +52,9 @@ gem 'gon'
 gem 'sass-rails', '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
+gem 'paperclip'
+gem 'aws-sdk'
+gem "rmagick"
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112063601) do
+ActiveRecord::Schema.define(version: 20131116110858) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -55,6 +55,24 @@ ActiveRecord::Schema.define(version: 20131112063601) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "documents", force: true do |t|
+    t.integer  "folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["folder_id"], name: "index_documents_on_folder_id"
+
+  create_table "folders", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file"
+  end
+
+  add_index "folders", ["group_id"], name: "index_folders_on_group_id"
+
   create_table "group_memberships", force: true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -84,6 +102,12 @@ ActiveRecord::Schema.define(version: 20131112063601) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file"
   end
 
   create_table "rooms", force: true do |t|

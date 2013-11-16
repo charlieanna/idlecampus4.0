@@ -35,6 +35,10 @@ GEM
     angularjs-rails (1.0.8)
     arel (4.0.1)
     atomic (1.1.14)
+    aws-sdk (1.11.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
@@ -52,11 +56,19 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cliver (0.2.2)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -177,6 +189,11 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.15.1)
     poltergeist (1.4.1)
       capybara (~> 2.1.0)
@@ -223,6 +240,7 @@ GEM
       redis (~> 3.0.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rmagick (2.13.2)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -308,6 +326,7 @@ GEM
       rack
       raindrops (~> 0.7)
     uniform_notifier (1.4.0)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     webmock (1.15.2)
@@ -324,10 +343,12 @@ PLATFORMS
 
 DEPENDENCIES
   angularjs-rails
+  aws-sdk
   bcrypt-ruby
   bootstrap-sass (= 2.3.2.0)
   bullet
   capistrano
+  carrierwave
   childprocess (= 0.3.6)
   coffee-rails (= 4.0.1)
   cucumber-rails (= 1.4.0)
@@ -351,12 +372,14 @@ DEPENDENCIES
   launchy (~> 2.3.0)
   mail_form
   newrelic_rpm
+  paperclip
   pg (= 0.15.1)
   poltergeist
   rails (= 4.0.1)
   rails_12factor (= 0.0.2)
   rake (= 10.0.4)
   rest-client
+  rmagick
   rspec-rails (= 2.13.1)
   sass-rails (= 4.0.1)
   sdoc (= 0.3.20)

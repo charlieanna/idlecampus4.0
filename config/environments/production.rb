@@ -2,6 +2,15 @@ IdleCampus::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+  # config/environments/production.rb
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'idlecampus',
+      :access_key_id => 'AKIAIYN632RX35RGIUKQ',
+      :secret_access_key => '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'
+    }
+  }
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
