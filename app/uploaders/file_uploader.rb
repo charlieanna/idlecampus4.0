@@ -1,25 +1,25 @@
 # encoding: utf-8
 
 class FileUploader < CarrierWave::Uploader::Base
+# include CarrierWaveDirect::Uploader
+  # # Include RMagick or MiniMagick support:
+#   include CarrierWave::RMagick
+#   # include CarrierWave::MiniMagick
 
-  # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
 
-  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  include Sprockets::Helpers::RailsHelper
-  include Sprockets::Helpers::IsolatedHelper
+
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+   # storage :file
     # storage :file use this for local storage
-  # storage :fog
+   storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
    # "uploads/#{model.user.jabber_id}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   def store_dir
-    "uploads/#{model.user.jabber_id}/#{model.class.to_s.underscore}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{model.id}"
+    # "uploads/#{model.group.group_code}/#{model.class.to_s.underscore}/#{model.id}"
   end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -30,13 +30,13 @@ class FileUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-
- process :resize_to_fit => [800, 600]
-
-  version :thumb do
-    process :resize_to_fit => [80, 80]
-  end
-  
+ # 
+ # process :resize_to_fit => [800, 600]
+ # 
+ #  version :thumb do
+ #    process :resize_to_fit => [80, 80]
+ #  end
+ #  
 
 
   # Add a white list of extensions which are allowed to be uploaded.

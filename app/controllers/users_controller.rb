@@ -58,6 +58,8 @@ class UsersController < ApplicationController
  
   def show
     
+    # @note = Note.new
+    
     @alert = Alert.new
     @user = current_user
     

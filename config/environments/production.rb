@@ -3,16 +3,12 @@ IdleCampus::Application.configure do
 
   # Code is not reloaded between requests.
   # config/environments/production.rb
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => 'idlecampus',
-      :access_key_id => 'AKIAIYN632RX35RGIUKQ',
-      :secret_access_key => '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'
-    }
-  }
-  config.cache_classes = true
 
+  config.cache_classes = true
+  # config.cache_dir = "#{Rails.root}/tmp/uploads"
+  # config.fog_directory  = 'site_images'  # required
+  # config.fog_public     = true     # optional, defaults to true
+  # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
   # and those relying on copy on write to perform better.

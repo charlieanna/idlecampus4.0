@@ -21,9 +21,27 @@ Welcome <%= @user.name %>
                             <textarea class="row-fluid" ng-model="data.groupnoteform" rows="3"
                                       placeholder="Enter your note here:"></textarea>
 
+											                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
+											                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+											                    <div class="fileupload-buttonbar">
 
 
-                            <a class="btn" ng-click="publishgroupnote()">Send</a> <!-- , student or teacher -->
+											                      <%= f.file_field :file %>
+
+																						  <p><%= f.submit "Send" %></p>
+											                    </div>
+																					
+											                    <!-- The loading indicator is shown during image processing -->
+
+											                    <br>
+											                    <!-- The table listing the files available for upload/download -->
+											                    <table class="table table-striped">
+											                      <tbody class="files" data-toggle="modal-gallery"
+											                             data-target="#modal-gallery"></tbody>
+											                    </table>
+											                <% end %>
+
+                          
 
                         </div>
 

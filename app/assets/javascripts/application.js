@@ -28,4 +28,5 @@
 //= require app
 //= require timetable
 //= require entryCtrl
-
+//= require notes
+//= require jquery-fileupload/basic
