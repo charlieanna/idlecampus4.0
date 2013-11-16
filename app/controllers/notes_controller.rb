@@ -15,7 +15,7 @@ class NotesController < ApplicationController
 
     #user = User.find_by_remember_token(cookies[:remember_token])
     #user.notes << @note
-   
+    @note.errors.messages
       if @note.save
        
         render :json => @note
