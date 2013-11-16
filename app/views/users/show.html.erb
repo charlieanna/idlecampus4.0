@@ -1,86 +1,133 @@
-Welcome <%= @user.name%>
-<div class="row">
-<aside class="span3">
-    <section>
-        <div ng-controller="GroupsCtrl"  ng-init="getGroupsCreated();">
-			<div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
-			         aria-labelledby="myModalLabel" aria-hidden="true">
-			        <div class="modal-header">
-			            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			            <h3 id="myModalLabel">Create Alert</h3>
-			        </div>
-			        <div class="modal-body">
-			            <input placeholder="Alert" type="text"
-			                   id="createalertinput" ng-model="data.message"/>
-			        </div>
-			        <div class="modal-footer">
-			            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-			            <button data-dismiss="modal" class="btn btn-primary"
-			                    ng-click="publishgroupalert()" id="sendalert">Send
-			            </button>
-			        </div>
-			    </div>
-        	 <form class="form-inline" id="new_group"> 
-                  <input class="create-group-input span2" placeholder="Group Name" type="text"
-                        id="creategroupinput" name="group" ng-model="data.creategroup"/>
-                 
-                 <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
-                         ng-click="createGroup()">Create
-                 </button> 
-				 
-				
- 				
-				
-              </form>
-        <!-- <%= render "groups/form"%> -->
-        <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
-	        <li class="active">
-	            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
-	               data-parent="navigation-components">
-	                <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
+Welcome <%= @user.name %>
+<div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+        <div class="row-fluid">
+            <div class="span1"></div>
+            <div class="span9">
 
-	            </a>
+                <div class="tabbable" style="margin:0 auto">
+                    <ul class="nav nav-tabs">
+                        <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
+                                                                                                  href="#tabs-1">Notes</a>
+                        </li>
+                        <li style="margin:0 5px;text-align:center;width:100px;">
+                            <a data-toggle="tab" href="#tabs-2">Alert</a>
+                        </li>
 
-	        </li>
-					
-				
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1">
 
-	        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
-                              <a href="" ng-click="groupclick(group)">{{group.name}}</a>
-                            </li>
-			
-			
-         
-    </ul>
-	</div>
-    </section>
-
-</aside>
-<div class="span9">
-<!-- Main content         -->
-<div id="main-content">
-<!-- Container -->
-<div class="container">
-<!-- Header boxes -->
-<!-- /Header boxes -->
-	
-	<%= render "timetable/timetable"%>
-
- </div>
- </div>
-	
+                            <textarea class="row-fluid" ng-model="data.groupnoteform" rows="3"
+                                      placeholder="Enter your note here:"></textarea>
 
 
-<!-- /Content -->
+
+                            <a class="btn" ng-click="publishgroupnote()">Send</a> <!-- , student or teacher -->
+
+                        </div>
 
 
-<!-- /Content -->
+                        <div class="tab-pane" id="tabs-2">
+                            <textarea class="row-fluid" ng-model="data.groupalertform" rows="3"
+                                      placeholder="Enter your alert here:"></textarea>
+                            <!--   <textarea class="input-block-level" placeholder="type the name of the group here..." id="nodemessage"></textarea> -->
+                            <a class="btn" ng-click="publishgroupalert()">Send</a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <br>
+
+
+                <div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+    <div class="row">
+        <aside class="span3">
+            <section>
+                <div ng-controller="GroupsCtrl" ng-init="getGroupsCreated();">
+                    <div id="createalert" class="modal hide fade" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Create Alert</h3>
+                        </div>
+                        <div class="modal-body">
+                            <input placeholder="Alert" type="text"
+                                   id="createalertinput" ng-model="data.message"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                            <button data-dismiss="modal" class="btn btn-primary"
+                                    ng-click="publishgroupalert()" id="sendalert">Send
+                            </button>
+                        </div>
+                    </div>
+                    <form class="form-inline" id="new_group">
+                        <input class="create-group-input span2" placeholder="Group Name" type="text"
+                               id="creategroupinput" name="group" ng-model="data.creategroup"/>
+
+                        <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
+                                ng-click="createGroup()">Create
+                        </button>
 
 
+                    </form>
+                    <!-- <%= render "groups/form" %> -->
+                    <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
+                        <li class="active">
+                            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
+                               data-parent="navigation-components">
+                                <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
 
-</div>
-<!-- /Container -->
+                            </a>
+
+                        </li>
+
+
+                        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
+                            <a href="" ng-click="groupclick(group)">{{group.name}}</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </section>
+
+        </aside>
+        <div class="span9">
+            <!-- Main content         -->
+            <div id="main-content">
+                <!-- Container -->
+                <div class="container">
+                    <!-- Header boxes -->
+                    <!-- /Header boxes -->
+
+                    <%= render "timetable/timetable" %>
+
+                </div>
+            </div>
+
+
+            <!-- /Content -->
+
+
+            <!-- /Content -->
+        </div>
+
+
+    </div>
+    <!-- /Container -->
 </div>
 
 
