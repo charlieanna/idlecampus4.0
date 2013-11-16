@@ -1,7 +1,11 @@
 require_relative '../spec_helper'
 
 describe "Timetable Page",js: true do
+  let(:user) { FactoryGirl.create(:user) }
+  
+   
    before(:all) do
+    
     @user1 = FactoryGirl.create(:user, :device_identifier => "a9c72e102f1bc1b0")
    
     @user2 = FactoryGirl.create(:user, :device_identifier => "7d94095209b6e051")
@@ -9,7 +13,7 @@ describe "Timetable Page",js: true do
     @user4 = FactoryGirl.create(:user, :device_identifier => "4BA905D6-443D-4631-A7BD-DEDEA1638BA1")
     @user5 = FactoryGirl.create(:user, :device_identifier => "9dce6d95d8b1ae67")
     @users = [@user1.jabber_id, @user2.jabber_id, @user3.jabber_id, @user4.jabber_id, @user5.jabber_id]
-    @push = Push.new(@users, "Hi")
+    @push = Push.new(@users, "Hi","timetable")
   end
 
   after(:all) do
@@ -22,9 +26,10 @@ describe "Timetable Page",js: true do
   end
 	subject { page }
 
-  let(:user) { FactoryGirl.create(:user) }
-
+  
   before do
+     # sign_up_with(user.name,user.email,"akk322")
+ #     click_link "Sign out"
   	 visit '/'
 	  click_link "Log In"
 

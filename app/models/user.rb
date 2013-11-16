@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
-  before_save :saved
-  def saved
-    puts "#{self} saved"
-  end
+  # before_save :saved
+ #  def saved
+ #    puts "#{self} saved"
+ #  end
    before_create :set_jabber_id
 
   validates :name, presence: true, length: { maximum: 50 },presence: true,uniqueness: { case_sensitive: false }
@@ -44,7 +44,7 @@ def send_password_reset
 
    def self.get_devices(jabber_ids)
      members = jabber_ids
-     puts jabber_ids
+     # puts jabber_ids
      members = members.map do |member|
        index = member.index('/')
        unless index.nil?
@@ -56,8 +56,8 @@ def send_password_reset
     if members
       users = User.where(jabber_id:members)
       users.map do |user|
-        puts "USER"
-        puts user.jabber_id
+        # puts "USER"
+ #        puts user.jabber_id
         user.device_identifier
       end
     end

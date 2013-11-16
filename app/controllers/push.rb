@@ -1,14 +1,11 @@
 class Push
   include Sidekiq::Worker
-    attr_reader :members,:message
+    attr_reader :members,:message,:app
   def initialize(members,message,app)
     @message = message
     @members = members
     @app = app
-    logger.info "MESSAGE"
-    logger.info @message
-    logger.info "MEMBERS"
-    logger.info @members
+ 
   end
   
   def devices
@@ -26,12 +23,12 @@ class Push
       entries_hash = {}
       
       entries_hash["devices"] = devices
-      logger.info entries_hash
+      # logger.info entries_hash
       entries_hash["message"] = @message
       entries_hash["app"] = @app
-      logger.info entries_hash
+      # logger.info entries_hash
       timetable_hash["push"] = entries_hash
-      logger.info timetable_hash
+      # logger.info timetable_hash
       return timetable_hash
     end
     
@@ -39,9 +36,11 @@ class Push
 
       hash = create_push
       
-      logger.info "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-      
-      logger.info hash
+      # logger.info "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+ #      
+ #      logger.info hash["push"]["devices"]
+      devices = hash["push"]["devices"]
+      if devices.size > 0
 
       uri = URI('http://developer.idlecampus.com/push/push1')
     
@@ -53,6 +52,9 @@ class Push
                                resp, dat = http.post(uri.path, hash.to_json, headers)
 
     return resp.code
+    else 
+      "404"
+    end
       
     end
 end

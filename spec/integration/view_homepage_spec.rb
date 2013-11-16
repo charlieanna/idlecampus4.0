@@ -1,7 +1,7 @@
 require_relative '../spec_helper'
 
 describe "HomePage" do
-  it "user show should see the homepage" do
+  it "user should see the homepage" do
   	visit '/'
   	expect(page).to have_title "IdleCampus"
   end

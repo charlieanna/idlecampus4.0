@@ -1,14 +1,15 @@
 require_relative '../spec_helper'
 
-feature 'Visitor clicks on Sign Up button', :js => true do
+feature 'Sign up', :js => true do
   before do
     @user = FactoryGirl.build(:user)
   end
+  
   subject{page}
-	it "and sees signup page" do
-	  visit signup_path 
-	  click_link "Sign Up!"
-	  expect(page).to have_css("h3",text:"Sign up for a free account")
+   scenario "and sees signup page" do
+     visit signup_path 
+     click_link "Sign Up!"
+     expect(page).to have_css("h3",text:"Sign up for a free account")
   end
  
   context "and signs up" do
@@ -99,8 +100,18 @@ feature 'Visitor clicks on Sign Up button', :js => true do
         end
         
         expect(page).to have_css("a",text: group.name)
-     
-   
+        
+        
+        
+        click_link "Send Alert"
+        
+        expect(page).to have_css("#createalertinput")
+        
+        fill_in "createalertinput",with: "Sending alert...."
+        
+         expect(page).to have_button("sendalert")
+        
+        click_button "sendalert"
   end
 end
       

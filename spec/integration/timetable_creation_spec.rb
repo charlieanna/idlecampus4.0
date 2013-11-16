@@ -37,7 +37,7 @@ feature 'Visitor signs up', :js => true do
       click_button "Teachers"
      
       teachers = FactoryGirl.build_list(:teacher,35)
-     
+      
       teachers.each do |teacher|
         fill_in "newteacher",with: teacher.name
         click_button "addteacher"
@@ -172,14 +172,14 @@ feature 'Visitor signs up', :js => true do
       #   
       
 
-          open_page
+          
 end
 
 scenario 'with valid email and password' do
 
   click_button "SendTimetable" 
-  page.save_screenshot('screenshot.png')
-  sleep(5)
+  # page.save_screenshot('screenshot.png')
+#   sleep(5)
   page.should_not have_content("timetable saved")
 
 
