@@ -74,7 +74,7 @@ class TopfunkyIM
   def self.register(username,password)
      jid    = Jabber::JID.new("#{username}@idlecampus.com")
      client = Jabber::Client.new(jid)
-     Jabber::debug = true
+     # Jabber::debug = true
      client.connect
      fields = {}
     
