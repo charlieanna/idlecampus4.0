@@ -18,7 +18,7 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
   
-end
+end   
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 gem 'sinatra', require: false
