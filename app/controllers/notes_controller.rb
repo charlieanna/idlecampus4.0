@@ -6,6 +6,7 @@ class NotesController < ApplicationController
   end
 
   def create
+    puts params
     text = params["note_text"]
     puts text
     @note = Note.new(notes_params)
@@ -17,6 +18,8 @@ class NotesController < ApplicationController
     #user.notes << @note
     @note.errors.messages
       if @note.save
+        xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+        xmpp.publish(text,"ABCDEF")
        
         render :json => @note
       else

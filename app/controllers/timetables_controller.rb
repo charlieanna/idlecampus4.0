@@ -58,6 +58,7 @@ class TimetablesController < ApplicationController
     
     group = Group.find_by_group_code(group)
     
+   
     timetable_in_hash = TimetableBuilder.new(group).build
     
    
