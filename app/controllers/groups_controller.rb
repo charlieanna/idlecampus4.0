@@ -44,21 +44,7 @@ class GroupsController < ApplicationController
     
     
     
-    # subscriptions = xmpp.get_subscriptions_from("3ZC4HE")
- #    
- #    puts subscriptions
     
-    # item = Jabber::PubSub::Item.new
-  #   xml = REXML::Element.new("greeting")
-  #   xml.text = 'hello world!'
-  # 
-  #   item.add(xml);
-  #   # publish item
-  #   pubsub.publish_item_to(@group.group_code, item)
-  #   
-  #   subs = pubsub.get_subscribers_from(@group.group_code)
-  #   puts subs
-    # flash[:group] = @group.to_hash
    
     if @group.save
      

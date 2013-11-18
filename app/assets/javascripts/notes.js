@@ -13,7 +13,12 @@
 //         console.log(progress)
 //         data.context.find('.bar').css('width', progress + '%')
 $(document).ready(function(){
+  $('a, button').click(function() {
+         $(this).toggleClass('active');
+     });
 	$("#note_file_button").click(function(){
+		$("#message").hide();
+		$('#note_file_button').text("Sending...");
 		var formData = new FormData(),
 		    $input = $('#note_file');
     
@@ -28,7 +33,9 @@ $(document).ready(function(){
 		  processData: false,
 		  type: 'POST'
 		}).done(function() {
-alert("done");
+			$("#message").show();
+$('a, button').toggleClass('active');
+$('#note_file_button').text("Send");
 });
 	});
 	

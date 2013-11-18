@@ -28,7 +28,8 @@ Welcome <%= @user.name %>
 								                                      placeholder="Enter your note here:"></textarea>
 											                      <%= f.file_field :file %>
 
-																						<p><button type="button" id="note_file_button">Send</button></p>
+		<p><button type="button" id="note_file_button" class="btn-success has-spinner"><span class="spinner"><i class="icon-spin icon-refresh"></i></span>Send</button></p>
+																		<span id="message" style="display:none">Note sent</span>
 											                    </div>
 																					
 											                    <!-- The loading indicator is shown during image processing -->
