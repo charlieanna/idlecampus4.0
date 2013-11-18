@@ -16,28 +16,7 @@ $(document).ready(function(){
   $('a, button').click(function() {
          $(this).toggleClass('active');
      });
-	$("#note_file_button").click(function(){
-		$("#message").hide();
-		$('#note_file_button').text("Sending...");
-		var formData = new FormData(),
-		    $input = $('#note_file');
-    
-		formData.append('note[file]', $input[0].files[0]);
-		formData.append('note_text', $("#note_text").val());
- 
-		$.ajax({
-		  url: '/notes',
-		  data: formData,
-		  cache: false,
-		  contentType: false,
-		  processData: false,
-		  type: 'POST'
-		}).done(function() {
-			$("#message").show();
-$('a, button').toggleClass('active');
-$('#note_file_button').text("Send");
-});
-	});
+	
 	
 	
 })

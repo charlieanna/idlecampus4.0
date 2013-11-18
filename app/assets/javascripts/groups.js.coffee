@@ -165,17 +165,26 @@
 
 
   $scope.publishgroupnote = ->
-   
-    note = $scope.groupnoteform
-    message = $build("html",
-      xmlns: "http://jabber.org/protocol/xhtml-im"
-    ).c("a",
-      href: note.toString()
-    ).t(note)
+    $("#message").hide()
     currentgroup = $scope.data.currentGroup
-    console.log note + " " + currentgroup
-    $scope.XMPP.connection.pubsub.publish currentgroup, note, (data) ->
-      console.log data
+    $("#note_file_button").text "Sending..."
+    formData = new FormData()
+    $input = $("#note_file")
+    formData.append "note[file]", $input[0].files[0]
+    formData.append "note_text", $("#note_text").val()
+    formData.append "group", currentgroup.group_code
+    $.ajax(
+      url: "/notes"
+      data: formData
+      cache: false
+      contentType: false
+      processData: false
+      method: 'POST'
+    ).done ->
+      $("#message").show()
+      $("a, button").toggleClass "active"
+      $("#note_file_button").text "Send"
+    console.log("ajax")
 
 
   $scope.publishgroupalert = ->

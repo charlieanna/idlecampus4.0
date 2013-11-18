@@ -65,10 +65,10 @@ Welcome <%= @user.name %>
 													                  <div class="fileupload-buttonbar">
 																						
 										                            <textarea class="row-fluid span11" id="note_text" rows="3"
-										                                      placeholder="Enter your note here:"></textarea>
+										                                      placeholder="Enter your note here:" ng-model="data.note"></textarea>
 													                      <%= f.file_field :file %>
 
-				<p><button type="button" id="note_file_button" class="btn-success has-spinner">
+				<p><button type="button" id="note_file_button" ng-click="publishgroupnote()" class="btn-success has-spinner">
 					<span class="spinner"><i class="icon-spin icon-refresh"></i></span>
 					Send</button>
 				</p>
@@ -84,7 +84,7 @@ Welcome <%= @user.name %>
 
 
 		                        <div class="tab-pane" id="tabs-2">
-		                            <textarea class="row-fluid span11" id="createalertinput" ng-model="data.message" rows="3"
+		                            <textarea class="row-fluid span11" id="createalertinput" ng-model="data.alert" rows="3"
 		                                      placeholder="Enter your alert here:"></textarea>
 		                            
 																<p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
