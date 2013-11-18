@@ -5,6 +5,14 @@ Welcome <%= @user.name %>
         <aside class="span3">
             <section>
                 <div>
+									
+									<%= form_for @group,remote: true do |f|%>
+									
+									<%= f.text_field :name %>
+									
+									<%= f.submit "Create",id:"creategroupbutton" %>
+									  
+									<% end %>
                   
                     <form class="form-inline" id="new_group">
                         <input class="create-group-input span2" placeholder="Group Name" type="text"
