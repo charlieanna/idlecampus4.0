@@ -10,11 +10,11 @@ Welcome <%= @user.name %>
 									
 									<%= f.text_field :name %>
 									
-									<%= f.submit "Create",id:"creategroupbutton" %>
+									<%= f.submit "Create",id:"creategroupbutton1" %>
 									  
 									<% end %>
                   
-                    <form class="form-inline" id="new_group">
+                    <!-- <form class="form-inline" id="new_group">
                         <input class="create-group-input span2" placeholder="Group Name" type="text"
                                id="creategroupinput" name="group" ng-model="data.creategroup"/>
 
@@ -23,7 +23,7 @@ Welcome <%= @user.name %>
                         </button>
 
 
-                    </form>
+                    </form> -->
                     <!-- <%= render "groups/form" %> -->
                     <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
                         <li class="active">
@@ -36,9 +36,13 @@ Welcome <%= @user.name %>
                         </li>
 
 
-                        <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
+                        <!-- <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
                             <a href="" ng-click="groupclick(group)">{{group.name}}</a>
-                        </li>
+                        </li> -->
+												
+												<% current_user.groups.each do |group|%>
+											   	<% link_to group.name %>
+												<% end %>
 
 
                     </ul>

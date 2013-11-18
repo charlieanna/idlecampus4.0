@@ -15,11 +15,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find_by_group_code(params[:id])
    
-    if @group
-     render :json => @group
-   else 
-     render text: "group not found"
-   end
+  
   end   
 
 
@@ -48,7 +44,7 @@ class GroupsController < ApplicationController
    
     if @group.save
      
-      respond_with @group
+      # respond_with @group
     else
        render :nothing => true, :status => 200, :content_type => 'text/html'
     end
