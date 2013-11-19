@@ -1,75 +1,17 @@
 Welcome <%= @user.name %>
 
 
-    <div class="row"  ng-controller="GroupsCtrl" ng-init="getGroupsCreated();">
-        <aside class="span3">
-            <section>
-                <div>
-									
-								
-                  
-                    <!-- <form class="form-inline" id="new_group">
-                        <input class="create-group-input span2" placeholder="Group Name" type="text"
-                               id="creategroupinput" name="group" ng-model="data.creategroup"/>
-
-                        <button data-dismiss="modal" class="btn btn-primary" id="creategroupbutton"
-                                ng-click="createGroup()">Create
-                        </button>
-
-
-                    </form> -->
-                    <!-- <%= render "groups/form" %> -->
-                    <ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
-                        <li class="active">
-                            <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
-                               data-parent="navigation-components">
-                                <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
-
-                            </a>
-
-                        </li>
-
-
-                        <!-- <li ng-repeat="group in data.groupscreated" id="{{group.group_code}}">
-                            <a href="" ng-click="groupclick(group)">{{group.name}}</a>
-                        </li> -->
-											
-
-
-                    </ul>
-                </div>
-            </section>
-
-        </aside>
-        <div class="span9">
-            <!-- Main content         -->
-            <div id="main-content">
-                <!-- Container -->
-                <div class="container">
-                    <!-- Header boxes -->
-                    <!-- /Header boxes -->
-										
-		            
-
-                </div>
-            </div>
-
-
-            <!-- /Content -->
-
-
-            <!-- /Content -->
-        </div>
-
-
-    </div>
-    <!-- /Container -->
-</div>
-
-
-
-
-</div>
-
-
-
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+			
+      <section>
+        <%= render 'shared/group_form' %>
+      </section>
+      <section>
+        <%= render 'shared/groups' %>
+      </section>
+     
+    </aside>
+  </div>
+<% end %>
