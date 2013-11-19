@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
  before_action :correct_user,   only: [:edit, :update]
   before_action :signed_in_user, only: [:edit, :update]
-  def new1
+  def new
     @user = User.new
   end
   def create
