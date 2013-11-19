@@ -1,17 +1,45 @@
 Welcome <%= @user.name %>
 
 
-<% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-			
-      <section>
-        <%= render 'shared/group_form' %>
-      </section>
-      <section>
-        <%= render 'shared/groups' %>
-      </section>
-     
-    </aside>
-  </div>
-<% end %>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+				<section>
+				  <%= render 'shared/group_form' %>
+				</section>
+				<section>
+				  <%= render 'shared/groups' %>
+				</section>
+      </h1>
+    </section>
+  </aside>
+        <div class="span9">
+            <!-- Main content         -->
+            <div id="main-content">
+                <!-- Container -->
+                <div class="container">
+								
+									<%= render 'messages/tabs'%>
+
+						    
+
+									<%= render 'users/posts' %>
+                </div>
+            </div>
+
+
+            <!-- /Content -->
+
+
+            <!-- /Content -->
+        </div>
+
+
+    </div>
+    <!-- /Container -->
+</div>
+
+	
+</div>

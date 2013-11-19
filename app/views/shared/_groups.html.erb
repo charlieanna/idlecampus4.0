@@ -9,10 +9,12 @@
 
     </li>
 
-
+    
 		<% current_user.groups.each do |group|%>
-		<%= render group %>
+		<li><%= link_to group.name,group %></a></li>
 		<% end %>
+		
+		
 
 
 </ul>

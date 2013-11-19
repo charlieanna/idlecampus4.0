@@ -59,16 +59,16 @@ class UsersController < ApplicationController
  
   def show
     
-    # @note = Note.new
+     @note = Note.new
     
-    @alert = Alert.new
+     @alert = Alert.new
     @user = current_user
-    
+     # @user = User.find(params[:id])
    
-    @groups = @user.groups
+     @groups = @user.groups
     
-    @group = @user.groups.build
-
+     @group = @user.groups.new
+     @count = @groups.count
     
   end
 

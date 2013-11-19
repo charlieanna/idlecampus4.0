@@ -17,6 +17,8 @@ class GroupsController < ApplicationController
     @group = Group.find_by_group_code(params[:id])
     @note = @group.notes.build
     
+    
+    
   
   end   
 
