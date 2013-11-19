@@ -10,6 +10,8 @@
  
      
       =  link_to "Sign out", signout_path, method: "delete",id:"signout",class:"btn btn-danger pull-right",style:"padding: 9px 11px;", "ng-click" => "signout()"
+      =  link_to "Profile", current_user,class: "btn btn-success pull-right",id:"signinbutton"
+			
 
     - else
       
