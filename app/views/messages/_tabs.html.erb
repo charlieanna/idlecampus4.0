@@ -1,4 +1,4 @@
-            <div class="tabbable" style="margin:0 auto">
+			      <div class="tabbable" style="margin:0 auto">
                 <ul class="nav nav-tabs">
                     <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
                                                                                               href="#tabs-1">Notes</a>
@@ -11,11 +11,11 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tabs-1">
 
-                   
+             
 
-									                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
+									                <%= form_for @note, :html => {:id => "groupnoteupload"},remote: true do |f| %>
 									                  <div class="fileupload-buttonbar">
-																		
+															
 						                            <textarea class="row-fluid span11" id="note_text" rows="3"
 						                                      placeholder="Enter your note here:" ng-model="data.note"></textarea>
 									                      <%= f.file_field :file %>
@@ -26,11 +26,11 @@
 </p>
 																<span id="message" style="display:none">Note sent</span>
 									                    </div>
-																	
-									                 
+														
+						                 
 									                <% end %>
 
-                  
+            
 
                     </div>
 
@@ -38,15 +38,13 @@
                     <div class="tab-pane" id="tabs-2">
                         <textarea class="row-fluid span11" id="createalertinput" ng-model="data.alert" rows="3"
                                   placeholder="Enter your alert here:"></textarea>
-                        
+                  
 												<p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
 													Send</button>
 												</p>
-                       
+                 
                     </div>
 
 
                 </div>
             </div>
-
-            <%= render "timetable/timetable" %>

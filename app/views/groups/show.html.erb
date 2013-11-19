@@ -1,5 +1,51 @@
+    <div class="row"  ng-controller="GroupsCtrl" ng-init="getGroupsCreated();">
+        <aside class="span3">
+            <section>
+                <div>
+									
+									<section>
+									  <%= render 'shared/group_form' %>
+									</section>
+									
+									<section>
+									  <%= render 'shared/groups' %>
+									</section>
+								
+                   
+                </div>
+            </section>
 
-  <%= @group.name %>
-  <%= @group.group_code %>
-  <%= link_to "New Timetable",new_group_timetable_path(@group) %>
+        </aside>
+        <div class="span9">
+            <!-- Main content         -->
+            <div id="main-content">
+                <!-- Container -->
+                <div class="container">
+									
+									<% render 'messages/tabs.html.erb'%>
+
+						    
+
+			            <%= render "timetable/timetable" %>
+                </div>
+            </div>
+
+
+            <!-- /Content -->
+
+
+            <!-- /Content -->
+        </div>
+
+
+    </div>
+    <!-- /Container -->
+</div>
+
+
+
+
+</div>
+
+
 

@@ -1,8 +1,9 @@
 require 'drb'
 require 'basic_drb'
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:show]
-  before_action :correct_user,   only: [:show]
+  
+ before_action :correct_user,   only: [:edit, :update]
+  before_action :signed_in_user, only: [:edit, :update]
   def new1
     @user = User.new
   end

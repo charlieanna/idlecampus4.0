@@ -1,0 +1,18 @@
+
+<ul id="sidebar" class="nav nav-tabs nav-stacked" id="groupscreated">
+    <li class="active">
+        <a href="#collapse-additional-info" class="accordion-toggle" data-toggle="collapse"
+           data-parent="navigation-components">
+            <i class="icon-list-ul"></i>&nbsp;&nbsp;Groups
+
+        </a>
+
+    </li>
+
+
+		<% current_user.groups.each do |group|%>
+		<%= render group %>
+		<% end %>
+
+
+</ul>

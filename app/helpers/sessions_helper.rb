@@ -49,6 +49,14 @@ module SessionsHelper
     cookies.delete(:SID)
     cookies.delete(:RID)
   end
+  
+  
+  def signed_in_user
+      unless signed_in?
+        # store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
 
 def sign_in_to_xmpp_with_password(user,password)
 

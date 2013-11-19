@@ -7,7 +7,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby'
 
 gem 'sidekiq'
-# 
+gem 'unf' 
 gem 'debugger', group: [:development, :test]
 group :development, :test do
   gem 'sqlite3'

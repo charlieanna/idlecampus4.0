@@ -7,6 +7,7 @@ require "xmpp4r/pubsub/helper/nodebrowser.rb"
 require "xmpp4r/pubsub/helper/nodehelper.rb"
 class GroupsController < ApplicationController
   respond_to :json,:html
+  before_action :signed_in_user, only: [:create, :destroy]
   def index
     @groups = current_user.groups
     respond_with @groups
@@ -14,7 +15,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_group_code(params[:id])
-   
+    @note = @group.notes.build
+    
   
   end   
 
@@ -44,9 +46,11 @@ class GroupsController < ApplicationController
    
     if @group.save
      
-      # respond_with @group
+      flash[:success] = "Group created!"
+      # redirect_to root_url
+        
     else
-       render :nothing => true, :status => 200, :content_type => 'text/html'
+      render 'static_pages/home'
     end
   end
 
