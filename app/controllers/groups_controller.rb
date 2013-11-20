@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
     
     xmpp.create_group(@group.group_code)
     
-    
+   
     
     
    

@@ -25,6 +25,7 @@ gem 'jasmine', :group => [:development, :test]
 gem 'sinatra', require: false
 gem 'slim'
  gem "acts_as_follower"
+ gem 'carrierwave_backgrounder'
 group :test do
   gem 'factory_girl_rails', '4.2.1'
  

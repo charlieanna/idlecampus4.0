@@ -10,7 +10,9 @@ class NotesController < ApplicationController
     group = Group.find_by(group_code:params["group"])
     text = params["note_text"]
     puts text
-    @note = group.notes.create(notes_params)
+    @note = group.notes.build
+    # @note.process_file_upload = true
+    @note.attributes = notes_params
 
    
     @note.errors.messages

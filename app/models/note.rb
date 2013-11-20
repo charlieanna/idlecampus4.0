@@ -2,7 +2,7 @@ class Note < ActiveRecord::Base
 	include Rails.application.routes.url_helpers
 
   mount_uploader :file, FileUploader
- 
+ process_in_background :file
   belongs_to :group
   
   def to_jq_upload
