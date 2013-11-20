@@ -8,8 +8,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
-    puts params["Group Code"]
+  
     @group = Group.find_by(group_code:params["Group Code"])
+    
     if params["Group Code"] 
       if @group 
       @user = User.new(user_params)
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
 
         @cookies = cookies
       
-        @groups = current_user.groups
+       
 
 
         flash[:success] = "Welcome to IdleCampus!"
@@ -67,7 +68,7 @@ class UsersController < ApplicationController
      
     else
     
-  
+     
     
     @user = User.new(user_params)
     
@@ -104,7 +105,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to IdleCampus!"
      
       # flash[:register] = @user.to_hash
-
+puts "DASDSADASD"
       redirect_to @user
 
     else
@@ -117,17 +118,20 @@ end
 
  
   def show
-    
+    # puts "DASDSADASD"
      @note = Note.new
     
      @alert = Alert.new
-    @user = current_user
-     # @user = User.find(params[:id])
+    
+     @user = current_user
+     
+  
    
      @groups = @user.groups
     
      @group = @user.groups.new
      @count = @groups.count
+   
     
   end
 

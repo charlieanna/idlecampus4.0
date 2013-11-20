@@ -1,4 +1,5 @@
-    <div class="row"  ng-controller="GroupsCtrl" ng-init="getGroupsCreated();">
+<h1 id="group_code"><%=@group.group_code%></h1>
+	  <div class="row"  ng-controller="GroupsCtrl" ng-init="getGroupsCreated();">
         <aside class="span3">
             <section>
                 <div>
@@ -11,6 +12,10 @@
 									<section>
 									  <%= render 'shared/groups' %>
 									</section>
+									<% else %>
+									<% @group.notes.each do |note| %>
+									<%= link_to note.file.url %>
+									<% end %>
 									<% end %>
 								
                    
@@ -49,7 +54,7 @@
              
 
 												               
-	                          <% render 'group/notes'%>
+	                         
             
 
 			                    </div>
@@ -57,13 +62,13 @@
 
 			                    <div class="tab-pane" id="tabs-2">
 			                       
-														<% render 'group/alerts'%>
+														
                  
 			                    </div>
 										
 			                    <div class="tab-pane" id="tabs-3">
                       
-			                  <%= render "group/timetable" %>
+			                  
 			                    </div>
 
 

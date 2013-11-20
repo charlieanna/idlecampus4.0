@@ -2,11 +2,22 @@ module Features
   module SessionHelpers
     def sign_up_with(name,email,password)
 
-      visit signup_path
+      visit new_teacher_path
       fill_in "Name",with:name
       fill_in "Email",with:email
       fill_in "Password",with:password
       click_button "Create Account"
+    end 
+    def sign_up_with_student(group,name,email,password)
+      
+      visit new_student_path
+      
+      fill_in "Group_Code",with:group
+      fill_in "Name",with:name
+      fill_in "Email",with:email
+      fill_in "Password",with:password
+      click_button "Create Account"
+      
     end 
 
     def sign_in_as(user, options={})

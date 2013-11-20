@@ -4,4 +4,7 @@ class TeachersController < ApplicationController
     @user.rolable_type= "Teacher"
     
   end
+  
+  def show 
+  end
 end

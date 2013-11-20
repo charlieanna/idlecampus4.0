@@ -7,15 +7,12 @@ class NotesController < ApplicationController
 
   def create
     puts params["group"]
+    group = Group.find_by(group_code:params["group"])
     text = params["note_text"]
     puts text
-    @note = Note.new(notes_params)
+    @note = group.notes.create(notes_params)
 
-    #get current group
-    #post that note inide that note
-
-    #user = User.find_by_remember_token(cookies[:remember_token])
-    #user.notes << @note
+   
     @note.errors.messages
       if @note.save
         xmpp = DRbObject.new_with_uri "druby://localhost:7777"

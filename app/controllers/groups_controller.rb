@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
     
     @group.name = params[:group][:name]
  
-    @group.group_code = Group.get_group_code
+    @group.group_code = params[:group][:group_code] || Group.get_group_code
     
     xmpp.create_group(@group.group_code)
     
