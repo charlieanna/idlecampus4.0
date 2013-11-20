@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_group_code(params[:id])
-    @note = @group.notes.build
+    # @note = @group.notes.build
     
     
     

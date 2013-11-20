@@ -17,7 +17,7 @@
 
 										
 
-									                <%= form_for @note, :html => {:id => "groupnoteupload"},remote: true do |f| %>
+									                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
 									                  <div class="fileupload-buttonbar">
 															
 						                            <textarea class="row-fluid span11" id="note_text" rows="3"

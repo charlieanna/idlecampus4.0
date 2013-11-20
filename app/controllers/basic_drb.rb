@@ -571,7 +571,11 @@ class TopfunkyIM
      xml.text = message
 
      item.add(xml);
+     service = 'pubsub.idlecampus.com'
+   
+     options = {'pubsub#access_model'=>'open'}
     
+     @pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
      @pubsub.publish_item_to(group, item)
   end
   

@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
       
       sign_in @user
  
-       DRb.start_service("druby://localhost:7777", TopfunkyIM.new(@jabber_id,@password, nil, false))
+      DRb.start_service("druby://localhost:7777", TopfunkyIM.new(@jabber_id,@password, nil, false))
  
   
       redirect_to @user,:notice => "Welcome to IdleCampus"
