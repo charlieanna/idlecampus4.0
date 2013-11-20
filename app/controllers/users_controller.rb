@@ -8,17 +8,76 @@ class UsersController < ApplicationController
     @user = User.new
   end
   def create
+    puts params["Group Code"]
+    @group = Group.find_by(group_code:params["Group Code"])
+    if params["Group Code"] 
+      if @group 
+      @user = User.new(user_params)
+    
+   
+      @user.password_confirmation = @user.password
+   
+    
+    
+      @user.device_identifier = "web"
+    
+      @user.rolable_type = "Student"
+   
+   
+    
+    
+      if @user.save
+      
+        TopfunkyIM.register(@user.name,@user.password)
+      
+        DRb.start_service("druby://localhost:7777", TopfunkyIM.new(@user.jabber_id,@user.password, nil, false))
+   
+        xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+      
+        sign_in @user
+        
+       
+        
+        xmpp.subscribe(params["Group Code"] )
+
+        # @group = current_user.groups.build
+     
+
+        @cookies = cookies
+      
+        @groups = current_user.groups
+
+
+        flash[:success] = "Welcome to IdleCampus!"
+     
+        # flash[:register] = @user.to_hash
+
+        redirect_to @group
+
+      else
+      
+        render 'new'
+      end
+    else
+      flash[:error] = "Group Not Found"
+      redirect_to new_student_path
+    end
+    
+    
+     
+    else
     
   
     
     @user = User.new(user_params)
     
-   
+    @user.rolable_type = "Teacher"
     @user.password_confirmation = @user.password
    
     
     
     @user.device_identifier = "web"
+    
     
    
    
@@ -52,9 +111,9 @@ class UsersController < ApplicationController
       
       render 'new'
     end
-
-    
   end
+    
+end
 
  
   def show

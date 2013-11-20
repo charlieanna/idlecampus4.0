@@ -15,10 +15,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
  has_many :groups
    has_secure_password
-   # has_many :groups,through: :group_membership
-  # validates :password, length: { minimum: 6 }
-
- 
+ has_many :created_groups, class_name: 'Group'
+ acts_as_follower
 
 def send_password_reset
     generate_token(:password_reset_token)

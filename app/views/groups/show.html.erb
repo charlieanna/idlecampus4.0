@@ -4,13 +4,14 @@
                 <div>
 									
 									
-									
+									<% if current_user.rolable_type == "Teacher"%>
 									<section>
 									  <%= render 'shared/group_form' %>
 									</section>
 									<section>
 									  <%= render 'shared/groups' %>
 									</section>
+									<% end %>
 								
                    
                 </div>

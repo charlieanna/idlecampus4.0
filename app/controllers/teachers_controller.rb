@@ -1,5 +1,7 @@
 class TeachersController < ApplicationController
   def new
-    @user = Teacher.new
+    @user = User.new
+    @user.rolable_type= "Teacher"
+    
   end
 end

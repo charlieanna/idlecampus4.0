@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119144140) do
+ActiveRecord::Schema.define(version: 20131120042808) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 20131119144140) do
 
   add_index "folders", ["group_id"], name: "index_folders_on_group_id"
 
+  create_table "follows", force: true do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
   create_table "group_memberships", force: true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
@@ -130,8 +143,7 @@ ActiveRecord::Schema.define(version: 20131119144140) do
   end
 
   create_table "students", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
   end
 
   create_table "subjects", force: true do |t|
@@ -146,15 +158,8 @@ ActiveRecord::Schema.define(version: 20131119144140) do
   add_index "subjects", ["timetable_id"], name: "index_subjects_on_timetable_id"
 
   create_table "teachers", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "group_id"
-    t.integer  "timetable_id"
+    t.integer "user_id"
   end
-
-  add_index "teachers", ["group_id"], name: "index_teachers_on_group_id"
-  add_index "teachers", ["timetable_id"], name: "index_teachers_on_timetable_id"
 
   create_table "timetable_entries", force: true do |t|
     t.integer  "timetable_id"
@@ -205,6 +210,10 @@ ActiveRecord::Schema.define(version: 20131119144140) do
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.integer  "member_id"
+    t.string   "member_type"
+    t.integer  "rolable_id"
+    t.string   "rolable_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

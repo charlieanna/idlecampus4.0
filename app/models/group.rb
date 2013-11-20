@@ -11,7 +11,9 @@ class Group < ActiveRecord::Base
     has_many :notes
     has_many :students
     belongs_to :teacher
-    
+    has_many :followers,class_name: 'Student'
+    belongs_to :creator, class_name: 'Teacher',:foreign_key => 'teacher_id'
+    acts_as_followable
   def get_users
     xmpp = DRbObject.new_with_uri "druby://localhost:7777"
      
