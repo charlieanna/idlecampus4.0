@@ -23,8 +23,54 @@
             <div id="main-content">
                 <!-- Container -->
                 <div class="container">
+									<% if current_user.rolable_type == "Teacher"%>
 								
 									<%= render 'messages/tabs'%>
+									
+									<% else %>
+									
+						      <div class="tabbable" style="margin:0 auto">
+			                <ul class="nav nav-tabs">
+			                    <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
+			                                                                                              href="#tabs-1">Notes</a>
+			                    </li>
+			                    <li style="margin:0 5px;text-align:center;width:100px;">
+			                        <a data-toggle="tab" href="#tabs-2">Alert</a>
+			                    </li>
+										
+			                    <li style="margin:0 5px;text-align:center;width:100px;">
+			                        <a data-toggle="tab" href="#tabs-3">Timetable</a>
+			                    </li>
+
+			                </ul>
+			                <div class="tab-content">
+			                    <div class="tab-pane active" id="tabs-1">
+
+             
+
+												               
+	                          <% render 'group/notes'%>
+            
+
+			                    </div>
+
+
+			                    <div class="tab-pane" id="tabs-2">
+			                       
+														<% render 'group/alerts'%>
+                 
+			                    </div>
+										
+			                    <div class="tab-pane" id="tabs-3">
+                      
+			                  <%= render "group/timetable" %>
+			                    </div>
+
+
+			                </div>
+			            </div>
+									
+									<% end %>
 
 						    
 

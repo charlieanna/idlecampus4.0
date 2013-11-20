@@ -15,7 +15,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tabs-1">
 
-             
+										
 
 									                <%= form_for @note, :html => {:id => "groupnoteupload"},remote: true do |f| %>
 									                  <div class="fileupload-buttonbar">
@@ -23,6 +23,8 @@
 						                            <textarea class="row-fluid span11" id="note_text" rows="3"
 						                                      placeholder="Enter your note here:" ng-model="data.note"></textarea>
 									                      <%= f.file_field :file %>
+																				
+																				<%= f.hidden_field :group_code,:value =>@group.group_code %>
 
 <p><button type="button" id="note_file_button" ng-click="publishgroupnote()" class="btn-success has-spinner">
 	<span class="spinner"><i class="icon-spin icon-refresh"></i></span>
