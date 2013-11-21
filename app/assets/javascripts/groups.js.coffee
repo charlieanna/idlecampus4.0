@@ -166,7 +166,6 @@
 
   $scope.publishgroupnote = ->
     $("#message").hide()
-    currentgroup = $scope.data.currentGroup
     $("#note_file_button").text "Sending..."
     formData = new FormData()
     $input = $("#note_file")
@@ -189,12 +188,11 @@
 
   $scope.publishgroupalert = ->
    
-    message = $scope.data.message
-    currentgroup = $scope.data.currentGroup
+   
     $.post("/alerts",
       alert:
-        message: message
-        group: currentgroup.group_code
+        message: $("#createalertinput").val()
+        group: $("#note_group_code").val()
     ).done (data) ->
 		
    
