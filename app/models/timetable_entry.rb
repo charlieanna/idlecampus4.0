@@ -10,19 +10,7 @@ class TimetableEntry < ActiveRecord::Base
   
   default_scope -> { includes(:room).includes(:teacher).includes(:subject)}
  
-  def build_entry_hash
-    entry_hash = {}
-    entry_hash["to_hours"] = self.class_timing.to_hours
-    entry_hash["to_minutes"] = self.class_timing.to_minutes
-    entry_hash["from_minutes"] = self.class_timing.from_minutes
-    entry_hash["from_hours"] = self.class_timing.from_hours
-    entry_hash["teacher"] = self.teacher.name
-    entry_hash["subject"] = self.subject.name
-     entry_hash["room"] = self.room.name
-     entry_hash["batch"] = self.small_group.name
-     entry_hash["weekday"] = self.weekday.name
-    return entry_hash
-  end
+
   
 
 
