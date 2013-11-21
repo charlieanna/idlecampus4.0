@@ -39,18 +39,24 @@ def send_password_reset
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+  
+  def self.members_without_trailing_(jabber_ids)
+    members = jabber_ids
+  
+    members = members.map do |member|
+      index = member.index('/')
+      unless index.nil?
+        member.slice(0..index-1)
+      else 
+        member
+      end
+    end
+    return members
+  end
 
    def self.get_devices(jabber_ids)
-     members = jabber_ids
-     # puts jabber_ids
-     members = members.map do |member|
-       index = member.index('/')
-       unless index.nil?
-         member.slice(0..index-1)
-       else 
-         member
-       end
-     end
+     members = User.members_without_trailing_(jabber_ids)
+   
     if members
       users = User.where(jabber_id:members)
       users.map do |user|

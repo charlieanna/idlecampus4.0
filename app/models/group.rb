@@ -34,15 +34,8 @@ class Group < ActiveRecord::Base
     
     
     if members
-      
-      members = members.map do |member|
-        index = member.index('/')
-        unless index.nil?
-          member.slice(0..index-1)
-        else 
-          member
-        end
-      end
+      members = User.members_without_trailing_(members)
+     
     end
     return members
   end

@@ -10,7 +10,7 @@ class NotesController < ApplicationController
     file = note.file_url
     notes = {}
     notes["link"] = note.file.url
-    # notes["message"] = note.
+    notes["message"] = note.message
     @timetable = ActiveSupport::JSON.encode(notes)
     render :json =>  @timetable 
   end
@@ -39,7 +39,11 @@ class NotesController < ApplicationController
     @notes = Note.all
     files = []
     @notes.each do |note| 
-      files << note.file.path.split('/').last
+      file = {}
+      file["id"] = note.id
+      file["name"] = note.file.path.split('/').last
+      file["url"] = note.file.url
+      files << file
     end
     notes = {}
     notes["files"] = files
