@@ -24,16 +24,10 @@ class Group < ActiveRecord::Base
               res << sub.jid.to_s
             }
             
-            puts "MEMBERSSSSSS"
-          puts res
+          
     
     members = res
-     
-    puts "subscriptions: #{members}\n\n"
-    
-    
-    
-    if members
+   if members
       members = User.members_without_trailing_(members)
      
     end

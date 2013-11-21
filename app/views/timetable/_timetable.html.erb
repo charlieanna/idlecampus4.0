@@ -21,6 +21,10 @@
 
         <select class="span5" ng-model="from_date_minute_value" ng-options="c.display for c in from_date_minute"
                 id="from_minute"></select>
+								
+							<!-- <% my_time = Time.now + 6.hours %>
+							<%=	select_hour(my_time,{ ampm: true,prompt: 'Choose hour'},class:"span5") %>
+							<%= select_minute(14, prompt: 'Choose minutes',:minute_step => 5) %> -->
 
     </div>
     <div class="span4">To:
@@ -29,6 +33,9 @@
 
         <select class="span5" ng-model="to_date_minute_value" ng-options="c.display for c in to_date_minute"
                 id="to_minute"></select>
+								<!-- <% my_time = Time.now + 6.hours %>
+								<%=	select_hour(my_time,{ ampm: true,prompt: 'Choose hour'},class:"span5", ng_model: "to_date_hour_value") %>
+						<%= select_minute(14, {prompt: 'Choose minutes',:minute_step => 5},class:"span5",ng_model: "to_date_minute_value") %> -->
 
     </div>
 </div>

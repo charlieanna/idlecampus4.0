@@ -22,13 +22,13 @@ class ClassTiming < ActiveRecord::Base
   
   def self.time(entry)
 
-    from = Time.new.utc
-
-    from = from.change({:hour => entry['from_hours'].to_i , :min => entry['from_minutes'].to_i })
     
-    to = Time.new.utc
 
-    to = to.change({:hour => entry['to_hours'].to_i , :min => entry['to_minutes'].to_i })
+    from = Time.new.utc.change({:hour => entry['from_hours'].to_i , :min => entry['from_minutes'].to_i })
+    
+   
+
+    to = Time.new.utc.change({:hour => entry['to_hours'].to_i , :min => entry['to_minutes'].to_i })
     
     return from,to
   end

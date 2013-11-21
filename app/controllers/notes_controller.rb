@@ -11,6 +11,7 @@ class NotesController < ApplicationController
     notes = {}
     notes["link"] = note.file.url
     notes["message"] = note.message
+     notes["name"] = note.file.path.split('/').last
     @timetable = ActiveSupport::JSON.encode(notes)
     render :json =>  @timetable 
   end
