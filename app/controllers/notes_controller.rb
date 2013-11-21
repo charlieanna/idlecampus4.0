@@ -26,7 +26,7 @@ class NotesController < ApplicationController
     @note.errors.messages
       if @note.save
         xmpp = DRbObject.new_with_uri "druby://localhost:7777"
-        xmpp.publish(text,params["group"])
+        xmpp.publish(@note.message,params["group"])
 
         render :json => @note
       else
