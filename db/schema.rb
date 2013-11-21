@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121093722) do
+ActiveRecord::Schema.define(version: 20131121173405) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 20131121093722) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "jabber_id"
-    t.string   "device_identifier"
+    t.string   "device_identifier",      default: "web"
     t.string   "remember_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
