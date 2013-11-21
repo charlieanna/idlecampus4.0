@@ -31,7 +31,9 @@ class UsersController < ApplicationController
 
           flash[:success] = "Welcome to IdleCampus!"
 
-          redirect_to @group
+          redirect_url =  root_url
+          
+          redirect_to redirect_url, :only_path => true
 
         else
 
@@ -55,7 +57,8 @@ class UsersController < ApplicationController
         flash[:success] = "Welcome to IdleCampus!"
 
 
-        redirect_to @user
+        redirect_url =  root_url
+        redirect_to redirect_url, :only_path => true
 
       else
 
