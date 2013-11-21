@@ -4,6 +4,4 @@ class StudentsController < UsersController
     @user.rolable_type = "Student"
     render 'users/new'
   end
-  
- 
 end

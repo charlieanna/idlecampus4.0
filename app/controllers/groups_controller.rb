@@ -30,7 +30,7 @@ class GroupsController < ApplicationController
   def create
    
     # pubsub.create_node('home/localhost/pub/updates')
-    xmpp = DRbObject.new_with_uri "druby://localhost:7777"
+    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
     
    
     
