@@ -46,24 +46,21 @@ class TimetableBuilder
 
 
 	def build
-    
-		if @timetable.nil?
-			weekdays = []
-	    batches = []
-	    field_entries = []
-	 
+    	weekdays = []
+      batches = []
 	    timetable_hash = {}
 	    entries_hash = {}
-
-	    entries_hash["group_code"] = @group.group_code
-	    entries_hash["field_entries"] = field_entries.uniq
-	   
-	    entries_hash["weekdays"] = weekdays.uniq
-	    entries_hash["batches"] = batches.uniq.compact
-	    timetable_hash["timetable"] = entries_hash
-	    @timetable = ActiveSupport::JSON.encode(timetable_hash)
+      entries_hash["group_code"] = @group.group_code
+		if @timetable.nil?
 		
-      return @timetable
+	   
+	    field_entries = []
+	 
+	    
+
+	  
+	   
+    
     
    else
      
@@ -71,13 +68,13 @@ class TimetableBuilder
     
     entries = get_entries
     
-    weekdays = []
+   
     
     entries.each do |entry|
       weekdays << entry.weekday.name
     end
     weekdays.uniq!
-    batches = []
+    
     
     entries.each do |entry|
       batches << entry.small_group.name
@@ -91,29 +88,32 @@ class TimetableBuilder
     entries_array = get_entries_array(entries)
    
     
-    timetable_hash = {}
-    entries_hash = {}
+   
     
-    puts @timetable.group
-    puts @timetable.group.group_code
-    entries_hash["group_code"] = @timetable.group.group_code
-    entries_hash["field_entries"] = field_entries.uniq
+    # puts @timetable.group
+#     puts @timetable.group.group_code
+   
+    
     entries_hash["entries"] = entries_array
-    entries_hash["weekdays"] = weekdays.uniq
-    entries_hash["batches"] = batches.uniq.compact
-    timetable_hash["timetable"] = entries_hash
-    puts timetable_hash
-    @timetable = ActiveSupport::JSON.encode(timetable_hash)
-    return @timetable
+  
+    # timetable_hash["timetable"] = entries_hash
+    # puts timetable_hash
+   
   end
+  entries_hash["field_entries"] = field_entries.uniq
+  entries_hash["weekdays"] = weekdays.uniq
+  entries_hash["batches"] = batches.uniq.compact
+  timetable_hash["timetable"] = entries_hash
+  @timetable = ActiveSupport::JSON.encode(timetable_hash)
+  return @timetable
 end
 
 def get_entries_array(entries)
   
  
-     if entries.length > 0
+     
 
-      entries_array = []
+      
 
    
       entries_sorted_by_weekday_and_class_timings = entries.group_by {|entry| [entry.weekday,entry.class_timing]}.values
@@ -123,8 +123,6 @@ def get_entries_array(entries)
           e.to_hash
         end
       end
-      entries_array = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash
-      
       
      entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings =  entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by {|entry| 
         [entry[0]["to_hours"],entry[0]["to_minutes"],entry[0]["from_hours"],entry[0]["from_minutes"]]
@@ -133,7 +131,7 @@ def get_entries_array(entries)
       
    
       
-    end
+    
      
     return entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings
   end
