@@ -16,18 +16,7 @@ class TimetableEntry < ActiveRecord::Base
      
     entry_hash = {}
     
-    puts self.id
-    # if self.id == 5
- #      debugger
- #    end
- puts self.weekday.name
- puts self.teacher.name
- puts self.room.name
- puts self.class_timing
- puts self.small_group
-#  if self.class_timing.nil?
-#    debugger
-#  end
+ 
  
     entry_hash["weekday"] = self.weekday.name
     
