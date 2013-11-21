@@ -7,56 +7,47 @@ class NotesController < ApplicationController
 
   def show
     note = Note.find(params[:id])
-    file = note.file_url
     notes = {}
-    notes["link"] = note.file.url
-    notes["message"] = note.message
-     notes["name"] = note.file.path.split('/').last
-    @timetable = ActiveSupport::JSON.encode(notes)
-    render :json =>  @timetable
+    notes['link'] = note.file.url
+    notes['message'] = note.message
+    notes['name'] = note.file.path.split('/').last
+    @note = ActiveSupport::JSON.encode(notes)
+    render json: @note
   end
 
   def create
-
-    group = Group.find_by(group_code:params["group"])
-
-    @note = Note.new(notes_params)
-
-
+    group = Group.find_by(group_code: params['group'])
+    @note = group.note.build(notes_params)
     @note.errors.messages
       if @note.save
         xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-        xmpp.publish(@note.message,params["group"])
-
-        render :json => @note
+        xmpp.publish(@note.message, params['group'])
+        render json: @note
       else
         puts @note.errors.full_messages
       end
-
   end
 
   def index
-    group = Group.find_by(group_code:params["group"])
-    @notes = Note.all
+    group = Group.find_by(group_code: params['group'])
+    @notes = group.notes
     files = []
     @notes.each do |note|
       file = {}
-      file["id"] = note.id
-      file["name"] = note.file.path.split('/').last
-      file["url"] = note.file.url
+      file['id'] = note.id
+      file['name'] = note.file.path.split('/').last
+      file['url'] = note.file.url
       files << file
     end
     notes = {}
-    notes["files"] = files
-    @timetable = ActiveSupport::JSON.encode(notes)
-    render :json =>  @timetable
+    notes['files'] = files
+    @note = ActiveSupport::JSON.encode(notes)
+    render json: @note
   end
 
   private
 
   def notes_params
-    params.require(:note).permit(:file,:message)
+    params.require(:note).permit(:file, :message)
   end
-
-
 end
