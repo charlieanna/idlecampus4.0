@@ -16,57 +16,47 @@ class UsersController < ApplicationController
 
     @group = Group.find_by(group_code: params["Group Code"])
 
-
+   
     if params["Group Code"]
-
-      if @group
-
-
-        if @user.save
-
-
-          sign_in @user
-
-          start_service(@user, group: params["Group Code"])
-
-          flash[:success] = "Welcome to IdleCampus!"
-
-          redirect_url =  root_url
-          
-          redirect_to redirect_url, :only_path => true
-
-        else
-
-          render 'new'
-        end
-      else
+      
+      unless @group
         flash[:error] = "Group Not Found"
         redirect_to new_student_path
+      else
+        if @user.save
+          start_service(@user, group: params["Group Code"])
+          
+          sign_in_with_redirect(@user)
+         
+        
+
+        else
+         render 'new'
+         
+        end
       end
+
+     
 
 
     else
 
 
       if @user.save
-
-        sign_in @user
-
         start_service(@user)
-
-        flash[:success] = "Welcome to IdleCampus!"
-
-
-        redirect_url =  root_url
-        redirect_to redirect_url, :only_path => true
+        
+        sign_in_with_redirect(@user)
+       
+       
 
       else
-
         render 'new'
       end
     end
 
   end
+  
+  
 
 
   def show
@@ -117,6 +107,19 @@ class UsersController < ApplicationController
 
 
   private
+  
+  
+  def sign_in_with_redirect(user)
+    sign_in @user
+
+    flash[:success] = "Welcome to IdleCampus!"
+
+
+    redirect_url =  root_url
+    
+    redirect_to redirect_url, :only_path => true 
+    
+  end
 
   def start_service(user, options = {})
     TopfunkyIM.register(@user.name, @user.password)
