@@ -1,3 +1,4 @@
+#
 class TeachersController < ApplicationController
   def new
     @user = User.new

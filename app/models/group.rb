@@ -1,3 +1,4 @@
+#
 class Group < ActiveRecord::Base
   has_many :folders
   validates :name, presence: true

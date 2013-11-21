@@ -1,3 +1,4 @@
+#
 class UserValidationsController < ApplicationController
 	 def checkEmail
     emails = User.where(:email => params["email"])

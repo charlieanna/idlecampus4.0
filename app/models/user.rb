@@ -1,3 +1,4 @@
+#
 class User < ActiveRecord::Base
   before_create :set_jabber_id
   validates :name, presence: true, length: { maximum: 50 },

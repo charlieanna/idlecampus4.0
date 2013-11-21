@@ -1,3 +1,4 @@
+#
 class PygmentsWorker
   include Sidekiq::Worker
   def perform(args)

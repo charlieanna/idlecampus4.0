@@ -1,3 +1,4 @@
+#
 class NotesController < ApplicationController
   respond_to :html, :js
 

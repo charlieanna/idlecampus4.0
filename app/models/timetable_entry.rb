@@ -1,3 +1,4 @@
+#
 class TimetableEntry < ActiveRecord::Base
   belongs_to :timetable
   validates :timetable_id, presence: true

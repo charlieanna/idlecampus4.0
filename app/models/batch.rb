@@ -1,3 +1,4 @@
+#
 class Batch < ActiveRecord::Base
   before_save :saved
   def saved

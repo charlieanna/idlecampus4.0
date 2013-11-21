@@ -1,3 +1,4 @@
+#
 class Timetable < ActiveRecord::Base
   attr_accessor :message, :members
   belongs_to :group

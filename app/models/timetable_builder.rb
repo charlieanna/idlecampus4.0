@@ -1,3 +1,4 @@
+#
 class TimetableBuilder
   def initialize(group)
     @group = group

@@ -1,3 +1,4 @@
+#
 class TimetableParser
   def initialize(params)
     @params = params

@@ -1,3 +1,4 @@
+#
 class TimetablesController < ApplicationController
   respond_to :json
 

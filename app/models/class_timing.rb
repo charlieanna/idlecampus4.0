@@ -1,3 +1,4 @@
+#
 class ClassTiming < ActiveRecord::Base
   validate :from_is_less_than_to
   def to_hours
