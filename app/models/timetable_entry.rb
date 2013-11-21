@@ -10,39 +10,34 @@ class TimetableEntry < ActiveRecord::Base
   
   default_scope -> { includes(:room).includes(:teacher).includes(:subject)}
  
-  def build_entry_hash_with_class_timing(entry_hash)
+  def build_entry_hash
+    entry_hash = {}
     entry_hash["to_hours"] = self.class_timing.to_hours
     entry_hash["to_minutes"] = self.class_timing.to_minutes
     entry_hash["from_minutes"] = self.class_timing.from_minutes
     entry_hash["from_hours"] = self.class_timing.from_hours
-    return entry_hash
-  end
-  
-  def build_entry_hash_with__batch_teacher_student_room(entry_hash)
     entry_hash["teacher"] = self.teacher.name
     entry_hash["subject"] = self.subject.name
      entry_hash["room"] = self.room.name
      entry_hash["batch"] = self.small_group.name
-      return entry_hash
+     entry_hash["weekday"] = self.weekday.name
+    return entry_hash
   end
   
-  def build_entry_hash_with_weekday(entry_hash)
-     entry_hash["weekday"] = self.weekday.name
-     return entry_hash
-  end
+
 
    def to_hash
-     
-    entry_hash = {}
-
-    entry_hash = build_entry_hash_with_weekday(entry_hash)
-     
-    entry_hash = build_entry_hash_with_teacher_student_room(entry_hash)
-     
-    entry_hash = build_entry_hash_with_class_timing(entry_hash)
-  
- 
-    return entry_hash
+     entry_hash = {}
+     entry_hash["to_hours"] = self.class_timing.to_hours
+     entry_hash["to_minutes"] = self.class_timing.to_minutes
+     entry_hash["from_minutes"] = self.class_timing.from_minutes
+     entry_hash["from_hours"] = self.class_timing.from_hours
+     entry_hash["teacher"] = self.teacher.name
+     entry_hash["subject"] = self.subject.name
+      entry_hash["room"] = self.room.name
+      entry_hash["batch"] = self.small_group.name
+      entry_hash["weekday"] = self.weekday.name
+     return entry_hash
    end
 
    def self.get(entry,timetable)
