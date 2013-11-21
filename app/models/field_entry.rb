@@ -4,7 +4,7 @@ class FieldEntry
 		@values = values
 	end
 
-	def build
+	def to_hash
 		 field_entry = {}
      field_entry["name"] = @name
      field_entry["values"] = @values.uniq

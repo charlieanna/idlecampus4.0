@@ -1,10 +1,7 @@
 class Room < ActiveRecord::Base
 	belongs_to :group
 	belongs_to :timetable
-  before_save :saved
-  def saved
-    puts "#{self} saved"
-  end
+ 
 	def self.in_hash(group)
 		 rooms = group.rooms.pluck(:name)
 		 field_entry = {}

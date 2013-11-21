@@ -21,17 +21,23 @@ class TimetableBuilder
 
     
     field_entries = []
+    
+    rooms = @group.rooms.pluck(:name)
+    
+    subjects = group.subjects.pluck(:name)
+    
+    teachers = group.teachers.pluck(:name)
 
-    rooms_in_hash = Room.in_hash(@group)
+    rooms_in_hash = FieldEntry.new("room",room).to_hash
 
     field_entries << rooms_in_hash
 
     
-    teachers_in_hash = Teacher.in_hash(@group)
+    teachers_in_hash = FieldEntry.new("teacher",teachers).to_hash
 
     field_entries << teachers_in_hash
 
-    subjects_in_hash = Subject.in_hash(@group)
+    subjects_in_hash = FieldEntry.new("subject",subjects).to_hash
     
   
     field_entries << subjects_in_hash
