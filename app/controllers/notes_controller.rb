@@ -4,15 +4,22 @@ class NotesController < ApplicationController
   def new
     @note = Note.new
   end
+  
+  def show
+    note = Note.find(params[:id])
+    file = note.file_url
+    notes = {}
+    notes["link"] = note.file.url
+    # notes["message"] = note.
+    @timetable = ActiveSupport::JSON.encode(notes)
+    render :json =>  @timetable 
+  end
 
   def create
-    puts params["group"]
+   
     group = Group.find_by(group_code:params["group"])
-    text = params["note_text"]
-    puts text
-    @note = group.notes.build
-    # @note.process_file_upload = true
-    @note.attributes = notes_params
+    
+    @note = Note.new(notes_params)
 
    
     @note.errors.messages
@@ -26,11 +33,24 @@ class NotesController < ApplicationController
       end
 
   end
+  
+  def index
+    group = Group.find_by(group_code:params["group"])
+    @notes = Note.all
+    files = []
+    @notes.each do |note| 
+      files << note.file.path.split('/').last
+    end
+    notes = {}
+    notes["files"] = files
+    @timetable = ActiveSupport::JSON.encode(notes)
+    render :json =>  @timetable 
+  end
 
   private
 
   def notes_params
-    params.require(:note).permit(:file)
+    params.require(:note).permit(:file,:message)
   end
 
 

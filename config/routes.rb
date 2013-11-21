@@ -25,6 +25,9 @@ IdleCampus::Application.routes.draw do
   end
   resources :teachers
   resources :students
+  resources :groups do
+    resources :notes
+  end
   resources :notes
   resources :alerts, only: [:new, :create]
   namespace :api do

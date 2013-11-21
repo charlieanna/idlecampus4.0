@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120042808) do
+ActiveRecord::Schema.define(version: 20131121090326) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -122,6 +122,8 @@ ActiveRecord::Schema.define(version: 20131120042808) do
     t.datetime "updated_at"
     t.string   "file"
     t.integer  "group_id"
+    t.text     "content"
+    t.text     "message"
   end
 
   create_table "rooms", force: true do |t|

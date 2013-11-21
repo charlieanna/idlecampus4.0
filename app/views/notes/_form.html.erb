@@ -12,7 +12,3 @@
 										<%= f.submit "Send Note" %>
 										
 <% end %>
-<%= direct_upload_form_for Note.new do |f| %>
-  <p><%= f.file_field :file %></p>
-  <p><%= f.submit "Upload Image" %></p>
-<% end %>
