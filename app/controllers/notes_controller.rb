@@ -18,7 +18,8 @@ class NotesController < ApplicationController
 
   def create
     group = Group.find_by(group_code: params['group'])
-    @note = group.note.build(notes_params)
+    @note = group.notes.build(notes_params)
+    @note.message = params["note_text"]
     @note.errors.messages
       if @note.save
         xmpp = DRbObject.new_with_uri 'druby://localhost:7777'

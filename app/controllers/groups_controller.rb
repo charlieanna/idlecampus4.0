@@ -28,12 +28,7 @@ class GroupsController < ApplicationController
     @group.name = params[:group][:name]
     @group.group_code = Group.get_group_code
     xmpp.create_group(@group.group_code)
-    if @group.save
-      flash[:success] = 'Group created!'
-      puts @group.group_code
-    else
-      render 'static_pages/home'
-    end
+    @group.save
   end
 
   def edit
@@ -47,7 +42,7 @@ class GroupsController < ApplicationController
     @group.group_code = Group.get_group_code
     xmpp.create_group(@group.group_code)
     if @group.save
-      flash[:success] = 'Group created!'
+      # flash[:success] = 'Group created!'
       puts @group.group_code
     else
       render 'static_pages/home'

@@ -170,7 +170,7 @@
     formData = new FormData()
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
-    formData.append "note_text", $("#note_text").val()
+    formData.append "note_text", $("#note_message").val()
     formData.append("group", $("#note_group_code").val());
     $.ajax(
       url: "/notes"
