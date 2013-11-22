@@ -29,16 +29,11 @@ class Group < ActiveRecord::Base
   end
 
   def self.get_group_code
-    groups = Group.all
-    group_codes = []
-    groups.each do |group|
-      group_codes << group.group_code
-    end
-    p group_codes
     new_group_code = generate_group_code
-    while group_codes.include? new_group_code
+    while Group.exists?(group_code: new_group_code)
       new_group_code = generate_group_code
     end
+    new_group_code
   end
 
   def to_param

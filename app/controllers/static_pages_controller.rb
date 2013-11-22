@@ -2,8 +2,8 @@
 class StaticPagesController < ApplicationController
   def home
      if signed_in?
-       @group  = current_user.groups.build
-       
+       @group = Group.new(user: current_user)
+       @group.group_code = Group.get_group_code
      end
    end
 

@@ -38,8 +38,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @groups = @user.groups
-    @group = @user.groups.new
+   
   end
 
   def update_all_users_who_are_not_web_to_device_identifier_as_blank

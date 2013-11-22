@@ -1,13 +1,12 @@
-#
 require 'json'
-require "xmpp4r"
-
-require "xmpp4r/pubsub"
-require "xmpp4r/pubsub/helper/servicehelper.rb"
-require "xmpp4r/pubsub/helper/nodebrowser.rb"
-require "xmpp4r/pubsub/helper/nodehelper.rb"
+require 'xmpp4r'
+require 'xmpp4r/pubsub'
+require 'xmpp4r/pubsub/helper/servicehelper.rb'
+require 'xmpp4r/pubsub/helper/nodebrowser.rb'
+require 'xmpp4r/pubsub/helper/nodehelper.rb'
+# GroupsController.rb
 class GroupsController < ApplicationController
-  respond_to :json,:html
+  respond_to :json, :html
   before_action :signed_in_user, only: [:create, :destroy]
   def index
     @groups = current_user.groups
@@ -16,42 +15,22 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_group_code(params[:id])
-    # @note = @group.notes.build
-    
-    
-    
-  
-  end   
-
+  end
 
   def new
     @group = Group.new
+    @group.group_code = Group.get_group_code
   end
 
   def create
-   
-    # pubsub.create_node('home/localhost/pub/updates')
     xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-    
-   
-    
     @group = current_user.groups.build
-    
     @group.name = params[:group][:name]
- 
-    @group.group_code = params[:group][:group_code] || Group.get_group_code
-    
+    @group.group_code = Group.get_group_code
     xmpp.create_group(@group.group_code)
-    
-   
-    
-    
-   
     if @group.save
-     
-      flash[:success] = "Group created!"
-      # redirect_to root_url
-        
+      flash[:success] = 'Group created!'
+      puts @group.group_code
     else
       render 'static_pages/home'
     end
@@ -62,19 +41,23 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.find(params[:id])
-    if @group.update_attributes(params[:group])
-      flash[:notice] = "Successfully updated group."
-      redirect_to group_url
+    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
+    @group = current_user.groups.build
+    @group.name = params[:group][:name]
+    @group.group_code = Group.get_group_code
+    xmpp.create_group(@group.group_code)
+    if @group.save
+      flash[:success] = 'Group created!'
+      puts @group.group_code
     else
-      render :action => 'edit'
+      render 'static_pages/home'
     end
   end
 
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    flash[:notice] = "Successfully destroyed group."
+    flash[:notice] = 'Successfully destroyed group.'
     redirect_to galleries_url
   end
 end
