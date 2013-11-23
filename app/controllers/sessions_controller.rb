@@ -15,13 +15,10 @@ class SessionsController < ApplicationController
       sign_in @user
       t = TopfunkyIM.new(@user.jabber_id, params[:session][:password], nil, false)
       DRb.start_service('druby://localhost:7777', t)
-      if @user.rolable_type == "Student"
-        flash[:success] = 'Welcome to IdleCampus!'
-        redirect_to 'students/home'
-      else
-        flash[:success] = 'Welcome to IdleCampus!'
-        redirect_to 'teachers/home'
-      end
+       flash[:success] = 'Welcome to IdleCampus!'
+      
+        redirect_to home_path
+      
     
     else
       flash.now[:error] = 'Invalid email/password combination'

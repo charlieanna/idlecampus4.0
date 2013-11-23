@@ -13,8 +13,7 @@ IdleCampus::Application.routes.draw do
   resources :users do 
     resources :groups
   end
-  # match 'students/new' => "users#new",via: :get
-#    match 'teachers/new' => "users#new",via: :get
+  resource :home, only: :show
   resources :groups do
     resource :timetable,only: [:create,:show]
     collection do
