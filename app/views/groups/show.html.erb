@@ -1,5 +1,14 @@
-<h3 style="float:right;width:416px; margin:0 auto;" id="group_code"><%=@group.group_code%></h3>
-<h3 style="width:760px; margin:0 auto;" id="group_code"><%=@group.name%></h3>
+
+<div class="row">
+    <div class="offset4 span7">
+      
+     <%= image_tag("img/GroupName.png") %> :<span id="groupname"> <%= @group.name%></span>
+    </div>
+    <div class="span5">
+      <%= image_tag("img/GroupID.png") %>:<span id="groupcode"> <%= @group.group_code %></span>
+    </div>
+
+</div>
 	  <div class="row"  ng-controller="GroupsCtrl">
         <aside class="span3">
             <section>
@@ -42,46 +51,7 @@
 									
 									
 									
-						      <div class="tabbable" style="margin:0 auto">
-			                <ul class="nav nav-tabs">
-			                    <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
-			                                                                                              href="#tabs-1">Notes</a>
-			                    </li>
-			                    <li style="margin:0 5px;text-align:center;width:100px;">
-			                        <a data-toggle="tab" href="#tabs-2">Alert</a>
-			                    </li>
-										
-			                    <li style="margin:0 5px;text-align:center;width:100px;">
-			                        <a data-toggle="tab" href="#tabs-3">Timetable</a>
-			                    </li>
-
-			                </ul>
-			                <div class="tab-content">
-			                    <div class="tab-pane active" id="tabs-1">
-
-             
-
-												               
-	                         
-            
-
-			                    </div>
-
-
-			                    <div class="tab-pane" id="tabs-2">
-			                       
-														
-                 
-			                    </div>
-										
-			                    <div class="tab-pane" id="tabs-3">
-                      
-			                  
-			                    </div>
-
-
-			                </div>
-			            </div>
+						   
                   
                   <% else %>
           				<div class="span9">
