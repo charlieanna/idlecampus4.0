@@ -2,6 +2,7 @@
 require 'ruby_bosh'
 require 'drb'
 require 'basic_drb'
+
 class SessionsController < ApplicationController
   respond_to :html, :js
 
@@ -14,7 +15,14 @@ class SessionsController < ApplicationController
       sign_in @user
       t = TopfunkyIM.new(@user.jabber_id, params[:session][:password], nil, false)
       DRb.start_service('druby://localhost:7777', t)
-      redirect_to @user, notice: 'Welcome to IdleCampus'
+      if @user.rolable_type == "Student"
+        flash[:success] = 'Welcome to IdleCampus!'
+        redirect_to 'students/home'
+      else
+        flash[:success] = 'Welcome to IdleCampus!'
+        redirect_to 'teachers/home'
+      end
+    
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
@@ -28,4 +36,20 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end
+  
+  private
+
+    def return_to
+      session[:return_to] || params[:return_to]
+    end
+
+    def url_after_create
+      if current_user.admin?
+        admin_path
+      else
+        dashboard_path
+      end
+    end
+    
+    
 end
