@@ -67,8 +67,7 @@ class UsersController < ApplicationController
   def sign_in_with_redirect(user)
     sign_in @user
     flash[:success] = 'Welcome to IdleCampus!'
-    redirect_url = root_url
-    redirect_to redirect_url, only_path: true
+    redirect_to home_path
   end
 
   def start_service(user, options = {})

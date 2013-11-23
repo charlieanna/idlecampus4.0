@@ -30,9 +30,7 @@ IdleCampus::Application.routes.draw do
   resources :notes
   resources :alerts, only: [:new, :create]
   namespace :api do
-     
-       resources :users,only: :create
-      
+    resources :users,only: :create
   end
   
   root  'static_pages#home'
