@@ -1,1 +1,5 @@
-fkjnk;djsnfds;nf;js
+<% if current_user.rolable_type == "Student"%>
+<%= render 'student'%>
+<% else %>
+<%= render 'teacher'%>
+<% end %>
