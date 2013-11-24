@@ -121,33 +121,28 @@
     ), ((data) ->
     ), true
 
-  $scope.createGroup = (group) ->
+  $scope.createGroup = () ->
     
-    group = $scope.data.creategroup
+    group = $scope.new_group
     console.log group
     group_code = ""
     $.post("/groups",
       group:
         name: group
     ).done (data) ->
-     
-      group_code = data.group_code
-      console.log data
-      # $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
- #        console.log data
- # 
- #      $scope.XMPP.connection.pubsub.createNode group_code,
- #        "pubsub#notification_type": "normal"
- #      , ->
+      group_code= data.substring(data.length-8,data.length-2);
+      $scope.XMPP.connection.pubsub.createNode group_code,
+        "pubsub#notification_type": "normal"
+      , ->
 
-      grouptoadd =
-        name: group
-        group_code: group_code
-
-      console.log grouptoadd
+      # grouptoadd =
+#         name: group
+#         group_code: group_code
+# 
+#       console.log grouptoadd
       console.log "node created"
-      $scope.data.groupscreated.push grouptoadd
-      $scope.$digest()
+      # $scope.data.groupscreated.push grouptoadd
+#       $scope.$digest()
 
 
   $scope.createFolder = (group) ->

@@ -1,6 +1,7 @@
 #
 require 'drb'
 require 'basic_drb'
+require 'ruby_bosh'
 class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :signed_in_user, only: [:edit, :update]
@@ -15,8 +16,15 @@ class UsersController < ApplicationController
     if params['Group Code']
       if @group
         if @user.save
-          start_service(@user, group: params['Group Code'])
-
+          # start_service(@user, group: params['Group Code'])
+          TopfunkyIM.register(@user.name, @user.password)
+          @session_jid, @session_id, @session_random_id = 
+          RubyBOSH.initialize_session(@user.jabber_id, @user.password, "http://idlecampus.com:5280/http-bind")
+          attacher = {}
+          attacher[:jid] = @session_jid
+          attacher[:id] = @session_id
+          attacher[:rid] = @session_rid
+          gon.attacher = attacher
           sign_in_with_redirect(@user)
         else
           render 'new'
@@ -27,8 +35,15 @@ class UsersController < ApplicationController
       end
     else
       if @user.save
-        start_service(@user)
-
+        TopfunkyIM.register(@user.name, @user.password)
+        @session_jid, @session_id, @session_random_id = 
+        RubyBOSH.initialize_session(@user.jabber_id, @user.password, "http://idlecampus.com:5280/http-bind")
+        attacher = {}
+        attacher[:jid] = @session_jid
+        attacher[:id] = @session_id
+        attacher[:rid] = @session_random_id
+      
+        flash[:attacher] = attacher
         sign_in_with_redirect(@user)
       else
         render 'new'
@@ -71,10 +86,12 @@ class UsersController < ApplicationController
   end
 
   def start_service(user, options = {})
-    TopfunkyIM.register(@user.name, @user.password)
-    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-    xmpp.login(@user.jabber_id, @user.password)
-    xmpp.subscribe(params['Group Code']) if options[:group]
+     
+     
+  #   t = TopfunkyIM.new(@user.jabber_id, @user.password, nil, false)
+  #   DRb.start_service('druby://localhost:7777', t)
+  #   xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
+  #   xmpp.subscribe(params['Group Code']) if options[:group]
   end
 
   def user_params

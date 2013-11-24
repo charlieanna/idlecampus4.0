@@ -232,13 +232,13 @@
     
 	    <%= csrf_meta_tags %>
     </head>
-   <body ng-controller="xmpp">
+   <body ng-controller="xmpp" ng-init="attach()">
         <div class="wrapper">
 			<%= render "layouts/header" %>
 	
     
 		<% flash.each do |key, value| %>
-		 <% if key!=:register && key!=:group%>
+		 <% if key!=:register && key!=:group && key != :attacher %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <% end %>

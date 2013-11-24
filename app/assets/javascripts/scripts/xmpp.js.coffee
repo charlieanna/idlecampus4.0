@@ -278,16 +278,16 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
         $scope.XMPP.connection.pubsub.publish $scope.XMPP.connection.jid.split("/")[0] + "/groups", group_code, (data) ->
 	  
   $scope.register1 = ->
-   
+    console.log gon.attacher
     form = $scope.signupform
     connection = new Strophe.Connection("http://idlecampus.com//http-bind")
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
-    # console.log "CREDENTIALS"
-#     console.log sid
-#     console.log rid
-#     console.log jid
+    console.log "CREDENTIALS"
+    console.log sid
+    console.log rid
+    console.log jid
     console.log connection
     callback = (status) ->
       console.log status
@@ -339,9 +339,9 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
     $scope.XMPP.connection = connection
 
-  # $scope.signout = ->
-#     $scope.XMPP.connection.disconnect()
-#     localStorage.clear()
+  $scope.signout = ->
+    $scope.XMPP.connection.disconnect()
+    localStorage.clear()
 
   $scope.attach = ->
    
@@ -358,21 +358,23 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
-    jid = $("#currentuser").text()
-    # console.log "CREDENTIALS"
-  #   console.log sid
-  #   console.log rid
-  #   console.log jid
-    if typeof gon isnt "undefined" and gon isnt null
-      sid = gon.attacher.SID
-      rid = gon.attacher.RID
-      jid = gon.attacher.JID
-    conn.attach jid, sid, rid, (status) ->
-      console.log status
-      if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
-        $scope.XMPP.connection = conn
-        $scope.XMPP.connection.jid = jid
-        console.log "attached"
-        $scope.connected()
-      else
-        $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
+    jid = localStorage.getItem("jid")
+    console.log "CREDENTIALS"
+    console.log sid
+    console.log rid
+    console.log jid
+    if typeof gon.attacher isnt "undefined" and gon.attacher isnt null
+      sid = gon.attacher.id
+      rid = gon.attacher.rid
+      jid = gon.attacher.jid
+      localStorage.setItem "jid", jid 
+    if jid and sid and rid
+      conn.attach jid, sid, rid, (status) ->
+        console.log status
+        if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
+          $scope.XMPP.connection = conn
+          $scope.XMPP.connection.jid = jid
+          console.log "attached"
+          $scope.connected()
+        else
+          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]

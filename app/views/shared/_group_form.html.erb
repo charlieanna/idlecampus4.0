@@ -1,7 +1,16 @@
-<%= form_for @group,remote: true do |f|%>
+<!-- <%= form_for @group,"ng-controller"=>"GroupsCtrl", "ng-submit" => "createGroup()" do |f|%>
 
 <%= f.text_field :name,class:"span3",placeholder:"New Group:" %>
 
-<%= f.submit "Create",id:"creategroupbutton1",class:"btn btn-success" %>
+<%= f.submit "Create",id:"creategroupbutton1",class:"btn btn-success", "ng-submit" => "createGroup()" %>
   
-<% end %>
+<% end %> -->
+
+<form ng-submit="createGroup()" ng-controller="GroupsCtrl">
+  
+  <input type="text" ng-model="new_group" name="text" class="span3" placeholder="New Group" />
+      <input type="submit" id="submit" value="Create" class="btn btn-success" />
+  
+    
+  
+  </form>

@@ -11,5 +11,7 @@ class HomesController < ApplicationController
        
       end
     end
+    gon.attacher = flash[:attacher]
+    # start_service(@user)
   end
 end

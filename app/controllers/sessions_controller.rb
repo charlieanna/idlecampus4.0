@@ -1,8 +1,5 @@
-#
 require 'ruby_bosh'
-require 'drb'
-require 'basic_drb'
-
+#SessionsController
 class SessionsController < ApplicationController
   respond_to :html, :js
 
@@ -13,12 +10,9 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       sign_in @user
-      xmpp.login(@user.jabber_id,params[:session][:password])
+      t = TopfunkyIM.new(@user.jabber_id, params[:session][:password], nil, false)
       flash[:success] = 'Welcome to IdleCampus!'
-      
-        redirect_to home_path
-      
-    
+      edirect_to home_path
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
@@ -26,8 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-    xmpp.logout
     sign_out
     redirect_to root_url
   end

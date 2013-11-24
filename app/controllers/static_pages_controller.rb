@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
        @group = Group.new(user: current_user)
        @group.group_code = Group.get_group_code
      end
+     gon.product = ""
    end
 
   def contact

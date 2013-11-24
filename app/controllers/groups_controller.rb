@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_group_code(params[:id])
+    gon.a = ""
   end
 
   def new
@@ -23,11 +24,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
     @group = current_user.groups.build
     @group.name = params[:group][:name]
     @group.group_code = Group.get_group_code
-    xmpp.create_group(@group.group_code)
     @group.save
   end
 
