@@ -72,9 +72,8 @@ class UsersController < ApplicationController
 
   def start_service(user, options = {})
     TopfunkyIM.register(@user.name, @user.password)
-    t = TopfunkyIM.new(@user.jabber_id, @user.password, nil, false)
-    DRb.start_service('druby://localhost:7777', t)
     xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
+    xmpp.login(@user.jabber_id, @user.password)
     xmpp.subscribe(params['Group Code']) if options[:group]
   end
 

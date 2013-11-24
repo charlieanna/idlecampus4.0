@@ -489,15 +489,15 @@ class Jabber::JID
 end
 #
 class TopfunkyIM
-  def initialize(username, password, config = {}, stop_thread = true)
-    @config          = config
-    @friends_sent_to = []
-    @friends_online  = {}
-    @mainthread      = Thread.current
-    login(username, password)
-    send_initial_presence
-    Thread.stop if stop_thread
-  end
+  # def initialize(username, password, config = {}, stop_thread = true)
+ #    @config          = config
+ #    @friends_sent_to = []
+ #    @friends_online  = {}
+ #    @mainthread      = Thread.current
+ #    login(username, password)
+ #    send_initial_presence
+ #    Thread.stop if stop_thread
+ #  end
 
   def self.register(username, password)
     jid    = Jabber::JID.new("#{username}@idlecampus.com")
@@ -513,6 +513,7 @@ class TopfunkyIM
     @client = Jabber::Client.new(@jid)
     @client.connect
     @client.auth(password)
+    send_initial_presence
   end
 
   def logout
