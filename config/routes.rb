@@ -17,16 +17,9 @@ IdleCampus::Application.routes.draw do
   resources :groups do
     resource :timetable,only: [:create,:show]
     collection do
-<<<<<<< HEAD
-      get 'get_group_code'
-
-      get 'get_group_name'
-
-=======
       
       get 'get_group_name'
       
->>>>>>> working
     end
   end
   resources :teachers
@@ -55,27 +48,4 @@ IdleCampus::Application.routes.draw do
   
   resources :password_resets
 
-<<<<<<< HEAD
-
-  # get "timetable/create"
-  #  post "timetable/create"
-   # get "timetable/get_timetable_for_group"
-   
-<<<<<<< HEAD
-   resource :timetable, only: [:create,:show]
-=======
-   # resource :timetable, only: [:create,:show]
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
->>>>>>> working
-
-
-=======
->>>>>>> working
 end
