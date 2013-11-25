@@ -10,22 +10,16 @@ gem 'sidekiq'
 gem 'unf' 
 gem 'debugger', group: [:development, :test]
 group :development, :test do
- gem 'sqlite3', '1.3.8'
+  gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
    gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
   gem "launchy", "~> 2.3.0"
-<<<<<<< HEAD
-  gem 'capybara-angular'
-end
-gem 'rb-readline'
-=======
   
 end 
 gem "cancan"  
->>>>>>> working
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
 gem 'sinatra', require: false
@@ -34,19 +28,9 @@ gem 'slim'
  gem 'carrierwave_backgrounder'
 group :test do
   gem 'factory_girl_rails', '4.2.1'
-<<<<<<< HEAD
-
-  gem 'selenium-webdriver', '2.35.1'
-
-  gem "capybara-webkit"
- 
-
-  gem 'capybara', '2.1.0'
-=======
  
  gem "faker", "~> 1.2.0"
 
->>>>>>> working
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem "webmock", "~> 1.15.2"
@@ -79,11 +63,6 @@ gem "rmagick"
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
-<<<<<<< HEAD
-# # gem 'turbolinks', '1.1.1'
-# # gem "rb-readline", "~> 0.5.0"
-=======
->>>>>>> working
 gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
