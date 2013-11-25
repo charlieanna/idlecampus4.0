@@ -167,6 +167,8 @@
     formData.append "note[file]", $input[0].files[0]
     formData.append "note_text", $("#note_message").val()
     formData.append("group", $("#note_group_code").val());
+    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
+      console.log data
     $.ajax(
       url: "/notes"
       data: formData
@@ -182,7 +184,8 @@
 
 
   $scope.publishgroupalert = ->
-   
+    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
+      console.log data
    
     $.post("/alerts",
       alert:

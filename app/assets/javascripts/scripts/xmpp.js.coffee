@@ -367,6 +367,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
       sid = gon.attacher.id
       rid = gon.attacher.rid
       jid = gon.attacher.jid
+      group = gon.attacher.group
       localStorage.setItem "jid", jid 
     if jid and sid and rid
       conn.attach jid, sid, rid, (status) ->
@@ -376,5 +377,12 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           $scope.XMPP.connection.jid = jid
           console.log "attached"
           $scope.connected()
+          console.log group
+          $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
+          ), ((data) ->
+            console.log "joined"
+            $scope.groupsfollowing.push group
+          ), ((data) ->
+          ), true
         else
           $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
