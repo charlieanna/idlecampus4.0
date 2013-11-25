@@ -174,7 +174,7 @@
       $(iq).find("subscription").each ->
         
         jid = $(this).attr("jid")
-        # jid = jid.substring(0, jid.indexOf("/"))
+        jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") not -1
         console.log jid
         members.push jid
       formData.append("members", members);
