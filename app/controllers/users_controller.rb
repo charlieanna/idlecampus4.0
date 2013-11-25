@@ -58,11 +58,7 @@ class UsersController < ApplicationController
    
   end
 
-  def update_all_users_who_are_not_web_to_device_identifier_as_blank
-    unless params[:device_identifier].eql? 'web'
-      User.where(device_identifier: params[:device_identifier]).update_all(device_identifier: '')
-    end
-  end
+  
 
   def login
     update_all_users_who_are_not_web_to_device_identifier_as_blank
@@ -80,6 +76,12 @@ class UsersController < ApplicationController
   end
 
   private
+  
+  def update_all_users_who_are_not_web_to_device_identifier_as_blank
+    unless params[:device_identifier].eql? 'web'
+      User.where(device_identifier: params[:device_identifier]).update_all(device_identifier: '')
+    end
+  end
 
   def sign_in_with_redirect(user)
     sign_in @user
