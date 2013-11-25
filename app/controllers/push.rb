@@ -23,7 +23,9 @@ class Push
   
   def send_push
     hash = create_push
-    devices = hash['push']['devices']
+    puts hash
+    
+    devices = hash['devices']
     if devices.size > 0
       uri = URI('http://developer.idlecampus.com/push/push1')
       headers = { 'Content-Type' => 'application/json' }

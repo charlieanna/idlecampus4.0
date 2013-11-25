@@ -346,12 +346,6 @@
     _results
 
   $scope.send = ->
-    members = undefined
-    url = undefined
-    values = undefined
-    members = []
-    values = []
-    values = JSON.stringify($scope.data.timeArray)
     url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
     if $scope.data.currentGroup

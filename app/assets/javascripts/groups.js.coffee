@@ -166,20 +166,34 @@
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
     formData.append "note_text", $("#note_message").val()
-    formData.append("group", $("#note_group_code").val());
+    
     $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
       console.log data
-    $.ajax(
-      url: "/notes"
-      data: formData
-      cache: false
-      contentType: false
-      processData: false
-      method: 'POST'
-    ).done ->
-      $("#message").show()
-      $("a, button").toggleClass "active"
-      $("#note_file_button").text "Send"
+    $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#note_group_code").val(), (iq) ->
+      members = []
+      $(iq).find("subscription").each ->
+        
+        jid = $(this).attr("jid")
+        # jid = jid.substring(0, jid.indexOf("/"))
+        console.log jid
+        members.push jid
+      formData.append("members", members);
+      $.ajax(
+        url: "/notes"
+        data: formData
+        cache: false
+        contentType: false
+        processData: false
+        method: 'POST'
+      ).done ->
+        $("#message").show()
+        $("a, button").toggleClass "active"
+        $("#note_file_button").text "Send"
+
+
+    
+    
+      
     console.log("ajax")
 
 

@@ -15,7 +15,7 @@ class Timetable < ActiveRecord::Base
     args = {}
     args['members'] = members
     args['message'] = message
-    args['message'] = 'timetable'
+    args['app'] = 'timetable'
     PygmentsWorker.perform_async(args)
   end
 

@@ -17,8 +17,10 @@ class NotesController < ApplicationController
   end
 
   def create
+    
     group = Group.find_by(group_code: params['group'])
     @note = group.notes.build(notes_params)
+    @note.members = params[:members].split(',')
     @note.message = params["note_text"]
     @note.errors.messages
       if @note.save

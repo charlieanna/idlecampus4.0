@@ -17,8 +17,6 @@ class Group < ActiveRecord::Base
   acts_as_followable
 
   def get_users
-    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-    subscriptions = xmpp.get_subscriptions_from(group_code)
     res = []
     subscriptions.each do |sub|
       res << sub.jid.to_s
