@@ -18,8 +18,6 @@
 //= require angular-resource
 //= require angular-strap
 //= require scripts/strophe.js
-//= require scripts/flXHR.js
-//= require scripts/strophe.flxhr.js
 //= require strophejs-plugins/register/strophe.register.js
 //= require strophejs-plugins/pubsub/strophe.pubsub.js
 //= require scripts/xmpp
