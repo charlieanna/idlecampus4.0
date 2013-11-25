@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'spork'
-
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
@@ -52,7 +53,7 @@ config.mock_with :rspec
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
-    config.include Capybara::Angular::DSL
+   
         
       config.use_transactional_fixtures = false
          

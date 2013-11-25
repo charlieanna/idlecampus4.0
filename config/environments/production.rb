@@ -2,8 +2,13 @@ IdleCampus::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  # config/environments/production.rb
 
+  config.cache_classes = true
+  # config.cache_dir = "#{Rails.root}/tmp/uploads"
+  # config.fog_directory  = 'site_images'  # required
+  # config.fog_public     = true     # optional, defaults to true
+  # config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
   # and those relying on copy on write to perform better.

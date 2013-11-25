@@ -1,23 +1,16 @@
+#
 class StaticPagesController < ApplicationController
-  before_filter :check_logged_in_user
-  
   def home
-    gon.names = "ankur kothari"
-  end
+     if signed_in?
+       @group = Group.new(user: current_user)
+       @group.group_code = Group.get_group_code
+     end
+     gon.product = ""
+   end
 
   def contact
   end
 
   def about
   end
-
-
-  private 
-	
-  	def check_logged_in_user
-
-  		if signed_in?
-  			redirect_to current_user
-  		end
-  	end
 end

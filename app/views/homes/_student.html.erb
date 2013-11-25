@@ -1,0 +1,71 @@
+<%= render 'groups/header' %>
+
+	  <div class="row"  ng-controller="GroupsCtrl">
+        <aside class="span3">
+           
+        </aside>
+        <div class="span9">
+            <!-- Main content         -->
+            <div id="main-content">
+                <!-- Container -->
+                <div class="container">
+								
+          				<div class="span9">
+          					<h1 class="page-title">Group Notes</h1>
+          					<!-- <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      This is a sample <strong>alert message</strong>. You can close it at any time.
+                    </div> -->
+					
+          					<div class="widget">
+          						<div class="widget-header">
+          							<h3><i class="icon-comments"></i>&nbsp;&nbsp;Notes</h3>
+          						</div>
+          						<div class="widget-content">
+          							<ul class="messages-activity">
+                          
+                          
+      										<% @group.notes.each do |note| %>
+      									<li><h3><%= note.file.path.split('/').last %></h3>
+        								<p class="well well-message">
+        									<%= note.message %>
+        								</p>
+                        <div class="message-buttons">
+                          <%= link_to "Download",note.file.url,class: "btn btn-success" %>
+					             </div>
+                        </li>
+                       
+      									<% end %>
+                                    
+                                  </ul>
+          						</div>
+          					</div>
+
+          				</div>
+							
+
+						    
+
+			           
+                </div>
+            </div>
+
+
+            <!-- /Content -->
+
+
+            <!-- /Content -->
+        </div>
+
+
+    </div>
+    <!-- /Container -->
+</div>
+
+
+
+
+</div>
+
+
+

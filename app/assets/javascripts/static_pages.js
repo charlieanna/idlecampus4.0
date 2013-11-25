@@ -3,7 +3,10 @@ var app, re;
 app = angular.module("idlecampus", ['ngResource', '$strap.directives']);
 
 re = /\S+@\S+\.\S+/;
-
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
 app.directive("integer1", [
   "$http", function($http) {
     return {

@@ -1,5 +1,6 @@
 IdleCampus::Application.routes.draw do
   
+ 
   get "password_resets/new"
    
 
@@ -8,9 +9,11 @@ IdleCampus::Application.routes.draw do
   
   post "users/frommobile"
   post "users/login"
+   post "users/send_push"
   resources :users do 
     resources :groups
   end
+  resource :home, only: :show
   resources :groups do
     resource :timetable,only: [:create,:show]
     collection do
@@ -25,6 +28,16 @@ IdleCampus::Application.routes.draw do
       
 >>>>>>> working
     end
+  end
+  resources :teachers
+  resources :students
+  resources :groups do
+    resources :notes
+  end
+  resources :notes
+  resources :alerts, only: [:new, :create]
+  namespace :api do
+    resources :users,only: :create
   end
   root  'static_pages#home'
 
@@ -42,6 +55,7 @@ IdleCampus::Application.routes.draw do
   
   resources :password_resets
 
+<<<<<<< HEAD
 
   # get "timetable/create"
   #  post "timetable/create"
@@ -62,4 +76,6 @@ IdleCampus::Application.routes.draw do
 >>>>>>> working
 
 
+=======
+>>>>>>> working
 end

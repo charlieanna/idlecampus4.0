@@ -1,0 +1,14 @@
+<%= form_for Note.new, :html => {:id => "groupnoteupload"} do |f| %>
+                              <div class="fileupload-buttonbar">
+
+
+                      <%= f.file_field :file %>
+
+
+                    </div>
+                    <!-- The loading indicator is shown during image processing -->
+
+                    <br>
+										<%= f.submit "Send Note" %>
+										
+<% end %>

@@ -1,0 +1,61 @@
+			      <div class="tabbable" style="margin:0 auto">
+                <ul class="nav nav-tabs">
+                    <li class="active" style="margin:0 5px;text-align:center;width:100px;"><a data-toggle="tab"
+                                                                                              href="#tabs-1">Notes</a>
+                    </li>
+                    <li style="margin:0 5px;text-align:center;width:100px;">
+                        <a data-toggle="tab" href="#tabs-2">Alert</a>
+                    </li>
+										
+                    <li style="margin:0 5px;text-align:center;width:100px;">
+                        <a data-toggle="tab" href="#tabs-3">Timetable</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tabs-1">
+
+										
+
+									                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
+									                  <div class="fileupload-buttonbar">
+															
+						                           	
+																				<%= f.text_area :message,rows: 3,placeholder:"Enter your note here:"%>
+									                      <%= f.file_field :file %>
+																				
+																				<%= f.hidden_field :group_code,:value =>@group.group_code %>
+
+<p><button type="button" id="note_file_button" ng-click="publishgroupnote()" class="btn-success has-spinner">
+	<span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+	Send</button>
+</p>
+																<span id="message" style="display:none">Note sent</span>
+									                    </div>
+														
+						                 
+									                <% end %>
+
+            
+
+                    </div>
+
+
+                    <div class="tab-pane" id="tabs-2">
+                        <textarea class="row-fluid span11" id="createalertinput" ng-model="data.alert" rows="3"
+                                  placeholder="Enter your alert here:"></textarea>
+                  
+												<p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
+													Send</button>
+												</p>
+                 
+                    </div>
+										
+                    <div class="tab-pane" id="tabs-3">
+                      
+                  <%= render "timetable/timetable" %>
+                    </div>
+
+
+                </div>
+            </div>

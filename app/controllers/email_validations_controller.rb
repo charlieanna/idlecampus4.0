@@ -1,3 +1,4 @@
+#
 class EmailValidationsController < ApplicationController
   def show
     

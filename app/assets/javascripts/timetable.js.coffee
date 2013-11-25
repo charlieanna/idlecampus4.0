@@ -1,8 +1,6 @@
-@TimetableCtrl = ["$scope", "$resource","Data",($scope, $resource,Data) ->
-
+@TimetableCtrl = ["$scope", "$resource", "Data", ($scope, $resource, Data) ->
+  Timetable = undefined
   $scope.data = Data
-
-
   $scope.from_date_hour = [
     display: "00 AM"
     value: "00"
@@ -76,8 +74,6 @@
     display: "11 PM"
     value: "23"
   ]
-
-
   $scope.from_date_minute = [
     display: "00"
     value: "00"
@@ -229,48 +225,34 @@
   $scope.from_date_minute_value = $scope.from_date_minute[0]
   $scope.to_date_hour_value = $scope.to_date_hour[10]
   $scope.to_date_minute_value = $scope.to_date_minute[0]
-
-  
-# 
   $scope.$watch "data.timeArray", (newValue, oldValue) ->
-    console.log "timearray"
-    console.log newValue
-
+    
+    # console.log newValue
 
   $scope.$watch "data.timetable", (newValue, oldValue) ->
-    console.log "timetable"
-    console.log newValue
-
+   
+    # console.log newValue
 
   $scope.$watch "data", (newValue, oldValue) ->
-    console.log "data"
-
-    console.log newValue
-
+ 
+    # console.log newValue
 
   $scope.weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-
   $scope.addsmallgroup = (i) ->
     $scope.smallGroups.push i
 
-
- 
-
-
   $scope.getDisplayTime = (time1) ->
-    # console.log "TTTTTTTTT"
-#     console.log time1
-#     console.log time1[0]
-#     console.log time1[0][0]
+    display_from = undefined
+    display_to = undefined
+    from_date_hour = undefined
+    from_date_minute = undefined
+    to_date_hour = undefined
+    to_date_minute = undefined
     if time1.length > 0
-
       from_date_hour = time1[0][0].from_hours
       from_date_minute = time1[0][0].from_minutes
       to_date_minute = time1[0][0].to_minutes
       to_date_hour = time1[0][0].to_hours
-
-      
       if from_date_hour >= 12
         display_from = from_date_hour - 12 + ":"
         display_from = display_from + from_date_minute
@@ -279,22 +261,18 @@
         display_from = from_date_hour + ":"
         display_from = display_from + from_date_minute
         display_from = display_from + "AM"
-      
       if to_date_hour > 12
         display_to = to_date_hour - 12 + ":"
         display_to = display_to + to_date_minute
         display_to = display_to + "PM"
-      else if to_date_hour == 12
+      else if to_date_hour is 12
         display_to = to_date_hour + ":"
         display_to = display_to + to_date_minute
         display_to = display_to + "PM"
-
       else
         display_to = to_date_hour + ":"
         display_to = display_to + to_date_minute
         display_to = display_to + "AM"
-
-      # console.log display_from + "-" + display_to
       display_from + "-" + display_to
 
   Timetable = $resource("/timetable/gettcb", {},
@@ -302,126 +280,100 @@
       method: "PUT"
   )
   $scope.addrow = ->
-    
-
-    #this should equal the number of weekdays present and not necessarily 7 or 6.
+    a = undefined
+    m = undefined
+    r = undefined
+    timetableEntry = undefined
+    _results = undefined
     m = 0
     r = $scope.data.timeArray.length
-
-    $scope.data.timeArray[r] = new Array();
-
+    $scope.data.timeArray[r] = new Array()
+    _results = []
     while m < $scope.data.timetable.weekdays.length
-
-
-
-
       timetableEntry =
         from_hours: $scope.from_date_hour_value.value
         from_minutes: $scope.from_date_minute_value.value
         to_minutes: $scope.to_date_minute_value.value
         to_hours: $scope.to_date_hour_value.value
-      # console.log "AAAAAAAAAAAA"
- #      console.log $scope.data.timetable.weekdays[m]
+
       timetableEntry.weekday = $scope.data.timetable.weekdays[m]
-      # console.log timetableEntry
       a = []
       a.push timetableEntry
-      # console.log $scope.data.timeArray[m]
       $scope.data.timeArray[r].push a
-      # console.log $scope.data.timeArray
+      _results.push m++
+    _results
 
-      m++
-    # console.log $scope.data.timeArray
-
-
-  $scope.new = ->
-
+  $scope["new"] = ->
     $("#timetable").show()
 
-
   $scope.addBatchToEntry = (entry) ->
-
-    # console.log "PPPPPPPPP"
-  #   console.log entry
+    e = undefined
+    i = undefined
+    r = undefined
+    timetableEntry = undefined
+    v = undefined
+    w = undefined
+    weekday = undefined
+    _results = undefined
     weekday = entry.weekday
-
-
     r = 0
     e = new Array()
     i = 0
-    console.log  $scope.data.timetable.batches.length
+    console.log $scope.data.timetable.batches.length
     while i < $scope.data.timetable.batches.length
       timetableEntry =
         from_hours: $scope.from_date_hour_value.value
         from_minutes: $scope.from_date_minute_value.value
         to_minutes: $scope.to_date_minute_value.value
         to_hours: $scope.to_date_hour_value.value
-        batch :  $scope.data.timetable.batches[i]
-        weekday : weekday
+        batch: $scope.data.timetable.batches[i]
+        weekday: weekday
 
       e.push timetableEntry
-
       i++
-
     console.log e
+    _results = []
     while r < $scope.data.timeArray.length
-      # console.log "OOOOOOOOOOO"
-#       console.log $scope.data.timeArray[r]
       v = 0
       while v < $scope.data.timeArray[r].length
-        console.log  $scope.data.timeArray[r][v]
+        console.log $scope.data.timeArray[r][v]
         w = 0
         while w < $scope.data.timeArray[r][v].length
-          # console.log "SSSSSDDDDDDDD"
- #          console.log r+" "+v
-          $scope.data.timeArray[r][v] = e if $scope.data.timeArray[r][v][w] == entry
+          $scope.data.timeArray[r][v] = e  if $scope.data.timeArray[r][v][w] is entry
           w++
         v++
-      r++
-  #
-
-
-
-
-
-
-
-
+      _results.push r++
+    _results
 
   $scope.send = ->
-
+    members = undefined
+    url = undefined
+    values = undefined
     members = []
     values = []
     values = JSON.stringify($scope.data.timeArray)
-#    alert $scope.data.currentGroup.group_code
     url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
     if $scope.data.currentGroup
-      
-        $.ajax
-          type: "POST"
-          url: url
-          data:
-            timetable:
-              members: $scope.data.currentGroup.members
-              entries: values
-              group: $scope.data.currentGroup
+      $.ajax
+        type: "POST"
+        url: url
+        data:
+          timetable:
+            members: $scope.data.currentGroup.members
+            entries: values
+            group: $scope.data.currentGroup
 
-          success: ->
-            alert "timetable saved"
+        success: ->
+          alert("Timetable Saved")
+          # $("#result").show()
 
-          dataType: ""
-
-
-
+        dataType: ""
 
     else
       alert "Please select a group"
 
-
-    
   $scope.timeArray = new Array()
-
   $scope.timetableArray = new Array()
   $scope.mondaytimetableArray = new Array()
   $scope.tuesdaytimetableArray = new Array()
@@ -434,6 +386,10 @@
   $scope.rooms = new Array()
   $scope.weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   $scope.add = (i) ->
+    room = undefined
+    subject = undefined
+    teacher = undefined
+    timetableEntry = undefined
     $("#sub" + i).hide()
     $("#edit" + i).show()
     subject = $("#s" + i).val()
@@ -456,7 +412,19 @@
     console.log "BBBBB"
     console.log i + " " + Math.floor((i - 1) / 6)
     console.log timetableEntry
-  $scope.edit = (i)->
+
+  $scope.edit = (i) ->
+    $select1 = undefined
+    $select2 = undefined
+    $select3 = undefined
+    arr1 = undefined
+    arr2 = undefined
+    arr3 = undefined
+    ii = undefined
+    room = undefined
+    subject = undefined
+    teacher = undefined
+    val = undefined
     $select1 = undefined
     $select2 = undefined
     $select3 = undefined
@@ -497,41 +465,16 @@
       $("<option>").val(val).text(val).appendTo $select3
       ii++
     $("#l" + i).val room
-  # $scope.getDisplayTime = (time1) ->
-#     console.log time1
-#     from_date_hour = time1[0].from_hours
-#     from_date_minute = time1[0].from_minutes
-#     to_date_minute = time1[0].to_minutes
-#     to_date_hour = time1[0].to_hours
-#     display_from = undefined
-#     if from_date_hour >= 12
-#       display_from = from_date_hour - 12 + ":"
-#       display_from = display_from + from_date_minute
-#       display_from = display_from + "PM"
-#     else
-#       display_from = from_date_hour + ":"
-#       display_from = display_from + from_date_minute
-#       display_from = display_from + "AM"
-#     display_to = undefined
-#     if to_date_hour >= 12
-#       display_to = to_date_hour - 12 + ":"
-#       display_to = display_to + to_date_minute
-#       display_to = display_to + "PM"
-#     else
-#       display_to = to_date_hour + ":"
-#       display_to = display_to + to_date_minute
-#       display_to = display_to + "AM"
-#     display_from + "-" + display_to
 
   Timetable = $resource("/timetable/gettcb", {},
     update:
       method: "PUT"
   )
 ]
-
-
-
 $(document).ready ->
+  i = undefined
+  url = undefined
+  weedayArray = undefined
   i = undefined
   url = undefined
   weedayArray = undefined
@@ -557,6 +500,17 @@ $(document).ready ->
   while i <= 30
     ((i) ->
       $("#edit" + i).click ->
+        $select1 = undefined
+        $select2 = undefined
+        $select3 = undefined
+        arr1 = undefined
+        arr2 = undefined
+        arr3 = undefined
+        ii = undefined
+        room = undefined
+        subject = undefined
+        teacher = undefined
+        val = undefined
         $select1 = undefined
         $select2 = undefined
         $select3 = undefined
@@ -612,6 +566,10 @@ $(document).ready ->
         subject = undefined
         teacher = undefined
         timetableEntry = undefined
+        room = undefined
+        subject = undefined
+        teacher = undefined
+        timetableEntry = undefined
         alert "h"
         $("#sub" + i).hide()
         $("#edit" + i).toggle()
@@ -642,6 +600,8 @@ $(document).ready ->
   $("#send1").click ->
     batch = undefined
     college = undefined
+    batch = undefined
+    college = undefined
     $("#send1").hide()
     college = $("#college").val()
     batch = $("#batch").val()
@@ -649,6 +609,7 @@ $(document).ready ->
     $("#batch").replaceWith batch
 
   $("#send2").click ->
+    values = undefined
     values = undefined
     values = JSON.stringify(timetableArray)
     console.log JSON.stringify(timetableArray)
@@ -668,6 +629,25 @@ $(document).ready ->
 
 
   $("#addrow").click ->
+    $select1 = undefined
+    $select2 = undefined
+    $select3 = undefined
+    arr1 = undefined
+    arr2 = undefined
+    arr3 = undefined
+    display_from = undefined
+    display_to = undefined
+    from_date_hour = undefined
+    from_date_minute = undefined
+    ii = undefined
+    room = undefined
+    rowCount = undefined
+    subject = undefined
+    teacher = undefined
+    to_date_hour = undefined
+    to_date_minute = undefined
+    val = undefined
+    _results = undefined
     $select1 = undefined
     $select2 = undefined
     $select3 = undefined
@@ -778,6 +758,7 @@ $(document).ready ->
         to_date_hour = $("#to_date_hour").val()
         to_date_minute = $("#to_date_minute").val()
         $("#sub" + i).click ->
+          timetableEntry = undefined
           room = undefined
           subject = undefined
           teacher = undefined
@@ -842,6 +823,7 @@ $(document).ready ->
 
   $("#teacherbutton").click ->
     teacher = undefined
+    teacher = undefined
     teacher = $("#teacherinput").val()
     if jQuery.inArray(teacher, window.teachers) is -1
       window.teachers.push teacher
@@ -849,6 +831,7 @@ $(document).ready ->
     $("#teacherinput").val ""
 
   $("#subjectbutton").click ->
+    subject = undefined
     subject = undefined
     subject = $("#subjectinput").val()
     if jQuery.inArray(subject, window.subjects) is -1
@@ -858,6 +841,7 @@ $(document).ready ->
 
   $("#roombutton").click ->
     room = undefined
+    room = undefined
     room = $("#roominput").val()
     if jQuery.inArray(room, window.rooms) is -1
       window.rooms.push room
@@ -865,6 +849,17 @@ $(document).ready ->
     $("#roominput").val ""
 
   $("#new").click ->
+    $select1 = undefined
+    $select2 = undefined
+    $select3 = undefined
+    arr1 = undefined
+    arr2 = undefined
+    arr3 = undefined
+    ii = undefined
+    room = undefined
+    subject = undefined
+    teacher = undefined
+    val = undefined
     $select1 = undefined
     $select2 = undefined
     $select3 = undefined
@@ -910,3 +905,4 @@ $(document).ready ->
         ii++
       i++
     timetableArray.length = 0
+

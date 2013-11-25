@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:name) { |n| "ankur#{n}" }
-    sequence(:email){ |n| "ankothari#{n}@gmail.com"}
+
+    sequence(:name) { |n| "#{Faker::Name::first_name}#{n}" }
+    sequence(:email){ |n| "#{n}#{Faker::Internet.email}"}
     sequence(:jabber_id) { |n| "name#{n}@idlecampus.com"}
     device_identifier "dskjfnskjfnsjkdn"
     password "akk322" 

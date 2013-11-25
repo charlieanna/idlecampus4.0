@@ -27,6 +27,7 @@ app.factory("Data", [
           });
         });
       },
+	  checked: false,
       currentGroup: "",
       pagetitle: "Latest Posts",
       groupscreated: [],

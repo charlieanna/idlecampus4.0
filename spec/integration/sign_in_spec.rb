@@ -33,9 +33,22 @@ subject { page }
 
      describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
+     
+       before do
+       
+         sign_up_with(user.name,user.email,"akk322")
+  #  
+  #      
+  #   
+         click_link "Sign out"
+  #    
+  #    
+         click_link "Log In"
+     
+    
         sign_in_as(user)
       end
+      # end
      it { should have_content "Welcome #{user.name}" }
       # it { should have_title(user.name) }
       # it { should have_link('Profile',     href: user_path(user)) }

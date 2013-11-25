@@ -47,16 +47,20 @@
 
       # console.log $scope.data.timetable
 
-  $scope.checked = false
+ 
 
   $scope.steps = ['one', 'two', 'three','four','five'];
   $scope.step = 0;
   $scope.wizard = { tacos: 2 };
 
-
+  
+  $scope.isChecked = ->
+		  $scope.data.checked = false
+    $scope.data.checked = true if $scope.data.timetable.batches.length > 0  
+		 
   $scope.changechecked = ->
-    console.log $scope.checked
-    $scope.checked = !$scope.checked
+    console.log $scope.data.checked
+    $scope.data.checked = !$scope.data.checked
 	
     $scope.data.timetable.batches.length = 0
 
