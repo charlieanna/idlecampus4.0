@@ -3,6 +3,7 @@ require 'drb'
 require 'basic_drb'
 require 'ruby_bosh'
 class UsersController < ApplicationController
+  protect_from_forgery except: :login
   before_action :correct_user, only: [:edit, :update]
   before_action :signed_in_user, only: [:edit, :update]
 
