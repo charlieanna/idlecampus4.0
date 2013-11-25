@@ -6,8 +6,8 @@ class HomesController < ApplicationController
       @group = Group.new(user: current_user) if current_user.rolable_type == "Teacher"
       if current_user.rolable_type == "Student"
         
-        @group = Group.find_by(group_code: flash[:attacher][:group]) 
-       
+        @group = current_user.following_groups.first
+        
        
       end
     end
