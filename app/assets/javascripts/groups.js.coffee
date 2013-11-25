@@ -184,7 +184,7 @@
 
 
   $scope.publishgroupalert = ->
-    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
+    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
       console.log data
    
     $.post("/alerts",
