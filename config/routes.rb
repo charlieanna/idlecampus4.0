@@ -32,7 +32,6 @@ IdleCampus::Application.routes.draw do
   namespace :api do
     resources :users,only: :create
   end
-  
   root  'static_pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
