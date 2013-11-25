@@ -31,7 +31,7 @@ class NotesController < ApplicationController
   end
 
   def index
-    group = Group.find_by(group_code: params['group'])
+    group = Group.find_by(group_code: params['group_id'])
     @notes = group.notes
     files = []
     @notes.each do |note|
