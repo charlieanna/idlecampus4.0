@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
 	respond_to :json
+  protect_from_forgery except: :create
 	def create
     puts params
         @user = User.new
