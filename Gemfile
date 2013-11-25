@@ -67,8 +67,8 @@ gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
 gem 'angularjs-rails'
-gem 'blather'
 gem 'foreman'
+gem 'remotipart', '~> 1.2'
 group :doc do
   gem 'sdoc', '0.3.20', require: false
 end

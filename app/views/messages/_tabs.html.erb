@@ -19,8 +19,8 @@
 
 									                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
 									                  <div class="fileupload-buttonbar">
-															
-						                           	
+                                      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+								                	<%= f.hidden_field "authenticity_token",value: form_authenticity_token %>
 																				<%= f.text_area :message,rows: 3,placeholder:"Enter your note here:"%>
 									                      <%= f.file_field :file %>
 																				
