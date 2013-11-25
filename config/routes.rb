@@ -31,6 +31,7 @@ IdleCampus::Application.routes.draw do
   resources :alerts, only: [:new, :create]
   namespace :api do
     resources :users,only: :create
+    resources :groups,only: :show
   end
   root  'static_pages#home'
 
@@ -47,5 +48,5 @@ IdleCampus::Application.routes.draw do
   end
   
   resources :password_resets
-
+  
 end
