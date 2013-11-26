@@ -558,10 +558,8 @@ class TopfunkyIM
  #    puts(message) if Jabber::debug
  #  end
  # 
- #  def subscribe(group)
- #    service = 'pubsub.idlecampus.com'
- #    # options = { 'pubsub#access_model' => 'open' }
- #    @pubsub = Jabber::PubSub::ServiceHelper.new(@client, service)
- #    @pubsub.subscribe_to(group)
- #  end
+  # def self.unregister(jid)
+  #   client = Jabber::Client.new(jid)
+  #   client.remove_registration
+  # end
 end

@@ -10,7 +10,7 @@ IdleCampus::Application.routes.draw do
   post "users/frommobile"
   post "users/login"
    post "users/send_push"
-  resources :users do 
+  resources :users,except: :index do 
     resources :groups
   end
   resource :home, only: :show
@@ -42,7 +42,7 @@ IdleCampus::Application.routes.draw do
   match '/about',to: "static_pages#about",via: :get
   resources :messages, only: [:new, :create]
   match '/contact',to: "messages#new",via: :get
-  resources :users
+  
   resources :sessions, only: [:new, :create, :destroy]
   namespace :api do
     resources :users, only: [:create]
