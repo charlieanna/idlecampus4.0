@@ -110,7 +110,6 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           contact.addClass "offline"
         else
           show = $(presence).find("show").text()
-          console.log "show " + show
           if show is "" or show is "chat"
             contact.addClass "online"
             $("li#" + jid_id + " a img").attr "src", "green.jpg"
@@ -346,12 +345,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
   $scope.attach = ->
    
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
-    console.log conn
     conn.xmlInput = (body) ->
       console.log body
 
     conn.xmlOutput = (body) ->
-      console.log "XMPP OUTPUT"
       console.log body
       localStorage.setItem "rid", $(body).attr("rid")
       localStorage.setItem "sid", $(body).attr("sid")
@@ -359,10 +356,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+   
     if typeof gon.attacher isnt "undefined" and gon.attacher isnt null
       sid = gon.attacher.id
       rid = gon.attacher.rid

@@ -17,7 +17,7 @@ class RubyBOSH
   class AuthFailed < RubyBOSH::Error; end
   class ConnFailed < RubyBOSH::Error; end
 
-  @@logging = true
+  @@logging = false
   def self.logging=(value)
     @@logging = value
   end
@@ -90,8 +90,7 @@ class RubyBOSH
   end
 
   def send_auth_request
-    p "PPPPPPPPPP"
-    request = construct_body(:sid => @sid) do |body|
+     request = construct_body(:sid => @sid) do |body|
       auth_string = "#{@jid}\x00#{@jid.split("@").first.strip}\x00#{@pw}" 
       body.auth(Base64.encode64(auth_string).gsub(/\s/,''), 
                     :xmlns => SASL_XMLNS, :mechanism => 'PLAIN')

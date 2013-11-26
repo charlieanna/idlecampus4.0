@@ -2,7 +2,7 @@ module Features
   module SessionHelpers
     def sign_up_with(name,email,password)
 
-      visit new_teacher_path
+      visit teachers_signup_path
       fill_in "Name",with:name
       fill_in "Email",with:email
       fill_in "Password",with:password
@@ -10,7 +10,7 @@ module Features
     end 
     def sign_up_with_student(group,name,email,password)
       
-      visit new_student_path
+      visit students_signup_path
       
       fill_in "Group_Code",with:group
       fill_in "Name",with:name

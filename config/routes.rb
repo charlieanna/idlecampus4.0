@@ -22,6 +22,8 @@ IdleCampus::Application.routes.draw do
       
     end
   end
+  match 'students/signup',  to: 'students#new',            via: 'get'
+  match 'teachers/signup',  to: 'teachers#new',            via: 'get'
   resources :teachers
   resources :students
   resources :groups do
@@ -33,9 +35,8 @@ IdleCampus::Application.routes.draw do
     resources :users,only: :create
     resources :groups,only: :show
   end
-  root  'static_pages#home'
-
-  match '/signup',  to: 'users#new',            via: 'get'
+  root  'homes#show'
+ 
   match '/signout',  to: 'sessions#destroy',            via: 'delete'
   match '/signin',  to: 'sessions#new',            via: 'get'
   match '/about',to: "static_pages#about",via: :get

@@ -29,6 +29,7 @@ class UsersController < ApplicationController
           flash[:attacher] = attacher
           sign_in_with_redirect(@user)
         else
+          gon.n = ""
           render 'new'
         end
       else
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
         flash[:attacher] = attacher
         sign_in_with_redirect(@user)
       else
+        gon. n = ""
         render 'new'
       end
     end

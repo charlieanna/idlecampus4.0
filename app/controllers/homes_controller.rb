@@ -12,6 +12,6 @@ class HomesController < ApplicationController
       end
     end
     
-   
+    gon.n = "sds"
   end
 end

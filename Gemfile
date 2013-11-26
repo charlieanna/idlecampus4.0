@@ -33,14 +33,15 @@ group :test do
 
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  gem "webmock", "~> 1.15.2"
+  # gem "webmock", "~> 1.15.2"
 end
 gem "devise", "~> 3.2.0"
 group :development do
   gem 'capistrano'
 end
 group :test do
-   gem 'poltergeist'
+  gem 'capybara', "~> 2.1.0"
+   gem "poltergeist", "~> 1.4.1"
 gem 'mail_form'
 gem 'shoulda-matchers'
 end
