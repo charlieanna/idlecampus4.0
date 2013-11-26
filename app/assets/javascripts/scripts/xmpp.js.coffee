@@ -375,8 +375,8 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           console.log group
           $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
           ), ((data) ->
-            console.log "joined"
-            $scope.groupsfollowing.push group
+            
+            
           ), ((data) ->
           ), true
         else
