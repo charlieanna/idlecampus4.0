@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   respond_to :html, :js
 
   def new
+    gon.n = ""
   end
 
   def create
@@ -21,8 +22,8 @@ class SessionsController < ApplicationController
       flash[:success] = 'Welcome to IdleCampus!'
       redirect_to home_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      flash[:error] = 'Invalid email/password combination'
+      redirect_to signin_path
     end
   end
 
