@@ -7,7 +7,7 @@ require 'xmpp4r/pubsub/helper/nodehelper.rb'
 # GroupsController.rb
 class GroupsController < ApplicationController
   respond_to :json, :html
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy,:show]
   def index
     @groups = current_user.groups
     respond_with @groups

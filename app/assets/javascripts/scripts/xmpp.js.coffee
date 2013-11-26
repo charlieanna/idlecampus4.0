@@ -41,8 +41,8 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.connected = ->
     iq = undefined
-    $scope.XMPP.connection.pubsub.createNode $scope.XMPP.connection.jid.split("/")[0] + "/groups", "", (data) ->
-      console.log data
+    # $scope.XMPP.connection.pubsub.createNode $scope.XMPP.connection.jid.split("/")[0] + "/groups", "", (data) ->
+#       console.log data
 
     iq = $iq(type: "get").c("query",
       xmlns: "jabber:iq:roster"
@@ -339,6 +339,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     $scope.XMPP.connection = connection
 
   $scope.signout = ->
+    
     $scope.XMPP.connection.disconnect()
     localStorage.clear()
 
@@ -379,4 +380,4 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           ), ((data) ->
           ), true
         else
-          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
+          document.cookie = "remember_token=" if status is Strophe.Status.DISCONNECTED]
