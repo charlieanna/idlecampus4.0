@@ -472,9 +472,9 @@ $(document).ready ->
   i = undefined
   url = undefined
   weedayArray = undefined
-  $("#timetable").hide()
-  $("#collegename").html window.college
-  $("#batchname").html window.batch
+  # $("#timetable").hide()
+ #  $("#collegename").html window.college
+ #  $("#batchname").html window.batch
   window.timetableArray = new Array()
   window.mondaytimetableArray = new Array()
   window.tuesdaytimetableArray = new Array()

@@ -7,7 +7,7 @@ class HomesController < ApplicationController
       if current_user.rolable_type == "Student"
         
         @group = current_user.following_groups.first
-        gon.attacher[:group] = @group.group_code  
+        gon.attacher[:group] = @group.group_code if gon.attacher = flash[:attacher]
        
       end
     end
