@@ -140,7 +140,7 @@
 #         group_code: group_code
 # 
 #       console.log grouptoadd
-      console.log "node created"
+      console.log "node created" if gon.global.debug
       # $scope.data.groupscreated.push grouptoadd
 #       $scope.$digest()
 
@@ -153,7 +153,7 @@
 
     $scope.XMPP.connection.pubsub.createNode group, "", ->
 
-    console.log "node created"
+    console.log "node created" if gon.global.debug
     $scope.groupscreated.push group
     $.post "/groups",
       name: group
@@ -194,7 +194,7 @@
     
     
       
-    console.log("ajax")
+    
 
 
   $scope.publishgroupalert = ->

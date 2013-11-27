@@ -347,10 +347,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
    
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     conn.xmlInput = (body) ->
-      console.log body
+      console.log body if gon.global.debug
 
     conn.xmlOutput = (body) ->
-      console.log body
+      console.log body if gon.global.debug
       localStorage.setItem "rid", $(body).attr("rid")
       localStorage.setItem "sid", $(body).attr("sid")
 
@@ -370,14 +370,12 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
         if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
           $scope.XMPP.connection = conn
           $scope.XMPP.connection.jid = jid
-          console.log "attached"
           $scope.connected()
-          console.log group
-          $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
+          $scope.XMPP.connection.pubsub.subscribe group, "", ((data) -> 
           ), ((data) ->
             
             
           ), ((data) ->
-          ), true
+          ), true if group
         else
           $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
