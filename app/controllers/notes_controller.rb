@@ -42,6 +42,7 @@ class NotesController < ApplicationController
       file['id'] = note.id
       file['name'] = note.file.path.split('/').last
       file['url'] = note.file.url
+      file['message'] = note.message
       files << file
     end
     notes = {}
