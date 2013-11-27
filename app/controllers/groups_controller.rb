@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find_by_group_code(params[:id])
+    @group = Group.find(params[:id])
     gon.a = ""
   end
 
@@ -24,9 +24,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = current_user.groups.build
-    @group.name = params[:group][:name]
-    @group.group_code = Group.get_group_code
+    @group = current_user.groups.build(name:params[:group][:name])
+    # @group.group_code = Group.get_group_code
     @group.save
   end
 

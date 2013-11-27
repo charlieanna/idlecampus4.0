@@ -10,25 +10,17 @@ IdleCampus::Application.routes.draw do
   post "users/frommobile"
   post "users/login"
    post "users/send_push"
-  resources :users,except: :index do 
-    resources :groups
-  end
+  resources :users,except: :index 
   resource :home, only: :show
   resources :groups do
     resource :timetable,only: [:create,:show]
-    collection do
-      
-      get 'get_group_name'
-      
-    end
+    resources :notes
   end
   match 'students/signup',  to: 'students#new',            via: 'get'
   match 'teachers/signup',  to: 'teachers#new',            via: 'get'
   resources :teachers
   resources :students
-  resources :groups do
-    resources :notes
-  end
+ 
   resources :notes
   resources :alerts, only: [:new, :create]
   namespace :api do

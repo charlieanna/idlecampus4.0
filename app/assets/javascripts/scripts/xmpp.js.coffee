@@ -380,4 +380,4 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           ), ((data) ->
           ), true
         else
-          document.cookie = "remember_token=" if status is Strophe.Status.DISCONNECTED]
+          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]

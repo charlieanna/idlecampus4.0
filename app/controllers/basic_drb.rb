@@ -506,6 +506,7 @@ class TopfunkyIM
     client.connect
     fields = {}
     client.register(password, fields)
+    client.close
   end
 
   # def login(username, password)

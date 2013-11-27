@@ -44,9 +44,12 @@ class UsersController < ApplicationController
       end
     else
       if @user.save
+        puts "saFDFDSFSDFSDF"
+        debugger
         begin
            t = TopfunkyIM.register(@user.name, @user.password)
         rescue
+          debugger
           flash[:error] = "Teacher already present"
           gon.n = ""
           redirect_to teachers_signup_path
@@ -64,7 +67,7 @@ class UsersController < ApplicationController
         flash[:attacher] = attacher
         sign_in_with_redirect(@user)
       else
-        
+        render 'new'
       end
     end
   end

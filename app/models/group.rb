@@ -15,6 +15,12 @@ class Group < ActiveRecord::Base
   has_many :followers, class_name: 'Student'
   belongs_to :creator, class_name: 'Teacher', foreign_key: 'teacher_id'
   acts_as_followable
+  
+  before_create :set_group_code
+  
+  def set_group_code
+   self.group_code = Group.get_group_code
+  end
 
   def get_users
     res = []
@@ -34,9 +40,9 @@ class Group < ActiveRecord::Base
     new_group_code
   end
 
-  def to_param
-    group_code
-  end
+  # def to_param
+  #   group_code
+  # end
 
   # Generates a random string from a set of easily readable characters
   def self.generate_group_code(size = 6)
