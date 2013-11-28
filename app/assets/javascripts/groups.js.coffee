@@ -136,12 +136,12 @@
         "pubsub#publish_model":"open"
       , ->
       
-      $scope.XMPP.connection.pubsub.subscribe group_code, "", ((data) ->
-      ), ((data) ->
-        console.log "joined"
-        $scope.groupsfollowing.push group
-      ), ((data) ->
-      ), true
+      # $scope.XMPP.connection.pubsub.subscribe group_code, "", ((data) ->
+#       ), ((data) ->
+#         console.log "joined"
+#         $scope.groupsfollowing.push group
+#       ), ((data) ->
+#       ), true
 
       # grouptoadd =
 #         name: group

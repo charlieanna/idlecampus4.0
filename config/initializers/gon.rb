@@ -1,1 +1,1 @@
- Gon.global.debug =  Rails.env.production?  
+ Gon.global.debug =  Rails.env.development?  
