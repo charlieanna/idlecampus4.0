@@ -175,7 +175,7 @@
         
         jid = $(this).attr("jid")
         jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") != -1
-        console.log jid
+        console.log jid if gon.global.debug
         members.push jid
       formData.append("members", members);
       $.ajax(
