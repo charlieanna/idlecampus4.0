@@ -133,7 +133,6 @@
       group_code= data.substring(data.length-8,data.length-2);
       $scope.XMPP.connection.pubsub.createNode group_code,
         "pubsub#notification_type": "normal"
-        "pubsub#publish_model":"open"
       , ->
       
       # $scope.XMPP.connection.pubsub.subscribe group_code, "", ((data) ->
