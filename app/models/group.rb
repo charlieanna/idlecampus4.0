@@ -24,12 +24,17 @@ class Group < ActiveRecord::Base
 
   def get_users
     res = []
-    subscriptions.each do |sub|
-      res << sub.jid.to_s
+    
+    members = self.followers
+    members.map do |member|
+      index = member.jabber_id.index('/')
+      if !index.nil?
+        member.slice(0..index - 1)
+      else
+        member
+      end
     end
-    members = res
-    if members User.members_without_trailing_(members)
-    end
+   
   end
 
   def self.get_group_code

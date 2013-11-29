@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     gon.a = ""
+   
   end
 
   def new
@@ -26,6 +27,7 @@ class GroupsController < ApplicationController
   def create
     @group = current_user.groups.build(name:params[:group][:name])
     # @group.group_code = Group.get_group_code
+    
     @group.save
   end
 
@@ -40,7 +42,6 @@ class GroupsController < ApplicationController
     @group.group_code = Group.get_group_code
     xmpp.create_group(@group.group_code)
     if @group.save
-      # flash[:success] = 'Group created!'
       puts @group.group_code
     else
       render 'static_pages/home'

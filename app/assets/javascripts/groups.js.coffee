@@ -22,13 +22,14 @@
 #     console.log newValue
 
   $scope.get = ->
+    
     $scope.data.checked = false
-    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable.json"
+    url = "/groups/" + $("#groupcode").text() + "/timetable.json"
     $http(
       method: "GET"
       url: url
     ).success((rdata, status, headers, config) ->
-     
+      
       $("#timetable").show()
       $scope.data.currentGroupCode = rdata.timetable.group_code
       entries = rdata.timetable.entries

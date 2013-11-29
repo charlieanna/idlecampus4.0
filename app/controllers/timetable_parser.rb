@@ -6,11 +6,12 @@ class TimetableParser
 
   def parse
     result = {}
-    group = @params['timetable']['group']['group_code']
+    group = @params['group_id']
     result['group_code'] = group
     entries = ActiveSupport::JSON.decode(@params['timetable']['entries'])
     result['entries'] = entries
     members = @params['timetable']['members']
     result['members'] = members
+    return result
   end
 end

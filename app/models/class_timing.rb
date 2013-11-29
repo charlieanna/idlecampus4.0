@@ -6,6 +6,7 @@ class ClassTiming < ActiveRecord::Base
   end
 
   def to_minutes
+    
     to.min.to_s
   end
 
@@ -17,14 +18,15 @@ class ClassTiming < ActiveRecord::Base
     from.hour.to_s
   end
 
-  def get_time(a, b)
-    hash = { hour: entry[a].to_i, min: entry[b].to_i }
+  def self.get_time(a, b)
+    hash = { hour: a.to_i, min: b.to_i }
     Time.new.utc.change(hash)
+    
   end
 
   def self.time(entry)
-    from = get_time('from_hours', 'from_minutes')
-    to = get_time('to_hours', 'to_minutes')
+    from = get_time(entry['from_hours'], entry['from_minutes'])
+    to = get_time(entry['to_hours'], entry['to_minutes'])
     [from, to]
   end
 

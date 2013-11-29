@@ -20,10 +20,12 @@ class Timetable < ActiveRecord::Base
   end
 
   def build_timetable_entries(entries)
+    
     entries.each do |ent|
       ent.each do |en|
         en.each do |entry|
           timetableentry = TimetableEntry.get(entry, self)
+          
           entry.each do |key, value|
             create_field(timetableentry, key, value)
             timetableentry.save
@@ -42,6 +44,7 @@ class Timetable < ActiveRecord::Base
       timetableentry.teacher = teacher if key == 'teacher'
       timetableentry.room = room if key == 'room'
       timetableentry.save
+      
     end
   end
   

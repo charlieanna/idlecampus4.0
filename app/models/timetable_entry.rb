@@ -22,11 +22,16 @@ class TimetableEntry < ActiveRecord::Base
     entry_hash['room'] = room.name
     entry_hash['batch'] = small_group.name
     entry_hash['weekday'] = weekday.name
+    entry_hash
+    
   end
 
   def self.get(entry, timetable)
+    
     from, to = ClassTiming.time(entry)
+    
     class_timing = ClassTiming.find_or_create_by(from: from, to: to)
+    
     small_group = SmallGroup.find_or_create_by(name: entry['batch'])
     weekday = Weekday.find_or_create_by(name: entry['weekday'])
     TimetableEntry.find_or_create_by(timetable_id: timetable.id,

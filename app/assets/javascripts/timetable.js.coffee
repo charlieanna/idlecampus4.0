@@ -348,35 +348,24 @@
   $scope.send = ->
     group = $("#groupcode").text();
     values = JSON.stringify($scope.data.timeArray)
-    console.log JSON.stringify(timetableArray)
+    console.log JSON.stringify(values)
     url = "/groups/" + group + "/timetable"
     if group
-      $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#note_group_code").val(), (iq) ->
-        members = []
-        $(iq).find("subscription").each ->
-        
-          jid = $(this).attr("jid")
-          jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") != -1
-          console.log jid if gon.global.debug
-          members.push jid
-        $.ajax
-          type: "POST"
-          url: url
-          data:
-            timetable:
-              members: members
-              entries: values
-              
+      $.ajax
+        type: "POST"
+        url: url
+        data:
+          timetable:
+            members: $scope.data.currentGroup.members
+            entries: values
+            
 
-          success: ->
-            alert("Timetable Saved")
-            # $("#result").show()
+        success: ->
+          alert("Timetable Saved")
+          # $("#result").show()
 
-          dataType: ""
-      
-
-    else
-      alert "Please select a group"
+        dataType: ""
+     
 
   $scope.timeArray = new Array()
   $scope.timetableArray = new Array()
