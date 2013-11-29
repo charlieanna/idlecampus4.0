@@ -8,23 +8,18 @@ class TimetableEntry < ActiveRecord::Base
   belongs_to :room
   belongs_to :class_timing
   belongs_to :small_group
+  
+  delegate :to_hours, :to_minutes, :from_minutes, :from_hours, to: :class_timing
+  
 
   default_scope -> { includes(:room).includes(:teacher).includes(:subject) }
-
+  
   def to_hash
-    entry_hash = {}
-    entry_hash['to_hours'] = class_timing.to_hours
-    entry_hash['to_minutes'] = class_timing.to_minutes
-    entry_hash['from_minutes'] = class_timing.from_minutes
-    entry_hash['from_hours'] = class_timing.from_hours
-    entry_hash['teacher'] = teacher.name
-    entry_hash['subject'] = subject.name
-    entry_hash['room'] = room.name
-    entry_hash['batch'] = small_group.name
-    entry_hash['weekday'] = weekday.name
-    entry_hash
-    
+    TimetableEntrySerializer.new(self).serializable_hash.as_json
   end
+
+    
+ 
 
   def self.get(entry, timetable)
     

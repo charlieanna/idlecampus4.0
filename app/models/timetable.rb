@@ -10,18 +10,82 @@ class Timetable < ActiveRecord::Base
             include: [:class_timing, :weekday, :small_group]
   has_and_belongs_to_many :fields
   has_many :weekdays, through: :timetable_entries
-  after_save :send_push
-  def send_push
-    args = {}
-    args['members'] = members
-    args['message'] = message
-    args['app'] = 'timetable'
-    # Push.new(args['members'], args['message'], args['app']).send_push
-    PygmentsWorker.perform_async(args)
+  
+  def push_params
+    return { members: members,
+       message: message,
+       app: 'timetable' 
+      }
   end
+  
+  def get_field_entries
 
-  def build_timetable_entries(entries)
     
+    field_entries = []
+
+    rooms_in_hash = Room.in_hash(group)
+
+    field_entries << rooms_in_hash
+
+    
+    teachers_in_hash = Teacher.in_hash(group)
+
+    field_entries << teachers_in_hash
+
+    subjects_in_hash = Subject.in_hash(group)
+    
+  
+    field_entries << subjects_in_hash
+
+    
+    
+    return field_entries
+    
+  end
+  
+  def get_entries_array
+    
+    entries = get_entries
+    if entries.length > 0
+
+         entries_array = []
+
+   
+         # entries_sorted_by_weekday_and_class_timings = entries.group_by {|entry| [entry.weekday,entry.class_timing]}.values
+         entries_sorted_by_weekday_and_class_timings = entries.group_by do
+           |entry| [entry.weekday, entry.class_timing]
+          end
+         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings
+      
+       
+    
+   
+      
+       end
+     
+       # entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
+  #           [entry[0]['to_hours'],
+  #            entry[0]['to_minutes'],
+  #            entry[0]['from_hours'],
+  #            entry[0]['from_minutes']]
+  #         end
+  #         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
+  #    
+    end
+  
+ def get_entries
+   entries = timetable_entries
+   entries.sort do |a, b|
+
+     a.class_timing <=> b.class_timing
+
+
+   end
+   return entries
+ end
+  
+  def build_timetable_entries(entries)
+    PygmentsWorker.perform_async(push_params)
     entries.each do |ent|
       ent.each do |en|
         en.each do |entry|

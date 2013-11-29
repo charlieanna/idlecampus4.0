@@ -1,8 +1,9 @@
 class TimetableBuilder 
 
-	def initialize(group)
-    @group = group
-		@timetable = group.timetable
+	def initialize(options)
+    group = options['group_id']
+    @group = Group.find_by_group_code(group)
+    @timetable = @group.timetable
 		
 	end
 
@@ -40,12 +41,13 @@ class TimetableBuilder
     
     return field_entries
     
-    
   end
-
-
+  
+  
 
 	def build
+    
+    
     
 		if @timetable.nil?
 			weekdays = []
@@ -93,9 +95,7 @@ class TimetableBuilder
     puts entries_array
     timetable_hash = {}
     entries_hash = {}
-    
-    puts @timetable.group
-    puts @timetable.group.group_code
+  
     entries_hash["group_code"] = @timetable.group.group_code
     entries_hash["field_entries"] = field_entries.uniq
     entries_hash["entries"] = entries_array
@@ -103,8 +103,7 @@ class TimetableBuilder
     entries_hash["batches"] = batches.uniq.compact
     timetable_hash["timetable"] = entries_hash
     puts timetable_hash
-    @timetable = ActiveSupport::JSON.encode(timetable_hash)
-    return @timetable
+    return timetable_hash
   end
 end
 
@@ -123,7 +122,8 @@ def get_entries_array(entries)
        entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings.values.each do |el|
          
           el.map! do |e|
-           e.to_hash
+            
+            e.to_hash
            
          end
        end
@@ -143,4 +143,8 @@ def get_entries_array(entries)
         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
      
   end
+ 
+
+  
+ 
 end

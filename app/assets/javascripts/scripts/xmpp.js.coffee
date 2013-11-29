@@ -54,6 +54,8 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.spin = ""
   $scope.disconnected = ->
+    eraseCookie("remember_token")
+    localStorage.clear()
     XMPP.connection = null
     XMPP.pending_subscriber = null
     $("#roster-area ul").empty()

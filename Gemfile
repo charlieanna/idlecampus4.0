@@ -70,6 +70,7 @@ gem 'hpricot'
 gem 'angularjs-rails'
 gem 'foreman'
 gem 'remotipart', '~> 1.2'
+gem "active_model_serializers"
 group :doc do
   gem 'sdoc', '0.3.20', require: false
 end

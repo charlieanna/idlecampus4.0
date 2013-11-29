@@ -2,6 +2,16 @@
 class TimetableParser
   def initialize(params)
     @params = params
+    # result = parse
+#     group = Group.find_by_group_code(result['group_code'])
+#     @timetable = Timetable.find_or_create_by(group_id: group.id)
+#     @entries = result['entries']
+#     members = group.get_users
+#     @timetable.members = members
+#     message = "http://idlecampus.com/groups/#{result['group_code']}/timetable.json"
+#     @timetable.message = message
+#    
+#     
   end
 
   def parse
@@ -15,3 +25,4 @@ class TimetableParser
     return result
   end
 end
+  
