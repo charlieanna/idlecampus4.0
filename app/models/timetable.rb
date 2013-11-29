@@ -16,6 +16,7 @@ class Timetable < ActiveRecord::Base
     args['members'] = members
     args['message'] = message
     args['app'] = 'timetable'
+    # Push.new(args['members'], args['message'], args['app']).send_push
     PygmentsWorker.perform_async(args)
   end
 

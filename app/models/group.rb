@@ -26,15 +26,16 @@ class Group < ActiveRecord::Base
     res = []
     
     members = self.followers
-    members.map do |member|
+    members = members.map do |member|
       index = member.jabber_id.index('/')
       if !index.nil?
-        member.slice(0..index - 1)
+        member.jabber_id.slice(0..index - 1)
       else
-        member
+        member.jabber_id
       end
+      
     end
-   
+    return members
   end
 
   def self.get_group_code
