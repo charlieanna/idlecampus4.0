@@ -11,7 +11,7 @@ class TimetableEntry < ActiveRecord::Base
   
   delegate :to_hours, :to_minutes, :from_minutes, :from_hours, to: :class_timing
   
-
+  
   default_scope -> { includes(:room).includes(:teacher).includes(:subject) }
   
   def to_hash

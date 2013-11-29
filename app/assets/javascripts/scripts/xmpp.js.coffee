@@ -380,4 +380,4 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           ), ((data) ->
           ), true if group
         else
-          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
+          $scope.disconnected()  if status is Strophe.Status.DISCONNECTED]

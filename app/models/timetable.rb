@@ -8,6 +8,7 @@ class Timetable < ActiveRecord::Base
   has_many :timetable_fields
   has_many :timetable_entries, dependent: :destroy,
             include: [:class_timing, :weekday, :small_group]
+            
   has_and_belongs_to_many :fields
   has_many :weekdays, through: :timetable_entries
   
@@ -16,6 +17,9 @@ class Timetable < ActiveRecord::Base
        message: message,
        app: 'timetable' 
       }
+  end
+  
+  def hi
   end
   
   def get_field_entries
