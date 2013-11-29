@@ -11,8 +11,6 @@ class TimetablesController < ApplicationController
  
 
   def create
-	
-    
     result = TimetableParser.new(params).parse
     group = Group.find_by_group_code(result['group_code'])
     timetable = Timetable.find_or_create_by(group_id: group.id)
@@ -27,9 +25,9 @@ class TimetablesController < ApplicationController
   end
 
   def show
-    
-    timetable_in_hash = TimetableBuilder.new(params).build
-    respond_with timetable_in_hash
+    group = Group.find_by(group_code: params[:group_id])
+    @timetable = group.timetable
+    respond_with @timetable
   end
 
   private

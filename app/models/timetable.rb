@@ -27,7 +27,6 @@ class Timetable < ActiveRecord::Base
 
     field_entries << rooms_in_hash
 
-    
     teachers_in_hash = Teacher.in_hash(group)
 
     field_entries << teachers_in_hash
@@ -37,8 +36,6 @@ class Timetable < ActiveRecord::Base
   
     field_entries << subjects_in_hash
 
-    
-    
     return field_entries
     
   end
@@ -57,19 +54,26 @@ class Timetable < ActiveRecord::Base
           end
          entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings
       
-       
+         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings.values.each do |el|
+         
+            el.map! do |e|
+            
+              e.to_hash
+           
+           end
+         end
     
    
       
        end
      
-       # entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
-  #           [entry[0]['to_hours'],
-  #            entry[0]['to_minutes'],
-  #            entry[0]['from_hours'],
-  #            entry[0]['from_minutes']]
-  #         end
-  #         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
+       entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
+            [entry[0]['to_hours'],
+             entry[0]['to_minutes'],
+             entry[0]['from_hours'],
+             entry[0]['from_minutes']]
+          end
+          entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
   #    
     end
   
@@ -113,27 +117,5 @@ class Timetable < ActiveRecord::Base
     end
   end
   
-  def get_entries
-    entries = timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
-    entries.sort do |a, b|
-      a.class_timing <=> b.class_timing
-    end
-  end
 
-  def get_field_entry(name, values)
-    field_entry = {}
-    field_entry['name'] = name
-    field_entry['values'] = values.uniq
-    field_entry
-  end
-
-  def get_entry_hash_with_field(entry_hash, field)
-    teacher = field.teacher
-    subject = field.subject
-    room = field.room
-    entry_hash['teacher'] = teacher.name
-    entry_hash['subject'] = subject.name
-    entry_hash['room'] = room.name
-    entry_hash
-  end
 end

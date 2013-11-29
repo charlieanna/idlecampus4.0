@@ -23,7 +23,7 @@ class TimetableSerializer < ActiveModel::Serializer
    object.timetable_entries.each do |entry|
      batches << entry.small_group.name
    end
-   batches.uniq!
+   batches.uniq.compact
  end
  
 
@@ -33,7 +33,7 @@ class TimetableSerializer < ActiveModel::Serializer
    object.timetable_entries.each do |entry|
      weekdays << entry.weekday.name
    end
-  weekdays.uniq!
+  weekdays.uniq
  end
  
  def field_entries
