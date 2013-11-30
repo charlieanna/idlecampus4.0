@@ -19,15 +19,14 @@ class Timetable < ActiveRecord::Base
       }
   end
   
-  def hi
-  end
+  
   
   def get_field_entries
 
     
     field_entries = []
-
-    rooms_in_hash = Room.in_hash(group)
+    
+    rooms_in_hash = FieldEntry.new("room",group.rooms.pluck(:name))
 
     field_entries << rooms_in_hash
 
