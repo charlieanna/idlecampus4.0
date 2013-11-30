@@ -50,8 +50,7 @@ class TimetablesController < ApplicationController
       respond_with timetable_hash
       
     end
-    # timetable_in_hash = TimetableCreator.new(params).build
-    # respond_with timetable_in_hash
+   
   end
 
   private

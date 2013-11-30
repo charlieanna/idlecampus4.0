@@ -168,8 +168,8 @@
 
 
   $scope.publishgroupnote = ->
+    $("#note_file_button").button('loading')
     $("#message").hide()
-    $("#note_file_button").text "Sending..."
     formData = new FormData()
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
@@ -194,9 +194,10 @@
         processData: false
         method: 'POST'
       ).done ->
+        $("#note_file_button").button('reset')
         $("#message").show()
         $("a, button").toggleClass "active"
-        $("#note_file_button").text "Send"
+        
 
 
     

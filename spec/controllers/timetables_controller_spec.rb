@@ -5,7 +5,7 @@ describe TimetablesController do
     
     it "returns the timetable json" do
       timetable = FactoryGirl.create(:timetable)
-     get :show,use_route: :group_timetable
+     get :show
     end
   end 
 end

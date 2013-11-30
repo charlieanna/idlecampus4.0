@@ -52,7 +52,10 @@ $(document).ready(function(){
  // 
  // 			 console.log("ajax");
  // 		 })
-	
+	$('#groupcode').tooltip()
+  
+     $('#example').popover('hide')
+ 
 	
 	
 })
