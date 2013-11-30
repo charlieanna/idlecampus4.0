@@ -30,11 +30,11 @@ class Timetable < ActiveRecord::Base
 
     field_entries << rooms_in_hash
 
-    teachers_in_hash = Teacher.in_hash(group)
+    teachers_in_hash = FieldEntry.new("teacher",group.teachers.pluck(:name))
 
     field_entries << teachers_in_hash
 
-    subjects_in_hash = Subject.in_hash(group)
+    subjects_in_hash = FieldEntry.new("subject",group.subjects.pluck(:name))
     
   
     field_entries << subjects_in_hash

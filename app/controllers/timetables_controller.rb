@@ -27,11 +27,31 @@ class TimetablesController < ApplicationController
   end
 
   def show
-    # group = Group.find_by(group_code: params[:group_id])
- #    @timetable = group.timetable
- #   respond_with @timetable
-    timetable_in_hash = TimetableBuilder.new(params).build
-    respond_with timetable_in_hash
+    @group = Group.find_by(group_code: params[:group_id])
+    @timetable = @group.timetable
+    if @timetable
+      respond_with @timetable
+    else
+      weekdays = []
+	    batches = []
+      field_entries = []
+
+      timetable_hash = {}
+      entries_hash = {}
+
+      entries_hash["group_code"] = @group.group_code
+      entries_hash["field_entries"] = field_entries.uniq
+  
+      entries_hash["weekdays"] = weekdays.uniq
+      entries_hash["batches"] = batches.uniq.compact
+      timetable_hash["timetable"] = entries_hash
+      @timetable = ActiveSupport::JSON.encode(timetable_hash)
+ 
+      respond_with timetable_hash
+      
+    end
+    # timetable_in_hash = TimetableCreator.new(params).build
+    # respond_with timetable_in_hash
   end
 
   private
