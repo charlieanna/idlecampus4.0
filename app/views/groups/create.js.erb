@@ -1,3 +1,4 @@
 $("#sidebar").append("<%= escape_javascript(render(@group)) %>") 
 $('#group_name').val('');
 group_code = "<%= escape_javascript(@group.group_code) %>";
+$("abbr.timeago").timeago();

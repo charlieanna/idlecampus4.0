@@ -207,6 +207,7 @@
 
 
   $scope.publishgroupalert = ->
+    $("abbr.timeago").timeago();
     $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
       console.log data if gon.global.debug
    
@@ -220,6 +221,7 @@
 
 
   $scope.publishgroupassignment = ->
+    $("abbr.timeago").timeago();
    
     message = $scope.assignment
     console.log group

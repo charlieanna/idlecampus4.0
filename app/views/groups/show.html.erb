@@ -65,34 +65,11 @@
           						<div class="widget-content">
           							<ul class="messages-activity" id="posts">
                           
-                         
-                          <% @group.alerts.each do |alert|%>
-        									<li>
-          								<p class="well well-message">
-          									<%= alert.message %>
-          								</p>
-                          <abbr class="timeago" title="<%= alert.created_at.getutc.iso8601 %>">
-                            <%= alert.created_at.to_s %>
-                          </abbr>
-                          </li>
+                          <% @posts.each do |post| %>
+                          <%= render post%>
+                        
                           <% end %>
-                          
-                          
-      										<% @group.notes.each do |note| %>
-      									<li><h3><%= note.file.path.split('/').last %></h3>
-        								<p class="well well-message">
-        									<%= note.message %>
-                          
-        								</p>
-                        <abbr class="timeago" title="<%= note.created_at.getutc.iso8601 %>">
-                          <%= note.created_at.to_s %>
-                        </abbr>
-                        <div class="message-buttons">
-                          <%= link_to "Download",note.file.url,class: "btn btn-success" %>
-					             </div>
-                        </li>
-                       
-      									<% end %>
+                         
                                    
                                   </ul>
           						</div>
