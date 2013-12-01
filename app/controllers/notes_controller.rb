@@ -17,7 +17,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    puts params
     group = Group.find_by(group_code: params['group'])
     @note = group.notes.build(notes_params)
     @note.note = params["note_text"]
