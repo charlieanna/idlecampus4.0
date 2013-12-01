@@ -46,9 +46,13 @@
 									
 						   
                   
-                  <% else %>
+                  <% end %>
+                  
+                 
+                
+                  
           				<div class="span9">
-          					<h1 class="page-title">Group Notes</h1>
+          					<h1 class="page-title">Group Posts</h1>
           					<!-- <div class="alert alert-danger">
                       <button type="button" class="close" data-dismiss="alert">&times;</button>
                       This is a sample <strong>alert message</strong>. You can close it at any time.
@@ -56,10 +60,20 @@
 					
           					<div class="widget">
           						<div class="widget-header">
-          							<h3><i class="icon-comments"></i>&nbsp;&nbsp;Notes</h3>
+          							<h3><i class="icon-comments"></i>&nbsp;&nbsp;Posts</h3>
           						</div>
           						<div class="widget-content">
-          							<ul class="messages-activity">
+          							<ul class="messages-activity" id="posts">
+                          
+                         
+                          <% @group.alerts.each do |alert|%>
+        									<li>
+          								<p class="well well-message">
+          									<%= alert.message %>
+          								</p>
+                          
+                          </li>
+                          <% end %>
                           
                           
       										<% @group.notes.each do |note| %>
@@ -73,77 +87,13 @@
                         </li>
                        
       									<% end %>
-                                      <li>
-                                          <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar" alt="avatar1"></a>
-          								<span>
-          									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username 1</strong></a> commented on 24/12/2012
-          								</span>
-          								<p class="well well-message">
-          									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
-          								</p>
-								
-                                          <div class="message-buttons">
-          									<a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
-                                              <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
-                                              <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
-                                              <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
-                                          </div>
-                                      </li>
-          							<li>
-                                          <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar" alt="avatar2"></a>
-          								<span>
-          									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username 2</strong></a> commented on 24/12/2012
-          								</span>
-          								<p class="well well-message">
-          									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
-          								</p>
-								
-                                          <div class="message-buttons">
-          									<a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
-                                              <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
-                                              <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
-                                              <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
-                                          </div>
-                                      </li>
-                                      <li>
-                                          <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar-alt" alt="avatar3"></a>
-          								<span>
-          									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username 3</strong></a> commented on 24/12/2012
-          								</span>
-          								<p class="well well-message">
-          									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
-          								</p>
-								
-                                          <div class="message-buttons-alt">
-          									<a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
-                                              <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
-                                              <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
-                                              <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
-                                          </div>
-                                      </li>
-          							<li>
-                                          <a href="#"><img src="http://placehold.it/80x80" class="messages-activity-avatar-alt" alt="avatar4"></a>
-          								<span>
-          									<i class="icon-envelope-alt"></i>&nbsp;&nbsp;User <a href="#"><strong>Username 4</strong></a> commented on 24/12/2012
-          								</span>
-          								<p class="well well-message">
-          									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales, mauris sit amet hendrerit convallis, velit tellus gravida erat, eu tempus metus dolor vel felis [...]
-          								</p>
-								
-                                          <div class="message-buttons-alt">
-          									<a href="#" class="btn btn-success"><i class="icon-share-alt"></i>&nbsp;&nbsp;Reply</a>
-                                              <a href="#" class="btn btn-info"><i class="icon-pencil"></i>&nbsp;&nbsp;Edit</a>
-                                              <a href="#" class="btn btn-warning"><i class="icon-ban-circle"></i>&nbsp;&nbsp;Mark as Spam</a>
-                                              <a href="#" class="btn btn-danger"><i class="icon-trash"></i>&nbsp;&nbsp;Delete</a>
-                                          </div>
-                                      </li>
+                                   
                                   </ul>
           						</div>
           					</div>
 
           				</div>
-									<% end %>
-
+								
 						    
 
 			           

@@ -1,0 +1,8 @@
+<li><h3><%= @note.file.path.split('/').last %></h3>
+<p class="well well-message">
+	<%= @note.message %>
+</p>
+ <div class="message-buttons">
+   <%= link_to "Download",@note.file.url,class: "btn btn-success" %>
+</div>
+ </li>

@@ -210,12 +210,12 @@
     $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
       console.log data if gon.global.debug
    
-    # $.post("/alerts",
-#       alert:
-#         message: $("#createalertinput").val()
-#         group: $("#note_group_code").val()
-#     ).done (data) ->
-		
+    $.post("/alerts",
+      alert:
+        message: $("#createalertinput").val()
+        group: $("#note_group_code").val()
+    ).done (data) ->
+    
    
 
 
