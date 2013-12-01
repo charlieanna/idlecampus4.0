@@ -17,25 +17,21 @@ describe "Teacher creates a group" , :js => true do
     fill_in "group",with:group1.name
     
     
-     within("#new_group") do
-        click_button "creategroupbutton"
-     end
+     click_button "Create" 
  #     
      fill_in "group",with:group2.name 
     
     
-      within("#new_group") do
-         click_button "creategroupbutton"
-      end  
+      click_button "Create" 
      
      expect(page).to have_css("a",text: group1.name)
      expect(page).to have_css("a",text: group2.name)
-     expect(page).not_to have_css("#timetable")
+     # expect(page).not_to have_css("#timetable")
      click_link group1.name
      
   
       
-    click_button "SendTimetable"
+    # click_button "SendTimetable"
     
     
     
@@ -46,4 +42,5 @@ end
 def open_page
   save_and_open_page
 end
+
 

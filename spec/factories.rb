@@ -13,9 +13,9 @@ FactoryGirl.define do
 
 FactoryGirl.define do
 	factory :group do
-	  sequence(:name) { |n| "Electronics#{n}"}
-	  sequence(:group_code) { |n| "Group#{n}"}
-	  user
+	  name "dffsd"
+    group_code "sfdf"
+	  
 	end
 end
 

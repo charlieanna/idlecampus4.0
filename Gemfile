@@ -33,7 +33,7 @@ group :test do
 
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  # gem "webmock", "~> 1.15.2"
+ 
 end
 gem "devise", "~> 3.2.0"
 group :development do

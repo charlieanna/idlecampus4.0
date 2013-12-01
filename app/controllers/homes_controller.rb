@@ -1,6 +1,5 @@
 class HomesController < ApplicationController
   def show
-    puts params
     if signed_in? 
       gon.attacher = flash[:attacher]
       @group = Group.new(user: current_user) if current_user.rolable_type == "Teacher"
@@ -11,8 +10,5 @@ class HomesController < ApplicationController
        
       end
     end
-    
-    
-    
   end
 end

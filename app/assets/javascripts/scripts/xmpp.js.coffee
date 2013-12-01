@@ -368,7 +368,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
       localStorage.setItem "jid", jid 
     if jid and sid and rid
       conn.attach jid, sid, rid, (status) ->
-        console.log status
+        console.log status if gon.global.env != "test"
         if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
           $scope.XMPP.connection = conn
           $scope.XMPP.connection.jid = jid
