@@ -6,7 +6,8 @@
             <section>
                 <div>
 									
-									
+                  <%= render 'shared/user_info' %>
+                  
 									<% if current_user.rolable_type == "Teacher"%>
 									<section>
 									  <%= render 'shared/group_form' %>

@@ -1,3 +1,12 @@
-<h1>
-  <%= current_user.name %>
-</h1>
+
+<div class="widget" class="span3">
+
+	<div class="widget-content">
+    <%= link_to gravatar_for(current_user, size: 52), current_user %>
+    <h1>
+      <%= "Hi, #{current_user.name}" %>
+    </h1>
+	</div>
+</div>
+
+

@@ -1,10 +1,11 @@
 <div class="row">
-    <div class="offset3 span7">
+    <div class="offset4 span7">
       
-     Group Name: <span id="groupname"><%= @group.name%></span>
+     Group Name: 
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupname" title="" data-original-title="Pass this group code to your students to follow"><%= @group.name%></button>
     </div>
     <div class="span5">
-      Group ID: <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupcode" title="" data-original-title="Pass this group code to your students to follow"><%= @group.group_code %></button>
+      Group ID: <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupcode" title="" data-original-title="Name of your group"><%= @group.group_code %></button>
     </div>
 
 </div>
