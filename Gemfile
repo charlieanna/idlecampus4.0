@@ -45,6 +45,7 @@ group :test do
 gem 'mail_form'
 gem 'shoulda-matchers'
 end
+gem 'turbolinks'
 gem 'carrierwave_direct'
 gem "fog"
 gem 'unicorn'
