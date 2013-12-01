@@ -53,7 +53,7 @@ $(document).ready(function(){
  // 			 console.log("ajax");
  // 		 })
 	$('#groupcode').tooltip()
-  
+  	$('#groupname').tooltip()  
      $('#example').popover('hide')
  
 	
