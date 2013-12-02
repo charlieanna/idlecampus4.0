@@ -31,6 +31,7 @@ class UsersController < ApplicationController
           attacher[:jid] = @session_jid
           attacher[:id] = @session_id
           attacher[:rid] = @session_random_id
+          attacher[:group] = @group.group_code
           @user.follow(@group)
           flash[:attacher] = attacher
           sign_in_with_redirect(@user)
