@@ -1,14 +1,19 @@
-<%= form_for Note.new, :html => {:id => "groupnoteupload"} do |f| %>
-                              <div class="fileupload-buttonbar">
+<%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
+  <div class="fileupload-buttonbar">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+<%= f.hidden_field "authenticity_token",value: form_authenticity_token %>
+			<%= f.text_area :message,rows: 3,class:"span9",placeholder:"Enter your note here:"%>
+      <%= f.file_field :file %>
+      <% if @group.group_code %>
+			  <%= f.hidden_field :group,:value =>@group.group_code %>
+      <% else %>
+      <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] } %>
+      
+      <% end %>
+     
+      <p> <button type="button" data-loading-text="Uploading..." class="btn
+      btn-success" id="note_file_button" ng-click="publishgroupnote()"> Upload
+      </button> </p> <span id="message" style="display:none">Note sent</span> </div>
 
 
-                      <%= f.file_field :file %>
-
-
-                    </div>
-                    <!-- The loading indicator is shown during image processing -->
-
-                    <br>
-										<%= f.submit "Send Note" %>
-										
 <% end %>

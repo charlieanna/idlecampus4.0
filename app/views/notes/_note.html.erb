@@ -1,4 +1,5 @@
-<li><h3>
+<li>
+  Group: <%= note.group.name%><h3>
   <% unless note.file.path.nil? %>
   <%= note.file.path.split('/').last %>
   <div class="message-buttons">

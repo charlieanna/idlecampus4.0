@@ -13,13 +13,14 @@
       <!-- Main content         -->
       <div id="main-content">
           <!-- Container -->
-          <div class="container">
+          <div class="container" ng-controller="GroupsCtrl" >
+           
               <% if current_user.rolable_type == "Teacher" %>
                 <%= render 'messages/tabs' %>
               <% end %>
 
 
-
+           
 
               <div class="span9">
                   <h1 class="page-title">Group Posts</h1>

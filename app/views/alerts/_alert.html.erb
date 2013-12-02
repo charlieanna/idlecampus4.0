@@ -1,7 +1,9 @@
 
 <li>
+  Group: <%= alert.group.name%>
 <p class="well well-message">
 	<%= alert.message %>
+ 
 </p>
 <abbr class="timeago" title="<%= alert.created_at.getutc.iso8601 %>">
   <%= alert.created_at.to_s %>

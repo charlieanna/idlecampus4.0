@@ -170,14 +170,15 @@
   $scope.publishgroupnote = ->
     $("#note_file_button").button('loading')
     $("#message").hide()
+    group = $("#note_group").val()
     formData = new FormData()
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
     formData.append "note_text", $("#note_message").val()
-    formData.append "group", $("#note_group_code").val()
+    formData.append "group", group
     # $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
 #       console.log data
-    $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#note_group_code").val(), (iq) ->
+    $scope.XMPP.connection.pubsub.getNodeSubscriptions group, (iq) ->
       members = []
       $(iq).find("subscription").each ->
         
@@ -209,14 +210,14 @@
 
   $scope.publishgroupalert = ->
     $("abbr.timeago").timeago();
-   
-    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
+    group = $("#alert_group").val()
+    $scope.XMPP.connection.pubsub.publish group , $("#createalertinput").val(), (data) ->
       console.log data if gon.global.debug
    
     $.post("/alerts",
       alert:
         message: $("#createalertinput").val()
-        group: $("#note_group_code").val()
+        group: group 
     ).done (data) ->
       $("#createalertinput").val("")
    
