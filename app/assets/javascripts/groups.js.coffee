@@ -211,12 +211,13 @@
   $scope.publishgroupalert = ->
     $("abbr.timeago").timeago();
     group = $("#alert_group").val()
-    $scope.XMPP.connection.pubsub.publish group , $("#createalertinput").val(), (data) ->
+    message = $("#alert_message").val()
+    $scope.XMPP.connection.pubsub.publish group , message, (data) ->
       console.log data if gon.global.debug
    
     $.post("/alerts",
       alert:
-        message: $("#createalertinput").val()
+        message: message
         group: group 
     ).done (data) ->
       $("#createalertinput").val("")
