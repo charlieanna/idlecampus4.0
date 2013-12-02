@@ -194,6 +194,7 @@
         processData: false
         method: 'POST'
       ).done ->
+        $("#note_message").val("")
         $("#note_file_button").button('reset')
         $("#message").show()
         $("a, button").toggleClass "active"
@@ -208,6 +209,7 @@
 
   $scope.publishgroupalert = ->
     $("abbr.timeago").timeago();
+   
     $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
       console.log data if gon.global.debug
    
@@ -216,7 +218,7 @@
         message: $("#createalertinput").val()
         group: $("#note_group_code").val()
     ).done (data) ->
-    
+      $("#createalertinput").val("")
    
 
 
