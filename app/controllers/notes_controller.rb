@@ -38,7 +38,9 @@ class NotesController < ApplicationController
     @notes.each do |note|
       file = {}
       file['id'] = note.id
-      file['name'] = note.file.path.split('/').last
+      unless note.file.path.nil? 
+        file['name'] = note.file.path.split('/').last 
+      end
       file['url'] = note.file.url
       file['message'] = note.message
       files << file
