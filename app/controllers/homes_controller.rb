@@ -23,6 +23,7 @@ class HomesController < ApplicationController
           @posts.flatten!
        
           @posts = @posts.sort_by(&:created_at).reverse
+          gon.attacher[:group] = @group.group_code if gon.attacher  == flash[:attacher]
        
      
        
