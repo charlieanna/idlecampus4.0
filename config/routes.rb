@@ -1,6 +1,7 @@
 IdleCampus::Application.routes.draw do
   
  
+  get "push/create"
   devise_for :users
   get "password_resets/new"
    
@@ -21,6 +22,8 @@ IdleCampus::Application.routes.draw do
   match 'teachers/signup',  to: 'teachers#new',            via: 'get'
   resources :teachers
   resources :students
+  
+  resource :push,only: :create
  
   resources :notes
   resources :alerts, only: [:new, :create]

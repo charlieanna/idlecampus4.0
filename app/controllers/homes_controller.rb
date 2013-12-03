@@ -11,11 +11,11 @@ class HomesController < ApplicationController
           posts = group.alerts.includes(:group)+ group.notes.includes(:group)
           
           total_posts <<  posts
-        end 
+        end
         @posts = total_posts.flatten
         @posts = @posts.sort_by(&:created_at).reverse
       elsif current_user.rolable_type == "Student"
-       
+      
           @group = current_user.all_following.first  
           @posts = []
           @posts << @group.alerts
