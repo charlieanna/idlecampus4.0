@@ -2,7 +2,8 @@
 class Push
   include Sidekiq::Worker
   attr_reader :members, :message, :app
-  def initialize(members, message, app)
+  def initialize(from,members, message, app)
+    @from = from
     @message = message
     @members = members
     @app = app
@@ -18,6 +19,7 @@ class Push
     entries_hash['devices'] = devices
     entries_hash['message'] = @message
     entries_hash['app'] = @app
+    entries_hash['from'] = @from
     timetable_hash['push'] = entries_hash
     return timetable_hash
   end
