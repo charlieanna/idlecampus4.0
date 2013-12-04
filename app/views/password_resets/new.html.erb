@@ -1,31 +1,28 @@
-
-
-
 <div class="row">
 	<!-- Login content -->
-  
 	<div id="login">
 		<div id="main-header">
-      <h2>Forgot your password?</h2>
-			
+			<h3>Forgot Password?</h3>
 		</div>
+		
+		
 	
 		<div id="login-content" class="clearfix">
 			
-		
-			  
-     <%= form_tag password_resets_path, :method => :post do %>
+      <%= form_tag password_resets_path, :method => :post do %>
        
 
-        <div> <%= label_tag :email %><br />
-        <%= text_field_tag :email,params[:email], :autofocus => true %></div>
+          <div>
+          <%= email_field_tag :email,params[:email],placeholder:"Enter your email...", :autofocus => true , :required => true %></div>
 
-       <div class="actions"><%= submit_tag "Reset Password" %></div>
+          <input class="bluebutton offset1" name="commit" type="submit" value="Reset Password" style="
+                     width: 50%;
        
-        
-      <% end %>
-	       
-        
+                  
+                     right: 0px;
+                     top: 0;
+          ">
+        <% end %>
 		</div>
 	</div>
 	<!-- /Login content -->
