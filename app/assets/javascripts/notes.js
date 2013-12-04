@@ -13,6 +13,8 @@
 //         console.log(progress)
 //         data.context.find('.bar').css('width', progress + '%')
 $(document).ready(function(){
+  
+ 
   $('a, button').click(function() {
          $(this).toggleClass('active');
      });

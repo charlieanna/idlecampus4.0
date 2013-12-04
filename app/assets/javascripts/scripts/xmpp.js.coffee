@@ -54,6 +54,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.spin = ""
   $scope.disconnected = ->
+    alert("Session Expired...Please login again")
+    window.location = "/signin"
+    # $( '<div class="alert alert-danger" id="alert" style="margin-left: 20px;">Session Expired. Please login in again...</div>' ).insertBefore( "#login" );
+ # 
     eraseCookie("remember_token")
     localStorage.clear()
     XMPP.connection = null
@@ -344,6 +348,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     
     $scope.XMPP.connection.disconnect()
     localStorage.clear()
+    
 
   $scope.attach = ->
    
