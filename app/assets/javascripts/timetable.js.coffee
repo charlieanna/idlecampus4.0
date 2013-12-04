@@ -346,15 +346,11 @@
     _results
 
   $scope.send = ->
-    members = undefined
-    url = undefined
-    values = undefined
-    members = []
-    values = []
+    group = $("#groupcode").text();
     values = JSON.stringify($scope.data.timeArray)
-    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable"
     console.log JSON.stringify(values)
-    if $scope.data.currentGroup
+    url = "/groups/" + group + "/timetable"
+    if group
       $.ajax
         type: "POST"
         url: url
@@ -362,16 +358,14 @@
           timetable:
             members: $scope.data.currentGroup.members
             entries: values
-            group: $scope.data.currentGroup
+            
 
         success: ->
           alert("Timetable Saved")
           # $("#result").show()
 
         dataType: ""
-
-    else
-      alert "Please select a group"
+     
 
   $scope.timeArray = new Array()
   $scope.timetableArray = new Array()
@@ -478,9 +472,9 @@ $(document).ready ->
   i = undefined
   url = undefined
   weedayArray = undefined
-  $("#timetable").hide()
-  $("#collegename").html window.college
-  $("#batchname").html window.batch
+  # $("#timetable").hide()
+ #  $("#collegename").html window.college
+ #  $("#batchname").html window.batch
   window.timetableArray = new Array()
   window.mondaytimetableArray = new Array()
   window.tuesdaytimetableArray = new Array()
@@ -905,4 +899,3 @@ $(document).ready ->
         ii++
       i++
     timetableArray.length = 0
-

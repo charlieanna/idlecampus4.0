@@ -41,8 +41,8 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.connected = ->
     iq = undefined
-    $scope.XMPP.connection.pubsub.createNode $scope.XMPP.connection.jid.split("/")[0] + "/groups", "", (data) ->
-      console.log data
+    # $scope.XMPP.connection.pubsub.createNode $scope.XMPP.connection.jid.split("/")[0] + "/groups", "", (data) ->
+#       console.log data
 
     iq = $iq(type: "get").c("query",
       xmlns: "jabber:iq:roster"
@@ -54,6 +54,8 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.spin = ""
   $scope.disconnected = ->
+    eraseCookie("remember_token")
+    localStorage.clear()
     XMPP.connection = null
     XMPP.pending_subscriber = null
     $("#roster-area ul").empty()
@@ -110,7 +112,6 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
           contact.addClass "offline"
         else
           show = $(presence).find("show").text()
-          console.log "show " + show
           if show is "" or show is "chat"
             contact.addClass "online"
             $("li#" + jid_id + " a img").attr "src", "green.jpg"
@@ -340,29 +341,25 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     $scope.XMPP.connection = connection
 
   $scope.signout = ->
+    
     $scope.XMPP.connection.disconnect()
     localStorage.clear()
 
   $scope.attach = ->
    
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
-    console.log conn
     conn.xmlInput = (body) ->
-      console.log body
+      console.log body if gon.global.debug
 
     conn.xmlOutput = (body) ->
-      console.log "XMPP OUTPUT"
-      console.log body
+      console.log body if gon.global.debug
       localStorage.setItem "rid", $(body).attr("rid")
       localStorage.setItem "sid", $(body).attr("sid")
 
     sid = localStorage.getItem("sid")
     rid = localStorage.getItem("rid")
     jid = localStorage.getItem("jid")
-    console.log "CREDENTIALS"
-    console.log sid
-    console.log rid
-    console.log jid
+   
     if typeof gon.attacher isnt "undefined" and gon.attacher isnt null
       sid = gon.attacher.id
       rid = gon.attacher.rid
@@ -371,18 +368,16 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
       localStorage.setItem "jid", jid 
     if jid and sid and rid
       conn.attach jid, sid, rid, (status) ->
-        console.log status
+        console.log status if gon.global.env != "test"
         if status is Strophe.Status.CONNECTED or status is Strophe.Status.ATTACHED
           $scope.XMPP.connection = conn
           $scope.XMPP.connection.jid = jid
-          console.log "attached"
           $scope.connected()
-          console.log group
-          $scope.XMPP.connection.pubsub.subscribe group, "", ((data) ->
+          $scope.XMPP.connection.pubsub.subscribe group, "", ((data) -> 
           ), ((data) ->
-            console.log "joined"
-            $scope.groupsfollowing.push group
+            
+            
           ), ((data) ->
-          ), true
+          ), true if group
         else
-          $(document).trigger "disconnected"  if status is Strophe.Status.DISCONNECTED]
+          $scope.disconnected()  if status is Strophe.Status.DISCONNECTED]

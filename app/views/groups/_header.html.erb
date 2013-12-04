@@ -1,10 +1,17 @@
 <div class="row">
-    <div class="offset3 span8">
+    <div class="offset4 span7">
       
-     <%= image_tag("img/GroupName.png") %> :<span id="groupname"> <%= @group.name%></span>
+     Group Name: 
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupname" title="" data-original-title="Name of your group"><%= @group.name%></button>
     </div>
     <div class="span5">
-      <%= image_tag("img/GroupID.png") %>:<span id="groupcode"> <%= @group.group_code %></span>
+      Group ID: <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupcode" title="" data-original-title="Pass this group code to your students to follow"><%= @group.group_code %></button>
     </div>
 
 </div>
+
+
+
+<!-- <button type="button" class="btn btn-default" id="example" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+         <%= @group.group_code %>
+        </button> -->

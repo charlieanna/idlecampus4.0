@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://developer.idlecampus.com/push/push1
+    body:
+      encoding: UTF-8
+      string: '{"push":{"devices":["85718da6d39b75c5","a9c72e102f1bc1b0","7d94095209b6e051","4BA905D6-443D-4631-A7BD-DEDEA1638BA1","9dce6d95d8b1ae67"],"message":"Hi","app":"timetable"}}'
+    headers:
+      content-type:
+      - application/json
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      access-control-allow-origin:
+      - '*'
+      access-control-request-method:
+      - '*'
+      cache-control:
+      - max-age=0, private, must-revalidate
+      content-type:
+      - text/html; charset=utf-8
+      date:
+      - Sat, 30 Nov 2013 20:48:13 GMT
+      etag:
+      - '"7215ee9c7d9dc229d2921a40e899ec5f"'
+      status:
+      - 200 OK
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-request-id:
+      - 8ecbc845-9e72-4d31-b18e-ec04ff6c13e6
+      x-runtime:
+      - '0.405446'
+      x-ua-compatible:
+      - chrome=1
+      x-xhr-current-location:
+      - /push/push1
+      x-xss-protection:
+      - 1; mode=block
+      content-length:
+      - '1'
+      connection:
+      - Close
+    body:
+      encoding: UTF-8
+      string: ' '
+    http_version: '1.1'
+  recorded_at: Sat, 30 Nov 2013 20:48:13 GMT
+recorded_with: VCR 2.8.0

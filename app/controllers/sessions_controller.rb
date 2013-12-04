@@ -4,18 +4,26 @@ class SessionsController < ApplicationController
   respond_to :html, :js
 
   def new
+    gon.n = ""
   end
 
   def create
     @user = User.find_by_email(params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
+      @session_jid, @session_id, @session_random_id = 
+      RubyBOSH.initialize_session(@user.jabber_id, params[:session][:password], "http://idlecampus.com:5280/http-bind")
+      attacher = {}
+      attacher[:jid] = @session_jid
+      attacher[:id] = @session_id
+      attacher[:rid] = @session_random_id
+    
+      flash[:attacher] = attacher
       sign_in @user
-      t = TopfunkyIM.new(@user.jabber_id, params[:session][:password], nil, false)
       flash[:success] = 'Welcome to IdleCampus!'
-      edirect_to home_path
+      redirect_to home_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      flash[:error] = 'Invalid email/password combination'
+      redirect_to signin_path
     end
   end
 

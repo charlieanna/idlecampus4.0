@@ -30,13 +30,14 @@
 #     console.log newValue
 
   $scope.get = ->
+    
     $scope.data.checked = false
-    url = "/groups/" + $scope.data.currentGroup.group_code + "/timetable.json"
+    url = "/groups/" + $("#groupcode").text() + "/timetable.json"
     $http(
       method: "GET"
       url: url
     ).success((rdata, status, headers, config) ->
-     
+      
       $("#timetable").show()
       $scope.data.currentGroupCode = rdata.timetable.group_code
       entries = rdata.timetable.entries
@@ -163,14 +164,24 @@
       $scope.XMPP.connection.pubsub.createNode group_code,
         "pubsub#notification_type": "normal"
       , ->
+<<<<<<< HEAD
 >>>>>>> working
+=======
+      
+      # $scope.XMPP.connection.pubsub.subscribe group_code, "", ((data) ->
+#       ), ((data) ->
+#         console.log "joined"
+#         $scope.groupsfollowing.push group
+#       ), ((data) ->
+#       ), true
+>>>>>>> turbolinks
 
       # grouptoadd =
 #         name: group
 #         group_code: group_code
 # 
 #       console.log grouptoadd
-      console.log "node created"
+      console.log "node created" if gon.global.debug
       # $scope.data.groupscreated.push grouptoadd
 #       $scope.$digest()
 
@@ -189,46 +200,61 @@
 
     $scope.XMPP.connection.pubsub.createNode group, "", ->
 
-    console.log "node created"
+    console.log "node created" if gon.global.debug
     $scope.groupscreated.push group
     $.post "/groups",
       name: group
 
 
   $scope.publishgroupnote = ->
+    $("#note_file_button").button('loading')
     $("#message").hide()
-    $("#note_file_button").text "Sending..."
     formData = new FormData()
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
     formData.append "note_text", $("#note_message").val()
-    formData.append("group", $("#note_group_code").val());
-    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
-      console.log data
-    $.ajax(
-      url: "/notes"
-      data: formData
-      cache: false
-      contentType: false
-      processData: false
-      method: 'POST'
-    ).done ->
-      $("#message").show()
-      $("a, button").toggleClass "active"
-      $("#note_file_button").text "Send"
-    console.log("ajax")
+    formData.append "group", $("#note_group_code").val()
+    # $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
+#       console.log data
+    $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#note_group_code").val(), (iq) ->
+      members = []
+      $(iq).find("subscription").each ->
+        
+        jid = $(this).attr("jid")
+        jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") != -1
+        console.log jid if gon.global.debug
+        members.push jid
+      formData.append("members", members);
+      $.ajax(
+        url: "/notes"
+        data: formData
+        cache: false
+        contentType: false
+        processData: false
+        method: 'POST'
+      ).done ->
+        $("#note_file_button").button('reset')
+        $("#message").show()
+        $("a, button").toggleClass "active"
+        
+
+
+    
+    
+      
+    
 
 
   $scope.publishgroupalert = ->
-    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
-      console.log data
+    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
+      console.log data if gon.global.debug
    
     $.post("/alerts",
       alert:
         message: $("#createalertinput").val()
         group: $("#note_group_code").val()
     ).done (data) ->
-		
+    
    
 
 

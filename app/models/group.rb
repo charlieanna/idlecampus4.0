@@ -15,17 +15,27 @@ class Group < ActiveRecord::Base
   has_many :followers, class_name: 'Student'
   belongs_to :creator, class_name: 'Teacher', foreign_key: 'teacher_id'
   acts_as_followable
+  
+  before_create :set_group_code
+  
+  def set_group_code
+   self.group_code = Group.get_group_code
+  end
 
   def get_users
-    xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-    subscriptions = xmpp.get_subscriptions_from(group_code)
     res = []
-    subscriptions.each do |sub|
-      res << sub.jid.to_s
+    
+    members = self.followers
+    members = members.map do |member|
+      index = member.jabber_id.index('/')
+      if !index.nil?
+        member.jabber_id.slice(0..index - 1)
+      else
+        member.jabber_id
+      end
+      
     end
-    members = res
-    if members User.members_without_trailing_(members)
-    end
+    return members
   end
 
   def self.get_group_code
@@ -36,9 +46,9 @@ class Group < ActiveRecord::Base
     new_group_code
   end
 
-  def to_param
-    group_code
-  end
+  # def to_param
+  #   group_code
+  # end
 
   # Generates a random string from a set of easily readable characters
   def self.generate_group_code(size = 6)

@@ -34,6 +34,7 @@ end
   end
 
   def self.members_without_trailing_(jabber_ids)
+    return nil if jabber_ids.nil?
     members = jabber_ids
     members.map do |member|
       index = member.index('/')

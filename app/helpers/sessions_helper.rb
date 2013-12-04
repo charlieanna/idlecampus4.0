@@ -37,8 +37,6 @@ module SessionsHelper
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
-    #debugger
-    @attacher = sign_in_to_xmpp_as_user(@current_user)
     return @current_user
   end
 
@@ -58,15 +56,6 @@ module SessionsHelper
       end
     end
 
-def sign_in_to_xmpp_with_password(user,password)
-
-     @session_jid, @session_id, @session_random_id =
-         RubyBOSH.initialize_session(user.jabber_id, password, "http://idlecampus.com/http-bind")
-     cookies[:JID] = @session_jid
-     cookies[:SID] = @session_id
-     cookies[:RID] = @session_random_id
-
-end
 
 
  end

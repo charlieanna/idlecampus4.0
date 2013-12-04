@@ -11,7 +11,7 @@
 
     
 		<% current_user.groups.each do |group|%>
-		<li><%= link_to group.name,user_group_path(current_user,group) %></a></li>
+		<li><%= link_to group.name,group_path(group) %></a></li>
 		<% end %>
 		
 		

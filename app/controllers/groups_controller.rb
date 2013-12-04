@@ -7,15 +7,16 @@ require 'xmpp4r/pubsub/helper/nodehelper.rb'
 # GroupsController.rb
 class GroupsController < ApplicationController
   respond_to :json, :html
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy,:show]
   def index
     @groups = current_user.groups
     respond_with @groups
   end
 
   def show
-    @group = Group.find_by_group_code(params[:id])
+    @group = Group.find(params[:id])
     gon.a = ""
+   
   end
 
   def new
@@ -24,9 +25,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = current_user.groups.build
-    @group.name = params[:group][:name]
-    @group.group_code = Group.get_group_code
+    @group = current_user.groups.build(name:params[:group][:name])
+    # @group.group_code = Group.get_group_code
+    
     @group.save
   end
 
@@ -41,7 +42,6 @@ class GroupsController < ApplicationController
     @group.group_code = Group.get_group_code
     xmpp.create_group(@group.group_code)
     if @group.save
-      # flash[:success] = 'Group created!'
       puts @group.group_code
     else
       render 'static_pages/home'

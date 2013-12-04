@@ -1,4 +1,5 @@
 class Note < ActiveRecord::Base
+  attr_accessor :note, :members
   include Rails.application.routes.url_helpers
   mount_uploader :file, FileUploader
   process_in_background :file
@@ -11,5 +12,14 @@ class Note < ActiveRecord::Base
      'delete_url' => note_path(id: id),
      'delete_type' => 'DELETE'
     }
+  end
+  after_save :send_push
+  def send_push
+    args = {}
+    args['members'] = members
+    args['message'] = note
+    args['app'] = "note"
+    # Push.new(args['members'], args['message'], args['app']).send_push
+    PygmentsWorker.perform_async(args)
   end
 end

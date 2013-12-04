@@ -5,8 +5,6 @@ class FieldEntry
   end
 
   def to_hash
-    field_entry = {}
-    field_entry['name'] = @name
-    field_entry['values'] = @values.uniq
+    { name: @name, values: @values.uniq } 
   end
 end

@@ -33,17 +33,19 @@ group :test do
 
    gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  gem "webmock", "~> 1.15.2"
+ 
 end
 gem "devise", "~> 3.2.0"
 group :development do
   gem 'capistrano'
 end
 group :test do
-   gem 'poltergeist'
+  gem 'capybara', "~> 2.1.0"
+   gem "poltergeist", "~> 1.4.1"
 gem 'mail_form'
 gem 'shoulda-matchers'
 end
+gem 'turbolinks'
 gem 'carrierwave_direct'
 gem "fog"
 gem 'unicorn'
@@ -67,8 +69,9 @@ gem 'jbuilder', '1.0.2'
 gem 'rest-client'
 gem 'hpricot'
 gem 'angularjs-rails'
-gem 'blather'
 gem 'foreman'
+gem 'remotipart', '~> 1.2'
+gem "active_model_serializers"
 group :doc do
   gem 'sdoc', '0.3.20', require: false
 end

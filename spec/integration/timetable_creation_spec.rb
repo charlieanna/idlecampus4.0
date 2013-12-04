@@ -16,22 +16,18 @@ feature 'Visitor signs up', :js => true do
      fill_in "group",with:@group1.name
     
     
-      within("#new_group") do
-         click_button "creategroupbutton"
-      end
+      click_button "Create"
       
       fill_in "group",with:@group2.name
     
-    
-       within("#new_group") do
-          click_button "creategroupbutton"
-       end
+      click_button "Create"
 
        # open_page
       click_link @group1.name
          #     
       # expect(page).to have_css("#timetable")
-#      
+      
+      click_link "timetable"
       click_button "Create Timetable"
       
       click_button "Teachers"
@@ -182,10 +178,11 @@ scenario 'with valid email and password' do
 #   sleep(5)
   page.should_not have_content("timetable saved")
 
-
+  save_and_open_page
+  
   click_link @group2.name
 
-
+  
 
   click_link @group1.name
   

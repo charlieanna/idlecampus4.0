@@ -1,0 +1,233 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://127.0.0.1:54323/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
+      Date:
+      - Sat, 30 Nov 2013 21:49:07 GMT
+      Content-Length:
+      - '14'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '70138272865860'
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:07 GMT
+- request:
+    method: post
+    uri: http://idlecampus.com:5280/http-bind
+    body:
+      encoding: UTF-8
+      string: <body rid="10448" xmlns="http://jabber.org/protocol/httpbind" xmpp:version="1.0"
+        xmlns:xmpp="urn:xmpp:xbosh" wait="5" to="idlecampus.com" hold="3" window="5"/>
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '159'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '771'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - Content-Type
+    body:
+      encoding: UTF-8
+      string: <body xmlns='http://jabber.org/protocol/httpbind' sid='dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67'
+        wait='5' requests='2' inactivity='30' maxpause='120' polling='2' ver='1.8'
+        from='idlecampus.com' secure='true' authid='4016846727' xmlns:xmpp='urn:xmpp:xbosh'
+        xmlns:stream='http://etherx.jabber.org/streams' xmpp:version='1.0'><stream:features
+        xmlns:stream='http://etherx.jabber.org/streams'><mechanisms xmlns='urn:ietf:params:xml:ns:xmpp-sasl'><mechanism>SCRAM-SHA-1</mechanism><mechanism>DIGEST-MD5</mechanism><mechanism>PLAIN</mechanism></mechanisms><c
+        xmlns='http://jabber.org/protocol/caps' hash='sha-1' node='http://www.process-one.net/en/ejabberd/'
+        ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register xmlns='http://jabber.org/features/iq-register'/></stream:features></body>
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:12 GMT
+- request:
+    method: post
+    uri: http://idlecampus.com:5280/http-bind
+    body:
+      encoding: UTF-8
+      string: <body rid="10449" xmlns="http://jabber.org/protocol/httpbind" xmpp:version="1.0"
+        xmlns:xmpp="urn:xmpp:xbosh" sid="dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67"><auth
+        xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN">TGVlNUBpZGxlY2FtcHVzLmNvbQBMZWU1AGFrazMyMg==</auth></body>
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '279'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '108'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - Content-Type
+    body:
+      encoding: UTF-8
+      string: <body xmlns='http://jabber.org/protocol/httpbind'><success xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/></body>
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:12 GMT
+- request:
+    method: post
+    uri: http://idlecampus.com:5280/http-bind
+    body:
+      encoding: UTF-8
+      string: <body rid="10450" xmlns="http://jabber.org/protocol/httpbind" xmpp:version="1.0"
+        xmlns:xmpp="urn:xmpp:xbosh" sid="dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67"
+        xmpp:restart="true"/>
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '177'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '712'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - Content-Type
+    body:
+      encoding: UTF-8
+      string: <body xmlns='http://jabber.org/protocol/httpbind' sid='dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67'
+        wait='5' requests='2' inactivity='30' maxpause='120' polling='2' ver='1.8'
+        from='idlecampus.com' secure='true' authid='1379776084' xmlns:xmpp='urn:xmpp:xbosh'
+        xmlns:stream='http://etherx.jabber.org/streams' xmpp:version='1.0'><stream:features
+        xmlns:stream='http://etherx.jabber.org/streams'><bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'/><session
+        xmlns='urn:ietf:params:xml:ns:xmpp-session'/><c xmlns='http://jabber.org/protocol/caps'
+        hash='sha-1' node='http://www.process-one.net/en/ejabberd/' ver='TQ2JFyRoSa70h2G1bpgjzuXb2sU='/><register
+        xmlns='http://jabber.org/features/iq-register'/></stream:features></body>
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:13 GMT
+- request:
+    method: post
+    uri: http://idlecampus.com:5280/http-bind
+    body:
+      encoding: UTF-8
+      string: <body rid="10451" xmlns="http://jabber.org/protocol/httpbind" xmpp:version="1.0"
+        xmlns:xmpp="urn:xmpp:xbosh" sid="dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67"><iq
+        id="bind_2139" type="set" xmlns="jabber:client"><bind xmlns="urn:ietf:params:xml:ns:xmpp-bind"><resource>bosh_4467</resource></bind></iq></body>
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '304'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '211'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - Content-Type
+    body:
+      encoding: UTF-8
+      string: <body xmlns='http://jabber.org/protocol/httpbind'><iq xmlns='jabber:client'
+        id='bind_2139' type='result'><bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'><jid>Lee5@idlecampus.com/bosh_4467</jid></bind></iq></body>
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:14 GMT
+- request:
+    method: post
+    uri: http://idlecampus.com:5280/http-bind
+    body:
+      encoding: UTF-8
+      string: <body rid="10452" xmlns="http://jabber.org/protocol/httpbind" xmpp:version="1.0"
+        xmlns:xmpp="urn:xmpp:xbosh" sid="dc56cfe075ad92e04d3dc545e4fb3aeac93fbd67"><iq
+        xmlns="jabber:client" type="set" id="sess_36818"><session xmlns="urn:ietf:params:xml:ns:xmpp-session"/></iq></body>
+    headers:
+      Accept:
+      - text/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '275'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Length:
+      - '172'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Headers:
+      - Content-Type
+    body:
+      encoding: UTF-8
+      string: <body xmlns='http://jabber.org/protocol/httpbind'><iq type='result'
+        xmlns='jabber:client' id='sess_36818'><session xmlns='urn:ietf:params:xml:ns:xmpp-session'/></iq></body>
+    http_version: 
+  recorded_at: Sat, 30 Nov 2013 21:49:14 GMT
+recorded_with: VCR 2.8.0

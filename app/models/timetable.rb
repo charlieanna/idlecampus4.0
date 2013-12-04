@@ -8,22 +8,96 @@ class Timetable < ActiveRecord::Base
   has_many :timetable_fields
   has_many :timetable_entries, dependent: :destroy,
             include: [:class_timing, :weekday, :small_group]
+            
   has_and_belongs_to_many :fields
   has_many :weekdays, through: :timetable_entries
-  after_save :send_push
-  def send_push
-    args = {}
-    args['members'] = members
-    args['message'] = message
-    args['message'] = 'timetable'
-    PygmentsWorker.perform_async(args)
+  
+  def push_params
+    return { members: members,
+       message: message,
+       app: 'timetable' 
+      }
   end
+  
+  
+  
+  def get_field_entries
 
+    
+    field_entries = []
+    
+    rooms_in_hash = FieldEntry.new("room",group.rooms.pluck(:name))
+
+    field_entries << rooms_in_hash
+
+    teachers_in_hash = FieldEntry.new("teacher",group.teachers.pluck(:name))
+
+    field_entries << teachers_in_hash
+
+    subjects_in_hash = FieldEntry.new("subject",group.subjects.pluck(:name))
+    
+  
+    field_entries << subjects_in_hash
+
+    return field_entries
+    
+  end
+  
+  def get_entries_array
+    
+    entries = get_entries
+    if entries.length > 0
+
+         entries_array = []
+
+   
+         # entries_sorted_by_weekday_and_class_timings = entries.group_by {|entry| [entry.weekday,entry.class_timing]}.values
+         entries_sorted_by_weekday_and_class_timings = entries.group_by do
+           |entry| [entry.weekday, entry.class_timing]
+          end
+         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings
+      
+         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash = entries_sorted_by_weekday_and_class_timings.values.each do |el|
+         
+            el.map! do |e|
+            
+              e.to_hash
+           
+           end
+         end
+    
+   
+      
+       end
+     
+       entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
+            [entry[0]['to_hours'],
+             entry[0]['to_minutes'],
+             entry[0]['from_hours'],
+             entry[0]['from_minutes']]
+          end
+          entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
+  #    
+    end
+  
+ def get_entries
+   entries = timetable_entries
+   entries.sort do |a, b|
+
+     a.class_timing <=> b.class_timing
+
+
+   end
+   return entries
+ end
+  
   def build_timetable_entries(entries)
+    PygmentsWorker.perform_async(push_params)
     entries.each do |ent|
       ent.each do |en|
         en.each do |entry|
           timetableentry = TimetableEntry.get(entry, self)
+          
           entry.each do |key, value|
             create_field(timetableentry, key, value)
             timetableentry.save
@@ -42,30 +116,9 @@ class Timetable < ActiveRecord::Base
       timetableentry.teacher = teacher if key == 'teacher'
       timetableentry.room = room if key == 'room'
       timetableentry.save
+      
     end
   end
   
-  def get_entries
-    entries = timetable_entries.includes(:class_timing).includes(:weekday).includes(:small_group)
-    entries.sort do |a, b|
-      a.class_timing <=> b.class_timing
-    end
-  end
 
-  def get_field_entry(name, values)
-    field_entry = {}
-    field_entry['name'] = name
-    field_entry['values'] = values.uniq
-    field_entry
-  end
-
-  def get_entry_hash_with_field(entry_hash, field)
-    teacher = field.teacher
-    subject = field.subject
-    room = field.room
-    entry_hash['teacher'] = teacher.name
-    entry_hash['subject'] = subject.name
-    entry_hash['room'] = room.name
-    entry_hash
-  end
 end

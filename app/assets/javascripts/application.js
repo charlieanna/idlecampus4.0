@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.remotipart
 //= require bootstrap
 //= require angular
 //= require angular-resource
@@ -31,3 +32,4 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require notes
 //= require jquery-fileupload/basic
+//= require turbolinks

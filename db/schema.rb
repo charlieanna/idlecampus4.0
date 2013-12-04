@@ -6,6 +6,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20130924013132) do
 
 =======
@@ -13,6 +14,9 @@ ActiveRecord::Schema.define(version: 20131030074700) do
 >>>>>>> working
 =======
 ActiveRecord::Schema.define(version: 20131121173405) do
+=======
+ActiveRecord::Schema.define(version: 20131129093621) do
+>>>>>>> turbolinks
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -31,10 +35,6 @@ ActiveRecord::Schema.define(version: 20131121173405) do
   end
 
   create_table "class_timings", force: true do |t|
-    t.integer  "to_minutes"
-    t.integer  "to_hours"
-    t.integer  "from_hours"
-    t.integer  "from_minutes"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.time     "from"
@@ -162,8 +162,15 @@ ActiveRecord::Schema.define(version: 20131121173405) do
   add_index "subjects", ["timetable_id"], name: "index_subjects_on_timetable_id"
 
   create_table "teachers", force: true do |t|
-    t.integer "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+    t.integer  "timetable_id"
   end
+
+  add_index "teachers", ["group_id"], name: "index_teachers_on_group_id"
+  add_index "teachers", ["timetable_id"], name: "index_teachers_on_timetable_id"
 
   create_table "timetable_entries", force: true do |t|
     t.integer  "timetable_id"

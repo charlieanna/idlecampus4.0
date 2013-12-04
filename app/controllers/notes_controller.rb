@@ -17,21 +17,23 @@ class NotesController < ApplicationController
   end
 
   def create
+    
     group = Group.find_by(group_code: params['group'])
     @note = group.notes.build(notes_params)
+    @note.note = params["note_text"]
+    @note.members = params[:members].split(',')
     @note.message = params["note_text"]
     @note.errors.messages
       if @note.save
-        # xmpp = DRbObject.new_with_uri 'druby://localhost:7777'
-#         xmpp.publish(@note.message, params['group'])
-        render json: @note
+      
+        
       else
         puts @note.errors.full_messages
       end
   end
 
   def index
-    group = Group.find_by(group_code: params['group'])
+    group = Group.find_by(group_code: params['group_id'])
     @notes = group.notes
     files = []
     @notes.each do |note|
@@ -39,6 +41,7 @@ class NotesController < ApplicationController
       file['id'] = note.id
       file['name'] = note.file.path.split('/').last
       file['url'] = note.file.url
+      file['message'] = note.message
       files << file
     end
     notes = {}
