@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.password_confirmation = @user.password
+    @user.device_identifier = "web"
+    @user.password = params["password"]
     @group = Group.find_by(group_code: params['Group Code'])
     if params['Group Code']
       if @group
