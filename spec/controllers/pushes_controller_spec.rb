@@ -4,7 +4,8 @@ describe PushesController do
 
   describe "GET 'create'",:vcr do
     it "returns http success" do
-      get 'create'
+      group = FactoryGirl.create(:group)
+      get 'create',from:"sfdf"
       response.should be_success
     end
   end
