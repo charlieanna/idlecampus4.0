@@ -16,7 +16,7 @@ class Note < ActiveRecord::Base
   after_save :send_push
   def send_push
     args = {}
-    args['from'] = group.group_code
+    args['from'] = group.name
     args['members'] = members
     args['message'] = note
     args['app'] = "note"
