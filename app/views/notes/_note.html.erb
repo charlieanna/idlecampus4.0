@@ -1,8 +1,17 @@
-<li><h3><%= @note.file.path.split('/').last %></h3>
+<li>
+  Group: <%= note.group.name%><h3>
+  <% unless note.file.path.nil? %>
+  <%= note.file.path.split('/').last %>
+  <div class="message-buttons">
+    <%= link_to "Download",note.file.url,class: "btn btn-success" %>
+ </div>
+  <% end %></h3>
 <p class="well well-message">
-	<%= @note.message %>
+	<%= note.message %>
 </p>
- <div class="message-buttons">
-   <%= link_to "Download",@note.file.url,class: "btn btn-success" %>
-</div>
+
+
+<abbr class="timeago" title="<%= note.created_at.getutc.iso8601 %>">
+  <%= note.created_at.to_s %>
+</abbr>
  </li>

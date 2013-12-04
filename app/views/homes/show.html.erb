@@ -1,5 +1,6 @@
 
 			<% if signed_in? %>
+     
       <% if current_user.rolable_type == "Student"%>
       <%= render 'student'%>
       <% else %>

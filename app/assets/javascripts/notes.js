@@ -53,9 +53,9 @@ $(document).ready(function(){
  // 			 console.log("ajax");
  // 		 })
 	$('#groupcode').tooltip()
-  	$('#groupname').tooltip()  
-     $('#example').popover('hide')
- 
+  $('#groupname').tooltip()  
+  $('#example').popover('hide')
+  $("abbr.timeago").timeago();
 	
 	
 })

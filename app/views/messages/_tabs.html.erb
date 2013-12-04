@@ -9,53 +9,44 @@
                     <li style="margin:0 5px;text-align:center;width:100px;">
                         <a data-toggle="tab" href="#tabs-2">Alert</a>
                     </li>
-										
+                    
+                    
+                    
+                    <% unless @group.group_code.nil? %>
+
                     <li style="margin:0 5px;text-align:center;width:100px;">
                         <a data-toggle="tab" href="#tabs-3" id="timetable">Timetable</a>
                     </li>
+                    
+                    <% end %>
 
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tabs-1">
 
-										
 
-									                <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
-									                  <div class="fileupload-buttonbar">
-                                      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-								                	<%= f.hidden_field "authenticity_token",value: form_authenticity_token %>
-																				<%= f.text_area :message,rows: 3,placeholder:"Enter your note here:"%>
-									                      <%= f.file_field :file %>
-																				
-																				<%= f.hidden_field :group_code,:value =>@group.group_code %>
 
-                                        <p>
-<button type="button" data-loading-text="Uploading..." class="btn btn-success"  id="note_file_button" ng-click="publishgroupnote()">
-  Upload
-</button>
-						</p>										<span id="message" style="display:none">Note sent</span>
-									                    </div>
-														
-						                 
-									                <% end %>
+                      <%= render "notes/form"%>
 
-            
+                      
 
                     </div>
 
 
                     <div class="tab-pane" id="tabs-2">
-                        <textarea class="row-fluid span11" id="createalertinput" ng-model="data.alert" rows="3"
-                                  placeholder="Enter your alert here:"></textarea>
-                  
-												<p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
-													Send</button>
-												</p>
-                 
-                    </div>
-										
-                    <div class="tab-pane" id="tabs-3">
                       
+                      <%= render "alerts/form"%>
+                        <!-- <textarea class="row-fluid span9" id="createalertinput" ng-model="data.alert" rows="3"
+                                  placeholder="Enter your alert here:"></textarea>
+
+                        <p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
+                          Send</button>
+                        </p> -->
+
+                    </div>
+
+                    <div class="tab-pane" id="tabs-3">
+
                   <%= render "timetable/timetable" %>
                     </div>
 

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-  end
+  end 
 
   def create
     @user = User.new(user_params)
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
           attacher[:jid] = @session_jid
           attacher[:id] = @session_id
           attacher[:rid] = @session_random_id
+          attacher[:group] = @group.group_code
           @user.follow(@group)
           flash[:attacher] = attacher
           sign_in_with_redirect(@user)
@@ -85,7 +86,7 @@ class UsersController < ApplicationController
 
   def send_push
     #  {"users"=>"zb@idlecampus.com", "message"=>"dsvdxv", "controller"=>"users", "action"=>"send_push"}
-    members = [params['users']]
+    members = [params['to']]
     args = { members: members, message: params['message'], app: 'message' }
     PygmentsWorker.perform_async(args)
     render text: 'OK'

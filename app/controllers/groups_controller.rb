@@ -16,7 +16,8 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     gon.a = ""
-   
+    @posts = @group.alerts.includes(:group) + @group.notes.includes(:group)
+    @posts = @posts.sort_by(&:created_at).reverse
   end
 
   def new

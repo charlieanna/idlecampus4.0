@@ -61,7 +61,7 @@
         $scope.data.checked = true  if $scope.data.timetable.batches.length > 0
         $scope.data.timetable.entries = rdata.timetable.field_entries
         $scope.data.timeArray = entries
-        $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
+        $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#groupcode").text(), (iq) ->
           $(iq).find("subscription").each ->
            
             jid = $(this).attr("jid")
@@ -140,6 +140,7 @@
         name: group
     ).done (data) ->
 <<<<<<< HEAD
+<<<<<<< HEAD
      group_code = data.group_code
      console.log data
  
@@ -161,6 +162,9 @@
      $scope.$digest()
 =======
       group_code= data.substring(data.length-8,data.length-2);
+=======
+      group_code= data.substring(data.length-9,data.length-3);
+>>>>>>> working
       $scope.XMPP.connection.pubsub.createNode group_code,
         "pubsub#notification_type": "normal"
       , ->
@@ -209,14 +213,15 @@
   $scope.publishgroupnote = ->
     $("#note_file_button").button('loading')
     $("#message").hide()
+    group = $("#note_group").val()
     formData = new FormData()
     $input = $("#note_file")
     formData.append "note[file]", $input[0].files[0]
     formData.append "note_text", $("#note_message").val()
-    formData.append "group", $("#note_group_code").val()
+    formData.append "group", group
     # $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
 #       console.log data
-    $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#note_group_code").val(), (iq) ->
+    $scope.XMPP.connection.pubsub.getNodeSubscriptions group, (iq) ->
       members = []
       $(iq).find("subscription").each ->
         
@@ -233,6 +238,7 @@
         processData: false
         method: 'POST'
       ).done ->
+        $("#note_message").val("")
         $("#note_file_button").button('reset')
         $("#message").show()
         $("a, button").toggleClass "active"
@@ -246,19 +252,23 @@
 
 
   $scope.publishgroupalert = ->
-    $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#createalertinput").val(), (data) ->
+    $("abbr.timeago").timeago();
+    group = $("#alert_group").val()
+    message = $("#alert_message").val()
+    $scope.XMPP.connection.pubsub.publish group , message, (data) ->
       console.log data if gon.global.debug
    
     $.post("/alerts",
       alert:
-        message: $("#createalertinput").val()
-        group: $("#note_group_code").val()
+        message: message
+        group: group 
     ).done (data) ->
-    
+      $("#createalertinput").val("")
    
 
 
   $scope.publishgroupassignment = ->
+    $("abbr.timeago").timeago();
    
     message = $scope.assignment
     console.log group

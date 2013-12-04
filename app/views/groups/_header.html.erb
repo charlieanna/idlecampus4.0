@@ -1,17 +1,29 @@
-<div class="row">
-    <div class="offset4 span7">
+
+
+
+
+
+
+<div class="widget" class="span3">
+
+	<div class="widget-content">
+    <%=  gravatar_for(current_user, size: 52) %>
+
+    <div>
       
      Group Name: 
-      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupname" title="" data-original-title="Name of your group"><%= @group.name%></button>
+      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupname" title="" data-original-title=""><%= @group.name%></button>
     </div>
-    <div class="span5">
-      Group ID: <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" id="groupcode" title="" data-original-title="Pass this group code to your students to follow"><%= @group.group_code %></button>
+    <div>
+      <% if current_user.rolable_type == "Teacher"%>
+      Group ID: <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="up" id="groupcode" title="" data-original-title="Pass this group code to your students to follow" style="
+    margin-left: 64px;
+"><%= @group.group_code%></button>
+<% else %>
+      Group ID: <button type="button" class="btn btn-default" id="groupcode" style="margin-left: 64px;"><%= @group.group_code%></button>
+<% end %>
     </div>
-
+	</div>
 </div>
 
 
-
-<!-- <button type="button" class="btn btn-default" id="example" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
-         <%= @group.group_code %>
-        </button> -->
