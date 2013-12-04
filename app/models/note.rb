@@ -16,9 +16,11 @@ class Note < ActiveRecord::Base
   after_save :send_push
   def send_push
     args = {}
+    args['from'] = group.group_code
     args['members'] = members
     args['message'] = note
     args['app'] = "note"
+    puts args
     # Push.new(args['members'], args['message'], args['app']).send_push
     PygmentsWorker.perform_async(args)
   end
