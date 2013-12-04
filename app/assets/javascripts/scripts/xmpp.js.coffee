@@ -54,19 +54,14 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
 
   $scope.spin = ""
   $scope.disconnected = ->
-    alert("Session Expired...Please login again")
-    window.location = "/signin"
-    # $( '<div class="alert alert-danger" id="alert" style="margin-left: 20px;">Session Expired. Please login in again...</div>' ).insertBefore( "#login" );
- # 
+    
+    bootbox.alert "Session Expired...Please login again", ->
+      window.location = "/signin"     
     eraseCookie("remember_token")
     localStorage.clear()
     XMPP.connection = null
-    XMPP.pending_subscriber = null
-    $("#roster-area ul").empty()
-    $("#chat-area ul").empty()
-    $("#chat-area div").remove()
-    $("#login_dialog").dialog "open"
-
+    
+   
   $scope.XMPP =
     NS_DATA_FORMS: "jabber:x:data"
     NS_PUBSUB: "http://jabber.org/protocol/pubsub"

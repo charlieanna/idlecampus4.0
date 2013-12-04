@@ -31,3 +31,4 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require notes
 //= require jquery-fileupload/basic
+//= require bootbox
