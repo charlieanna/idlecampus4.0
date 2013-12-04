@@ -13,11 +13,14 @@ class Timetable < ActiveRecord::Base
   has_many :weekdays, through: :timetable_entries
   
   def push_params
-    return { members: members,
-       message: message,
+    return { 
+       from: group.name,
+       members: members,
+       message:  message,
        app: 'timetable' 
       }
   end
+  
   
   
   
