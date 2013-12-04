@@ -27,7 +27,7 @@ class TimetableCreator
   
   def push_params
     return { from: @params['group_id'],
-      from: members: @timetable.members,
+       members: @timetable.members,
        message: @timetable.message,
        app: 'timetable' 
       }
