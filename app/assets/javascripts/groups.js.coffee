@@ -53,7 +53,7 @@
         $scope.data.checked = true  if $scope.data.timetable.batches.length > 0
         $scope.data.timetable.entries = rdata.timetable.field_entries
         $scope.data.timeArray = entries
-        $scope.XMPP.connection.pubsub.getNodeSubscriptions $scope.data.currentGroup.group_code, (iq) ->
+        $scope.XMPP.connection.pubsub.getNodeSubscriptions $("#groupcode").text(), (iq) ->
           $(iq).find("subscription").each ->
            
             jid = $(this).attr("jid")

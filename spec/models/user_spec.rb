@@ -8,7 +8,7 @@ describe User  do
   it { should respond_to(:email) }
   it { should be_valid }
   
- it { should respond_to(:password_confirmation) }
+ # it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   describe "when name is not present" do
@@ -88,4 +88,33 @@ describe User  do
       last_email.to.should include (user.email)
     end
   end
+  
+  describe ".members_without_trailing_" do
+    
+    it "returns an emptry array when passed an empty array" do
+      members = User.members_without_trailing_([])
+      expect(members).to eq([])
+    end
+    
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

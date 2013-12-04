@@ -18,7 +18,7 @@ class TimetablesController < ApplicationController
     timetable = Timetable.find_or_create_by(group_id: group.id)
     entries = result['entries']
     members = group.get_users
-    timetable.members = members
+    timetable.members = params['timetable']['members']
     message = "http://idlecampus.com/groups/#{result['group_code']}/timetable.json"
     timetable.message = message
     timetable.build_timetable_entries(entries)

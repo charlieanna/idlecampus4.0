@@ -16,14 +16,14 @@ class HomesController < ApplicationController
         @posts = @posts.sort_by(&:created_at).reverse
       elsif current_user.rolable_type == "Student"
       
-          @group = current_user.all_following.first  
+          @group = current_user.all_following.first 
           @posts = []
-          @posts << @group.alerts
-          @posts << @group.notes
+          @posts << @group.alerts.includes(:group)
+          @posts << @group.notes.includes(:group)
           @posts.flatten!
        
           @posts = @posts.sort_by(&:created_at).reverse
-          gon.attacher[:group] = @group.group_code if gon.attacher  == flash[:attacher]
+         
        
      
        
