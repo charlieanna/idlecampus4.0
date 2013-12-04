@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe UserMailer do
-  describe "signup_confirmation" do
-    let(:mail) { UserMailer.signup_confirmation }
+  describe "password_reset" do
+    let(:mail) { UserMailer.password_reset }
 
     it "renders the headers" do
-      mail.subject.should eq("Signup confirmation")
+      mail.subject.should eq("Password reset")
       mail.to.should eq(["to@example.org"])
       mail.from.should eq(["from@example.com"])
     end

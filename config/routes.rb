@@ -1,11 +1,9 @@
 IdleCampus::Application.routes.draw do
   
  
-  get "push/create"
-  devise_for :users
   get "password_resets/new"
-   
-
+  get "push/create"
+  resources :password_resets
   match "checkEmail" => "user_validations#checkEmail",via: 'get'
   match "checkName" => "user_validations#checkName",via: 'get'
   

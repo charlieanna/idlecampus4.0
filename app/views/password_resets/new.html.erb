@@ -1,7 +1,35 @@
-<%= form_tag password_resets_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="actions"><%= submit_tag "Reset Password" %></div>
-<% end %>
+
+
+
+<div class="row">
+	<!-- Login content -->
+  
+	<div id="login">
+		<div id="main-header">
+      <h2>Forgot your password?</h2>
+			
+		</div>
+	
+		<div id="login-content" class="clearfix">
+			
+		
+			  
+     <%= form_tag password_resets_path, :method => :post do %>
+       
+
+        <div> <%= label_tag :email %><br />
+        <%= text_field_tag :email,params[:email], :autofocus => true %></div>
+
+       <div class="actions"><%= submit_tag "Reset Password" %></div>
+       
+        
+      <% end %>
+	       
+        
+		</div>
+	</div>
+	<!-- /Login content -->
+</div>
+
+<!-- Javascript files -->
+

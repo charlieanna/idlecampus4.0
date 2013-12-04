@@ -5,8 +5,9 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, :registerable,
          # :recoverable, :rememberable, :trackable, :validatable
          
-  devise  :recoverable
+  # devise  :recoverable
   before_create :set_jabber_id
+  
   validates :name, presence: true, length: { maximum: 50 },
                    uniqueness: { case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -17,12 +18,13 @@ class User < ActiveRecord::Base
   has_many :created_groups, class_name: 'Group'
   acts_as_follower
 
-def send_password_reset
-  generate_token(:password_reset_token)
-  self.password_reset_sent_at = Time.zone.now
-  save!
-  UserMailer.password_reset(self).deliver
-end
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    
+    UserMailer.delay.password_reset(self)
+  end
 
   def generate_token(column)
     loop do
