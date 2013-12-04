@@ -34,6 +34,7 @@ class UsersController < ApplicationController
           attacher[:group] = @group.group_code
           @user.follow(@group)
           flash[:attacher] = attacher
+          UserMailer.signup_confirmation(@user).deliver
           sign_in_with_redirect(@user)
         else
           gon.n = ""

@@ -1,0 +1,52 @@
+
+
+<div class="row">
+	<!-- Login content -->
+	<div id="login">
+		<div id="main-header">
+			<h3>Sign up for a free account</h3>
+		</div>
+		
+		
+	
+		<div id="login-content" class="clearfix">
+			
+            <%= form_for @user do |f|%>
+            <%= render 'shared/error_messages' %>
+				<fieldset>
+					<%= f.hidden_field :rolable_type%>
+					<div class="control-group">
+		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Username</label>
+		  		      <%= f.text_field :name,integer: "", id:"Name",name: "user[name]", "ng-model" => "user", placeholder: "Username:", required: "", type: "text" %>
+					 <i id="nameicon"></i>
+					</div>
+					<div class="control-group">
+		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Email</label>
+		  		      <%= f.email_field :email,integer1: "",id:"Email", name: "user[email]", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email" %>
+		  		      <i id="emailicon"></i>
+						
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
+
+		  		     
+		  		      <%= f.password_field :password,name: "user[password]",id:"Password", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password" %>
+                      
+						<i id="passwordicon"></i>
+					</div>
+				</fieldset>
+				<hr>
+			
+					<%= f.submit 'Create Account', :class => "btn btn-success btn-large signupbutton" %>
+				
+				<% end %>
+		</div>
+	</div>
+	<!-- /Login content -->
+</div>
+
+<!-- Javascript files -->
+
+
+
+<%= render "devise/shared/links" %>

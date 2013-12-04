@@ -1,8 +1,8 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "ankothari@gmail.com"
 
-  def password_reset(user)
+  def signup_confirmation(user)
     @user = user
-    mail :to => user.email, :subject => "Password Reset"
+    mail to: user.email, subject: "Sign Up Confirmation"
   end
 end

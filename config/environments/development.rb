@@ -9,7 +9,23 @@ IdleCampus::Application.configure do
   config.assets.css_compressor = :sass
   # Do not eager load code on boot.
   config.eager_load = false
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
 
+  # Change mail delvery to either :smtp, :sendmail, :file, :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "ankothari",
+    password: "akpk2972@"
+  }
+
+  # Specify what domain to use for mailer URLs
+  config.action_mailer.default_url_options = {host: "localhost:3000"}
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

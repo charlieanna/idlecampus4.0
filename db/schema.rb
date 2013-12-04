@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202063835) do
+ActiveRecord::Schema.define(version: 20131204165144) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -230,8 +230,12 @@ ActiveRecord::Schema.define(version: 20131202063835) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["jabber_id"], name: "index_users_on_jabber_id"
   add_index "users", ["name"], name: "index_users_on_name", unique: true
