@@ -35,8 +35,7 @@ $(document).ready(function(){
    		selectable: true,
    		allDaySlot:false,
    		select: function(start, end, allDay) {
-        a = $('#calendar').fullCalendar('clientEvents');
-        console.log(a);
+       
         endtime = $.fullCalendar.formatDate(end,'h:mm tt');
         starttime = $.fullCalendar.formatDate(start,'ddd, h:mm tt');
         var mywhen = starttime + ' - ' + endtime;
@@ -98,7 +97,7 @@ $(document).ready(function(){
   $('#groupname').tooltip()  
   $('#example').popover('hide')
   $("abbr.timeago").timeago();
-  $('#addtimetableentry').on('hidden.bs.modal', function (e) {
+  $('#addtimetableentry #AddEntry').on('click', function (e) {
    
        $("#calendar").fullCalendar('renderEvent',
        {
@@ -112,5 +111,30 @@ $(document).ready(function(){
        },
        true);
   })
+  
+  $("#sendtimetable").click(function(){
+    a = $('#calendar').fullCalendar('clientEvents');
+    entries = []
+    for(var i = 0;i<a.length;i++){
+      console.log(a)
+      entry = { to_hours:a[i].end.getHours(),
+          to_minutes:a[i].end.getMinutes(),
+          from_hours:a[i].start.getHours(),
+          from_minutes:a[i].start.getMinutes(),
+          teacher:a[i].teacher,
+          subject:a[i].subject,
+          room:a[i].room }
+          entries.push(entry)
+    }
+    values = JSON.stringify(entries)
+    v = {
+          timetable:{
+            entries:JSON.stringify([[entries]])
+        }
+           
+  }
+    // console.log(JSON.stringify($('#calendar').fullCalendar('clientEvents') ));
+    $.post( "/groups/" + "NQCQYX" + "/timetable",v );
+  });
 	
 })
