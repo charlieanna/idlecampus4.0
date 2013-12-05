@@ -32,3 +32,4 @@
 //= require notes
 //= require jquery-fileupload/basic
 //= require bootbox
+//= require fullcalendar

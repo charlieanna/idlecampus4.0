@@ -19,6 +19,7 @@ group :development, :test do
   gem "launchy", "~> 2.3.0"
   
 end 
+gem 'fullcalendar-rails'
 gem "cancan"  
 gem "bullet", :group => "development"
 gem 'jasmine', :group => [:development, :test]
