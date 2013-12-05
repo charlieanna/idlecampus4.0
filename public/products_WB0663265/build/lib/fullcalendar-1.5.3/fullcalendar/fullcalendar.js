@@ -51,7 +51,7 @@ var defaults = {
 	},
 	columnFormat: {
 		month: 'ddd',
-		week: 'ddd M/d',
+		week: 'ddd',
 		day: 'dddd M/d'
 	},
 	timeFormat: { // for event elements
