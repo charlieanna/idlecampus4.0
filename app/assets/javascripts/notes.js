@@ -18,44 +18,99 @@ $(document).ready(function(){
      });
 		 
 		 
-		 // $("#note_file_button").click(function(){
- // 			 var $input, currentgroup, formData;
- // 
- // 			 $("#message").hide();
- // 
- // 			
- // 
- // 			 $("#note_file_button").text("Sending...");
- // 
- // 			 formData = new FormData();
- // 
- // 			 $input = $("#note_file");
- // 
- // 			 formData.append("note[file]", $input[0].files[0]);
- // 
- // 			 formData.append("note_text", $("#note_text").val());
- // 
- // 			 formData.append("group", $("#note_group_code").val());
- // 
- // 			 $.ajax({
- // 			   url: "/notes",
- // 			   data: formData,
- // 			   cache: false,
- // 			   contentType: false,
- // 			   processData: false,
- // 			   method: 'POST'
- // 			 }).done(function() {
- // 			   $("#message").show();
- // 			   $("a, button").toggleClass("active");
- // 			   return $("#note_file_button").text("Send");
- // 			 });
- // 
- // 			 console.log("ajax");
- // 		 })
+   	var date = new Date();
+   	var d = date.getDate();
+   	var m = date.getMonth();
+   	var y = date.getFullYear();
+	
+   	var calendar = $('#calendar').fullCalendar({
+   
+        defaultView: 'agendaWeek',
+   		header: {
+   			left:'',
+   			center: '',
+   			right: ''
+   		},
+   
+   		selectable: true,
+   		allDaySlot:false,
+   		select: function(start, end, allDay) {
+        a = $('#calendar').fullCalendar('clientEvents');
+        console.log(a);
+        endtime = $.fullCalendar.formatDate(end,'h:mm tt');
+        starttime = $.fullCalendar.formatDate(start,'ddd, h:mm tt');
+        var mywhen = starttime + ' - ' + endtime;
+        $('#addtimetableentry #apptStartTime').val(start);
+        $('#addtimetableentry #apptEndTime').val(end);
+         $('#addtimetableentry #when').text(mywhen);
+        a =  $.fullCalendar.formatDate(start, 'MM-dd-yyyy');
+        var weekday=new Array(7);
+        weekday[0]="Sunday";
+        weekday[1]="Monday";
+        weekday[2]="Tuesday";
+        weekday[3]="Wednesday";
+        weekday[4]="Thursday";
+        weekday[5]="Friday";
+        weekday[6]="Saturday";
+        console.log(a);
+         console.log(weekday[start.getDay()]);
+         console.log(start.getHours());
+          console.log(start.getMinutes());
+          console.log(weekday[end.getDay()]);
+          console.log(end.getHours());
+           console.log(end.getMinutes());
+         $('#addtimetableentry').modal('show');
+         $("#start1").text(start.getDay());
+         $("#end1").text(end);
+   		  // var title = prompt('Event Title:');
+ //      
+ //         if (title) {
+ //           calendar.fullCalendar('renderEvent',
+ //             {
+ //               title: title,
+ //               start: start,
+ //               end: end,
+ //               teacher:"adsad",
+ //               allDay: allDay
+ //             },
+ //             true // make the event "stick"
+ //           );
+ //         }
+ //         calendar.fullCalendar('unselect');
+   		},
+   		editable: true,
+   		events: [
+		
+		
+	
+   		
+   		] , eventRender: function(event, element) {
+         console.log(event.teacher);
+         text = event.title+"</br>Teacher: "+event.teacher +"</br>Subject: "+event.subject+" </br>Room: "+event.room;
+       $(element).html(text);
+           // element.qtip({
+    //            content: event.description
+    //        });
+       }
+   	});
+	
 	$('#groupcode').tooltip()
   $('#groupname').tooltip()  
   $('#example').popover('hide')
   $("abbr.timeago").timeago();
-	
+  $('#addtimetableentry').on('hidden.bs.modal', function (e) {
+   
+       $("#calendar").fullCalendar('renderEvent',
+       {
+           title:$('#addtimetableentry #when').text(),
+           start: new Date($('#apptStartTime').val()),
+           end: new Date($('#apptEndTime').val()),
+           allDay: ($('#apptAllDay').val() == "true"),
+           teacher:$('#addtimetableentry #teacher option:selected').text(),
+           room:$('#addtimetableentry #room option:selected').text(),
+           subject:$('#addtimetableentry #subject option:selected').text()
+       },
+       true);
+  })
 	
 })

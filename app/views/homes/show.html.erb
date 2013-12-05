@@ -1,22 +1,275 @@
 
-			<% if signed_in? %>
+
+<div class="row" ng-controller="TimetableCtrl" >
+  <div id="addtimetableentry" class="modal hide fade" tabindex="-1" role="dialog"
+       aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <div class="modal-header">
+
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                  id="close{{index}}">×
+          </button>
+          <h3 id="myModalLabel"></h3>
+
+      </div>
+      <div class="modal-body">
+        <div class="control-group">
+                    <label class="control-label" for="when">When:</label>
+                    <div class="controls controls-row" id="when" style="margin-top:5px;">
+                    </div>
+                </div>
+        <div class="controls">
+        
+           
+                      <input type="hidden" id="apptStartTime"/>
+                      <input type="hidden" id="apptEndTime"/>
+                      <input type="hidden" id="apptAllDay" />
+                </div>
+        
+    <span ng-repeat="entry in data.timetable.entries" ng-hide="dt.length>1">
+     {{entry.name}}<select class="span2" ng-model="entry3213"
+                           ng-options="value for value in entry.values"
+                           id="{{entry.name}}{{index}}"></select>
+    </span>
+          <span ng-repeat="batch in data.timetable.batches" ng-show="dt.length>1">
+
+             <span ng-repeat="entry in data.timetable.entries">
+
+     {{entry.name}}: <select class="span2" ng-model="dt[$parent.$index][entry.name]"
+                             ng-options="value for value in entry.values"
+                             id="{{entry.name}}{{index}}{{$parent.$index+1}}"></select>
+
+
+
+    </span>
+          </span>
+
+
+      </div>
+      <div class="modal-footer">
+
+          <button data-dismiss="modal" id="AddEntry">Add</button>
+      </div>
+  </div>
+
+  <div class="span10 offset1">
+      <!--Body content-->
+      <div class="row">
+          <div class="span1"></div>
+      </div>
+      <div class="row">
+          <div class="span1"></div>
+          <div class="span1"></div>
+          <div class="span1"></div>
+          <div class="span1"></div>
+         
+          <div class="span2" style="width: 151px;">
+              <button id="SendTimetable" class="btn" ng-click="send()">Send Timetable</button>
+          </div>
+          <div class="span2" style="width: 100px;">
+              <button id="CreateTimetable" type="button" class="btn ng-scope" name="CreateTimetable"
+                      bs-modal="'/partials/wizard.html'"
+                      data-toggle="modal">Create Timetable
+              </button>
+          </div>
+          <div class="span1"></div>
+          <div class="span1"></div>
+      </div>
+     
+
+   
+
+
+
+
+      
+
+
+  </div>
+ 
+
+  <h2>Timetable</h2>
+  <div id='calendar'></div>
+
+                
+                
+              </div>
+          </div>
+      </div>
+    
+      
+    
+
+
+
+ 
+ 
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+
+
+    <div class="container">
+        <div class="row-fluid">
+            <!--<div class="span2">-->
+            <!--&lt;!&ndash;Sidebar content&ndash;&gt;-->
+
+
+            <!--</div>-->
+            <div class="span10 offset1">
+                <!--Body content-->
+                <div class="row">
+                    <div class="span1"></div>
+                </div>
+            
+               
+
+                <div class="widget widget-table" style="
+                margin-top: 30px;
+                ">
+                  
+                    <div class="widget-content">
+   
+                        <table id="timetable" class="table table-striped table-bordered"
+                               ng-show="data.timeArray[0].length>0">
+
+                            <thead>
+                            <tr>
+                                <th>Time</th>
+
+                                <th ng-repeat="weekday in data.timetable.weekdays">{{weekday}}</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr ng-repeat="time in data.timeArray">
+
+
+                                <td>
+
+                                    {{getDisplayTime(time)}}
+                                </td>
+                                <td ng-repeat="dt in time">
+
+                                    <a href="#addtimetableentry{{($parent.$index)*7+$index+1;index = ($parent.$index)*7+$index+1;}}"
+                                       ng-model="index"
+                                       role="button" class="editbtn btn"
+                                       data-toggle="modal" id="sub{{($parent.$index)*7+$index+1}}" style="
+                                    width: 53px;
+                                            height: 30px;
+                                            padding-top: 0px;
+                                            padding-left: 0px;
+                                            padding-right: 0px;
+                                            padding-bottom: 0px;
+                                    ">Add</a>
+
+
+                      <span ng-hide="data.timetable.batches.length == 0">
+                      <!-- {{data.timetable.batches.length > 0}} -->
+
+
+                      <input type="checkbox" ng-click="addBatchToEntry(dt[0])"
+                             id="addbatch{{($parent.$index)*7+$index+1}}"><br/>  Add Group:</span>
+
+
+                       <span ng-repeat="datetime in dt">
+
+                         <span>
+
+                             <span ng-repeat="entry in data.timetable.entries"
+                                   id="{{entry.name}}{{index}}"> {{entry.name}} : {{datetime[entry.name]}}
+                             </span>
+                       <span ng-show="data.timetable.batches.length>0">  Batch: {{datetime['batch']}}
+                       </span>
+
+                      <br/>
+
+
+
+
+
+                      <div id="addtimetableentry{{index}}" class="modal hide fade" tabindex="-1" role="dialog"
+                           aria-labelledby="myModalLabel" aria-hidden="true">
+
+                          <div class="modal-header">
+
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                      id="close{{index}}">×
+                              </button>
+                              <h3 id="myModalLabel"></h3>
+
+                          </div>
+                          <div class="modal-body">
+
+
+                        <span ng-repeat="entry in data.timetable.entries" ng-hide="dt.length>1">
+                         {{entry.name}}<select class="span2" ng-model="datetime[entry.name]"
+                                               ng-options="value for value in entry.values"
+                                               id="{{entry.name}}{{index}}"></select>
+                        </span>
+                              <span ng-repeat="batch in data.timetable.batches" ng-show="dt.length>1">
+
+                                 <span ng-repeat="entry in data.timetable.entries">
+
+                         {{entry.name}}: <select class="span2" ng-model="dt[$parent.$index][entry.name]"
+                                                 ng-options="value for value in entry.values"
+                                                 id="{{entry.name}}{{index}}{{$parent.$index+1}}"></select>
+
+
+
+                        </span>
+                              </span>
+
+
+                          </div>
+                          <div class="modal-footer">
+
+                              <button data-dismiss="modal" id="AddEntry">Add</button>
+                          </div>
+                      </div>
+
+                      </span>
+                       </span>
+                                </td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+</div>
+		  <!-- <% if signed_in? %>
      
       <% if current_user.rolable_type == "Student"%>
       <%= render 'student'%>
       <% else %>
       <%= render 'teacher'%>
       <% end %>
-				<% else %>
+        <% else %>
 <% provide(:title,"IdleCampus") %>
 <%=   image_tag "img/VectorSmartObject.png", :class => "bg",:size => "1001x506" %>
 
 <%=  image_tag "img/logo1plusflyingobjects.png",id:"logo-combined",:size => "1000x576" %>
 
 <a id="ios" href="https://itunes.apple.com/us/app/idlecampus/id589694599?ls=1&mt=8" style="position:relative;right:222px;top:109px;">
-	<img alt="appstore" height= "42" src= "img/Layer6.png" width= "120"></img>
+  <img alt="appstore" height= "42" src= "img/Layer6.png" width= "120"></img>
 </a>
 <a id="android" href="https://play.google.com/store/apps/details?id=com.idlecampus" style="position:relative; top:109px;">
-		<img alt="android store"  height= "42" src= "img/Layer7.png" width= "120"></img>
+    <img alt="android store"  height= "42" src= "img/Layer7.png" width= "120"></img>
 </a>
 
 
@@ -34,4 +287,4 @@
 <%=   image_tag "img/Layer5.png", :id => "Layer5",:size => "185x328"%>
 
 <% end %>
-
+ -->

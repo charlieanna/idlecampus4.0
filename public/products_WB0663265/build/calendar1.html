@@ -264,6 +264,7 @@ $(document).ready(function() {
             title: title,
             start: start,
             end: end,
+            teacher:"adsad",
             allDay: allDay
           },
           true // make the event "stick"
@@ -271,8 +272,32 @@ $(document).ready(function() {
       }
       calendar.fullCalendar('unselect');
 		},
-		editable: true
+		editable: true,
+		events: [
+		
+		
 	
+			{
+				title: 'Lunch',
+				start: new Date(y, m, d, 12, 0),
+				end: new Date(y, m, d, 14, 0),
+				allDay: false
+			},
+			{
+				title: 'Birthday Party',
+				start: new Date(y, m, d+1, 19, 0),
+				end: new Date(y, m, d+1, 22, 30),
+				allDay: false,
+        teacher:"sadasda"
+			}
+		
+		] , eventRender: function(event, element) {
+      console.log(event.teacher);
+    $(element).text(event.teacher);
+        // element.qtip({
+ //            content: event.description
+ //        });
+    }
 	});
 	
 });
