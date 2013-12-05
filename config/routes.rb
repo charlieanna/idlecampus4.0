@@ -15,6 +15,7 @@ IdleCampus::Application.routes.draw do
   resources :groups do
     resource :timetable,only: [:create,:show]
     resources :notes
+    resources :files,only: :index
   end
   match 'students/signup',  to: 'students#new',            via: 'get'
   match 'teachers/signup',  to: 'teachers#new',            via: 'get'

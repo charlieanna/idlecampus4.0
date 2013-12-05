@@ -10,6 +10,7 @@ class Group < ActiveRecord::Base
   has_many :rooms
   has_many :alerts, :order => 'created_at desc'
   has_many :notes
+  has_many :files, through: :notes
   has_many :students
   belongs_to :teacher
   has_many :followers, class_name: 'Student'

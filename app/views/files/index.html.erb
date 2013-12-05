@@ -1,0 +1,74 @@
+<div class="row" ng-controller="GroupsCtrl" ng-init="get()">
+    <aside class="span3">
+        <section>
+            <div>
+              
+           
+
+                <%= render 'groups/header' %>
+                
+                   <%= render 'groups/options'%>
+
+                <% if current_user.rolable_type == "Teacher" %>
+                    <section>
+                        <%= render 'shared/group_form' %>
+                    </section>
+                    <section>
+                        <%= render 'shared/groups' %>
+                    </section>
+
+                <% end %>
+
+
+            </div>
+        </section>
+
+    </aside>
+    <div class="span9">
+        <!-- Main content         -->
+        <div id="main-content">
+            <!-- Container -->
+            <div class="container">
+             
+<h1 class="page-title">Group Files</h1>
+
+
+                <div class="span6">
+                    
+                    <ul class="nav nav-tabs nav-stacked">
+                      <% @notes.each do |note|%>
+                      <% unless note.file.path.nil? %>
+                      <%= note.file.path.split('/').last %>
+                      <div class="message-buttons">
+                        <%= link_to "Download",note.file.url,class: "btn btn-success" %>
+                     </div>
+                      <% end %>
+                      <% end %>
+                    </ul>
+
+                 
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- /Content -->
+
+
+        <!-- /Content -->
+    </div>
+
+
+</div>
+<!-- /Container -->
+</div>
+
+
+
+
+</div>
+
+
+
