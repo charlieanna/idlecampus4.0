@@ -22,16 +22,55 @@ $(document).ready(function(){
    	var d = date.getDate();
    	var m = date.getMonth();
    	var y = date.getFullYear();
-	
+    
+    $.get( "/groups/" + "NQCQYX" + "/timetable",function(data){
+      console.log(data);
+      
+      entries = [];
+      var weekday=new Array(7);
+      weekday[0]="Sunday";
+      weekday[1]="Monday";
+      weekday[2]="Tuesday";
+      weekday[3]="Wednesday";
+      weekday[4]="Thursday";
+      weekday[5]="Friday";
+      weekday[6]="Saturday";
+	    for(var i = 0 ; i<data.timetable.entries.length;i++){
+        obj = data.timetable.entries[i][0][0];
+        var start =  new Date(y, m, d, obj.from_hours, obj.from_minutes);
+        var end = new Date(y, m, d, obj.to_hours, obj.to_minutes);
+        var currentDay = start.getDay();
+        distance = weekday.indexOf(obj.weekday) - currentDay
+        start.setDate(start.getDate() + distance);
+        end.setDate(end.getDate() + distance);
+        endtime = $.fullCalendar.formatDate(end,'h:mm tt');
+        starttime = $.fullCalendar.formatDate(start,'ddd, h:mm tt');
+        var mywhen = starttime + ' - ' + endtime;
+        entry = { 
+  			   	start: start,
+  				  end: end,
+            title:mywhen,
+            teacher:obj.teacher,
+            subject:obj.subject,
+            room:obj.room,
+            allDay: false
+          }
+           entries.push(entry);
+         }
    	var calendar = $('#calendar').fullCalendar({
-   
-        defaultView: 'agendaWeek',
-   		header: {
-   			left:'',
-   			center: '',
-   			right: ''
-   		},
-   
+      
+            //  
+       // $.get( "/groups/" + "NQCQYX" + "/timetable",function(data){
+       //   console.log(data);
+       // });
+     
+   		events: entries,
+    defaultView: 'agendaWeek',
+  	header: {
+		left:'',
+		center: '',
+		right: ''
+	},
    		selectable: true,
    		allDaySlot:false,
    		select: function(start, end, allDay) {
@@ -78,12 +117,7 @@ $(document).ready(function(){
  //         calendar.fullCalendar('unselect');
    		},
    		editable: true,
-   		events: [
-		
-		
-	
-   		
-   		] , eventRender: function(event, element) {
+   		 eventRender: function(event, element) {
          console.log(event.teacher);
          text = event.title+"</br>Teacher: "+event.teacher +"</br>Subject: "+event.subject+" </br>Room: "+event.room;
        $(element).html(text);
@@ -92,7 +126,7 @@ $(document).ready(function(){
     //        });
        }
    	});
-	
+	 });
 	$('#groupcode').tooltip()
   $('#groupname').tooltip()  
   $('#example').popover('hide')
