@@ -524,10 +524,10 @@
 
       entries.push entry
       i++
-    values = JSON.stringify(entries)
+    values = JSON.stringify([[entries]])
     v = timetable:
       entries: JSON.stringify([[entries]])
-    $.post window.location.pathname, v
+    # $.post window.location.pathname, v
     entries = a
     $scope.setUpCalendar false, entries
     group = $scope.data.currentGroupCode
@@ -540,20 +540,15 @@
         console.log jid if gon.global.debug
         members.push jid
       
-      $.ajax
-        type: "POST"
-        url: url
-        data:
-          timetable:
-            members: members 
-            entries: values
-            
-
-        success: ->
-          alert("Timetable Saved")
-          # $("#result").show()
-
-        dataType: ""
+      v = timetable:
+        entries: values 
+        members: members 
+      $.post window.location.pathname, v
+        # success: ->
+#           alert("Timetable Saved")
+#           # $("#result").show()
+# 
+#         dataType: ""
     
    
      
