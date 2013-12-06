@@ -1,6 +1,7 @@
 @TimetableCtrl = ["$scope", "$resource", "Data", ($scope, $resource, Data) ->
   Timetable = undefined
   $scope.data = Data
+  $scope.entries = []
   $scope.from_date_hour = [
     display: "00 AM"
     value: "00"
@@ -240,6 +241,155 @@
   $scope.weedayArray = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   $scope.addsmallgroup = (i) ->
     $scope.smallGroups.push i
+    
+  $scope.edit1hbhjb = ->
+    console.log "working"
+    $("#calendar .fc-header").first().remove()
+    $("#calendar .fc-content").first().remove()
+    $scope.setUpCalendar true, $scope.entries
+    return
+    
+  $scope.addEntry = ->
+    entry =
+      title: "ASdasd"
+      start: new Date($("#apptStartTime").val())
+      end: new Date($("#apptEndTime").val())
+      allDay: ($("#apptAllDay").val() is "true")
+      teacher: $('#addtimetableentry #teacher option:selected').text(),
+      room: $('#addtimetableentry #room option:selected').text(),
+      subject: $('#addtimetableentry #subject option:selected').text()
+    
+
+    $scope.entries.push entry
+    $("#calendar").fullCalendar "renderEvent",
+      title: ""
+      start: new Date($("#apptStartTime").val())
+      end: new Date($("#apptEndTime").val())
+      allDay: ($("#apptAllDay").val() is "true")
+      teacher: $("#addtimetableentry #teacher option:selected").text()
+      room: $("#addtimetableentry #room option:selected").text()
+      subject: $("#addtimetableentry #subject option:selected").text()
+    , true
+    return
+    
+  $scope.get = ->
+    date = new Date()
+    d = date.getDate()
+    m = date.getMonth()
+    y = date.getFullYear()
+    $.get window.location.pathname, (data) ->
+      $scope.data.currentGroupCode = data.timetable.group_code
+      entries = data.timetable.entries
+      $scope.data.timeArray = []
+      $scope.data.timetable.weekdays = []
+      $scope.data.timetable.batches = []
+      $scope.data.timetable.entries = [
+        name: "teacher"
+        values: []
+      ,
+        name: "subject"
+        values: []
+      ,
+        name: "room"
+        values: []
+      ]
+      if entries?
+        
+        $scope.data.timetable.batches = data.timetable.batches
+        $scope.data.checked = true  if $scope.data.timetable.batches.length > 0
+        $scope.data.timetable.entries = data.timetable.field_entries
+        $scope.data.timeArray = entries
+     
+      weekday = new Array(7)
+      weekday[0] = "Sunday"
+      weekday[1] = "Monday"
+      weekday[2] = "Tuesday"
+      weekday[3] = "Wednesday"
+      weekday[4] = "Thursday"
+      weekday[5] = "Friday"
+      weekday[6] = "Saturday"
+      if data.timetable.entries?
+        i = 0
+
+        while i < data.timetable.entries.length
+          obj = data.timetable.entries[i][0][0]
+          start = new Date(y, m, d, obj.from_hours, obj.from_minutes)
+          end = new Date(y, m, d, obj.to_hours, obj.to_minutes)
+          currentDay = start.getDay()
+          distance = weekday.indexOf(obj.weekday) - currentDay
+          start.setDate start.getDate() + distance
+          end.setDate end.getDate() + distance
+          endtime = $.fullCalendar.formatDate(end, "h:mm tt")
+          starttime = $.fullCalendar.formatDate(start, "ddd, h:mm tt")
+          mywhen = starttime + " - " + endtime
+          entry =
+            start: start
+            end: end
+            title: ""
+            teacher: obj.teacher
+            subject: obj.subject
+            room: obj.room
+            allDay: false
+
+          $scope.entries.push entry
+          i++
+        $scope.setUpCalendar false, $scope.entries
+      else
+        $scope.setUpCalendar false, []
+     
+        
+        
+  $scope.setUpCalendar = (editable, entries) ->
+    calendar = $("#calendar").fullCalendar(
+      events: entries
+      defaultView: "agendaWeek"
+      header:
+        left: ""
+        center: ""
+        right: ""
+
+      selectable: editable
+      editable: editable
+      allDaySlot: false
+      select: (start, end, allDay) ->
+        endtime = $.fullCalendar.formatDate(end, "h:mm tt")
+        starttime = $.fullCalendar.formatDate(start, "ddd, h:mm tt")
+        mywhen = starttime + " - " + endtime
+        $("#addtimetableentry #apptStartTime").val start
+        $("#addtimetableentry #apptEndTime").val end
+        $("#addtimetableentry #when").text mywhen
+        a = $.fullCalendar.formatDate(start, "MM-dd-yyyy")
+        weekday = new Array(7)
+        weekday[0] = "Sunday"
+        weekday[1] = "Monday"
+        weekday[2] = "Tuesday"
+        weekday[3] = "Wednesday"
+        weekday[4] = "Thursday"
+        weekday[5] = "Friday"
+        weekday[6] = "Saturday"
+        console.log a
+        console.log weekday[start.getDay()]
+        console.log start.getHours()
+        console.log start.getMinutes()
+        console.log weekday[end.getDay()]
+        console.log end.getHours()
+        console.log end.getMinutes()
+        $("#addtimetableentry").modal "show"
+        $("#start1").text start.getDay()
+        $("#end1").text end
+        calendar.fullCalendar "unselect"
+
+      eventRender: (event, element) ->
+        text = "Teacher: " + event.teacher + "</br>Subject: " + event.subject + " </br>Room: " + event.room
+        element.find(".fc-event-title").append "<br/>" + text
+        element.find(".fc-event-title").css "margin-top", "-18px"
+        element.qtip
+          content: text
+          style:
+            classes: "myCustomClass"
+
+    )
+
 
   $scope.getDisplayTime = (time1) ->
     display_from = undefined
@@ -346,10 +496,41 @@
     _results
 
   $scope.send = ->
-    group = $("#groupcode").text();
-    values = JSON.stringify($scope.data.timeArray)
-    console.log JSON.stringify(values)
-    url = "/groups/" + group + "/timetable"
+    weekday = new Array(7)
+    weekday[0] = "Sunday"
+    weekday[1] = "Monday"
+    weekday[2] = "Tuesday"
+    weekday[3] = "Wednesday"
+    weekday[4] = "Thursday"
+    weekday[5] = "Friday"
+    weekday[6] = "Saturday"
+    $("#calendar .fc-header").first().remove()
+    $("#calendar .fc-content").first().remove()
+    a = $("#calendar").fullCalendar("clientEvents")
+    entries = []
+    i = 0
+
+    while i < a.length
+      console.log a
+      entry =
+        to_hours: a[i].end.getHours()
+        to_minutes: a[i].end.getMinutes()
+        from_hours: a[i].start.getHours()
+        from_minutes: a[i].start.getMinutes()
+        teacher: a[i].teacher
+        subject: a[i].subject
+        room: a[i].room
+        weekday: weekday[a[i].start.getDay()]
+
+      entries.push entry
+      i++
+    values = JSON.stringify(entries)
+    v = timetable:
+      entries: JSON.stringify([[entries]])
+    $.post window.location.pathname, v
+    entries = a
+    $scope.setUpCalendar false, entries
+    group = $scope.data.currentGroupCode
     $scope.XMPP.connection.pubsub.getNodeSubscriptions group, (iq) ->
       members = []
       $(iq).find("subscription").each ->

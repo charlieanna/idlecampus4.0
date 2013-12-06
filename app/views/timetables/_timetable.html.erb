@@ -1,6 +1,6 @@
 
 
-<div class="row" ng-controller="TimetableCtrl" >
+<div class="row" ng-controller="TimetableCtrl" ng-init="get()">
   <div id="addtimetableentry" class="modal hide fade" tabindex="-1" role="dialog"
        aria-labelledby="myModalLabel" aria-hidden="true">
 
@@ -48,7 +48,7 @@
       </div>
       <div class="modal-footer">
 
-          <button data-dismiss="modal" id="AddEntry">Add</button>
+          <button data-dismiss="modal" id="AddEntry" ng-click="addEntry()">Add</button>
       </div>
   </div>
 
