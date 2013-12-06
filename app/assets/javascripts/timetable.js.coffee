@@ -385,8 +385,11 @@
         element.find(".fc-event-title").css "margin-top", "-18px"
         element.qtip
           content: text
-          style:
-            classes: "myCustomClass"
+          position:
+              target: "mouse" # Position it where the click was...
+              adjust: # ...but don't follow the mouse
+                mouse: false
+        return
 
     )
 

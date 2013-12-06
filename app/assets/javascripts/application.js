@@ -19,6 +19,10 @@
 //= require angular
 //= require angular-resource
 //= require angular-strap
+//= require bootbox
+//= require jquery.fullcalendar.min
+
+//= require jquery.qtip.min
 //= require scripts/strophe.js
 //= require strophejs-plugins/register/strophe.register.js
 //= require strophejs-plugins/pubsub/strophe.pubsub.js
@@ -31,7 +35,4 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require notes
 //= require jquery-fileupload/basic
-//= require bootbox
-//= require jquery.fullcalendar.min
 
-//= require jquery.qtip.min

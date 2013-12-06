@@ -15,7 +15,9 @@ class TimetablesController < ApplicationController
     
     result = TimetableParser.new(params).parse
     group = Group.find_by_group_code(result['group_code'])
+    group.timetable.delete
     timetable = Timetable.find_or_create_by(group_id: group.id)
+    
     entries = result['entries']
     members = group.get_users
     timetable.members = params['timetable']['members']
