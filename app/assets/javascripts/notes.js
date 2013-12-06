@@ -1,7 +1,14 @@
 
 $(document).ready(function(){
+  $("#calendar").click(function(){
+    alert("Click the edit button to start editing the Calendar")
+  })
+ 
+  
+  
   
   $("#edittimetable").click(function(){
+   
     console.log("working");
     $( "#calendar .fc-header" ).first().remove();
      $( "#calendar .fc-content" ).first().remove();
@@ -45,6 +52,7 @@ $(document).ready(function(){
   })
   
   $("#sendtimetable").click(function(){
+  
     $( "#calendar .fc-header" ).first().remove();
     $( "#calendar .fc-content" ).first().remove();
     // setUpCalendar(false,entries);
@@ -94,7 +102,7 @@ function getEntries(){
     weekday[4]="Thursday";
     weekday[5]="Friday";
     weekday[6]="Saturday";
-    
+    if(data.timetable.entries != null){
       for(var i = 0 ; i<data.timetable.entries.length;i++){
       obj = data.timetable.entries[i][0][0];
       var start =  new Date(y, m, d, obj.from_hours, obj.from_minutes);
@@ -118,7 +126,12 @@ function getEntries(){
          entries.push(entry);
        }
        setUpCalendar(false,entries);
+     }
+     else{
+       setUpCalendar(false,[]);
+     }
      });
+   
      
 }
 
