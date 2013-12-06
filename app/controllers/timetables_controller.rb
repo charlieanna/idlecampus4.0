@@ -29,6 +29,7 @@ class TimetablesController < ApplicationController
   def show
     @group = Group.find_by(group_code:params[:group_id])
     @timetable = @group.timetable
+    gon.calendar = true
     if @timetable
       respond_with @timetable
     else

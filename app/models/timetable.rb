@@ -69,17 +69,17 @@ class Timetable < ActiveRecord::Base
            end
          end
     
-   
+         entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
+              [entry[0]['to_hours'],
+               entry[0]['to_minutes'],
+               entry[0]['from_hours'],
+               entry[0]['from_minutes']]
+            end
+            entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
       
        end
      
-       entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings = entries_sorted_by_weekday_and_class_timings_each_entry_in_hash.group_by do |entry|
-            [entry[0]['to_hours'],
-             entry[0]['to_minutes'],
-             entry[0]['from_hours'],
-             entry[0]['from_minutes']]
-          end
-          entries_sorted_by_weekday_and_class_timings_each_entry_in_hash_sorted_by_class_timings.values
+      
   #    
     end
   

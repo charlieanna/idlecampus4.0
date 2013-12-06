@@ -20,8 +20,9 @@ $(document).ready(function(){
 		 
 		 
    	
-      //   
-  entries = getEntries();
+      // 
+  if(gon.calendar == true)  
+     entries = getEntries();
   
 	$('#groupcode').tooltip()
   $('#groupname').tooltip()  
@@ -44,15 +45,22 @@ $(document).ready(function(){
          start: new Date($('#apptStartTime').val()),
          end: new Date($('#apptEndTime').val()),
          allDay: ($('#apptAllDay').val() == "true"),
-         teacher:"sdsadas",//$('#addtimetableentry #teacher option:selected').text(),
-         room:"xcvxcv",//$('#addtimetableentry #room option:selected').text(),
-         subject:"sdasda"//$('#addtimetableentry #subject option:selected').text()
+         teacher:$('#addtimetableentry #teacher option:selected').text(),
+         room:$('#addtimetableentry #room option:selected').text(),
+         subject:$('#addtimetableentry #subject option:selected').text()
        },
        true);
   })
   
   $("#sendtimetable").click(function(){
-  
+    var weekday=new Array(7);
+    weekday[0]="Sunday";
+    weekday[1]="Monday";
+    weekday[2]="Tuesday";
+    weekday[3]="Wednesday";
+    weekday[4]="Thursday";
+    weekday[5]="Friday";
+    weekday[6]="Saturday";
     $( "#calendar .fc-header" ).first().remove();
     $( "#calendar .fc-content" ).first().remove();
     // setUpCalendar(false,entries);
@@ -66,7 +74,8 @@ $(document).ready(function(){
           from_minutes:a[i].start.getMinutes(),
           teacher:a[i].teacher,
           subject:a[i].subject,
-          room:a[i].room }
+          room:a[i].room,
+         weekday:weekday[a[i].start.getDay()] }
           entries.push(entry)
     }
     values = JSON.stringify(entries)
