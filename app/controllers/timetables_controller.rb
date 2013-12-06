@@ -1,6 +1,6 @@
 #
 class TimetablesController < ApplicationController
-  respond_to :json
+  respond_to :json,:html
 
   def new
     @group = Group.find(params[:group_id])
@@ -27,7 +27,7 @@ class TimetablesController < ApplicationController
   end
 
   def show
-    @group = Group.find_by(group_code: params[:group_id])
+    @group = Group.find_by(group_code:params[:group_id])
     @timetable = @group.timetable
     if @timetable
       respond_with @timetable

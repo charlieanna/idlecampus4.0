@@ -418,25 +418,6 @@
     console.log timetableEntry
 
   $scope.edit = (i) ->
-    $select1 = undefined
-    $select2 = undefined
-    $select3 = undefined
-    arr1 = undefined
-    arr2 = undefined
-    arr3 = undefined
-    ii = undefined
-    room = undefined
-    subject = undefined
-    teacher = undefined
-    val = undefined
-    $select1 = undefined
-    $select2 = undefined
-    $select3 = undefined
-    arr1 = undefined
-    arr2 = undefined
-    arr3 = undefined
-    ii = undefined
-    val = undefined
     $("#sub" + i).show()
     $("#edit" + i).hide()
     subject = $("#s" + i).html()
