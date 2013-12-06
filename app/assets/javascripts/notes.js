@@ -49,7 +49,7 @@ $(document).ready(function(){
         entry = { 
   			   	start: start,
   				  end: end,
-            title:mywhen,
+            title:"",
             teacher:obj.teacher,
             subject:obj.subject,
             room:obj.room,
@@ -59,10 +59,7 @@ $(document).ready(function(){
          }
    	var calendar = $('#calendar').fullCalendar({
       
-            //  
-       // $.get( "/groups/" + "NQCQYX" + "/timetable",function(data){
-       //   console.log(data);
-       // });
+           
      
    		events: entries,
     defaultView: 'agendaWeek',
@@ -71,7 +68,7 @@ $(document).ready(function(){
 		center: '',
 		right: ''
 	},
-   		selectable: true,
+   		
    		allDaySlot:false,
    		select: function(start, end, allDay) {
        
@@ -118,9 +115,15 @@ $(document).ready(function(){
    		},
    		editable: true,
    		 eventRender: function(event, element) {
-         console.log(event.teacher);
-         text = event.title+"</br>Teacher: "+event.teacher +"</br>Subject: "+event.subject+" </br>Room: "+event.room;
-       $(element).html(text);
+        
+          text = "Teacher: "+event.teacher +"</br>Subject: "+event.subject+" </br>Room: "+event.room;
+           element.find('.fc-event-title').append("<br/>" + text);
+           element.find('.fc-event-title').css("margin-top", "-18px");
+           element.qtip({
+                      content: text,
+                      style: { classes: 'myCustomClass' }
+                  });
+//        $(element).html(text);
            // element.qtip({
     //            content: event.description
     //        });
@@ -135,7 +138,6 @@ $(document).ready(function(){
    
        $("#calendar").fullCalendar('renderEvent',
        {
-           title:$('#addtimetableentry #when').text(),
            start: new Date($('#apptStartTime').val()),
            end: new Date($('#apptEndTime').val()),
            allDay: ($('#apptAllDay').val() == "true"),

@@ -33,3 +33,5 @@
 //= require jquery-fileupload/basic
 //= require bootbox
 //= require jquery.fullcalendar.min
+
+//= require jquery.qtip.min

@@ -9,5 +9,7 @@
  *= require css/styles.css
  *= require css/alveolae
  *= require custom
+ *= require jquery.qtip
  *= require fullcalendar
+ 
 */
