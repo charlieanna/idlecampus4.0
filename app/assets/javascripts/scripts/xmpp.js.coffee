@@ -55,8 +55,10 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
   $scope.spin = ""
   $scope.disconnected = ->
     
-    bootbox.alert "Session Expired...Please login again", ->
-      window.location = "/signin"     
+    unless localStorage.getItem("sid") is ""
+      bootbox.alert "Session Expired...Please login again", ->
+        window.location = "/signin"
+         
     eraseCookie("remember_token")
     localStorage.clear()
     XMPP.connection = null
