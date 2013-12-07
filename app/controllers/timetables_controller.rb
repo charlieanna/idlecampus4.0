@@ -1,7 +1,7 @@
 #
 class TimetablesController < ApplicationController
   respond_to :json,:html
-  before_action :signed_in_user, only: [:create, :destroy,:show]
+ 
   def new
     @group = Group.find(params[:group_id])
     @timetable = @group.build_timetable
