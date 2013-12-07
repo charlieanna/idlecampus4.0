@@ -250,26 +250,68 @@
     return
     
   $scope.addEntry = ->
-    entry =
-      title: "ASdasd"
-      start: new Date($("#apptStartTime").val())
-      end: new Date($("#apptEndTime").val())
-      allDay: ($("#apptAllDay").val() is "true")
-      teacher: $('#addtimetableentry #teacher option:selected').text(),
-      room: $('#addtimetableentry #room option:selected').text(),
-      subject: $('#addtimetableentry #subject option:selected').text()
-    
+    entry = undefined
+    unless $scope.checked
+      entry =
+        title: "ASdasd"
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher option:selected").text()
+        room: $("#addtimetableentry #room option:selected").text()
+        subject: $("#addtimetableentry #subject option:selected").text()
 
-    $scope.entries.push entry
-    $("#calendar").fullCalendar "renderEvent",
-      title: ""
-      start: new Date($("#apptStartTime").val())
-      end: new Date($("#apptEndTime").val())
-      allDay: ($("#apptAllDay").val() is "true")
-      teacher: $("#addtimetableentry #teacher option:selected").text()
-      room: $("#addtimetableentry #room option:selected").text()
-      subject: $("#addtimetableentry #subject option:selected").text()
-    , true
+      $scope.entries.push entry
+      $("#calendar").fullCalendar "renderEvent",
+        title: ""
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher option:selected").text()
+        room: $("#addtimetableentry #room option:selected").text()
+        subject: $("#addtimetableentry #subject option:selected").text()
+      , true
+    else
+      entry1 =
+        title: "ASdasd"
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher1 option:selected").text()
+        room: $("#addtimetableentry #room1 option:selected").text()
+        subject: $("#addtimetableentry #subject1 option:selected").text()
+        batch: $scope.data.timetable.batches[0]
+      $scope.entries.push entry1
+      $("#calendar").fullCalendar "renderEvent",
+        title: ""
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher1 option:selected").text()
+        room: $("#addtimetableentry #room1 option:selected").text()
+        subject: $("#addtimetableentry #subject1 option:selected").text()
+        batch: $scope.data.timetable.batches[0]
+      , true
+      entry2 =
+        title: "ASdasd"
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher2 option:selected").text()
+        room: $("#addtimetableentry #room2 option:selected").text()
+        subject: $("#addtimetableentry #subject2 option:selected").text()
+        batch: $scope.data.timetable.batches[1]
+      $scope.entries.push entry2
+      $("#calendar").fullCalendar "renderEvent",
+        title: ""
+        start: new Date($("#apptStartTime").val())
+        end: new Date($("#apptEndTime").val())
+        allDay: $("#apptAllDay").val() is "true"
+        teacher: $("#addtimetableentry #teacher2 option:selected").text()
+        room: $("#addtimetableentry #room2 option:selected").text()
+        subject: $("#addtimetableentry #subject2 option:selected").text()
+        batch: $scope.data.timetable.batches[1]
+      , true
     return
     
   $scope.get = ->
@@ -312,26 +354,65 @@
         i = 0
 
         while i < data.timetable.entries.length
-          obj = data.timetable.entries[i][0][0]
-          start = new Date(y, m, d, obj.from_hours, obj.from_minutes)
-          end = new Date(y, m, d, obj.to_hours, obj.to_minutes)
-          currentDay = start.getDay()
-          distance = weekday.indexOf(obj.weekday) - currentDay
-          start.setDate start.getDate() + distance
-          end.setDate end.getDate() + distance
-          endtime = $.fullCalendar.formatDate(end, "h:mm tt")
-          starttime = $.fullCalendar.formatDate(start, "ddd, h:mm tt")
-          mywhen = starttime + " - " + endtime
-          entry =
-            start: start
-            end: end
-            title: ""
-            teacher: obj.teacher
-            subject: obj.subject
-            room: obj.room
-            allDay: false
+          currentDay = undefined
+          distance = undefined
+          end = undefined
+          endtime = undefined
+          entry = undefined
+          mywhen = undefined
+          obj = undefined
+          start = undefined
+          starttime = undefined
+          if data.timetable.entries[i][0].length > 1
+            console.log data.timetable.entries[i][0][0]
+            console.log data.timetable.entries[i][0][1]
+            j = 0
 
-          $scope.entries.push entry
+            while j < data.timetable.entries[i][0].length
+              obj = data.timetable.entries[i][0][j]
+              start = new Date(y, m, d, obj.from_hours, obj.from_minutes)
+              end = new Date(y, m, d, obj.to_hours, obj.to_minutes)
+              currentDay = start.getDay()
+              distance = weekday.indexOf(obj.weekday) - currentDay
+              start.setDate start.getDate() + distance
+              end.setDate end.getDate() + distance
+              endtime = $.fullCalendar.formatDate(end, "h:mm tt")
+              starttime = $.fullCalendar.formatDate(start, "ddd, h:mm tt")
+              mywhen = starttime + " - " + endtime
+              entry =
+                start: start
+                end: end
+                title: ""
+                teacher: obj.teacher
+                subject: obj.subject
+                room: obj.room
+                batch: obj.batch
+                allDay: false
+
+              $scope.entries.push entry
+              j++
+          else
+            obj = data.timetable.entries[i][0][0]
+            start = new Date(y, m, d, obj.from_hours, obj.from_minutes)
+            end = new Date(y, m, d, obj.to_hours, obj.to_minutes)
+            currentDay = start.getDay()
+            distance = weekday.indexOf(obj.weekday) - currentDay
+            start.setDate start.getDate() + distance
+            end.setDate end.getDate() + distance
+            endtime = $.fullCalendar.formatDate(end, "h:mm tt")
+            starttime = $.fullCalendar.formatDate(start, "ddd, h:mm tt")
+            mywhen = starttime + " - " + endtime
+            entry =
+              start: start
+              end: end
+              title: ""
+              teacher: obj.teacher
+              subject: obj.subject
+              room: obj.room
+              batch: obj.batch
+              allDay: false
+
+            $scope.entries.push entry
           i++
         $scope.setUpCalendar false, $scope.entries
       else
@@ -380,7 +461,10 @@
         calendar.fullCalendar "unselect"
 
       eventRender: (event, element) ->
-        text = "Teacher: " + event.teacher + "</br>Subject: " + event.subject + " </br>Room: " + event.room
+        unless event.batch 
+          text = "Teacher: " + event.teacher + "</br>Subject: " + event.subject + " </br>Room: " + event.room
+        else
+          text = "Batch:" + event.batch + "</br>Teacher: " + event.teacher + "</br>Subject: " + event.subject + " </br>Room: " + event.room
         element.find(".fc-event-title").append "<br/>" + text
         element.find(".fc-event-title").css "margin-top", "-18px"
         element.qtip
@@ -524,7 +608,7 @@
         subject: a[i].subject
         room: a[i].room
         weekday: weekday[a[i].start.getDay()]
-
+        batch: a[i].batch
       entries.push entry
       i++
     values = JSON.stringify([[entries]])

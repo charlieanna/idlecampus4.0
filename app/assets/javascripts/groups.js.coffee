@@ -5,6 +5,7 @@
   $scope.groupsfollowing = []
   $scope.folders = []
   $scope.groupMessages = []
+  
   $scope.$watch "groupscreated", (newValue, oldValue) ->
     # console.log "watch"
  #    console.log newValue
@@ -59,7 +60,7 @@
             jid = $(this).attr("jid")
             jid = jid.substring(0, jid.indexOf("/"))
             console.log jid
-            $scope.data.currentGroup.members.push jid
+            # $scope.data.currentGroup.members.push jid
 
 
     ).error (data, status, headers, config) ->
