@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_many :groups
+  has_many :alerts,through: :groups
+  has_many :notes,through: :groups
   has_secure_password
   has_many :created_groups, class_name: 'Group'
   acts_as_follower

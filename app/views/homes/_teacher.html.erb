@@ -35,12 +35,10 @@
                       </div>
                       <div class="widget-content">
                           <ul class="messages-activity" id="posts">
+                          
+                           <%= render @results%>
                             
-                              <% @posts.each do |post| %>
-                                 <%= render post %>
-                                  <hr>
-
-                              <% end %>
+                            <%= paginate @results %>
 
 
                           </ul>

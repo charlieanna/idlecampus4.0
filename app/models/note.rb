@@ -1,5 +1,6 @@
 class Note < ActiveRecord::Base
   attr_accessor :note, :members
+  belongs_to :article, polymorphic: true
   include Rails.application.routes.url_helpers
   mount_uploader :file, FileUploader
   process_in_background :file

@@ -7,13 +7,14 @@ class HomesController < ApplicationController
         
         groups = current_user.groups
         total_posts = []
-        groups.each do |group| 
-          posts = group.alerts.includes(:group)+ group.notes.includes(:group)
-          
-          total_posts <<  posts
-        end
-        @posts = total_posts.flatten
+        alerts = []
+       
+        @posts = current_user.alerts + current_user.notes
+        # debugger
+        @posts = @posts.flatten
         @posts = @posts.sort_by(&:created_at).reverse
+       
+        @results = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
       elsif current_user.rolable_type == "Student"
       
           @group = current_user.all_following.first 
@@ -24,7 +25,7 @@ class HomesController < ApplicationController
        
           @posts = @posts.sort_by(&:created_at).reverse
          
-       
+        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
      
        
       end

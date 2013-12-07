@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204165144) do
+ActiveRecord::Schema.define(version: 20131207115839) do
 
   create_table "alerts", force: true do |t|
     t.string   "message"
@@ -123,6 +123,15 @@ ActiveRecord::Schema.define(version: 20131204165144) do
   end
 
   add_index "notes", ["group_id"], name: "index_notes_on_group_id"
+
+  create_table "posts", force: true do |t|
+    t.integer  "article_id"
+    t.string   "article_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["article_id", "article_type"], name: "index_posts_on_article_id_and_article_type"
 
   create_table "rooms", force: true do |t|
     t.string   "name"
