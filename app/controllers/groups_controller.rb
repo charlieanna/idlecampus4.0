@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
     gon.a = ""
     @posts = @group.alerts.includes(:group) + @group.notes.includes(:group)
     @posts = @posts.sort_by(&:created_at).reverse
-      @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+      # @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
   end
 
   def new

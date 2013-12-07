@@ -14,7 +14,7 @@ class HomesController < ApplicationController
         @posts = @posts.flatten
         @posts = @posts.sort_by(&:created_at).reverse
        
-        @results = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+        # @results = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
       elsif current_user.rolable_type == "Student"
       
           @group = current_user.all_following.first 
@@ -25,7 +25,7 @@ class HomesController < ApplicationController
        
           @posts = @posts.sort_by(&:created_at).reverse
          
-        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+        # @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
      
        
       end
