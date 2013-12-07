@@ -25,8 +25,8 @@
                       <input type="hidden" id="apptEndTime"/>
                       <input type="hidden" id="apptAllDay" />
                 </div>
-                <div>
-                 Add Batches?<input ng-model="checked"  type="checkbox" id="addbatches" ng-show="data.timetable.batches.length>1"/>
+                <div ng-show="data.timetable.batches.length>1">
+    Add Batches?<input ng-model="checked"  type="checkbox" id="addbatches"/>
                </div>           
     <span ng-repeat="entry in data.timetable.entries" ng-hide="checked">
      {{entry.name}}<select class="span2" ng-model="entry3213"
