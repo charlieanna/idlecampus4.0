@@ -630,12 +630,8 @@
       v = timetable:
         entries: values 
         members: members 
-      $.post window.location.pathname, v
-        # success: ->
-#           alert("Timetable Saved")
-#           # $("#result").show()
-# 
-#         dataType: ""
+      $.post(window.location.pathname, v).done (data) ->
+        alert "Timetable saved..."
     
    
      
