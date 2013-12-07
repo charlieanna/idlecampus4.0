@@ -19,6 +19,7 @@ group :development, :test do
   gem "launchy", "~> 2.3.0"
   
 end 
+gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'fullcalendar-rails'
 gem "cancan"  

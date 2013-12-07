@@ -1,8 +1,8 @@
 <ul class="nav nav-pills nav-stacked">
-  <li><%= link_to "Files",group_files_path(@group),style:"background: #49708A;width:196px;
+  <li><%= link_to '<i class="icon-file icon-white"></i> Files'.html_safe,group_files_path(@group),style:"background: #49708A;width:196px;
     color: white;"%></li>
     
-    <li><%= link_to "Timetable",group_timetable_path(@group.group_code),style:"background: #49708A;width:196px;
+    <li><%= link_to  '<i class="icon-calendar icon-white"></i> Timetable'.html_safe,group_timetable_path(@group.group_code),style:"background: #49708A;width:196px;
       color: white;"%></li>
 </ul>
 

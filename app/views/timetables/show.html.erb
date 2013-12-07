@@ -1,3 +1,3 @@
 
-<%= link_to "Back to #{@group.name}", @group,class: "btn btn-success pull-left",id:"signinbutton",style:"width:130px;" %>
+<%= link_to "<i class='fa fa-arrow-circle-left'></i>     Back to #{@group.name}".html_safe, @group,class: "btn btn-success pull-left",id:"signinbutton",style:"width:130px;" %>
   <%= render "timetable" %>

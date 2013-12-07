@@ -243,6 +243,7 @@
     $scope.smallGroups.push i
     
   $scope.edit1hbhjb = ->
+    $(".fa-lock").removeClass("fa-lock").addClass("fa-unlock")
     console.log "working"
     $("#calendar .fc-header").first().remove()
     $("#calendar .fc-content").first().remove()
@@ -583,6 +584,7 @@
     _results
 
   $scope.send = ->
+    $(".fa-unlock").removeClass("fa-unlock").addClass("fa-lock")
     weekday = new Array(7)
     weekday[0] = "Sunday"
     weekday[1] = "Monday"
