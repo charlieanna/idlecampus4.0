@@ -1,0 +1,38 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="span4">
+    <h3>Drop me a line!</h3>
+    <hr>
+    <address>
+    <strong>Email:</strong> <a href="mailto:#"> ankothari@idlecampus.com</a><br><br>
+    <strong>Phone:</strong> +91 9869000688
+    </address>
+    </div>
+    
+    <div class="span8 contact-form">
+      <%= form_for @message, :url => contact_path do |form| %>
+        <div class="row">
+          <div class="span4 form-group">
+             <%= form.text_field :name,placeholder:"Name",autofocus: true,required: true,class:"span4" %>
+          </div>
+          <div class="span4 form-group">
+             <%= form.email_field :email,placeholder:"Email",required: true,class:"span4" %>
+         
+          </div>
+          <%= form.hidden_field :subject,value:"New Message"%>
+        </div>
+        <div class="field">
+          <%= form.text_area :body,placeholder:"Message",rows:5,class:"span8" %>
+        </div>
+        <br />
+        <div class="row">
+          <div class="span12 form-group">
+            <%= form.submit "Submit",class:"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

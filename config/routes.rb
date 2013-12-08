@@ -36,7 +36,8 @@ IdleCampus::Application.routes.draw do
   match '/signin',  to: 'sessions#new',            via: 'get'
   match '/about',to: "static_pages#about",via: :get
   resources :messages, only: [:new, :create]
-  match '/contact',to: "messages#new",via: :get
+  match 'contact' => 'contact#new', :via => :get
+  match 'contact' => 'contact#create',:via => :post
   
   resources :sessions, only: [:new, :create, :destroy]
   namespace :api do

@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env)
 
 module IdleCampus
   class Application < Rails::Application
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
       config.assets.compress = true
  config.assets.js_compressor  = :uglifier
   config.assets.css_compressor = :sass

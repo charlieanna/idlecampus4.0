@@ -16,6 +16,7 @@
 //= require jquery.timeago
 //= require jquery.remotipart
 //= require bootstrap
+
 //= require angular
 //= require angular-resource
 //= require angular-strap
