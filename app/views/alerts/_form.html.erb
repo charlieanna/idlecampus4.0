@@ -1,9 +1,9 @@
 
 <%= form_for Alert.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
  
-   
-			<%= f.text_area :message,rows: 3,class:"span9",placeholder:"Enter your note here:"%>
-     
+<div class="col-xs-8">
+			<%= f.text_area :message,rows: 3,class:" form-control",placeholder:"Enter your alert here:"%>
+    </div>
       <% if @group.group_code %>
 			  <%= f.hidden_field :group,:value =>@group.group_code %>
       <% else %>
@@ -11,9 +11,9 @@
       
       <% end %>
      
-     
+    </br>
 
-      <p><button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn-success has-spinner">
+    <button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn btn-success">
         Send</button>
-      </p>
+        
 <% end %>

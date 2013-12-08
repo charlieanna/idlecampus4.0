@@ -1,8 +1,10 @@
 <%= form_for Note.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
-  <div class="fileupload-buttonbar">
+  <div>
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <%= f.hidden_field "authenticity_token",value: form_authenticity_token %>
-			<%= f.text_area :message,rows: 3,class:"span9",placeholder:"Enter your note here:"%>
+    <div class="col-xs-8">
+			<%= f.text_area :message,rows: 3,class:"form-control",placeholder:"Enter your note here:"%>
+    </div>
       <%= f.file_field :file %>
       <% if @group.group_code %>
 			  <%= f.hidden_field :group,:value =>@group.group_code %>

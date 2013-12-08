@@ -46,7 +46,7 @@ hr {
 }
 
 .well-message {
-	background: #D0E0EB;
+	background: #D0E0EB !important;
 }
 
 .page-title {
