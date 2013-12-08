@@ -1,0 +1,68 @@
+		<!-- Top Starts -->
+		<div class="top">
+			
+			
+			<!-- Header Starts -->
+			<header>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="logo">
+								<h1><a href="/">IdleCampus <span class="tblue">.</span></a></h1>
+							</div>
+						</div>
+						<div class="navigation pull-right">
+							<% if signed_in? %>
+                <%= link_to "Profile", home_path %>
+             <%=   link_to "Sign out", signout_path, method: "delete", "ng-click" => "signout()" %>
+            
+             
+             <% else %>
+               <%= link_to "Log In",signin_path%>
+               <%= link_to "Sign Up As Teacher!",teachers_signup_path %>
+               <%= link_to "Sign Up As Student!",students_signup_path %>
+               <%= link_to "Contact Us",contact_path %>
+               <%= link_to "About Us",about_path %>
+              <%= link_to "Blog","http://blog.idlecampus.com" %>
+             <% end %>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Header Ends -->
+			<div class="hero inner-page">
+				<div class="container">
+					<div class="row">
+            <div class="col-md-2" ></div>
+						<div class="col-md-10">
+							<div class="intro">
+                <% if signed_in?%>
+                <%= yield(:header) %><!-- <h2>Contact Us<span class="tblue">.</span></h2> -->
+                <% else %>
+								<h2>Simple<span class="tblue">.</span> Minimal<span class="tblue">.</span> Cloud<span class="tblue">.</span></h2>
+								<p>Connect with your students and keep them updated with what is important to them. </p><br />
+								<a href="#" class="download"><i class="icon-cloud-download"></i> Sign Up!</a> <strong>or Try It</strong>
+								<div class="applinks">
+									<a href="https://itunes.apple.com/us/app/idlecampus/id589694599?ls=1&mt=8"><i class="fa fa-android"></i></a>
+									<a href="https://play.google.com/store/apps/details?id=com.idlecampus"><i class="fa fa-apple"></i></a>
+								
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="shot">
+								<img src="img/ios.png" alt="image" class="img-responsive"/>
+							</div>
+                <% end %>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Hero starts -->
+    </div>
+		<!-- Top Ends -->
+    
+    
+		

@@ -1,49 +1,33 @@
-		<!-- Top Starts -->
-		<div class="top">
-			
-			
-			<!-- Header Starts -->
-			<header>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="logo">
-								<h1><a href="/">IdleCampus <span class="tblue">.</span></a></h1>
-							</div>
-						</div>
-						<div class="navigation pull-right">
-							<% if signed_in? %>
-                <%= link_to "Profile", home_path %>
-             <%=   link_to "Sign out", signout_path, method: "delete", "ng-click" => "signout()" %>
-            
-             
-             <% else %>
-               <%= link_to "Log In",signin_path%>
-               <%= link_to "Sign Up As Teacher!",teachers_signup_path %>
-               <%= link_to "Sign Up As Student!",students_signup_path %>
-               <%= link_to "Contact Us",contact_path %>
-               <%= link_to "About Us",about_path %>
-              <%= link_to "Blog","http://blog.idlecampus.com" %>
-             <% end %>
-						</div>
+
+	<!-- Header Starts -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="logo">
+						<h1><a href="/">IdleCampus <span class="tblue">.</span></a></h1>
 					</div>
 				</div>
-			</header>
-			<!-- Header Ends -->
-			<div class="hero inner-page">
-				<div class="container">
-					<div class="row">
-            <div class="col-md-2" ></div>
-						<div class="col-md-10">
-							<div class="intro">
-                <%= yield(:header) %><!-- <h2>Contact Us<span class="tblue">.</span></h2> -->
-								
-							</div>
-						</div>
-					</div>
+				<div class="navigation pull-right">
+				
+					<% if signed_in? %>
+            <%= link_to "Profile", home_path %>
+         <%=   link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, signout_path, method: "delete", "ng-click" => "signout()",style:"margin:50px" %>
+        
+         
+         <% else %>
+           <%= link_to "<i class='fa fa-sign-in'></i> Log In".html_safe,signin_path%>
+             <%= link_to "<i class='fa fa-heart'></i> Sign Up As Teacher".html_safe,teachers_signup_path %>
+            <%= link_to "<i class='fa fa-heart'></i> Sign Up As Student".html_safe,students_signup_path %>
+         
+          
+          <%= link_to "Blog","http://blog.idlecampus.com" %>
+         <% end %>
+
 				</div>
 			</div>
-			<!-- Hero starts -->
-    </div>
-		<!-- Top Ends -->
-		
+		</div>
+	</header>
+	<!-- Header Ends -->
+	
+	
