@@ -1,19 +1,25 @@
 
 <%= form_for Alert.new, :html => {:id => "groupnoteupload"},remote: true do |f| %>
  
-<div class="col-xs-8">
+<div class="col-xs-12">
 			<%= f.text_area :message,rows: 3,class:" form-control",placeholder:"Enter your alert here:"%>
     </div>
+     </br>
       <% if @group.group_code %>
 			  <%= f.hidden_field :group,:value =>@group.group_code %>
       <% else %>
-      <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] } %>
+      <div class="col-xs-2"> 
+      <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] },{},class:"form-control " %>
+    </div>
       
       <% end %>
+      
+      
      
-    </br>
+   
+  </br>
 
-    <button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn btn-success">
+    <button type="button" ng-click="publishgroupalert()" id="sendalert" class="btn btn-success fa fa-check-square">
         Send</button>
         
 <% end %>
