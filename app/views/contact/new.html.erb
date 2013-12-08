@@ -1,8 +1,8 @@
-
+<% provide(:header,"<h2>Contact Us<span class='tblue'>.</span></h2>".html_safe)%>
 
 <div class="container">
   <div class="row">
-    <div class="span4">
+    <div class="col-md-4">
     <h3>Drop me a line!</h3>
     <hr>
     <address>
@@ -11,27 +11,26 @@
     </address>
     </div>
     
-    <div class="span8 contact-form">
+    <div class="col-md-8 contact-form">
       <%= form_for @message, :url => contact_path do |form| %>
         <div class="row">
-          <div class="span4 form-group">
-             <%= form.text_field :name,placeholder:"Name",autofocus: true,required: true,class:"span4" %>
+          <div class="col-md-6 form-group">
+             <%= form.text_field :name,placeholder:"Name",autofocus: true,required: true,class:"form-control col-md-12" %>
           </div>
-          <div class="span4 form-group">
-             <%= form.email_field :email,placeholder:"Email",required: true,class:"span4" %>
+          <div class="col-md-6 form-group">
+             <%= form.email_field :email,placeholder:"Email",required: true,class:"form-control col-md-12" %>
          
           </div>
           <%= form.hidden_field :subject,value:"New Message"%>
         </div>
-        <div class="field">
-          <%= form.text_area :body,placeholder:"Message",rows:5,class:"span8" %>
+        <div class="form-group">
+          <%= form.text_area :body,placeholder:"Message",rows:5,class:"col-md-8 form-control" %>
         </div>
-        <br />
-        <div class="row">
-          <div class="span12 form-group">
-            <%= form.submit "Submit",class:"btn btn-primary" %>
-          </div>
-        </div>
+        
+        <p>
+        <%= form.submit "Submit",class:"btn btn-primary",style:"margin-top:20px;" %>
+        </p>
+      
       <% end %>
     </div>
   </div>

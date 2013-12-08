@@ -45,7 +45,7 @@ hr{
 /* Basic CSS ends */
 
 .container{
-	width:900px;
+/*  width:900px;*/
 }
 
 .tblue{
@@ -54,7 +54,7 @@ hr{
 
 
 .top{
-	background:#555 url('../img/back.jpg') repeat;
+	background:#555 url('/assets/back.jpg') repeat;
 	border-bottom:1px solid #000;
 
 }

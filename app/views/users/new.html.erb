@@ -16,29 +16,29 @@
 				<fieldset>
 						<%= f.hidden_field :rolable_type%>
 						<% if @user.rolable_type == "Student"%>
-						<div class="control-group">
+						<div class="form-group">
 			  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Group Code</label>
-			  		      <%= text_field_tag 'Group Code',nil,placeholder: "Group Code:", type: "text" %>
+			  		      <%= text_field_tag 'Group Code',nil,placeholder: "Group Code:", type: "text",class:"form-control", required: true %>
 			  		      <i id="emailicon"></i>
 						
 						</div>
 						<% end %>
-					<div class="control-group">
+					<div class="form-group">
 		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Username</label>
-		  		      <%= f.text_field :name,integer: "", id:"Name",name: "user[name]", "ng-model" => "user", placeholder: "Username:", required: "", type: "text" %>
+		  		      <%= f.text_field :name,integer: "", id:"Name",name: "user[name]", "ng-model" => "user", placeholder: "Username:", required: true, type: "text" ,class:"form-control" %>
 					 <i id="nameicon"></i>
 					</div>
-					<div class="control-group">
+					<div class="form-group">
 		  		     <label class="control-label" for="username"><i class="icon-user"></i>&nbsp;&nbsp;Email</label>
-		  		      <%= f.email_field :email,integer1: "",id:"Email", name: "user[email]", "ng-model" => "email1", placeholder: "Email:", required: "", type: "email" %>
+		  		      <%= f.email_field :email,integer1: "",id:"Email", name: "user[email]", "ng-model" => "email1", placeholder: "Email:", required: true, type: "email",class:"form-control" %>
 		  		      <i id="emailicon"></i>
 						
 					</div>
-					<div class="control-group">
+					<div class="form-group">
 						<label class="control-label" for="password"><i class="icon-lock"></i>&nbsp;&nbsp;Password</label>
 
 		  		     
-		  		      <%= f.password_field :password,name: "user[password]",id:"Password", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password" %>
+		  		      <%= f.password_field :password,name: "user[password]",id:"Password", "ng-model" => "password", passworddir: "", placeholder: "Password:", required: "", type: "password",class:"form-control" %>
                       
 						<i id="passwordicon"></i>
 					</div>

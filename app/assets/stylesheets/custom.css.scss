@@ -92,7 +92,7 @@ h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
+
   font-weight: normal;
   color: #999;
 }
@@ -108,7 +108,7 @@ aside {
   margin-left: 100px !important;
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid #eee;
     &:first-child {
       border: 0;
       padding-top: 0;
