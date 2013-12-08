@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
       attacher[:rid] = @session_random_id
     
       flash[:attacher] = attacher
+      
       sign_in @user
       flash[:success] = 'Welcome to IdleCampus!'
       redirect_to home_path
