@@ -1,44 +1,16 @@
-<div class="col-md-12">
-    <!--Body content-->
-   
-    <div class="row">
-      
-      <div class="col-md-2 pull-right">
-          <button id="edittimetable" class="btn btn-inverse" ng-click="edit1hbhjb()"><i class="fa fa-lock"></i> Edit Timetable</button>
-      </div>
-        <div class="col-md-2 pull-right">
-            <button id="sendtimetable" class="btn  btn-success download" ng-click="send()">Send Timetable</button>
-        </div>
-        <div class="col-md-2 pull-right">
-          <!-- Button trigger modal -->
-          <button class="btn btn-primary btn-mg" data-toggle="modal" data-target="#myModal">
-            Create Timetable
-          </button>
-           
-        </div>
-       
-    </div>
-</div>
-
 <div ng-controller="EntryCtrl">
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
     <div class="modal-header">
         <button type="button" id="close" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Timetable</h3>
     </div>
     <div class="modal-body">
         <div>
-         
-           <div class="btn-group">
-           
-                <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Teachers</button>
+            <div class="btn-group">
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Teachers</button>
                 <!-- <button class="btn" ng-class="{'btn-primary':isCurrentStep(1)}" ng-click="setCurrentStep(1)">Weekdays</button> -->
-              <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(2)}" ng-click="setCurrentStep(2)">Batches</button>
-                <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Rooms</button>
-                <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Subjects</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(2)}" ng-click="setCurrentStep(2)">Batches</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Rooms</button>
+                <button class="btn" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Subjects</button>
             </div>
             <div ng-switch="getCurrentStep()" ng-animate="'wave'" class="slide-frame">
               
@@ -46,9 +18,8 @@
                     <fieldset>
                         <div class="control-group">
 
-                    <div class="col-xs-4">
-                     <input type="text" ng-model="value" class="form-control" placeholder="Teachers" id="newteacher">
-                   </div>
+                        
+                     <input type="text" ng-model="value" placeholder="Teachers" id="newteacher">
                        <button class="addbtn btn" id="addteacher" ng-click="addValueToEntry(value,'teacher')" style="
                                             width: 53px;
                                                     height: 30px;
@@ -94,9 +65,9 @@
                   
                 
                                 <form ng-show="data.checked">
-                                  <div class="col-xs-4">
-                                    <input name="Add Batches" type="text"  class="form-control" ng-model="batch" id="newbatch">
-                                  </div>
+                  
+                                    <input name="Add Batches" type="text" ng-model="batch" id="newbatch">
+
                                     <button class="addbtn btn" ng-click="addBatch(batch);batch=''" id="addbatch" style="
                                             width: 53px;
                                                     height: 30px;
@@ -123,9 +94,8 @@
                         <div class="control-group">
 
 						
- <div class="col-xs-4">
-                     <input type="text" ng-model="value" class="form-control" placeholder="Rooms" id="newroom">
-                   </div>
+
+                     <input type="text" ng-model="value" placeholder="Rooms" id="newroom">
                        <button class="addbtn btn" id="addroom" ng-click="addValueToEntry(value,'room')" style="
                                             width: 53px;
                                                     height: 30px;
@@ -148,9 +118,8 @@
                         <div class="control-group">
 
                         
- <div class="col-xs-4">
-                     <input type="text" ng-model="value" class="form-control" id="newsubject" placeholder="Subjects">
-                   </div>
+
+                     <input type="text" ng-model="value" id="newsubject" placeholder="Subjects">
                        <button class="addbtn btn" id="addsubject" ng-click="addValueToEntry(value,'subject')" style="
                                             width: 53px;
                                                     height: 30px;
@@ -179,5 +148,3 @@
         <a class="btn btn-primary" ng-click="handleNext(dismiss)">{{getNextLabel()}}</a> -->
     </div>
 </div>
-    </div>
-</div></div>

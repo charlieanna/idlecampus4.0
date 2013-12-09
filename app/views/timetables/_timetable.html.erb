@@ -1,8 +1,9 @@
 <% provide(:header,"<h2>Timetable<span class='tblue'>.</span></h2>".html_safe)%>
 <div class="row" ng-controller="TimetableCtrl" ng-init="get()">
-  <div id="addtimetableentry" class="modal hide fade" tabindex="-1" role="dialog"
+  <div id="addtimetableentry" class="modal fade" tabindex="-1" role="dialog"
        aria-labelledby="myModalLabel" aria-hidden="true">
-
+       <div class="modal-dialog">
+         <div class="modal-content">
       <div class="modal-header">
 
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -27,8 +28,8 @@
                 <div ng-show="data.timetable.batches.length>1">
     Add Batches?<input ng-model="checked"  type="checkbox" id="addbatches"/>
                </div>           
-    <span ng-repeat="entry in data.timetable.entries" ng-hide="checked">
-     {{entry.name}}<select class="span2" ng-model="entry3213"
+    <span ng-repeat="entry in data.timetable.entries" ng-hide="checked" class="col-xs-3">
+     {{entry.name}}<select class="form-control" ng-model="entry3213"
                            ng-options="value for value in entry.values"
                            id="{{entry.name}}{{index}}"></select>
     </span>
@@ -36,9 +37,9 @@
    
           <span ng-repeat="batch in data.timetable.batches" ng-show="checked">
           
-             <span ng-repeat="entry in data.timetable.entries">
+             <span ng-repeat="entry in data.timetable.entries" class="col-xs-3">
 
-     {{entry.name}}: <select class="span2" ng-model="entry3214"
+     {{entry.name}}: <select class="form-control" ng-model="entry3214"
                              ng-options="value for value in entry.values"
                              id="{{entry.name}}{{index}}{{$parent.$index+1}}"></select>
 
@@ -54,12 +55,14 @@
           <button data-dismiss="modal" id="AddEntry" ng-click="addEntry()">Add</button>
       </div>
   </div>
+</div>
+</div>
 
   <%= render 'buttons'%>
  
 </br>
   <!-- <h2>Timetable</h2> -->
-  <div id='calendar' style="margin-top: 3%;"></div>
+  <div id='calendar' style="margin-top: 5%;"></div>
 
                 
                 
