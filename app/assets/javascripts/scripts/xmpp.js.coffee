@@ -348,6 +348,7 @@ app = angular.module("idlecampus", ["ngResource", "$strap.directives"])
     
 
   $scope.attach = ->
+    
    
     conn = new Strophe.Connection("http://idlecampus.com/http-bind")
     conn.xmlInput = (body) ->

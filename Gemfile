@@ -9,7 +9,9 @@ gem 'bcrypt-ruby'
 gem 'sidekiq'
 gem 'unf' 
 gem 'debugger', group: [:development, :test]
+gem 'letter_opener', group: :development
 group :development, :test do
+  
   gem 'sqlite3'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
@@ -19,6 +21,7 @@ group :development, :test do
   gem "launchy", "~> 2.3.0"
   
 end 
+gem 'exception_notification'
 gem 'font-awesome-sass'
 gem 'kaminari'
 gem 'fullcalendar-rails'

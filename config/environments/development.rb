@@ -13,7 +13,7 @@ IdleCampus::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Change mail delvery to either :smtp, :sendmail, :file, :test
-  config.action_mailer.delivery_method = :smtp
+ config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
@@ -54,3 +54,10 @@ IdleCampus::Application.configure do
    
   end
 end
+
+IdleCampus::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Whatever] ",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{ankothari@gmail.com}
+  }
