@@ -40,31 +40,24 @@
                 <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(3)}" ng-click="setCurrentStep(3)">Rooms</button>
                 <button class="btn btn-default" ng-class="{'btn-primary':isCurrentStep(4)}" ng-click="setCurrentStep(4)">Subjects</button>
             </div>
+            <br>
             <div ng-switch="getCurrentStep()" ng-animate="'wave'" class="slide-frame">
               
                  <div ng-switch-when="one">
-                    <fieldset>
-                        <div class="control-group">
+                    
 
                     <div class="col-xs-4">
                      <input type="text" ng-model="value" class="form-control" placeholder="Teachers" id="newteacher">
                    </div>
-                       <button class="addbtn btn" id="addteacher" ng-click="addValueToEntry(value,'teacher')" style="
-                                            width: 53px;
-                                                    height: 30px;
-                                                    padding-top: 0px;
-                                                    padding-left: 0px;
-                                                    padding-right: 0px;
-                                                    padding-bottom: 0px;
-                                            ">Add</button>
+      <button class="addbtn btn btn-primary" id="addteacher" ng-click="addValueToEntry(value,'teacher')">Add</button>
                 <span ng-repeat="entry in data.timetable.entries| filter:{name:'teacher'}">
                      <ul>
+                        <br>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
                 </span>
                         </div>
-                    </fieldset>
-                </div>
+                   
                 <!-- <div ng-switch-when="two">
                     <fieldset>
                         <div class="control-group">
@@ -97,16 +90,9 @@
                                   <div class="col-xs-4">
                                     <input name="Add Batches" type="text"  class="form-control" ng-model="batch" id="newbatch">
                                   </div>
-                                    <button class="addbtn btn" ng-click="addBatch(batch);batch=''" id="addbatch" style="
-                                            width: 53px;
-                                                    height: 30px;
-                                                    padding-top: 0px;
-                                                    padding-left: 0px;
-                                                    padding-right: 0px;
-                                                    padding-bottom: 0px;
-                                            ">Add</button>
+                <button class="addbtn btn btn-primary" ng-click="addBatch(batch);batch=''" id="addbatch" >Add</button>
                                     <ul>
-                    
+                     <br>
                                         <li ng-repeat="batch in data.timetable.batches">
                                             {{batch}}
 
@@ -126,16 +112,10 @@
  <div class="col-xs-4">
                      <input type="text" ng-model="value" class="form-control" placeholder="Rooms" id="newroom">
                    </div>
-                       <button class="addbtn btn" id="addroom" ng-click="addValueToEntry(value,'room')" style="
-                                            width: 53px;
-                                                    height: 30px;
-                                                    padding-top: 0px;
-                                                    padding-left: 0px;
-                                                    padding-right: 0px;
-                                                    padding-bottom: 0px;
-                                            ">Add</button>
+        <button class="addbtn btn btn-primary" id="addroom" ng-click="addValueToEntry(value,'room')">Add</button>
                <span ng-repeat="entry in data.timetable.entries| filter:{name:'room'}">
                      <ul>
+                        <br>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
                 </span>
@@ -151,17 +131,11 @@
  <div class="col-xs-4">
                      <input type="text" ng-model="value" class="form-control" id="newsubject" placeholder="Subjects">
                    </div>
-                       <button class="addbtn btn" id="addsubject" ng-click="addValueToEntry(value,'subject')" style="
-                                            width: 53px;
-                                                    height: 30px;
-                                                    padding-top: 0px;
-                                                    padding-left: 0px;
-                                                    padding-right: 0px;
-                                                    padding-bottom: 0px;
-                                            ">Add</button>
+         <button class="addbtn btn btn-primary" id="addsubject" ng-click="addValueToEntry(value,'subject')" >Add</button>
                
                  <span ng-repeat="entry in data.timetable.entries| filter:{name:'subject'}">
                      <ul>
+                       <br>
                     <li ng-repeat="value in entry.values">{{value}}</li>
                 </ul>
                 </span>
