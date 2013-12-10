@@ -6,21 +6,21 @@
 			<%= f.text_area :message,rows: 3,class:"form-control",placeholder:"Enter your note here:"%>
     </div>
    
-       <%= f.file_field :file,style:"padding-top: 10%" %>
+       <%= f.file_field :file,style:"padding-top: 12%;padding-left:2%" %>
   
      
       <% if @group.group_code %>
 			  <%= f.hidden_field :group,:value =>@group.group_code %>
       <% else %>
-      <div class="col-xs-2"> 
+      <div class="form-group col-xs-3" style="margin-top:3%"> 
       <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] },{},class:"form-control " %>
     </div>
   </hr>
       <% end %>
      
-      <p> <button type="button" data-loading-text="Uploading..." class="btn
-      btn-success" style="margin-top:3%" id="note_file_button" ng-click="publishgroupnote()"><i class="fa fa-upload"></i> Upload
-      </button> </p> <span id="message" style="display:none">Note sent</span> </div>
+      <button type="button" data-loading-text="Uploading..." class="btn
+      btn-success" style="margin-top:3%;margin-left: 2%;" id="note_file_button" ng-click="publishgroupnote()"><i class="fa fa-upload"></i> Upload
+      </button> <span id="message" style="display:none">Note sent</span> </div>
 
 
 <% end %>
