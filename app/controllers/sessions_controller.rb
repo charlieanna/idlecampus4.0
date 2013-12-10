@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       flash[:attacher] = attacher
       
       sign_in @user
-      flash[:success] = 'Welcome to IdleCampus!'
+      flash[:success] = 'Welcome back to IdleCampus!'
       redirect_to home_path
     else
       flash[:error] = 'Invalid email/password combination'
