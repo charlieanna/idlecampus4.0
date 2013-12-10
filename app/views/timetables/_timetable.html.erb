@@ -26,33 +26,43 @@
                       <input type="hidden" id="apptAllDay" />
                 </div>
                 <div ng-show="data.timetable.batches.length>1">
-    Add Batches?<input ng-model="checked"  type="checkbox" id="addbatches"/>
-               </div>           
-    <span ng-repeat="entry in data.timetable.entries" ng-hide="checked" class="col-xs-3">
-     {{entry.name}}<select class="form-control" ng-model="entry3213"
+                  <div class="checkbox">
+                      <label>
+                       <input ng-model="checked"  type="checkbox" id="addbatches"/> Add Batches?
+                      </label>
+                    </div>
+    
+               </div> 
+               <table class="table table-hover">
+                
+                    
+    <td ng-repeat="entry in data.timetable.entries" ng-hide="checked" class="col-xs-3">
+     {{entry.name}}: <select class="form-control" ng-model="entry3213"
                            ng-options="value for value in entry.values"
-                           id="{{entry.name}}{{index}}"></select>
-    </span>
+                          >{{value}}</select>
+    </td>
     
    
-          <span ng-repeat="batch in data.timetable.batches" ng-show="checked">
-          
-             <span ng-repeat="entry in data.timetable.entries" class="col-xs-3">
-
+          <tr ng-repeat="batch in data.timetable.batches" ng-show="checked">
+            <td style="
+                width: 5%;
+            ">{{batch}}</td>
+             <td ng-repeat="entry in data.timetable.entries" class="col-xs-3">
+              
      {{entry.name}}: <select class="form-control" ng-model="entry3214"
                              ng-options="value for value in entry.values"
-                             id="{{entry.name}}{{index}}{{$parent.$index+1}}"></select>
+                             ></select>
 
 
-
-    </span>
-          </span>
-
+        
+    </td>
+          </tr>
+</table> 
 
       </div>
       <div class="modal-footer">
 
-          <button data-dismiss="modal" id="AddEntry" ng-click="addEntry()">Add</button>
+          <button data-dismiss="modal" class="btn btn-primary" id="AddEntry" ng-click="addEntry()">Add</button>
       </div>
   </div>
 </div>
