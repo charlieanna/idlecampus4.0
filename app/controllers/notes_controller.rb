@@ -19,8 +19,8 @@ class NotesController < ApplicationController
   def create
     group = Group.find_by(group_code: params['group'])
     @note = group.notes.build(notes_params)
-    if params[:file]
-      @note.file = params[:file]
+    if params[:note][:file]
+      @note.file = params[:note][:file]
     end
     @note.note = params["note_text"]
     @note.members = params[:members].split(',')
