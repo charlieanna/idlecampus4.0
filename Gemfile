@@ -21,6 +21,7 @@ group :development, :test do
   gem "launchy", "~> 2.3.0"
   
 end 
+ gem "chardinjs-rails"
 gem 'exception_notification'
 gem 'font-awesome-sass'
 gem 'kaminari'

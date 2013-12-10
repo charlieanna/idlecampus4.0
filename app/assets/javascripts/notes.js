@@ -7,6 +7,10 @@ $(document).ready(function(){
   $('#groupname').tooltip()  
   $('#example').popover('hide')
   $("abbr.timeago").timeago();
+  
+  $("#start").click(function(){
+    $('body').chardinJs('start')
+  })
    
 })
 

@@ -4,12 +4,15 @@
     <div class="row">
       
       <div class="col-md-2 pull-right">
-          <button id="edittimetable" class="btn btn-inverse" ng-click="edit1hbhjb()"><i class="fa fa-lock"></i> Edit Timetable</button>
+        <button id="edittimetable" class="btn btn-inverse" ng-click="edit1hbhjb()" data-intro="Edit the timetable which is locked by default..." data-position="bottom" style="
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+            color: white;
+        "><i class="fa fa-lock"></i> Edit Timetable</button>
       </div>
         <div class="col-md-2 pull-right">
-            <button id="sendtimetable" class="btn  btn-success download" ng-click="send()">Send Timetable</button>
+            <button id="sendtimetable" class="btn  btn-success download" ng-click="send()" data-intro="Save and send the timetable to all the people in the group..." data-position="bottom">Send Timetable</button>
         </div>
-        <div class="col-md-2 pull-right">
+        <div class="col-md-2 pull-right" data-intro="Add the teachers, subjects and room by clicking here..." data-position="bottom">
           <!-- Button trigger modal -->
           <button class="btn btn-primary btn-mg" data-toggle="modal" data-target="#myModal">
             Create Timetable

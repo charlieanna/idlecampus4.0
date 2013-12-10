@@ -16,7 +16,7 @@
   </tr>
   <tr>
    <td>   <% if current_user.rolable_type == "Teacher"%>
-      Group ID:</td><td> <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" id="groupcode" title="" data-original-title="Pass this group code to your students to follow"><%= @group.group_code%></button></td>
+      Group ID:</td><td> <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" id="groupcode" title="" data-original-title="Pass this group code to your students to follow"  data-intro="Pass this group code to your students to follow" data-position="top"><%= @group.group_code%></button></td>
 <% else %>
       Group ID: <button type="button" class="btn btn-default" id="groupcode"><%= @group.group_code%></button>
 <% end %>

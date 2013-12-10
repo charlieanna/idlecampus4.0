@@ -12,8 +12,8 @@
       <% if @group.group_code %>
 			  <%= f.hidden_field :group,:value =>@group.group_code %>
       <% else %>
-      <div class="form-group col-xs-3" style="margin-top:3%"> 
-      <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] },{},class:"form-control " %>
+      <div class="form-group col-xs-3" style="margin-top:3%" data-intro="Select the group to whom you want to send the note..." data-position="right"> 
+      <%= f.select :group, current_user.groups.collect {|p| [ p.name, p.group_code ] },{},class:"form-control" %>
     </div>
   </hr>
       <% end %>

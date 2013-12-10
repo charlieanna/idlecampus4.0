@@ -8,20 +8,29 @@
 						<h1><a href="/">IdleCampus <span class="tblue">.</span></a></h1>
 					</div>
 				</div>
-				<div class="navigation pull-right">
+        <div class="navigation pull-right" style="
+                    margin-left: -1%;
+                ">
 				
 					<% if signed_in? %>
             <%= link_to "Profile", home_path %>
          <%=   link_to "<i class='fa fa-sign-out'></i> Sign out".html_safe, signout_path, method: "delete", "ng-click" => "signout()",style:"margin:50px" %>
+         
+          <a id="start">Help</a>
         
          
          <% else %>
+       
            <%= link_to "<i class='fa fa-sign-in'></i> Log In".html_safe,signin_path%>
+           <span data-intro="Create an account to create classes or groups, make students join your groups and send them class schedules/Timetable, notes and alerts..." data-position="bottom">
              <%= link_to "<i class='fa fa-heart'></i> Sign Up As Teacher".html_safe,teachers_signup_path %>
+           </span>
+             <span data-intro="Create an account by joining a group and always be in touch with your group/class" data-position="right">
             <%= link_to "<i class='fa fa-heart'></i> Sign Up As Student".html_safe,students_signup_path %>
-         
+          </span>
           
           <%= link_to "Blog","http://blog.idlecampus.com" %>
+          <a id="start">Help</a>
          <% end %>
 
 				</div>
