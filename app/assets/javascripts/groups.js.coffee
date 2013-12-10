@@ -169,38 +169,43 @@
 
 
   $scope.publishgroupnote = ->
-    $("#note_file_button").button('loading')
+    
     $("#message").hide()
     group = $("#note_group").val()
     formData = new FormData()
     $input = $("#note_file")
-    formData.append "note[file]", $input[0].files[0]
-    formData.append "note_text", $("#note_message").val()
-    formData.append "group", group
-    # $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
-#       console.log data
-    $scope.XMPP.connection.pubsub.getNodeSubscriptions group, (iq) ->
-      members = []
-      $(iq).find("subscription").each ->
+    message = $("#note_message").val()
+    if message == ""
+      alert("Enter the note..")
+    else
+      $("#note_file_button").button('loading')
+      formData.append "note[file]", $input[0].files[0]
+      formData.append "note_text", message 
+      formData.append "group", group
+      # $scope.XMPP.connection.pubsub.publish $("#note_group_code").val(), $("#note_message").val(), (data) ->
+  #       console.log data
+      $scope.XMPP.connection.pubsub.getNodeSubscriptions group, (iq) ->
+        members = []
+        $(iq).find("subscription").each ->
         
-        jid = $(this).attr("jid")
-        jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") != -1
-        console.log jid if gon.global.debug
-        members.push jid
-      formData.append("members", members);
-      $.ajax(
-        url: "/notes"
-        data: formData
-        cache: false
-        contentType: false
-        processData: false
-        method: 'POST'
-      ).done ->
-        $("#note_message").val("")
-        $("#note_file_button").button('reset')
-        $("#message").show()
-        $("a, button").toggleClass "active"
-        
+          jid = $(this).attr("jid")
+          jid = jid.substring(0, jid.indexOf("/")) if jid.indexOf("/") != -1
+          console.log jid if gon.global.debug
+          members.push jid
+        formData.append("members", members);
+        $.ajax(
+          url: "/notes"
+          data: formData
+          cache: false
+          contentType: false
+          processData: false
+          method: 'POST'
+        ).done ->
+          $("#note_message").val("")
+          $("#note_file_button").button('reset')
+          $("#message").show()
+          $("a, button").toggleClass "active"
+          
 
 
     
@@ -213,15 +218,19 @@
     $("abbr.timeago").timeago();
     group = $("#alert_group").val()
     message = $("#alert_message").val()
-    $scope.XMPP.connection.pubsub.publish group , message, (data) ->
-      console.log data if gon.global.debug
+    if message == ""
+      alert("Enter the alert..")
+    else
+      $scope.XMPP.connection.pubsub.publish group , message, (data) ->
+        console.log data if gon.global.debug
    
-    $.post("/alerts",
-      alert:
-        message: message
-        group: group 
-    ).done (data) ->
-      $("#createalertinput").val("")
+      $.post("/alerts",
+        alert:
+          message: message
+          group: group 
+      ).done (data) ->
+        $("#createalertinput").val("")
+        $("#alert_message").val("")
    
 
 

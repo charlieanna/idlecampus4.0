@@ -3,7 +3,7 @@
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 <%= f.hidden_field "authenticity_token",value: form_authenticity_token %>
     <div class="col-xs-12">
-			<%= f.text_area :message,rows: 3,class:"form-control",placeholder:"Enter your note here:"%>
+			<%= f.text_area :message,rows: 3,class:"form-control",placeholder:"Enter your note here:",required: true %>
     </div>
     <div class="form-group">
        <%= f.file_field :file %>

@@ -19,6 +19,9 @@ class NotesController < ApplicationController
   def create
     group = Group.find_by(group_code: params['group'])
     @note = group.notes.build(notes_params)
+    if params[:file]
+      @note.file = params[:file]
+    end
     @note.note = params["note_text"]
     @note.members = params[:members].split(',')
     @note.message = params["note_text"]
@@ -55,6 +58,6 @@ class NotesController < ApplicationController
   private
 
   def notes_params
-    params.require(:note).permit(:file, :message)
+    params.require(:note).permit(:message)
   end
 end

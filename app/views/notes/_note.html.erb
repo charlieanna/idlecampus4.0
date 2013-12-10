@@ -3,16 +3,16 @@
     <abbr class="timeago pull-right" title="<%= note.created_at.getutc.iso8601 %>">
       <%= note.created_at.to_s %>
     </abbr>
-  <% unless note.file.path.nil? %>
-  <%= note.file.path.split('/').last %>
- 
-  <% end %>
+  
 <p class="well well-message">
 	<%= note.message %>
 </p>
+<% unless note.file.path.nil? %>
+
+
 
  <div class="message-buttons">
-   <%= link_to "Download",note.file.url,class: "btn btn-success" %>
+   <%= link_to "<i class='fa fa-download'></i> #{note.file.path.split('/').last}".html_safe,note.file.url,class: "btn btn-success" %>
 </div>
-
+<% end %>
  </li>
