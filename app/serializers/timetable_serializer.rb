@@ -31,9 +31,14 @@ class TimetableSerializer < ActiveModel::Serializer
    weekdays = []
    
    object.timetable_entries.each do |entry|
-     weekdays << entry.weekday.name
+     weekdays << entry.weekday
    end
-  weekdays.uniq
+  weekdays.sort!.uniq!
+  names = []
+  weekdays.each do |weekday|
+    names << weekday.name
+  end
+  names
  end
  
  def field_entries
